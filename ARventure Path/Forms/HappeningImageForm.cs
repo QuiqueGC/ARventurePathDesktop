@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ARventure_Path.Forms
 {
-    public partial class EventImageForm : Form
+    public partial class HappeningImageForm : Form
     {
-        public EventImageForm()
+        public HappeningImageForm()
         {
             InitializeComponent();
         }

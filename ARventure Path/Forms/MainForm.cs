@@ -18,9 +18,9 @@ namespace ARventure_Path
         private RouteCreationForm routeCreationForm;
         private ARventureCreationForm arventureCreationForm;
         private LoginForm loginForm;
-        private EventTextForm eventTextForm;
-        private EventImageForm eventImageForm;
-        private EventSoundForm eventSoundForm;
+        private HappeningTextForm eventTextForm;
+        private HappeningImageForm eventImageForm;
+        private HappeningSoundForm eventSoundForm;
 
 
 
@@ -106,19 +106,19 @@ namespace ARventure_Path
 
         private void eventoDeTextoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventTextForm = new EventTextForm();
+            eventTextForm = new HappeningTextForm();
             eventTextForm.ShowDialog();
         }
 
         private void eventoDeImagenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventImageForm = new EventImageForm();
+            eventImageForm = new HappeningImageForm();
             eventImageForm.ShowDialog();
         }
 
         private void eventoDeSonidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventSoundForm = new EventSoundForm();
+            eventSoundForm = new HappeningSoundForm();
             eventSoundForm.ShowDialog();
         }
 
