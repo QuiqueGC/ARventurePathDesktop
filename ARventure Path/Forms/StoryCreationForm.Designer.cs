@@ -33,11 +33,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonGenerateStory = new System.Windows.Forms.Button();
             this.buttonGenerateImage = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxGenerateStoryAI = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.buttonAddFragment = new System.Windows.Forms.Button();
+            this.listBoxFragmentStory = new System.Windows.Forms.ListBox();
+            this.buttonAddNewFragment = new System.Windows.Forms.Button();
             this.textBoxFragmentQuantity = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonSearchImage = new System.Windows.Forms.Button();
@@ -77,7 +77,7 @@
             // 
             this.groupBox1.Controls.Add(this.buttonGenerateStory);
             this.groupBox1.Controls.Add(this.buttonGenerateImage);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textBoxGenerateStoryAI);
             this.groupBox1.Location = new System.Drawing.Point(31, 47);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(898, 91);
@@ -103,12 +103,12 @@
             this.buttonGenerateImage.Text = "Generar imagen";
             this.buttonGenerateImage.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxGenerateStoryAI
             // 
-            this.textBox1.Location = new System.Drawing.Point(18, 33);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(807, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBoxGenerateStoryAI.Location = new System.Drawing.Point(18, 33);
+            this.textBoxGenerateStoryAI.Name = "textBoxGenerateStoryAI";
+            this.textBoxGenerateStoryAI.Size = new System.Drawing.Size(807, 20);
+            this.textBoxGenerateStoryAI.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -130,8 +130,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.listBox1);
-            this.groupBox3.Controls.Add(this.buttonAddFragment);
+            this.groupBox3.Controls.Add(this.listBoxFragmentStory);
+            this.groupBox3.Controls.Add(this.buttonAddNewFragment);
             this.groupBox3.Controls.Add(this.textBoxFragmentQuantity);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(496, 19);
@@ -141,22 +141,22 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Fragmentos";
             // 
-            // listBox1
+            // listBoxFragmentStory
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(15, 101);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(353, 225);
-            this.listBox1.TabIndex = 3;
+            this.listBoxFragmentStory.FormattingEnabled = true;
+            this.listBoxFragmentStory.Location = new System.Drawing.Point(15, 101);
+            this.listBoxFragmentStory.Name = "listBoxFragmentStory";
+            this.listBoxFragmentStory.Size = new System.Drawing.Size(353, 225);
+            this.listBoxFragmentStory.TabIndex = 3;
             // 
-            // buttonAddFragment
+            // buttonAddNewFragment
             // 
-            this.buttonAddFragment.Location = new System.Drawing.Point(152, 59);
-            this.buttonAddFragment.Name = "buttonAddFragment";
-            this.buttonAddFragment.Size = new System.Drawing.Size(95, 23);
-            this.buttonAddFragment.TabIndex = 2;
-            this.buttonAddFragment.Text = "Añadir nuevo";
-            this.buttonAddFragment.UseVisualStyleBackColor = true;
+            this.buttonAddNewFragment.Location = new System.Drawing.Point(152, 59);
+            this.buttonAddNewFragment.Name = "buttonAddNewFragment";
+            this.buttonAddNewFragment.Size = new System.Drawing.Size(95, 23);
+            this.buttonAddNewFragment.TabIndex = 2;
+            this.buttonAddNewFragment.Text = "Añadir nuevo";
+            this.buttonAddNewFragment.UseVisualStyleBackColor = true;
             // 
             // textBoxFragmentQuantity
             // 
@@ -288,7 +288,7 @@
         private System.Windows.Forms.Label labelSelectStory;
         private System.Windows.Forms.ComboBox comboBoxSelectStory;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxGenerateStoryAI;
         private System.Windows.Forms.Button buttonGenerateStory;
         private System.Windows.Forms.Button buttonGenerateImage;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -303,8 +303,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBoxFragmentQuantity;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button buttonAddFragment;
+        private System.Windows.Forms.ListBox listBoxFragmentStory;
+        private System.Windows.Forms.Button buttonAddNewFragment;
         private System.Windows.Forms.Button buttonCreateStory;
         private System.Windows.Forms.Button buttonCancelStory;
     }
