@@ -34,17 +34,17 @@
             this.buttonGenerateRoute = new System.Windows.Forms.Button();
             this.textBoxGenerateRouteAI = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.buttonAddNewRoute = new System.Windows.Forms.Button();
-            this.listBoxRouteStops = new System.Windows.Forms.ListBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelRouteTime = new System.Windows.Forms.Label();
             this.labelRouteDistance = new System.Windows.Forms.Label();
-            this.buttonCreateStory = new System.Windows.Forms.Button();
-            this.buttonCancelStory = new System.Windows.Forms.Button();
+            this.labelRouteTime = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBoxRouteStops = new System.Windows.Forms.ListBox();
+            this.buttonAddNewRoute = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.buttonCreateRoute = new System.Windows.Forms.Button();
+            this.buttonCancelRoute = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxGenerateRoute.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -112,64 +112,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ruta";
             // 
-            // label3
+            // labelRouteDistance
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(106, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Cantidad de paradas";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(264, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(63, 20);
-            this.textBox2.TabIndex = 4;
-            // 
-            // buttonAddNewRoute
-            // 
-            this.buttonAddNewRoute.Location = new System.Drawing.Point(193, 69);
-            this.buttonAddNewRoute.Name = "buttonAddNewRoute";
-            this.buttonAddNewRoute.Size = new System.Drawing.Size(95, 23);
-            this.buttonAddNewRoute.TabIndex = 4;
-            this.buttonAddNewRoute.Text = "Añadir nuevo";
-            this.buttonAddNewRoute.UseVisualStyleBackColor = true;
-            // 
-            // listBoxRouteStops
-            // 
-            this.listBoxRouteStops.FormattingEnabled = true;
-            this.listBoxRouteStops.Location = new System.Drawing.Point(28, 120);
-            this.listBoxRouteStops.Name = "listBoxRouteStops";
-            this.listBoxRouteStops.Size = new System.Drawing.Size(419, 225);
-            this.listBoxRouteStops.TabIndex = 4;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(497, 32);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(377, 251);
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(494, 299);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Tiempo estimado";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(823, 299);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Distancia";
+            this.labelRouteDistance.AutoSize = true;
+            this.labelRouteDistance.Location = new System.Drawing.Point(826, 332);
+            this.labelRouteDistance.Name = "labelRouteDistance";
+            this.labelRouteDistance.Size = new System.Drawing.Size(13, 13);
+            this.labelRouteDistance.TabIndex = 15;
+            this.labelRouteDistance.Text = "0";
             // 
             // labelRouteTime
             // 
@@ -180,40 +130,92 @@
             this.labelRouteTime.TabIndex = 14;
             this.labelRouteTime.Text = "0";
             // 
-            // labelRouteDistance
+            // label2
             // 
-            this.labelRouteDistance.AutoSize = true;
-            this.labelRouteDistance.Location = new System.Drawing.Point(826, 332);
-            this.labelRouteDistance.Name = "labelRouteDistance";
-            this.labelRouteDistance.Size = new System.Drawing.Size(13, 13);
-            this.labelRouteDistance.TabIndex = 15;
-            this.labelRouteDistance.Text = "0";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(823, 299);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Distancia";
             // 
-            // buttonCreateStory
+            // label1
             // 
-            this.buttonCreateStory.Location = new System.Drawing.Point(415, 556);
-            this.buttonCreateStory.Name = "buttonCreateStory";
-            this.buttonCreateStory.Size = new System.Drawing.Size(75, 23);
-            this.buttonCreateStory.TabIndex = 5;
-            this.buttonCreateStory.Text = "Crear";
-            this.buttonCreateStory.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(494, 299);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Tiempo estimado";
             // 
-            // buttonCancelStory
+            // listBoxRouteStops
             // 
-            this.buttonCancelStory.Location = new System.Drawing.Point(528, 556);
-            this.buttonCancelStory.Name = "buttonCancelStory";
-            this.buttonCancelStory.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancelStory.TabIndex = 6;
-            this.buttonCancelStory.Text = "Cancelar";
-            this.buttonCancelStory.UseVisualStyleBackColor = true;
+            this.listBoxRouteStops.FormattingEnabled = true;
+            this.listBoxRouteStops.Location = new System.Drawing.Point(28, 120);
+            this.listBoxRouteStops.Name = "listBoxRouteStops";
+            this.listBoxRouteStops.Size = new System.Drawing.Size(419, 225);
+            this.listBoxRouteStops.TabIndex = 4;
+            // 
+            // buttonAddNewRoute
+            // 
+            this.buttonAddNewRoute.Location = new System.Drawing.Point(193, 69);
+            this.buttonAddNewRoute.Name = "buttonAddNewRoute";
+            this.buttonAddNewRoute.Size = new System.Drawing.Size(95, 23);
+            this.buttonAddNewRoute.TabIndex = 4;
+            this.buttonAddNewRoute.Text = "Añadir nuevo";
+            this.buttonAddNewRoute.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(264, 32);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(63, 20);
+            this.textBox2.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(106, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Cantidad de paradas";
+            // 
+            // buttonCreateRoute
+            // 
+            this.buttonCreateRoute.Location = new System.Drawing.Point(415, 556);
+            this.buttonCreateRoute.Name = "buttonCreateRoute";
+            this.buttonCreateRoute.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreateRoute.TabIndex = 5;
+            this.buttonCreateRoute.Text = "Crear";
+            this.buttonCreateRoute.UseVisualStyleBackColor = true;
+            // 
+            // buttonCancelRoute
+            // 
+            this.buttonCancelRoute.Location = new System.Drawing.Point(528, 556);
+            this.buttonCancelRoute.Name = "buttonCancelRoute";
+            this.buttonCancelRoute.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancelRoute.TabIndex = 6;
+            this.buttonCancelRoute.Text = "Cancelar";
+            this.buttonCancelRoute.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ARventure_Path.Properties.Resources.maps;
+            this.pictureBox1.Location = new System.Drawing.Point(497, 32);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(377, 251);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // RouteCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 601);
-            this.Controls.Add(this.buttonCancelStory);
-            this.Controls.Add(this.buttonCreateStory);
+            this.Controls.Add(this.buttonCancelRoute);
+            this.Controls.Add(this.buttonCreateRoute);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBoxGenerateRoute);
             this.Controls.Add(this.comboBoxSelectRoute);
@@ -247,7 +249,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelRouteDistance;
         private System.Windows.Forms.Label labelRouteTime;
-        private System.Windows.Forms.Button buttonCreateStory;
-        private System.Windows.Forms.Button buttonCancelStory;
+        private System.Windows.Forms.Button buttonCreateRoute;
+        private System.Windows.Forms.Button buttonCancelRoute;
     }
 }
