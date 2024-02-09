@@ -62,6 +62,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataClases\Happenings\AbstractHappening.cs" />
+    <Compile Include="DataClases\Happenings\ImageHappening.cs" />
+    <Compile Include="DataClases\Happenings\SoundHappening.cs" />
+    <Compile Include="DataClases\Happenings\TextHappening.cs" />
     <Compile Include="DataClases\Route.cs" />
     <Compile Include="DataClases\Stop.cs" />
     <Compile Include="DataClases\Story.cs" />
