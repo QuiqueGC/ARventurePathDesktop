@@ -39,7 +39,7 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(479, 445);
+            this.buttonLogin.Location = new System.Drawing.Point(479, 503);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(75, 23);
             this.buttonLogin.TabIndex = 2;
@@ -49,7 +49,7 @@
             // labelUser
             // 
             this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(357, 356);
+            this.labelUser.Location = new System.Drawing.Point(375, 393);
             this.labelUser.Name = "labelUser";
             this.labelUser.Size = new System.Drawing.Size(43, 13);
             this.labelUser.TabIndex = 5;
@@ -58,7 +58,7 @@
             // labelPwd
             // 
             this.labelPwd.AutoSize = true;
-            this.labelPwd.Location = new System.Drawing.Point(357, 397);
+            this.labelPwd.Location = new System.Drawing.Point(375, 445);
             this.labelPwd.Name = "labelPwd";
             this.labelPwd.Size = new System.Drawing.Size(61, 13);
             this.labelPwd.TabIndex = 6;
@@ -66,14 +66,14 @@
             // 
             // textBoxUser
             // 
-            this.textBoxUser.Location = new System.Drawing.Point(479, 349);
+            this.textBoxUser.Location = new System.Drawing.Point(479, 390);
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.Size = new System.Drawing.Size(232, 20);
             this.textBoxUser.TabIndex = 7;
             // 
             // textBoxPwd
             // 
-            this.textBoxPwd.Location = new System.Drawing.Point(479, 390);
+            this.textBoxPwd.Location = new System.Drawing.Point(479, 442);
             this.textBoxPwd.Name = "textBoxPwd";
             this.textBoxPwd.Size = new System.Drawing.Size(232, 20);
             this.textBoxPwd.TabIndex = 8;
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 541);
+            this.ClientSize = new System.Drawing.Size(964, 601);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBoxPwd);
             this.Controls.Add(this.textBoxUser);
