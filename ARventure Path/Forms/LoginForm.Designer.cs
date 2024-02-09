@@ -39,7 +39,7 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(501, 440);
+            this.buttonLogin.Location = new System.Drawing.Point(479, 445);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(75, 23);
             this.buttonLogin.TabIndex = 2;
@@ -49,7 +49,7 @@
             // labelUser
             // 
             this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(393, 356);
+            this.labelUser.Location = new System.Drawing.Point(357, 356);
             this.labelUser.Name = "labelUser";
             this.labelUser.Size = new System.Drawing.Size(43, 13);
             this.labelUser.TabIndex = 5;
@@ -58,7 +58,7 @@
             // labelPwd
             // 
             this.labelPwd.AutoSize = true;
-            this.labelPwd.Location = new System.Drawing.Point(393, 397);
+            this.labelPwd.Location = new System.Drawing.Point(357, 397);
             this.labelPwd.Name = "labelPwd";
             this.labelPwd.Size = new System.Drawing.Size(61, 13);
             this.labelPwd.TabIndex = 6;
@@ -66,25 +66,25 @@
             // 
             // textBoxUser
             // 
-            this.textBoxUser.Location = new System.Drawing.Point(501, 349);
+            this.textBoxUser.Location = new System.Drawing.Point(479, 349);
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.Size = new System.Drawing.Size(232, 20);
             this.textBoxUser.TabIndex = 7;
             // 
             // textBoxPwd
             // 
-            this.textBoxPwd.Location = new System.Drawing.Point(501, 390);
+            this.textBoxPwd.Location = new System.Drawing.Point(479, 390);
             this.textBoxPwd.Name = "textBoxPwd";
             this.textBoxPwd.Size = new System.Drawing.Size(232, 20);
             this.textBoxPwd.TabIndex = 8;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ARventure_Path.Properties.Resources.Login_Aventuras;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
+            this.pictureBox1.Image = global::ARventure_Path.Properties.Resources.Arventure_login;
+            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(982, 317);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Size = new System.Drawing.Size(946, 320);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 516);
+            this.ClientSize = new System.Drawing.Size(949, 516);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBoxPwd);
             this.Controls.Add(this.textBoxUser);

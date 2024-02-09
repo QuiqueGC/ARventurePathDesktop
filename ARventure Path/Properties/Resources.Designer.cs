@@ -63,6 +63,16 @@ namespace ARventure_Path.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Arventure_login {
+            get {
+                object obj = ResourceManager.GetObject("Arventure_login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Login_Aventuras {
             get {
                 object obj = ResourceManager.GetObject("Login_Aventuras", resourceCulture);
