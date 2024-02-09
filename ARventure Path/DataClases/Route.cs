@@ -13,7 +13,7 @@ namespace ARventure_Path.DataClases
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Stop> Stops { get; set; }
-        public DateTime Time { get; set; }
+        public TimeOnly Time { get; set; }
         public int Steps { get; set; }
         public float Distance { get; set; }
     }
