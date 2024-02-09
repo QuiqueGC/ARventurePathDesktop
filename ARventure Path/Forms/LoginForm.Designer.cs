@@ -28,45 +28,103 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
+            this.buttonRegister = new System.Windows.Forms.Button();
+            this.labelUser = new System.Windows.Forms.Label();
+            this.labelPwd = new System.Windows.Forms.Label();
+            this.textBoxUser = new System.Windows.Forms.TextBox();
+            this.textBoxPwd = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(325, 219);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Login";
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(301, 300);
+            this.buttonLogin.Location = new System.Drawing.Point(280, 413);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(75, 23);
             this.buttonLogin.TabIndex = 2;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
             // 
+            // buttonRegister
+            // 
+            this.buttonRegister.Location = new System.Drawing.Point(384, 413);
+            this.buttonRegister.Name = "buttonRegister";
+            this.buttonRegister.Size = new System.Drawing.Size(75, 23);
+            this.buttonRegister.TabIndex = 3;
+            this.buttonRegister.Text = "Registro";
+            this.buttonRegister.UseVisualStyleBackColor = true;
+            // 
+            // labelUser
+            // 
+            this.labelUser.AutoSize = true;
+            this.labelUser.Location = new System.Drawing.Point(244, 326);
+            this.labelUser.Name = "labelUser";
+            this.labelUser.Size = new System.Drawing.Size(43, 13);
+            this.labelUser.TabIndex = 5;
+            this.labelUser.Text = "Usuario";
+            // 
+            // labelPwd
+            // 
+            this.labelPwd.AutoSize = true;
+            this.labelPwd.Location = new System.Drawing.Point(244, 364);
+            this.labelPwd.Name = "labelPwd";
+            this.labelPwd.Size = new System.Drawing.Size(61, 13);
+            this.labelPwd.TabIndex = 6;
+            this.labelPwd.Text = "Contraseña";
+            // 
+            // textBoxUser
+            // 
+            this.textBoxUser.Location = new System.Drawing.Point(335, 319);
+            this.textBoxUser.Name = "textBoxUser";
+            this.textBoxUser.Size = new System.Drawing.Size(232, 20);
+            this.textBoxUser.TabIndex = 7;
+            // 
+            // textBoxPwd
+            // 
+            this.textBoxPwd.Location = new System.Drawing.Point(335, 357);
+            this.textBoxPwd.Name = "textBoxPwd";
+            this.textBoxPwd.Size = new System.Drawing.Size(232, 20);
+            this.textBoxPwd.TabIndex = 8;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ARventure_Path.Properties.Resources.Login_Aventuras;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(745, 293);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(748, 478);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.textBoxPwd);
+            this.Controls.Add(this.textBoxUser);
+            this.Controls.Add(this.labelPwd);
+            this.Controls.Add(this.labelUser);
+            this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.buttonLogin);
-            this.Controls.Add(this.label1);
             this.Name = "LoginForm";
             this.Text = "Login";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.Button buttonRegister;
+        private System.Windows.Forms.Label labelUser;
+        private System.Windows.Forms.Label labelPwd;
+        private System.Windows.Forms.TextBox textBoxUser;
+        private System.Windows.Forms.TextBox textBoxPwd;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
