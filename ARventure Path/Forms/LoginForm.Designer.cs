@@ -83,7 +83,7 @@
             this.pictureBox1.Image = global::ARventure_Path.Properties.Resources.Arventure_login;
             this.pictureBox1.Location = new System.Drawing.Point(2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(946, 320);
+            this.pictureBox1.Size = new System.Drawing.Size(980, 320);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 516);
+            this.ClientSize = new System.Drawing.Size(964, 541);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBoxPwd);
             this.Controls.Add(this.textBoxUser);
