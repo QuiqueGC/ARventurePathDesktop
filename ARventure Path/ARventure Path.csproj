@@ -167,7 +167,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\maps.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Login_Aventuras.jpg" />
   </ItemGroup>
