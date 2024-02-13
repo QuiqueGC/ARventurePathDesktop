@@ -37,27 +37,7 @@ namespace ARventure_Path
             addingFormmToPanel(loginForm);
         }
 
-        private void crearHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            removeFormsFromPanel();
-            storyCreationForm = new StoryCreationForm();
-            addingFormmToPanel(storyCreationForm);
-        }
-
-        private void crearRutaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            removeFormsFromPanel();
-            routeCreationForm = new RouteCreationForm();
-            addingFormmToPanel(routeCreationForm);
-        }
-
-        private void crearAventuraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            removeFormsFromPanel();
-            arventureCreationForm = new ARventureCreationForm();
-            addingFormmToPanel(arventureCreationForm);
-
-        }
+        
 
         /// <summary>
         /// Añade un formulario al panel del MainForm y lo muestra
@@ -125,6 +105,70 @@ namespace ARventure_Path
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        
+        private void crearHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            storyCreationForm = new StoryCreationForm();
+            addingFormmToPanel(storyCreationForm);
+        }
+
+        private void modificarHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            storyCreationForm = new StoryCreationForm();
+            addingFormmToPanel(storyCreationForm);
+        }
+        private void borrarHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            storyCreationForm = new StoryCreationForm();
+            addingFormmToPanel(storyCreationForm);
+        }
+
+        private void crearRutaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            routeCreationForm = new RouteCreationForm();
+            addingFormmToPanel(routeCreationForm);
+        }
+
+        private void modificarRutaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            routeCreationForm = new RouteCreationForm();
+            addingFormmToPanel(routeCreationForm);
+        }
+
+        private void borrarRutaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            routeCreationForm = new RouteCreationForm();
+            addingFormmToPanel(routeCreationForm);
+        }
+
+        private void crearAventuraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            arventureCreationForm = new ARventureCreationForm();
+            addingFormmToPanel(arventureCreationForm);
+
+        }
+
+        private void modificarAventuraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            arventureCreationForm = new ARventureCreationForm();
+            addingFormmToPanel(arventureCreationForm);
+        }
+
+        private void borrarAventuraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            arventureCreationForm = new ARventureCreationForm();
+            addingFormmToPanel(arventureCreationForm);
         }
     }
 }

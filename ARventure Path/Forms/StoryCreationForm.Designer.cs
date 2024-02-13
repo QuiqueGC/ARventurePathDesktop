@@ -276,6 +276,7 @@
             // 
             this.buttonCreateStory.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonCreateStory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonCreateStory.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCreateStory.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonCreateStory.Location = new System.Drawing.Point(430, 556);
             this.buttonCreateStory.Name = "buttonCreateStory";
@@ -288,6 +289,7 @@
             // 
             this.buttonCancelStory.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonCancelStory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonCancelStory.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelStory.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonCancelStory.Location = new System.Drawing.Point(532, 556);
             this.buttonCancelStory.Name = "buttonCancelStory";
