@@ -86,9 +86,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ARventure_Path.Properties.Resources.Arventure_login;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(2, 1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(961, 320);
+            this.pictureBox1.Size = new System.Drawing.Size(961, 321);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -98,7 +98,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(964, 601);
+            this.ClientSize = new System.Drawing.Size(964, 611);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBoxPwd);
             this.Controls.Add(this.textBoxUser);
