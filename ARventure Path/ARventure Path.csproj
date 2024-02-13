@@ -137,6 +137,9 @@
     <EmbeddedResource Include="Forms\ARventureCreationForm.resx">
       <DependentUpon>ARventureCreationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FragmentCreationForm.resx">
+      <DependentUpon>FragmentCreationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HappeningImageForm.resx">
       <DependentUpon>HappeningImageForm.cs</DependentUpon>
     </EmbeddedResource>
