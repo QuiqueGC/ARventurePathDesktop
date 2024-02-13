@@ -73,6 +73,46 @@ namespace ARventure_Path.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap aventura {
+            get {
+                object obj = ResourceManager.GetObject("aventura", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cerrar {
+            get {
+                object obj = ResourceManager.GetObject("cerrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap evento {
+            get {
+                object obj = ResourceManager.GetObject("evento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap historia {
+            get {
+                object obj = ResourceManager.GetObject("historia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Login_Aventuras {
             get {
                 object obj = ResourceManager.GetObject("Login_Aventuras", resourceCulture);
@@ -86,6 +126,16 @@ namespace ARventure_Path.Properties {
         internal static System.Drawing.Bitmap maps {
             get {
                 object obj = ResourceManager.GetObject("maps", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ruta {
+            get {
+                object obj = ResourceManager.GetObject("ruta", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

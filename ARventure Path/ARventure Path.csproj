@@ -176,5 +176,20 @@
   <ItemGroup>
     <None Include="Resources\Arventure_login.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\historia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ruta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aventura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\evento.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
