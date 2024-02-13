@@ -69,11 +69,23 @@
     <Compile Include="DataClases\Route.cs" />
     <Compile Include="DataClases\Stop.cs" />
     <Compile Include="DataClases\Story.cs" />
+    <Compile Include="Forms\AddStopForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddStopForm.Designer.cs">
+      <DependentUpon>AddStopForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ARventureCreationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ARventureCreationForm.Designer.cs">
       <DependentUpon>ARventureCreationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FragmentCreationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FragmentCreationForm.Designer.cs">
+      <DependentUpon>FragmentCreationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\HappeningImageForm.cs">
       <SubType>Form</SubType>
@@ -119,6 +131,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AddStopForm.resx">
+      <DependentUpon>AddStopForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ARventureCreationForm.resx">
       <DependentUpon>ARventureCreationForm.cs</DependentUpon>
     </EmbeddedResource>
