@@ -31,45 +31,45 @@
             this.labelSelectRoute = new System.Windows.Forms.Label();
             this.comboBoxSelectRoute = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listBoxStories = new System.Windows.Forms.ListBox();
-            this.listBoxRoutes = new System.Windows.Forms.ListBox();
-            this.listBoxEvents = new System.Windows.Forms.ListBox();
-            this.buttonSelectStory = new System.Windows.Forms.Button();
             this.buttonSeeDetailStory = new System.Windows.Forms.Button();
-            this.buttonSelectRoute = new System.Windows.Forms.Button();
-            this.buttonSelectEvent = new System.Windows.Forms.Button();
+            this.buttonSelectStory = new System.Windows.Forms.Button();
+            this.listBoxStories = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonSeeDetailRoute = new System.Windows.Forms.Button();
+            this.buttonSelectRoute = new System.Windows.Forms.Button();
+            this.listBoxRoutes = new System.Windows.Forms.ListBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.buttonSeeDetailEvent = new System.Windows.Forms.Button();
+            this.buttonSelectEvent = new System.Windows.Forms.Button();
+            this.listBoxEvents = new System.Windows.Forms.ListBox();
             this.groupBoxArventure = new System.Windows.Forms.GroupBox();
-            this.buttonCreateArventure = new System.Windows.Forms.Button();
-            this.buttonCancelArventure = new System.Windows.Forms.Button();
-            this.labelStoryTitle = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.buttonRemoveEvent = new System.Windows.Forms.Button();
+            this.listBoxSelectEvents = new System.Windows.Forms.ListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.listBoxRouteStops = new System.Windows.Forms.ListBox();
+            this.labelTimeRoute = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.labelDistanceRoute = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.listBoxSelectEvents = new System.Windows.Forms.ListBox();
-            this.buttonRemoveEvent = new System.Windows.Forms.Button();
-            this.labelDistanceRoute = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.labelTimeRoute = new System.Windows.Forms.Label();
-            this.listBoxRouteStops = new System.Windows.Forms.ListBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.labelStoryTitle = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonCreateArventure = new System.Windows.Forms.Button();
+            this.buttonCancelArventure = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBoxArventure.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSelectRoute
@@ -101,6 +101,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Historias";
             // 
+            // buttonSeeDetailStory
+            // 
+            this.buttonSeeDetailStory.Location = new System.Drawing.Point(108, 169);
+            this.buttonSeeDetailStory.Name = "buttonSeeDetailStory";
+            this.buttonSeeDetailStory.Size = new System.Drawing.Size(75, 23);
+            this.buttonSeeDetailStory.TabIndex = 2;
+            this.buttonSeeDetailStory.Text = "Ver detalles";
+            this.buttonSeeDetailStory.UseVisualStyleBackColor = true;
+            // 
+            // buttonSelectStory
+            // 
+            this.buttonSelectStory.Location = new System.Drawing.Point(16, 169);
+            this.buttonSelectStory.Name = "buttonSelectStory";
+            this.buttonSelectStory.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectStory.TabIndex = 1;
+            this.buttonSelectStory.Text = "Seleccionar";
+            this.buttonSelectStory.UseVisualStyleBackColor = true;
+            // 
+            // listBoxStories
+            // 
+            this.listBoxStories.FormattingEnabled = true;
+            this.listBoxStories.Location = new System.Drawing.Point(16, 19);
+            this.listBoxStories.Name = "listBoxStories";
+            this.listBoxStories.Size = new System.Drawing.Size(167, 134);
+            this.listBoxStories.TabIndex = 0;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.buttonSeeDetailRoute);
@@ -112,6 +138,32 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Rutas";
+            // 
+            // buttonSeeDetailRoute
+            // 
+            this.buttonSeeDetailRoute.Location = new System.Drawing.Point(107, 169);
+            this.buttonSeeDetailRoute.Name = "buttonSeeDetailRoute";
+            this.buttonSeeDetailRoute.Size = new System.Drawing.Size(75, 23);
+            this.buttonSeeDetailRoute.TabIndex = 3;
+            this.buttonSeeDetailRoute.Text = "Ver detalles";
+            this.buttonSeeDetailRoute.UseVisualStyleBackColor = true;
+            // 
+            // buttonSelectRoute
+            // 
+            this.buttonSelectRoute.Location = new System.Drawing.Point(15, 169);
+            this.buttonSelectRoute.Name = "buttonSelectRoute";
+            this.buttonSelectRoute.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectRoute.TabIndex = 3;
+            this.buttonSelectRoute.Text = "Seleccionar";
+            this.buttonSelectRoute.UseVisualStyleBackColor = true;
+            // 
+            // listBoxRoutes
+            // 
+            this.listBoxRoutes.FormattingEnabled = true;
+            this.listBoxRoutes.Location = new System.Drawing.Point(15, 19);
+            this.listBoxRoutes.Name = "listBoxRoutes";
+            this.listBoxRoutes.Size = new System.Drawing.Size(167, 134);
+            this.listBoxRoutes.TabIndex = 1;
             // 
             // groupBox3
             // 
@@ -125,56 +177,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Eventos";
             // 
-            // listBoxStories
+            // buttonSeeDetailEvent
             // 
-            this.listBoxStories.FormattingEnabled = true;
-            this.listBoxStories.Location = new System.Drawing.Point(16, 19);
-            this.listBoxStories.Name = "listBoxStories";
-            this.listBoxStories.Size = new System.Drawing.Size(167, 134);
-            this.listBoxStories.TabIndex = 0;
-            // 
-            // listBoxRoutes
-            // 
-            this.listBoxRoutes.FormattingEnabled = true;
-            this.listBoxRoutes.Location = new System.Drawing.Point(15, 19);
-            this.listBoxRoutes.Name = "listBoxRoutes";
-            this.listBoxRoutes.Size = new System.Drawing.Size(167, 134);
-            this.listBoxRoutes.TabIndex = 1;
-            // 
-            // listBoxEvents
-            // 
-            this.listBoxEvents.FormattingEnabled = true;
-            this.listBoxEvents.Location = new System.Drawing.Point(17, 19);
-            this.listBoxEvents.Name = "listBoxEvents";
-            this.listBoxEvents.Size = new System.Drawing.Size(167, 134);
-            this.listBoxEvents.TabIndex = 2;
-            // 
-            // buttonSelectStory
-            // 
-            this.buttonSelectStory.Location = new System.Drawing.Point(16, 169);
-            this.buttonSelectStory.Name = "buttonSelectStory";
-            this.buttonSelectStory.Size = new System.Drawing.Size(75, 23);
-            this.buttonSelectStory.TabIndex = 1;
-            this.buttonSelectStory.Text = "Seleccionar";
-            this.buttonSelectStory.UseVisualStyleBackColor = true;
-            // 
-            // buttonSeeDetailStory
-            // 
-            this.buttonSeeDetailStory.Location = new System.Drawing.Point(108, 169);
-            this.buttonSeeDetailStory.Name = "buttonSeeDetailStory";
-            this.buttonSeeDetailStory.Size = new System.Drawing.Size(75, 23);
-            this.buttonSeeDetailStory.TabIndex = 2;
-            this.buttonSeeDetailStory.Text = "Ver detalles";
-            this.buttonSeeDetailStory.UseVisualStyleBackColor = true;
-            // 
-            // buttonSelectRoute
-            // 
-            this.buttonSelectRoute.Location = new System.Drawing.Point(15, 169);
-            this.buttonSelectRoute.Name = "buttonSelectRoute";
-            this.buttonSelectRoute.Size = new System.Drawing.Size(75, 23);
-            this.buttonSelectRoute.TabIndex = 3;
-            this.buttonSelectRoute.Text = "Seleccionar";
-            this.buttonSelectRoute.UseVisualStyleBackColor = true;
+            this.buttonSeeDetailEvent.Location = new System.Drawing.Point(109, 169);
+            this.buttonSeeDetailEvent.Name = "buttonSeeDetailEvent";
+            this.buttonSeeDetailEvent.Size = new System.Drawing.Size(75, 23);
+            this.buttonSeeDetailEvent.TabIndex = 4;
+            this.buttonSeeDetailEvent.Text = "Ver detalles";
+            this.buttonSeeDetailEvent.UseVisualStyleBackColor = true;
             // 
             // buttonSelectEvent
             // 
@@ -185,23 +195,13 @@
             this.buttonSelectEvent.Text = "Seleccionar";
             this.buttonSelectEvent.UseVisualStyleBackColor = true;
             // 
-            // buttonSeeDetailRoute
+            // listBoxEvents
             // 
-            this.buttonSeeDetailRoute.Location = new System.Drawing.Point(107, 169);
-            this.buttonSeeDetailRoute.Name = "buttonSeeDetailRoute";
-            this.buttonSeeDetailRoute.Size = new System.Drawing.Size(75, 23);
-            this.buttonSeeDetailRoute.TabIndex = 3;
-            this.buttonSeeDetailRoute.Text = "Ver detalles";
-            this.buttonSeeDetailRoute.UseVisualStyleBackColor = true;
-            // 
-            // buttonSeeDetailEvent
-            // 
-            this.buttonSeeDetailEvent.Location = new System.Drawing.Point(109, 169);
-            this.buttonSeeDetailEvent.Name = "buttonSeeDetailEvent";
-            this.buttonSeeDetailEvent.Size = new System.Drawing.Size(75, 23);
-            this.buttonSeeDetailEvent.TabIndex = 4;
-            this.buttonSeeDetailEvent.Text = "Ver detalles";
-            this.buttonSeeDetailEvent.UseVisualStyleBackColor = true;
+            this.listBoxEvents.FormattingEnabled = true;
+            this.listBoxEvents.Location = new System.Drawing.Point(17, 19);
+            this.listBoxEvents.Name = "listBoxEvents";
+            this.listBoxEvents.Size = new System.Drawing.Size(167, 134);
+            this.listBoxEvents.TabIndex = 2;
             // 
             // groupBoxArventure
             // 
@@ -217,23 +217,131 @@
             this.groupBoxArventure.TabStop = false;
             this.groupBoxArventure.Text = "Aventura";
             // 
-            // buttonCreateArventure
+            // groupBox6
             // 
-            this.buttonCreateArventure.Location = new System.Drawing.Point(412, 571);
-            this.buttonCreateArventure.Name = "buttonCreateArventure";
-            this.buttonCreateArventure.Size = new System.Drawing.Size(75, 23);
-            this.buttonCreateArventure.TabIndex = 8;
-            this.buttonCreateArventure.Text = "Crear";
-            this.buttonCreateArventure.UseVisualStyleBackColor = true;
+            this.groupBox6.Controls.Add(this.buttonRemoveEvent);
+            this.groupBox6.Controls.Add(this.listBoxSelectEvents);
+            this.groupBox6.Location = new System.Drawing.Point(623, 55);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(262, 226);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Eventos";
             // 
-            // buttonCancelArventure
+            // buttonRemoveEvent
             // 
-            this.buttonCancelArventure.Location = new System.Drawing.Point(521, 571);
-            this.buttonCancelArventure.Name = "buttonCancelArventure";
-            this.buttonCancelArventure.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancelArventure.TabIndex = 9;
-            this.buttonCancelArventure.Text = "Cancelar";
-            this.buttonCancelArventure.UseVisualStyleBackColor = true;
+            this.buttonRemoveEvent.Location = new System.Drawing.Point(92, 190);
+            this.buttonRemoveEvent.Name = "buttonRemoveEvent";
+            this.buttonRemoveEvent.Size = new System.Drawing.Size(91, 23);
+            this.buttonRemoveEvent.TabIndex = 8;
+            this.buttonRemoveEvent.Text = "Quitar evento";
+            this.buttonRemoveEvent.UseVisualStyleBackColor = true;
+            // 
+            // listBoxSelectEvents
+            // 
+            this.listBoxSelectEvents.FormattingEnabled = true;
+            this.listBoxSelectEvents.Location = new System.Drawing.Point(13, 33);
+            this.listBoxSelectEvents.Name = "listBoxSelectEvents";
+            this.listBoxSelectEvents.Size = new System.Drawing.Size(240, 147);
+            this.listBoxSelectEvents.TabIndex = 7;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.listBoxRouteStops);
+            this.groupBox5.Controls.Add(this.labelTimeRoute);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Controls.Add(this.labelDistanceRoute);
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Location = new System.Drawing.Point(329, 55);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(262, 226);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Ruta";
+            // 
+            // listBoxRouteStops
+            // 
+            this.listBoxRouteStops.FormattingEnabled = true;
+            this.listBoxRouteStops.Location = new System.Drawing.Point(12, 105);
+            this.listBoxRouteStops.Name = "listBoxRouteStops";
+            this.listBoxRouteStops.Size = new System.Drawing.Size(238, 108);
+            this.listBoxRouteStops.TabIndex = 9;
+            // 
+            // labelTimeRoute
+            // 
+            this.labelTimeRoute.AutoSize = true;
+            this.labelTimeRoute.Location = new System.Drawing.Point(93, 76);
+            this.labelTimeRoute.Name = "labelTimeRoute";
+            this.labelTimeRoute.Size = new System.Drawing.Size(13, 13);
+            this.labelTimeRoute.TabIndex = 8;
+            this.labelTimeRoute.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 76);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Tiempo";
+            // 
+            // labelDistanceRoute
+            // 
+            this.labelDistanceRoute.AutoSize = true;
+            this.labelDistanceRoute.Location = new System.Drawing.Point(93, 49);
+            this.labelDistanceRoute.Name = "labelDistanceRoute";
+            this.labelDistanceRoute.Size = new System.Drawing.Size(13, 13);
+            this.labelDistanceRoute.TabIndex = 6;
+            this.labelDistanceRoute.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(93, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Nombre de la ruta";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 49);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Distancia";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(384, 19);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(288, 16);
+            this.textBox2.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(271, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Título de la Aventura";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.labelStoryTitle);
+            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.pictureBox1);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Location = new System.Drawing.Point(21, 55);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(262, 226);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Historia";
             // 
             // labelStoryTitle
             // 
@@ -243,6 +351,14 @@
             this.labelStoryTitle.Size = new System.Drawing.Size(97, 13);
             this.labelStoryTitle.TabIndex = 3;
             this.labelStoryTitle.Text = "Título de la historia";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(15, 173);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(224, 40);
+            this.textBox1.TabIndex = 6;
             // 
             // pictureBox1
             // 
@@ -263,145 +379,29 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Resumen";
             // 
-            // textBox1
+            // buttonCreateArventure
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 173);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 40);
-            this.textBox1.TabIndex = 6;
+            this.buttonCreateArventure.Location = new System.Drawing.Point(412, 571);
+            this.buttonCreateArventure.Name = "buttonCreateArventure";
+            this.buttonCreateArventure.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreateArventure.TabIndex = 8;
+            this.buttonCreateArventure.Text = "Crear";
+            this.buttonCreateArventure.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
+            // buttonCancelArventure
             // 
-            this.groupBox4.Controls.Add(this.labelStoryTitle);
-            this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Controls.Add(this.pictureBox1);
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Location = new System.Drawing.Point(21, 55);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(262, 226);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Historia";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(271, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Título de la Aventura";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(384, 19);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(288, 16);
-            this.textBox2.TabIndex = 7;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.listBoxRouteStops);
-            this.groupBox5.Controls.Add(this.labelTimeRoute);
-            this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Controls.Add(this.labelDistanceRoute);
-            this.groupBox5.Controls.Add(this.label3);
-            this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Location = new System.Drawing.Point(329, 55);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(262, 226);
-            this.groupBox5.TabIndex = 8;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Ruta";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(93, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Nombre de la ruta";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 49);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Distancia";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.buttonRemoveEvent);
-            this.groupBox6.Controls.Add(this.listBoxSelectEvents);
-            this.groupBox6.Location = new System.Drawing.Point(623, 55);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(262, 226);
-            this.groupBox6.TabIndex = 8;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Eventos";
-            // 
-            // listBoxSelectEvents
-            // 
-            this.listBoxSelectEvents.FormattingEnabled = true;
-            this.listBoxSelectEvents.Location = new System.Drawing.Point(13, 33);
-            this.listBoxSelectEvents.Name = "listBoxSelectEvents";
-            this.listBoxSelectEvents.Size = new System.Drawing.Size(240, 147);
-            this.listBoxSelectEvents.TabIndex = 7;
-            // 
-            // buttonRemoveEvent
-            // 
-            this.buttonRemoveEvent.Location = new System.Drawing.Point(92, 190);
-            this.buttonRemoveEvent.Name = "buttonRemoveEvent";
-            this.buttonRemoveEvent.Size = new System.Drawing.Size(91, 23);
-            this.buttonRemoveEvent.TabIndex = 8;
-            this.buttonRemoveEvent.Text = "Quitar evento";
-            this.buttonRemoveEvent.UseVisualStyleBackColor = true;
-            // 
-            // labelDistanceRoute
-            // 
-            this.labelDistanceRoute.AutoSize = true;
-            this.labelDistanceRoute.Location = new System.Drawing.Point(93, 49);
-            this.labelDistanceRoute.Name = "labelDistanceRoute";
-            this.labelDistanceRoute.Size = new System.Drawing.Size(13, 13);
-            this.labelDistanceRoute.TabIndex = 6;
-            this.labelDistanceRoute.Text = "0";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 76);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Tiempo";
-            // 
-            // labelTimeRoute
-            // 
-            this.labelTimeRoute.AutoSize = true;
-            this.labelTimeRoute.Location = new System.Drawing.Point(93, 76);
-            this.labelTimeRoute.Name = "labelTimeRoute";
-            this.labelTimeRoute.Size = new System.Drawing.Size(13, 13);
-            this.labelTimeRoute.TabIndex = 8;
-            this.labelTimeRoute.Text = "0";
-            // 
-            // listBoxRouteStops
-            // 
-            this.listBoxRouteStops.FormattingEnabled = true;
-            this.listBoxRouteStops.Location = new System.Drawing.Point(12, 105);
-            this.listBoxRouteStops.Name = "listBoxRouteStops";
-            this.listBoxRouteStops.Size = new System.Drawing.Size(238, 108);
-            this.listBoxRouteStops.TabIndex = 9;
+            this.buttonCancelArventure.Location = new System.Drawing.Point(521, 571);
+            this.buttonCancelArventure.Name = "buttonCancelArventure";
+            this.buttonCancelArventure.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancelArventure.TabIndex = 9;
+            this.buttonCancelArventure.Text = "Cancelar";
+            this.buttonCancelArventure.UseVisualStyleBackColor = true;
             // 
             // ARventureCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 601);
+            this.ClientSize = new System.Drawing.Size(964, 611);
             this.Controls.Add(this.buttonCancelArventure);
             this.Controls.Add(this.buttonCreateArventure);
             this.Controls.Add(this.groupBoxArventure);
@@ -417,12 +417,12 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBoxArventure.ResumeLayout(false);
             this.groupBoxArventure.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

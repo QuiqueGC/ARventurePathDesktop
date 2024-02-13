@@ -34,6 +34,7 @@
             this.buttonGenerateRoute = new System.Windows.Forms.Button();
             this.textBoxGenerateRouteAI = new System.Windows.Forms.TextBox();
             this.groupBoxRoute = new System.Windows.Forms.GroupBox();
+            this.buttonDeleteRoute = new System.Windows.Forms.Button();
             this.labelRouteDistance = new System.Windows.Forms.Label();
             this.labelRouteTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.buttonCreateRoute = new System.Windows.Forms.Button();
             this.buttonCancelRoute = new System.Windows.Forms.Button();
-            this.buttonDeleteRoute = new System.Windows.Forms.Button();
             this.groupBoxGenerateRoute.SuspendLayout();
             this.groupBoxRoute.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -119,6 +119,18 @@
             this.groupBoxRoute.TabIndex = 9;
             this.groupBoxRoute.TabStop = false;
             this.groupBoxRoute.Text = "Ruta";
+            // 
+            // buttonDeleteRoute
+            // 
+            this.buttonDeleteRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonDeleteRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDeleteRoute.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonDeleteRoute.Location = new System.Drawing.Point(143, 69);
+            this.buttonDeleteRoute.Name = "buttonDeleteRoute";
+            this.buttonDeleteRoute.Size = new System.Drawing.Size(95, 23);
+            this.buttonDeleteRoute.TabIndex = 14;
+            this.buttonDeleteRoute.Text = "Eliminar";
+            this.buttonDeleteRoute.UseVisualStyleBackColor = false;
             // 
             // labelRouteDistance
             // 
@@ -230,24 +242,12 @@
             this.buttonCancelRoute.Text = "Cancelar";
             this.buttonCancelRoute.UseVisualStyleBackColor = false;
             // 
-            // buttonDeleteRoute
-            // 
-            this.buttonDeleteRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonDeleteRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonDeleteRoute.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonDeleteRoute.Location = new System.Drawing.Point(143, 69);
-            this.buttonDeleteRoute.Name = "buttonDeleteRoute";
-            this.buttonDeleteRoute.Size = new System.Drawing.Size(95, 23);
-            this.buttonDeleteRoute.TabIndex = 14;
-            this.buttonDeleteRoute.Text = "Eliminar";
-            this.buttonDeleteRoute.UseVisualStyleBackColor = false;
-            // 
             // RouteCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(964, 601);
+            this.ClientSize = new System.Drawing.Size(964, 611);
             this.Controls.Add(this.buttonCancelRoute);
             this.Controls.Add(this.buttonCreateRoute);
             this.Controls.Add(this.groupBoxRoute);

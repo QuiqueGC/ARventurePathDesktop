@@ -36,6 +36,7 @@
             this.textBoxGenerateStoryAI = new System.Windows.Forms.TextBox();
             this.gbStory = new System.Windows.Forms.GroupBox();
             this.gbFragments = new System.Windows.Forms.GroupBox();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.listBoxFragmentStory = new System.Windows.Forms.ListBox();
             this.buttonAddNewFragment = new System.Windows.Forms.Button();
             this.textBoxFragmentQuantity = new System.Windows.Forms.TextBox();
@@ -50,7 +51,6 @@
             this.labelStoryTitle = new System.Windows.Forms.Label();
             this.buttonCreateStory = new System.Windows.Forms.Button();
             this.buttonCancelStory = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
             this.gbGenerateForIA.SuspendLayout();
             this.gbStory.SuspendLayout();
             this.gbFragments.SuspendLayout();
@@ -152,6 +152,18 @@
             this.gbFragments.TabIndex = 4;
             this.gbFragments.TabStop = false;
             this.gbFragments.Text = "Fragmentos";
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDelete.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonDelete.Location = new System.Drawing.Point(91, 63);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(95, 23);
+            this.buttonDelete.TabIndex = 3;
+            this.buttonDelete.Text = "Borrar seleccionado";
+            this.buttonDelete.UseVisualStyleBackColor = false;
             // 
             // listBoxFragmentStory
             // 
@@ -284,24 +296,12 @@
             this.buttonCancelStory.Text = "Cancelar";
             this.buttonCancelStory.UseVisualStyleBackColor = false;
             // 
-            // buttonDelete
-            // 
-            this.buttonDelete.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonDelete.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonDelete.Location = new System.Drawing.Point(91, 63);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(95, 23);
-            this.buttonDelete.TabIndex = 3;
-            this.buttonDelete.Text = "Borrar seleccionado";
-            this.buttonDelete.UseVisualStyleBackColor = false;
-            // 
             // StoryCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(964, 601);
+            this.ClientSize = new System.Drawing.Size(964, 611);
             this.Controls.Add(this.buttonCancelStory);
             this.Controls.Add(this.buttonCreateStory);
             this.Controls.Add(this.gbStory);
