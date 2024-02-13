@@ -43,6 +43,7 @@
             this.labelSelectHappening = new System.Windows.Forms.Label();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.groupboxTxtHappening.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlay)).BeginInit();
             this.gbIA.SuspendLayout();
@@ -50,6 +51,7 @@
             // 
             // groupboxTxtHappening
             // 
+            this.groupboxTxtHappening.Controls.Add(this.buttonSearch);
             this.groupboxTxtHappening.Controls.Add(this.imgPlay);
             this.groupboxTxtHappening.Controls.Add(this.progressBar1);
             this.groupboxTxtHappening.Controls.Add(this.textBoxUrl);
@@ -62,7 +64,7 @@
             this.groupboxTxtHappening.Size = new System.Drawing.Size(511, 163);
             this.groupboxTxtHappening.TabIndex = 7;
             this.groupboxTxtHappening.TabStop = false;
-            this.groupboxTxtHappening.Text = "Evento de texto";
+            this.groupboxTxtHappening.Text = "Evento de Audio";
             // 
             // imgPlay
             // 
@@ -190,6 +192,19 @@
             this.buttonCancel.Text = "Cancelar";
             this.buttonCancel.UseVisualStyleBackColor = false;
             // 
+            // buttonSearch
+            // 
+            this.buttonSearch.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSearch.Font = new System.Drawing.Font("Century", 10F);
+            this.buttonSearch.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonSearch.Location = new System.Drawing.Point(195, 69);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.TabIndex = 15;
+            this.buttonSearch.Text = "Buscar";
+            this.buttonSearch.UseVisualStyleBackColor = false;
+            // 
             // HappeningSoundForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,5 +248,6 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button buttonSearch;
     }
 }
