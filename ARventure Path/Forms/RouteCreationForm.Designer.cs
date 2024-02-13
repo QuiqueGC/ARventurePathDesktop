@@ -38,13 +38,13 @@
             this.labelRouteTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.listBoxRouteStops = new System.Windows.Forms.ListBox();
             this.buttonAddNewRoute = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonCreateRoute = new System.Windows.Forms.Button();
             this.buttonCancelRoute = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxGenerateRoute.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -148,6 +148,16 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Tiempo estimado";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ARventure_Path.Properties.Resources.maps;
+            this.pictureBox1.Location = new System.Drawing.Point(497, 32);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(377, 251);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
             // listBoxRouteStops
             // 
             this.listBoxRouteStops.FormattingEnabled = true;
@@ -183,7 +193,7 @@
             // 
             // buttonCreateRoute
             // 
-            this.buttonCreateRoute.Location = new System.Drawing.Point(415, 556);
+            this.buttonCreateRoute.Location = new System.Drawing.Point(433, 556);
             this.buttonCreateRoute.Name = "buttonCreateRoute";
             this.buttonCreateRoute.Size = new System.Drawing.Size(75, 23);
             this.buttonCreateRoute.TabIndex = 5;
@@ -198,16 +208,6 @@
             this.buttonCancelRoute.TabIndex = 6;
             this.buttonCancelRoute.Text = "Cancelar";
             this.buttonCancelRoute.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ARventure_Path.Properties.Resources.maps;
-            this.pictureBox1.Location = new System.Drawing.Point(497, 32);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(377, 251);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
             // 
             // RouteCreationForm
             // 
