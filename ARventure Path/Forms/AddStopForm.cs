@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace ARventure_Path.Forms
 {
-    public partial class RouteCreationForm : Form
+    public partial class AddStopForm : Form
     {
-        public RouteCreationForm()
+        public AddStopForm()
         {
             InitializeComponent();
-        }
-
-        private void buttonAddNewRoute_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
