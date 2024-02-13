@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ARventure_Path.Forms
 {
-    public partial class EventTextForm : Form
+    public partial class HappeningSoundForm : Form
     {
-        public EventTextForm()
+        public HappeningSoundForm()
         {
             InitializeComponent();
         }

@@ -75,23 +75,23 @@
     <Compile Include="Forms\ARventureCreationForm.Designer.cs">
       <DependentUpon>ARventureCreationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EventImageForm.cs">
+    <Compile Include="Forms\HappeningImageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EventImageForm.Designer.cs">
-      <DependentUpon>EventImageForm.cs</DependentUpon>
+    <Compile Include="Forms\HappeningImageForm.Designer.cs">
+      <DependentUpon>HappeningImageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EventSoundForm.cs">
+    <Compile Include="Forms\HappeningSoundForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EventSoundForm.Designer.cs">
-      <DependentUpon>EventSoundForm.cs</DependentUpon>
+    <Compile Include="Forms\HappeningSoundForm.Designer.cs">
+      <DependentUpon>HappeningSoundForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EventTextForm.cs">
+    <Compile Include="Forms\HappeningTextForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EventTextForm.Designer.cs">
-      <DependentUpon>EventTextForm.cs</DependentUpon>
+    <Compile Include="Forms\HappeningTextForm.Designer.cs">
+      <DependentUpon>HappeningTextForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
@@ -122,14 +122,14 @@
     <EmbeddedResource Include="Forms\ARventureCreationForm.resx">
       <DependentUpon>ARventureCreationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EventImageForm.resx">
-      <DependentUpon>EventImageForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\HappeningImageForm.resx">
+      <DependentUpon>HappeningImageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EventSoundForm.resx">
-      <DependentUpon>EventSoundForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\HappeningSoundForm.resx">
+      <DependentUpon>HappeningSoundForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EventTextForm.resx">
-      <DependentUpon>EventTextForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\HappeningTextForm.resx">
+      <DependentUpon>HappeningTextForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
