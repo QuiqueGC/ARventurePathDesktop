@@ -185,6 +185,7 @@
             this.buttonAddNewFragment.TabIndex = 1;
             this.buttonAddNewFragment.Text = "Añadir nuevo";
             this.buttonAddNewFragment.UseVisualStyleBackColor = false;
+            this.buttonAddNewFragment.Click += new System.EventHandler(this.buttonAddNewFragment_Click);
             // 
             // textBoxFragmentQuantity
             // 
@@ -213,6 +214,7 @@
             this.buttonSearchImage.TabIndex = 2;
             this.buttonSearchImage.Text = "Buscar imagen";
             this.buttonSearchImage.UseVisualStyleBackColor = false;
+            this.buttonSearchImage.Click += new System.EventHandler(this.buttonSearchImage_Click);
             // 
             // textBoxSummary
             // 
@@ -233,6 +235,7 @@
             // 
             // textBoxImageRoute
             // 
+            this.textBoxImageRoute.Enabled = false;
             this.textBoxImageRoute.Location = new System.Drawing.Point(13, 242);
             this.textBoxImageRoute.Name = "textBoxImageRoute";
             this.textBoxImageRoute.Size = new System.Drawing.Size(341, 21);
@@ -250,9 +253,10 @@
             // 
             // pictureBoxStory
             // 
-            this.pictureBoxStory.Location = new System.Drawing.Point(13, 61);
+            this.pictureBoxStory.Location = new System.Drawing.Point(13, 50);
             this.pictureBoxStory.Name = "pictureBoxStory";
-            this.pictureBoxStory.Size = new System.Drawing.Size(440, 139);
+            this.pictureBoxStory.Size = new System.Drawing.Size(440, 166);
+            this.pictureBoxStory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxStory.TabIndex = 2;
             this.pictureBoxStory.TabStop = false;
             // 
@@ -283,6 +287,7 @@
             this.buttonCreateStory.TabIndex = 3;
             this.buttonCreateStory.Text = "Crear";
             this.buttonCreateStory.UseVisualStyleBackColor = false;
+            this.buttonCreateStory.Click += new System.EventHandler(this.buttonCreateStory_Click);
             // 
             // buttonCancelStory
             // 
@@ -295,6 +300,7 @@
             this.buttonCancelStory.TabIndex = 4;
             this.buttonCancelStory.Text = "Cancelar";
             this.buttonCancelStory.UseVisualStyleBackColor = false;
+            this.buttonCancelStory.Click += new System.EventHandler(this.buttonCancelStory_Click);
             // 
             // StoryCreationForm
             // 

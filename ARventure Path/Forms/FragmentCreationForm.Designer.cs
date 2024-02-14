@@ -28,31 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelFragmentName = new System.Windows.Forms.Label();
-            this.textBoxFragmentName = new System.Windows.Forms.TextBox();
             this.buttonCancelFragment = new System.Windows.Forms.Button();
             this.buttonAcceptFragment = new System.Windows.Forms.Button();
             this.labelFragmento = new System.Windows.Forms.Label();
             this.textBoxCreateFragment = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // labelFragmentName
-            // 
-            this.labelFragmentName.AutoSize = true;
-            this.labelFragmentName.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFragmentName.Location = new System.Drawing.Point(54, 44);
-            this.labelFragmentName.Name = "labelFragmentName";
-            this.labelFragmentName.Size = new System.Drawing.Size(68, 20);
-            this.labelFragmentName.TabIndex = 1;
-            this.labelFragmentName.Text = "Nombre";
-            // 
-            // textBoxFragmentName
-            // 
-            this.textBoxFragmentName.Location = new System.Drawing.Point(151, 43);
-            this.textBoxFragmentName.Multiline = true;
-            this.textBoxFragmentName.Name = "textBoxFragmentName";
-            this.textBoxFragmentName.Size = new System.Drawing.Size(402, 21);
-            this.textBoxFragmentName.TabIndex = 2;
             // 
             // buttonCancelFragment
             // 
@@ -66,6 +46,7 @@
             this.buttonCancelFragment.TabIndex = 8;
             this.buttonCancelFragment.Text = "Cancelar";
             this.buttonCancelFragment.UseVisualStyleBackColor = false;
+            this.buttonCancelFragment.Click += new System.EventHandler(this.buttonCancelFragment_Click);
             // 
             // buttonAcceptFragment
             // 
@@ -79,12 +60,13 @@
             this.buttonAcceptFragment.TabIndex = 9;
             this.buttonAcceptFragment.Text = "Aceptar";
             this.buttonAcceptFragment.UseVisualStyleBackColor = false;
+            this.buttonAcceptFragment.Click += new System.EventHandler(this.buttonAcceptFragment_Click);
             // 
             // labelFragmento
             // 
             this.labelFragmento.AutoSize = true;
             this.labelFragmento.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFragmento.Location = new System.Drawing.Point(54, 99);
+            this.labelFragmento.Location = new System.Drawing.Point(54, 75);
             this.labelFragmento.Name = "labelFragmento";
             this.labelFragmento.Size = new System.Drawing.Size(91, 20);
             this.labelFragmento.TabIndex = 10;
@@ -92,10 +74,10 @@
             // 
             // textBoxCreateFragment
             // 
-            this.textBoxCreateFragment.Location = new System.Drawing.Point(151, 89);
+            this.textBoxCreateFragment.Location = new System.Drawing.Point(151, 42);
             this.textBoxCreateFragment.Multiline = true;
             this.textBoxCreateFragment.Name = "textBoxCreateFragment";
-            this.textBoxCreateFragment.Size = new System.Drawing.Size(402, 39);
+            this.textBoxCreateFragment.Size = new System.Drawing.Size(402, 86);
             this.textBoxCreateFragment.TabIndex = 11;
             // 
             // FragmentCreationForm
@@ -108,8 +90,6 @@
             this.Controls.Add(this.labelFragmento);
             this.Controls.Add(this.buttonAcceptFragment);
             this.Controls.Add(this.buttonCancelFragment);
-            this.Controls.Add(this.textBoxFragmentName);
-            this.Controls.Add(this.labelFragmentName);
             this.Name = "FragmentCreationForm";
             this.Text = "Creación de Fragmento";
             this.ResumeLayout(false);
@@ -118,9 +98,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelFragmentName;
-        private System.Windows.Forms.TextBox textBoxFragmentName;
         private System.Windows.Forms.Button buttonCancelFragment;
         private System.Windows.Forms.Button buttonAcceptFragment;
         private System.Windows.Forms.Label labelFragmento;
