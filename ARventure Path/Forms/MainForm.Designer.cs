@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panelMain = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asdasdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +50,7 @@
             this.eventoDeSonidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
@@ -60,16 +60,17 @@
             this.panelMain.Size = new System.Drawing.Size(965, 616);
             this.panelMain.TabIndex = 0;
             // 
-            // menuStrip1
+            // menuStripMain
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.White;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripMain.BackColor = System.Drawing.Color.White;
+            this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(964, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStripMain.Location = new System.Drawing.Point(0, 0);
+            this.menuStripMain.Name = "menuStripMain";
+            this.menuStripMain.Size = new System.Drawing.Size(964, 28);
+            this.menuStripMain.TabIndex = 1;
+            this.menuStripMain.Text = "menuStrip1";
+            this.menuStripMain.Visible = false;
             // 
             // archivoToolStripMenuItem
             // 
@@ -80,10 +81,10 @@
             this.eventosToolStripMenuItem,
             this.toolStripSeparator1,
             this.salirToolStripMenuItem});
-            this.archivoToolStripMenuItem.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.archivoToolStripMenuItem.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.archivoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // asdasdToolStripMenuItem
@@ -94,27 +95,27 @@
             this.borrarToolStripMenuItem});
             this.asdasdToolStripMenuItem.Image = global::ARventure_Path.Properties.Resources.historia;
             this.asdasdToolStripMenuItem.Name = "asdasdToolStripMenuItem";
-            this.asdasdToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.asdasdToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.asdasdToolStripMenuItem.Text = "Historia";
             // 
             // crearToolStripMenuItem
             // 
             this.crearToolStripMenuItem.Name = "crearToolStripMenuItem";
-            this.crearToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.crearToolStripMenuItem.Size = new System.Drawing.Size(157, 24);
             this.crearToolStripMenuItem.Text = "Crear";
             this.crearToolStripMenuItem.Click += new System.EventHandler(this.crearHistoriaToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem
             // 
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(157, 24);
             this.modificarToolStripMenuItem.Text = "Modificar";
             this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarHistoriaToolStripMenuItem_Click);
             // 
             // borrarToolStripMenuItem
             // 
             this.borrarToolStripMenuItem.Name = "borrarToolStripMenuItem";
-            this.borrarToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.borrarToolStripMenuItem.Size = new System.Drawing.Size(157, 24);
             this.borrarToolStripMenuItem.Text = "Borrar";
             this.borrarToolStripMenuItem.Click += new System.EventHandler(this.borrarHistoriaToolStripMenuItem_Click);
             // 
@@ -126,27 +127,27 @@
             this.borrarToolStripMenuItem1});
             this.rutaToolStripMenuItem.Image = global::ARventure_Path.Properties.Resources.ruta;
             this.rutaToolStripMenuItem.Name = "rutaToolStripMenuItem";
-            this.rutaToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.rutaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.rutaToolStripMenuItem.Text = "Ruta";
             // 
             // crearToolStripMenuItem1
             // 
             this.crearToolStripMenuItem1.Name = "crearToolStripMenuItem1";
-            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(157, 24);
             this.crearToolStripMenuItem1.Text = "Crear";
             this.crearToolStripMenuItem1.Click += new System.EventHandler(this.crearRutaToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(157, 24);
             this.toolStripMenuItem1.Text = "Modificar";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.modificarRutaToolStripMenuItem_Click);
             // 
             // borrarToolStripMenuItem1
             // 
             this.borrarToolStripMenuItem1.Name = "borrarToolStripMenuItem1";
-            this.borrarToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.borrarToolStripMenuItem1.Size = new System.Drawing.Size(157, 24);
             this.borrarToolStripMenuItem1.Text = "Borrar";
             this.borrarToolStripMenuItem1.Click += new System.EventHandler(this.borrarRutaToolStripMenuItem_Click);
             // 
@@ -158,27 +159,27 @@
             this.borrarToolStripMenuItem2});
             this.aventuraToolStripMenuItem.Image = global::ARventure_Path.Properties.Resources.aventura;
             this.aventuraToolStripMenuItem.Name = "aventuraToolStripMenuItem";
-            this.aventuraToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.aventuraToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.aventuraToolStripMenuItem.Text = "Aventura";
             // 
             // crearToolStripMenuItem2
             // 
             this.crearToolStripMenuItem2.Name = "crearToolStripMenuItem2";
-            this.crearToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.crearToolStripMenuItem2.Size = new System.Drawing.Size(157, 24);
             this.crearToolStripMenuItem2.Text = "Crear";
             this.crearToolStripMenuItem2.Click += new System.EventHandler(this.crearAventuraToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem1
             // 
             this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
-            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(157, 24);
             this.modificarToolStripMenuItem1.Text = "Modificar";
             this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarAventuraToolStripMenuItem_Click);
             // 
             // borrarToolStripMenuItem2
             // 
             this.borrarToolStripMenuItem2.Name = "borrarToolStripMenuItem2";
-            this.borrarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.borrarToolStripMenuItem2.Size = new System.Drawing.Size(157, 24);
             this.borrarToolStripMenuItem2.Text = "Borrar";
             this.borrarToolStripMenuItem2.Click += new System.EventHandler(this.borrarAventuraToolStripMenuItem_Click);
             // 
@@ -190,27 +191,27 @@
             this.eventoDeSonidoToolStripMenuItem});
             this.eventosToolStripMenuItem.Image = global::ARventure_Path.Properties.Resources.evento;
             this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.eventosToolStripMenuItem.Text = "Eventos";
             // 
             // eToolStripMenuItem
             // 
             this.eToolStripMenuItem.Name = "eToolStripMenuItem";
-            this.eToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.eToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
             this.eToolStripMenuItem.Text = "Evento de texto";
             this.eToolStripMenuItem.Click += new System.EventHandler(this.eventoDeTextoToolStripMenuItem_Click);
             // 
             // eventoDeImagenToolStripMenuItem
             // 
             this.eventoDeImagenToolStripMenuItem.Name = "eventoDeImagenToolStripMenuItem";
-            this.eventoDeImagenToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.eventoDeImagenToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
             this.eventoDeImagenToolStripMenuItem.Text = "Evento de imagen";
             this.eventoDeImagenToolStripMenuItem.Click += new System.EventHandler(this.eventoDeImagenToolStripMenuItem_Click);
             // 
             // eventoDeSonidoToolStripMenuItem
             // 
             this.eventoDeSonidoToolStripMenuItem.Name = "eventoDeSonidoToolStripMenuItem";
-            this.eventoDeSonidoToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.eventoDeSonidoToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
             this.eventoDeSonidoToolStripMenuItem.Text = "Evento de sonido";
             this.eventoDeSonidoToolStripMenuItem.Click += new System.EventHandler(this.eventoDeSonidoToolStripMenuItem_Click);
             // 
@@ -223,7 +224,7 @@
             // 
             this.salirToolStripMenuItem.Image = global::ARventure_Path.Properties.Resources.cerrar;
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -233,17 +234,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 641);
             this.Controls.Add(this.panelMain);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStripMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStripMain;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ARventure Path";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStripMain.ResumeLayout(false);
+            this.menuStripMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,7 +254,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panelMain;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        public System.Windows.Forms.MenuStrip menuStripMain;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asdasdToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearToolStripMenuItem;

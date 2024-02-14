@@ -23,7 +23,6 @@ namespace ARventure_Path
         private HappeningSoundForm eventSoundForm;
 
 
-
         public MainForm()
         {
             InitializeComponent();
@@ -33,7 +32,7 @@ namespace ARventure_Path
         private void MainForm_Load(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            loginForm = new LoginForm();
+            loginForm = new LoginForm(this);
             addingFormmToPanel(loginForm);
         }
 
@@ -169,6 +168,25 @@ namespace ARventure_Path
             removeFormsFromPanel();
             arventureCreationForm = new ARventureCreationForm();
             addingFormmToPanel(arventureCreationForm);
+        }
+
+        private void showConfirmDialogAndExit(FormClosingEventArgs e)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(
+                "¿Estás seguro de que quieres salir?",
+                "¡No te vayas!",
+                buttons);
+
+            if (result != DialogResult.Yes)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            showConfirmDialogAndExit(e);
         }
     }
 }
