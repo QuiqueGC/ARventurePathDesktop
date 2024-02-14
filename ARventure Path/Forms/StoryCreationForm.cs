@@ -26,9 +26,6 @@ namespace ARventure_Path.Forms
 
         private void buttonCreateStory_Click(object sender, EventArgs e)
         {
-           
-            //textBoxStoryTitle.Text = story.Name.ToLower().Trim();
-            //textBoxSummary.Text = story.Summary.ToLower().Trim();
 
         }
 
