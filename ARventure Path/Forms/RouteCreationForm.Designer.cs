@@ -34,20 +34,22 @@
             this.buttonGenerateRoute = new System.Windows.Forms.Button();
             this.textBoxGenerateRouteAI = new System.Windows.Forms.TextBox();
             this.groupBoxRoute = new System.Windows.Forms.GroupBox();
-            this.buttonDeleteRoute = new System.Windows.Forms.Button();
+            this.dataGridViewStops = new System.Windows.Forms.DataGridView();
+            this.buttonDeleteStop = new System.Windows.Forms.Button();
             this.labelRouteDistance = new System.Windows.Forms.Label();
             this.labelRouteTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.listBoxRouteStops = new System.Windows.Forms.ListBox();
             this.buttonAddNewRoute = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxStops = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonCreateRoute = new System.Windows.Forms.Button();
             this.buttonCancelRoute = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.groupBoxGenerateRoute.SuspendLayout();
             this.groupBoxRoute.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStops)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +65,7 @@
             // 
             // comboBoxSelectRoute
             // 
+            this.comboBoxSelectRoute.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSelectRoute.FormattingEnabled = true;
             this.comboBoxSelectRoute.Location = new System.Drawing.Point(174, 21);
             this.comboBoxSelectRoute.Name = "comboBoxSelectRoute";
@@ -102,15 +105,16 @@
             // 
             // groupBoxRoute
             // 
-            this.groupBoxRoute.Controls.Add(this.buttonDeleteRoute);
+            this.groupBoxRoute.Controls.Add(this.webBrowser1);
+            this.groupBoxRoute.Controls.Add(this.dataGridViewStops);
+            this.groupBoxRoute.Controls.Add(this.buttonDeleteStop);
             this.groupBoxRoute.Controls.Add(this.labelRouteDistance);
             this.groupBoxRoute.Controls.Add(this.labelRouteTime);
             this.groupBoxRoute.Controls.Add(this.label2);
             this.groupBoxRoute.Controls.Add(this.label1);
             this.groupBoxRoute.Controls.Add(this.pictureBox1);
-            this.groupBoxRoute.Controls.Add(this.listBoxRouteStops);
             this.groupBoxRoute.Controls.Add(this.buttonAddNewRoute);
-            this.groupBoxRoute.Controls.Add(this.textBox2);
+            this.groupBoxRoute.Controls.Add(this.textBoxStops);
             this.groupBoxRoute.Controls.Add(this.label3);
             this.groupBoxRoute.Font = new System.Drawing.Font("Century", 10F);
             this.groupBoxRoute.Location = new System.Drawing.Point(31, 160);
@@ -120,17 +124,34 @@
             this.groupBoxRoute.TabStop = false;
             this.groupBoxRoute.Text = "Ruta";
             // 
-            // buttonDeleteRoute
+            // dataGridViewStops
             // 
-            this.buttonDeleteRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonDeleteRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonDeleteRoute.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonDeleteRoute.Location = new System.Drawing.Point(143, 69);
-            this.buttonDeleteRoute.Name = "buttonDeleteRoute";
-            this.buttonDeleteRoute.Size = new System.Drawing.Size(95, 23);
-            this.buttonDeleteRoute.TabIndex = 14;
-            this.buttonDeleteRoute.Text = "Eliminar";
-            this.buttonDeleteRoute.UseVisualStyleBackColor = false;
+            this.dataGridViewStops.AllowUserToAddRows = false;
+            this.dataGridViewStops.AllowUserToDeleteRows = false;
+            this.dataGridViewStops.AllowUserToResizeColumns = false;
+            this.dataGridViewStops.AllowUserToResizeRows = false;
+            this.dataGridViewStops.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewStops.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStops.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridViewStops.Location = new System.Drawing.Point(28, 120);
+            this.dataGridViewStops.Name = "dataGridViewStops";
+            this.dataGridViewStops.ReadOnly = true;
+            this.dataGridViewStops.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewStops.Size = new System.Drawing.Size(421, 212);
+            this.dataGridViewStops.TabIndex = 15;
+            // 
+            // buttonDeleteStop
+            // 
+            this.buttonDeleteStop.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonDeleteStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDeleteStop.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonDeleteStop.Location = new System.Drawing.Point(143, 69);
+            this.buttonDeleteStop.Name = "buttonDeleteStop";
+            this.buttonDeleteStop.Size = new System.Drawing.Size(95, 23);
+            this.buttonDeleteStop.TabIndex = 14;
+            this.buttonDeleteStop.Text = "Eliminar";
+            this.buttonDeleteStop.UseVisualStyleBackColor = false;
+            this.buttonDeleteStop.Click += new System.EventHandler(this.buttonDeleteStop_Click);
             // 
             // labelRouteDistance
             // 
@@ -178,15 +199,6 @@
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
-            // listBoxRouteStops
-            // 
-            this.listBoxRouteStops.FormattingEnabled = true;
-            this.listBoxRouteStops.ItemHeight = 16;
-            this.listBoxRouteStops.Location = new System.Drawing.Point(28, 120);
-            this.listBoxRouteStops.Name = "listBoxRouteStops";
-            this.listBoxRouteStops.Size = new System.Drawing.Size(419, 212);
-            this.listBoxRouteStops.TabIndex = 6;
-            // 
             // buttonAddNewRoute
             // 
             this.buttonAddNewRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
@@ -200,12 +212,13 @@
             this.buttonAddNewRoute.UseVisualStyleBackColor = false;
             this.buttonAddNewRoute.Click += new System.EventHandler(this.buttonAddNewRoute_Click);
             // 
-            // textBox2
+            // textBoxStops
             // 
-            this.textBox2.Location = new System.Drawing.Point(264, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(63, 24);
-            this.textBox2.TabIndex = 4;
+            this.textBoxStops.Location = new System.Drawing.Point(264, 32);
+            this.textBoxStops.Name = "textBoxStops";
+            this.textBoxStops.Size = new System.Drawing.Size(63, 24);
+            this.textBoxStops.TabIndex = 4;
+            this.textBoxStops.TextChanged += new System.EventHandler(this.textBoxStops_TextChanged);
             // 
             // label3
             // 
@@ -228,6 +241,7 @@
             this.buttonCreateRoute.TabIndex = 11;
             this.buttonCreateRoute.Text = "Crear";
             this.buttonCreateRoute.UseVisualStyleBackColor = false;
+            this.buttonCreateRoute.Click += new System.EventHandler(this.buttonCreateRoute_Click);
             // 
             // buttonCancelRoute
             // 
@@ -241,6 +255,15 @@
             this.buttonCancelRoute.TabIndex = 12;
             this.buttonCancelRoute.Text = "Cancelar";
             this.buttonCancelRoute.UseVisualStyleBackColor = false;
+            this.buttonCancelRoute.Click += new System.EventHandler(this.buttonCancelRoute_Click);
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(497, 32);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(377, 250);
+            this.webBrowser1.TabIndex = 16;
             // 
             // RouteCreationForm
             // 
@@ -260,6 +283,7 @@
             this.groupBoxGenerateRoute.PerformLayout();
             this.groupBoxRoute.ResumeLayout(false);
             this.groupBoxRoute.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStops)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -274,9 +298,8 @@
         private System.Windows.Forms.Button buttonGenerateRoute;
         private System.Windows.Forms.TextBox textBoxGenerateRouteAI;
         private System.Windows.Forms.GroupBox groupBoxRoute;
-        private System.Windows.Forms.ListBox listBoxRouteStops;
         private System.Windows.Forms.Button buttonAddNewRoute;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxStops;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -285,6 +308,8 @@
         private System.Windows.Forms.Label labelRouteTime;
         private System.Windows.Forms.Button buttonCreateRoute;
         private System.Windows.Forms.Button buttonCancelRoute;
-        private System.Windows.Forms.Button buttonDeleteRoute;
+        private System.Windows.Forms.Button buttonDeleteStop;
+        private System.Windows.Forms.DataGridView dataGridViewStops;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
