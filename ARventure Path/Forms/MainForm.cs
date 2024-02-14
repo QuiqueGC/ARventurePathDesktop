@@ -23,7 +23,6 @@ namespace ARventure_Path
         private HappeningSoundForm eventSoundForm;
 
 
-
         public MainForm()
         {
             InitializeComponent();
@@ -33,31 +32,11 @@ namespace ARventure_Path
         private void MainForm_Load(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            loginForm = new LoginForm();
+            loginForm = new LoginForm(this);
             addingFormmToPanel(loginForm);
         }
 
-        private void crearHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            removeFormsFromPanel();
-            storyCreationForm = new StoryCreationForm();
-            addingFormmToPanel(storyCreationForm);
-        }
-
-        private void crearRutaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            removeFormsFromPanel();
-            routeCreationForm = new RouteCreationForm();
-            addingFormmToPanel(routeCreationForm);
-        }
-
-        private void crearAventuraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            removeFormsFromPanel();
-            arventureCreationForm = new ARventureCreationForm();
-            addingFormmToPanel(arventureCreationForm);
-
-        }
+        
 
         /// <summary>
         /// Añade un formulario al panel del MainForm y lo muestra
@@ -125,6 +104,89 @@ namespace ARventure_Path
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        
+        private void crearHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            storyCreationForm = new StoryCreationForm();
+            addingFormmToPanel(storyCreationForm);
+        }
+
+        private void modificarHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            storyCreationForm = new StoryCreationForm();
+            addingFormmToPanel(storyCreationForm);
+        }
+        private void borrarHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            storyCreationForm = new StoryCreationForm();
+            addingFormmToPanel(storyCreationForm);
+        }
+
+        private void crearRutaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            routeCreationForm = new RouteCreationForm();
+            addingFormmToPanel(routeCreationForm);
+        }
+
+        private void modificarRutaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            routeCreationForm = new RouteCreationForm();
+            addingFormmToPanel(routeCreationForm);
+        }
+
+        private void borrarRutaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            routeCreationForm = new RouteCreationForm();
+            addingFormmToPanel(routeCreationForm);
+        }
+
+        private void crearAventuraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            arventureCreationForm = new ARventureCreationForm();
+            addingFormmToPanel(arventureCreationForm);
+
+        }
+
+        private void modificarAventuraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            arventureCreationForm = new ARventureCreationForm();
+            addingFormmToPanel(arventureCreationForm);
+        }
+
+        private void borrarAventuraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeFormsFromPanel();
+            arventureCreationForm = new ARventureCreationForm();
+            addingFormmToPanel(arventureCreationForm);
+        }
+
+        private void showConfirmDialogAndExit(FormClosingEventArgs e)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(
+                "¿Estás seguro de que quieres salir?",
+                "¡No te vayas!",
+                buttons);
+
+            if (result != DialogResult.Yes)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            showConfirmDialogAndExit(e);
         }
     }
 }

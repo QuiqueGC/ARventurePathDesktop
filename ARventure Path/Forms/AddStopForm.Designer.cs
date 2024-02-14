@@ -101,6 +101,7 @@
             this.buttonAcceptStop.TabIndex = 6;
             this.buttonAcceptStop.Text = "Aceptar";
             this.buttonAcceptStop.UseVisualStyleBackColor = false;
+            this.buttonAcceptStop.Click += new System.EventHandler(this.buttonAcceptStop_Click);
             // 
             // buttonCancelStop
             // 
@@ -114,6 +115,7 @@
             this.buttonCancelStop.TabIndex = 7;
             this.buttonCancelStop.Text = "Cancelar";
             this.buttonCancelStop.UseVisualStyleBackColor = false;
+            this.buttonCancelStop.Click += new System.EventHandler(this.buttonCancelStop_Click);
             // 
             // AddStopForm
             // 
@@ -131,6 +133,7 @@
             this.Controls.Add(this.labelStopName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AddStopForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Añadir Parada";
             this.ResumeLayout(false);
             this.PerformLayout();
