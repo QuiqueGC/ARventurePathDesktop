@@ -15,7 +15,7 @@ namespace ARventure_Path.Forms
     public partial class FragmentCreationForm : Form
     {
 
-        Story story = new Story();
+        private Story story;
 
         public FragmentCreationForm(Story story)
         {
@@ -26,6 +26,7 @@ namespace ARventure_Path.Forms
         private void buttonAcceptFragment_Click(object sender, EventArgs e)
         {
             story.TxtFragments.Add(textBoxCreateFragment.Text);
+            this.Close();
             
         }
 
