@@ -17,12 +17,12 @@ namespace ARventure_Path.DataClases
         public double Latitude { get; set; }
 
 
-        public Stop(string name, double latitude, double longitude)
+        public Stop(string name, double longitude, double latitude )
         {
             Id = ++lastID;
             Name = name;
-            Longitude = latitude;
-            Latitude = longitude;
+            Longitude = longitude;
+            Latitude = latitude;
         }
 
     }

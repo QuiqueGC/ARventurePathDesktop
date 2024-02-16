@@ -34,23 +34,26 @@
             this.buttonGenerateRoute = new System.Windows.Forms.Button();
             this.textBoxGenerateRouteAI = new System.Windows.Forms.TextBox();
             this.groupBoxRoute = new System.Windows.Forms.GroupBox();
+            this.textBoxLongitude = new System.Windows.Forms.TextBox();
+            this.textBoxLatitude = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxStopName = new System.Windows.Forms.TextBox();
+            this.labelStopName = new System.Windows.Forms.Label();
+            this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.dataGridViewStops = new System.Windows.Forms.DataGridView();
             this.buttonDeleteStop = new System.Windows.Forms.Button();
             this.labelRouteDistance = new System.Windows.Forms.Label();
             this.labelRouteTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonAddNewRoute = new System.Windows.Forms.Button();
-            this.textBoxStops = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.buttonCreateRoute = new System.Windows.Forms.Button();
             this.buttonCancelRoute = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.buttonPreviewRoute = new System.Windows.Forms.Button();
             this.groupBoxGenerateRoute.SuspendLayout();
             this.groupBoxRoute.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStops)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSelectRoute
@@ -105,17 +108,21 @@
             // 
             // groupBoxRoute
             // 
-            this.groupBoxRoute.Controls.Add(this.webBrowser1);
+            this.groupBoxRoute.Controls.Add(this.buttonPreviewRoute);
+            this.groupBoxRoute.Controls.Add(this.textBoxLongitude);
+            this.groupBoxRoute.Controls.Add(this.textBoxLatitude);
+            this.groupBoxRoute.Controls.Add(this.label4);
+            this.groupBoxRoute.Controls.Add(this.label5);
+            this.groupBoxRoute.Controls.Add(this.textBoxStopName);
+            this.groupBoxRoute.Controls.Add(this.labelStopName);
+            this.groupBoxRoute.Controls.Add(this.gMapControl1);
             this.groupBoxRoute.Controls.Add(this.dataGridViewStops);
             this.groupBoxRoute.Controls.Add(this.buttonDeleteStop);
             this.groupBoxRoute.Controls.Add(this.labelRouteDistance);
             this.groupBoxRoute.Controls.Add(this.labelRouteTime);
             this.groupBoxRoute.Controls.Add(this.label2);
             this.groupBoxRoute.Controls.Add(this.label1);
-            this.groupBoxRoute.Controls.Add(this.pictureBox1);
             this.groupBoxRoute.Controls.Add(this.buttonAddNewRoute);
-            this.groupBoxRoute.Controls.Add(this.textBoxStops);
-            this.groupBoxRoute.Controls.Add(this.label3);
             this.groupBoxRoute.Font = new System.Drawing.Font("Century", 10F);
             this.groupBoxRoute.Location = new System.Drawing.Point(31, 160);
             this.groupBoxRoute.Name = "groupBoxRoute";
@@ -123,6 +130,84 @@
             this.groupBoxRoute.TabIndex = 9;
             this.groupBoxRoute.TabStop = false;
             this.groupBoxRoute.Text = "Ruta";
+            // 
+            // textBoxLongitude
+            // 
+            this.textBoxLongitude.Location = new System.Drawing.Point(13, 111);
+            this.textBoxLongitude.Name = "textBoxLongitude";
+            this.textBoxLongitude.Size = new System.Drawing.Size(151, 24);
+            this.textBoxLongitude.TabIndex = 22;
+            // 
+            // textBoxLatitude
+            // 
+            this.textBoxLatitude.Location = new System.Drawing.Point(13, 186);
+            this.textBoxLatitude.Name = "textBoxLatitude";
+            this.textBoxLatitude.Size = new System.Drawing.Size(151, 24);
+            this.textBoxLatitude.TabIndex = 21;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(9, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 20);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Longitud";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(9, 166);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 20);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Latitud";
+            // 
+            // textBoxStopName
+            // 
+            this.textBoxStopName.Location = new System.Drawing.Point(13, 40);
+            this.textBoxStopName.Name = "textBoxStopName";
+            this.textBoxStopName.Size = new System.Drawing.Size(151, 24);
+            this.textBoxStopName.TabIndex = 18;
+            // 
+            // labelStopName
+            // 
+            this.labelStopName.AutoSize = true;
+            this.labelStopName.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStopName.Location = new System.Drawing.Point(9, 19);
+            this.labelStopName.Name = "labelStopName";
+            this.labelStopName.Size = new System.Drawing.Size(68, 20);
+            this.labelStopName.TabIndex = 17;
+            this.labelStopName.Text = "Nombre";
+            // 
+            // gMapControl1
+            // 
+            this.gMapControl1.Bearing = 0F;
+            this.gMapControl1.CanDragMap = true;
+            this.gMapControl1.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gMapControl1.GrayScaleMode = false;
+            this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gMapControl1.LevelsKeepInMemmory = 5;
+            this.gMapControl1.Location = new System.Drawing.Point(436, 14);
+            this.gMapControl1.MarkersEnabled = true;
+            this.gMapControl1.MaxZoom = 2;
+            this.gMapControl1.MinZoom = 2;
+            this.gMapControl1.MouseWheelZoomEnabled = true;
+            this.gMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gMapControl1.Name = "gMapControl1";
+            this.gMapControl1.NegativeMode = false;
+            this.gMapControl1.PolygonsEnabled = true;
+            this.gMapControl1.RetryLoadTile = 0;
+            this.gMapControl1.RoutesEnabled = true;
+            this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gMapControl1.ShowTileGridLines = false;
+            this.gMapControl1.Size = new System.Drawing.Size(451, 307);
+            this.gMapControl1.TabIndex = 16;
+            this.gMapControl1.Zoom = 0D;
+            this.gMapControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseDoubleClick);
             // 
             // dataGridViewStops
             // 
@@ -133,19 +218,22 @@
             this.dataGridViewStops.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewStops.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStops.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridViewStops.Location = new System.Drawing.Point(28, 120);
+            this.dataGridViewStops.Location = new System.Drawing.Point(170, 14);
             this.dataGridViewStops.Name = "dataGridViewStops";
             this.dataGridViewStops.ReadOnly = true;
+            this.dataGridViewStops.RowHeadersVisible = false;
             this.dataGridViewStops.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewStops.Size = new System.Drawing.Size(421, 212);
+            this.dataGridViewStops.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewStops.Size = new System.Drawing.Size(260, 307);
             this.dataGridViewStops.TabIndex = 15;
+            this.dataGridViewStops.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewStops_CellMouseClick);
             // 
             // buttonDeleteStop
             // 
             this.buttonDeleteStop.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonDeleteStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonDeleteStop.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonDeleteStop.Location = new System.Drawing.Point(143, 69);
+            this.buttonDeleteStop.Location = new System.Drawing.Point(173, 333);
             this.buttonDeleteStop.Name = "buttonDeleteStop";
             this.buttonDeleteStop.Size = new System.Drawing.Size(95, 23);
             this.buttonDeleteStop.TabIndex = 14;
@@ -156,7 +244,7 @@
             // labelRouteDistance
             // 
             this.labelRouteDistance.AutoSize = true;
-            this.labelRouteDistance.Location = new System.Drawing.Point(832, 332);
+            this.labelRouteDistance.Location = new System.Drawing.Point(790, 350);
             this.labelRouteDistance.Name = "labelRouteDistance";
             this.labelRouteDistance.Size = new System.Drawing.Size(16, 17);
             this.labelRouteDistance.TabIndex = 10;
@@ -165,7 +253,7 @@
             // labelRouteTime
             // 
             this.labelRouteTime.AutoSize = true;
-            this.labelRouteTime.Location = new System.Drawing.Point(531, 332);
+            this.labelRouteTime.Location = new System.Drawing.Point(484, 350);
             this.labelRouteTime.Name = "labelRouteTime";
             this.labelRouteTime.Size = new System.Drawing.Size(16, 17);
             this.labelRouteTime.TabIndex = 8;
@@ -174,7 +262,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(805, 299);
+            this.label2.Location = new System.Drawing.Point(763, 333);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.TabIndex = 13;
@@ -183,51 +271,24 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(494, 299);
+            this.label1.Location = new System.Drawing.Point(443, 333);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Tiempo estimado";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ARventure_Path.Properties.Resources.maps;
-            this.pictureBox1.Location = new System.Drawing.Point(497, 32);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(377, 251);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
             // 
             // buttonAddNewRoute
             // 
             this.buttonAddNewRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonAddNewRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAddNewRoute.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonAddNewRoute.Location = new System.Drawing.Point(248, 69);
+            this.buttonAddNewRoute.Location = new System.Drawing.Point(274, 333);
             this.buttonAddNewRoute.Name = "buttonAddNewRoute";
             this.buttonAddNewRoute.Size = new System.Drawing.Size(95, 23);
             this.buttonAddNewRoute.TabIndex = 5;
             this.buttonAddNewRoute.Text = "Añadir nuevo";
             this.buttonAddNewRoute.UseVisualStyleBackColor = false;
             this.buttonAddNewRoute.Click += new System.EventHandler(this.buttonAddNewRoute_Click);
-            // 
-            // textBoxStops
-            // 
-            this.textBoxStops.Location = new System.Drawing.Point(264, 32);
-            this.textBoxStops.Name = "textBoxStops";
-            this.textBoxStops.Size = new System.Drawing.Size(63, 24);
-            this.textBoxStops.TabIndex = 4;
-            this.textBoxStops.TextChanged += new System.EventHandler(this.textBoxStops_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(106, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 17);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Cantidad de paradas";
             // 
             // buttonCreateRoute
             // 
@@ -257,13 +318,18 @@
             this.buttonCancelRoute.UseVisualStyleBackColor = false;
             this.buttonCancelRoute.Click += new System.EventHandler(this.buttonCancelRoute_Click);
             // 
-            // webBrowser1
+            // buttonPreviewRoute
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(497, 32);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(377, 250);
-            this.webBrowser1.TabIndex = 16;
+            this.buttonPreviewRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonPreviewRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonPreviewRoute.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonPreviewRoute.Location = new System.Drawing.Point(13, 229);
+            this.buttonPreviewRoute.Name = "buttonPreviewRoute";
+            this.buttonPreviewRoute.Size = new System.Drawing.Size(95, 23);
+            this.buttonPreviewRoute.TabIndex = 23;
+            this.buttonPreviewRoute.Text = "Ver ruta";
+            this.buttonPreviewRoute.UseVisualStyleBackColor = false;
+            this.buttonPreviewRoute.Click += new System.EventHandler(this.buttonPreviewRoute_Click);
             // 
             // RouteCreationForm
             // 
@@ -279,12 +345,12 @@
             this.Controls.Add(this.labelSelectRoute);
             this.Name = "RouteCreationForm";
             this.Text = "Creación de ruta";
+            this.Load += new System.EventHandler(this.RouteCreationForm_Load);
             this.groupBoxGenerateRoute.ResumeLayout(false);
             this.groupBoxGenerateRoute.PerformLayout();
             this.groupBoxRoute.ResumeLayout(false);
             this.groupBoxRoute.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStops)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,17 +365,21 @@
         private System.Windows.Forms.TextBox textBoxGenerateRouteAI;
         private System.Windows.Forms.GroupBox groupBoxRoute;
         private System.Windows.Forms.Button buttonAddNewRoute;
-        private System.Windows.Forms.TextBox textBoxStops;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelRouteDistance;
         private System.Windows.Forms.Label labelRouteTime;
         private System.Windows.Forms.Button buttonCreateRoute;
         private System.Windows.Forms.Button buttonCancelRoute;
         private System.Windows.Forms.Button buttonDeleteStop;
         private System.Windows.Forms.DataGridView dataGridViewStops;
-        private System.Windows.Forms.WebBrowser webBrowser1;
+        private GMap.NET.WindowsForms.GMapControl gMapControl1;
+        private System.Windows.Forms.TextBox textBoxLongitude;
+        private System.Windows.Forms.TextBox textBoxLatitude;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxStopName;
+        private System.Windows.Forms.Label labelStopName;
+        private System.Windows.Forms.Button buttonPreviewRoute;
     }
 }
