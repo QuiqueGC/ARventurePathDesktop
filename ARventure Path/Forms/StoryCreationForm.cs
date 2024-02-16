@@ -27,9 +27,9 @@ namespace ARventure_Path.Forms
         private void buttonCreateStory_Click(object sender, EventArgs e)
         {
             story.Name = textBoxStoryTitle.Text;
-            //story.Img = pictureBoxStory.Image; Cómo guardar las fotos
+            //story.Img = pictureBoxStory.Image; Cómo guardar las fotos...Guardar las fotos con el nombre de la foto(string)
             story.Summary = textBoxSummary.Text;
-            //Guardar en la lista de stories
+            //Guardar en la lista de stories...//Guardar en un objeto story que tenga los parámetros
         }
 
         private void buttonSearchImage_Click(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace ARventure_Path.Forms
         {
             int numberTextBoxFragment = int.Parse(textBoxFragmentQuantity.Text);
             //Si el número de fragments es igual a 5 o si el número añadido es mayor al número de fragments
-            if ((numberTextBoxFragment >= 1 && numberTextBoxFragment <= 5) && (numberTextBoxFragment > story.TxtFragments.Count))
+            if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > story.TxtFragments.Count))
             {
 
                 return true;
