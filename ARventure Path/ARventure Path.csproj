@@ -162,6 +162,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelARDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Orm.cs" />
     <Compile Include="Models\route.cs">
       <DependentUpon>ModelARDB.tt</DependentUpon>
     </Compile>
