@@ -7,21 +7,22 @@ using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using System.Data;
+using ARventure_Path.Models;
 
 namespace ARventure_Path.Forms
 {
-
+    // https://www.youtube.com/watch?v=CuFW7nYAJ88 
+    // https://www.youtube.com/watch?v=ZyyU6MfbXvc&list=PLlD7n_T-mUjVuqIhWVfaNhnpqCZmNcA9e&index=10
     public partial class RouteCreationForm : Form
     {
 
-       // private List<Stop> stopsList = new List<Stop>(); // Lista para almacenar las paradas
+        private List<stop> stopsList = new List<stop>(); // Lista para almacenar las paradas
         GMarkerGoogle marker;
         GMapOverlay markerOverlay;
 
         int selectedRow = 0;
         double LatStart = 41.390712;
         double LngStart = 2.169874;
-
 
         public RouteCreationForm()
         {
@@ -31,18 +32,33 @@ namespace ARventure_Path.Forms
         private void refreshTable()
         {
             dataGridViewStops.DataSource = null;
-            //dataGridViewStops.DataSource = stopsList;
+            dataGridViewStops.DataSource = stopsList;
             dataGridViewStops.Columns[0].Visible = false;
-            dataGridViewStops.Columns[2].Visible = false;
-            dataGridViewStops.Columns[3].Visible = false;
+            dataGridViewStops.Columns[4].Visible = false;
+            dataGridViewStops.Columns[5].Visible = false;
+        }
+
+        private void refreshOverlaysMap(double lat, double lng)
+        {
+            // Marcador
+            markerOverlay = new GMapOverlay("Marcador");
+            marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red);
+            markerOverlay.Markers.Add(marker); // Agregamos al mapa
+
+            // Agregamos un tooltip de texto a los marcadores
+            marker.ToolTipMode = MarkerTooltipMode.Always;
+            marker.ToolTipText = string.Format("Ubicación: \n Latitud:{0} \n Longitud: {1}", lat, lng);
+
+            // Ahora agregamos el overlay en el mapa
+            gMapControl1.Overlays.Add(markerOverlay);
+
+            // Actualizar el mapa
+            gMapControl1.Zoom = gMapControl1.Zoom + 1;
+            gMapControl1.Zoom = gMapControl1.Zoom - 1;
         }
 
         private void RouteCreationForm_Load(object sender, EventArgs e)
         {
-           // Stop stop = new Stop ("Ubicación 1", LngStart, LatStart);
-            //stopsList.Add (stop);
-            refreshTable();
-
 
             gMapControl1.DragButton = MouseButtons.Left;
             gMapControl1.CanDragMap = true;
@@ -53,29 +69,26 @@ namespace ARventure_Path.Forms
             gMapControl1.Zoom = 9;
             gMapControl1.AutoScroll = true;
 
-            // Marcador
+            // Se posicionan en el textbox de la latidud y longitud
+            textBoxLatitude.Text = LatStart.ToString();
+            textBoxLongitude.Text = LngStart.ToString();
 
-            markerOverlay = new GMapOverlay("Marcador");
-            marker = new GMarkerGoogle(new PointLatLng(LatStart, LngStart), GMarkerGoogleType.red);
-            markerOverlay.Markers.Add(marker); // Agregamos al mapa
-
-            // Agregamos un tooltip de texto a los marcadores
-            marker.ToolTipMode = MarkerTooltipMode.Always;
-            marker.ToolTipText = string.Format("Ubicación: \n Latitud:{0} \n Longitud: {1}", LatStart, LngStart);
-
-            // Ahora agregamos el overlay en el mapa
-            gMapControl1.Overlays.Add(markerOverlay);
-
+            refreshOverlaysMap(LatStart, LngStart);
 
 
         }
 
         private void buttonAddNewRoute_Click(object sender, EventArgs e)
         {
-            //Stop newStop = new Stop(textBoxStopName.Text, Convert.ToDouble(textBoxLongitude.Text), Convert.ToDouble(textBoxLatitude.Text));
-           //stopsList.Add(newStop);
+            stop newStop = new stop();
+            newStop.name = textBoxStopName.Text;
+            newStop.longitude = Convert.ToDouble(textBoxLongitude.Text);
+            newStop.latitude = Convert.ToDouble(textBoxLatitude.Text);
+            stopsList.Add(newStop);
 
             refreshTable();
+            previewRoute();
+            refreshOverlaysMap((Double)newStop.latitude, (Double)newStop.longitude);
         }
 
         private void buttonDeleteStop_Click(object sender, EventArgs e)
@@ -93,10 +106,15 @@ namespace ARventure_Path.Forms
                     int selectedIndex = dataGridViewStops.SelectedRows[0].Index;
 
                     // Eliminar la parada de la lista
-                   // stopsList.RemoveAt(selectedIndex);
+                    stopsList.RemoveAt(selectedIndex);
 
                     // Actualizar la DataGridView
                     refreshTable();
+
+                    previewRoute();
+
+                    refreshOverlaysMap((Double)stopsList[selectedIndex - 1].latitude, (Double)stopsList[selectedIndex - 1].longitude);
+
                 }
             }
             else
@@ -125,31 +143,10 @@ namespace ARventure_Path.Forms
 
         }
 
-        private void textBoxStops_TextChanged(object sender, EventArgs e)
-        { /*
-            // Verificar si el texto en el TextBox es un número válido
-            if (int.TryParse(textBoxStops.Text, out int maxStops))
-            {
-                // Verificar si el número de filas en la DataGridView es menor que el valor en el TextBox
-                if (dataGridViewStops.Rows.Count < maxStops)
-                {
-                    MessageBox.Show("El número de paradas no puede ser menor que el número de filas en la lista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                // Si el texto no es un número válido, mostrar un mensaje de error
-                MessageBox.Show("Por favor, introduce un número válido en el campo de paradas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            // Actualizar el texto del TextBox para que sea igual al número de filas en la DataGridView
-            textBoxStops.Text = dataGridViewStops.Rows.Count.ToString();*/
-        }
-
         private void dataGridViewStops_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             selectedRow = e.RowIndex; // Fila seleccionada
-            if(selectedRow != -1)
+            if (selectedRow != -1)
             {
                 // Recuperamos los datos del grid y los asignamos a los textbox
                 textBoxStopName.Text = dataGridViewStops.Rows[selectedRow].Cells[1].Value.ToString();
@@ -160,7 +157,7 @@ namespace ARventure_Path.Forms
                 // Se posiciona el foco del mapa en ese punto
                 gMapControl1.Position = marker.Position;
             }
-            
+
         }
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -181,29 +178,49 @@ namespace ARventure_Path.Forms
             marker.ToolTipText = string.Format("Ubicación: \n Latitud: {0} \n Longitud: {1}", lat, lng);
         }
 
-        private void buttonPreviewRoute_Click(object sender, EventArgs e)
+        private void previewRoute()
         {
-            GMapOverlay route = new GMapOverlay("Ruta");
+            gMapControl1.Overlays.Clear();
+
+            // Crear una nueva capa de superposición para la nueva ruta
+            GMapOverlay routeOverlay = new GMapOverlay("Ruta");
+
             List<PointLatLng> stops = new List<PointLatLng>();
+
             // Variables para almacenar datos.
             double lat, lng;
-            // Pillamos los datos del grid
-            for(int rows = 0; rows < dataGridViewStops.Rows.Count; rows++)
+
+            // Obtener los datos del grid
+            for (int rows = 0; rows < dataGridViewStops.Rows.Count; rows++)
             {
                 lat = Convert.ToDouble(dataGridViewStops.Rows[rows].Cells[3].Value);
                 lng = Convert.ToDouble(dataGridViewStops.Rows[rows].Cells[2].Value);
                 stops.Add(new PointLatLng(lat, lng));
-
             }
+
+            // Crear la nueva ruta
             GMapRoute stopsRoute = new GMapRoute(stops, "Ruta");
-            route.Routes.Add(stopsRoute);
-            gMapControl1.Overlays.Add(route);
+
+            // Agregar la nueva ruta a la capa de superposición
+            routeOverlay.Routes.Add(stopsRoute);
+
+            // Agregar la capa de superposición al mapa
+            gMapControl1.Overlays.Add(routeOverlay);
+
             // Actualizar el mapa
             gMapControl1.Zoom = gMapControl1.Zoom + 1;
             gMapControl1.Zoom = gMapControl1.Zoom - 1;
 
-            labelRouteDistance.Text = stopsRoute.Distance.ToString("N2") + " km"; // Mostrar la distancia en kilómetros con dos decimales
+            // Mostrar la distancia en kilómetros con dos decimales
+            labelRouteDistance.Text = stopsRoute.Distance.ToString("N2") + " km";
 
+            // Calcular el tiempo estimado para la nueva ruta
+            double tiempoPorKilometro = 15; // minutos
+            double tiempoEstimado = tiempoPorKilometro * stopsRoute.Distance;
+
+            // Mostrar el tiempo estimado en minutos sin decimales
+            labelRouteTime.Text = tiempoEstimado.ToString("N0") + " min";
         }
+
     }
 }

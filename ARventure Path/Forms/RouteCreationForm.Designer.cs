@@ -329,7 +329,6 @@
             this.buttonPreviewRoute.TabIndex = 23;
             this.buttonPreviewRoute.Text = "Ver ruta";
             this.buttonPreviewRoute.UseVisualStyleBackColor = false;
-            this.buttonPreviewRoute.Click += new System.EventHandler(this.buttonPreviewRoute_Click);
             // 
             // RouteCreationForm
             // 
