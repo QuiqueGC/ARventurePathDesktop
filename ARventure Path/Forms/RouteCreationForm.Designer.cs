@@ -34,6 +34,7 @@
             this.buttonGenerateRoute = new System.Windows.Forms.Button();
             this.textBoxGenerateRouteAI = new System.Windows.Forms.TextBox();
             this.groupBoxRoute = new System.Windows.Forms.GroupBox();
+            this.buttonPreviewRoute = new System.Windows.Forms.Button();
             this.textBoxLongitude = new System.Windows.Forms.TextBox();
             this.textBoxLatitude = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,10 +48,9 @@
             this.labelRouteTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonAddNewRoute = new System.Windows.Forms.Button();
+            this.buttonAddNewStop = new System.Windows.Forms.Button();
             this.buttonCreateRoute = new System.Windows.Forms.Button();
             this.buttonCancelRoute = new System.Windows.Forms.Button();
-            this.buttonPreviewRoute = new System.Windows.Forms.Button();
             this.groupBoxGenerateRoute.SuspendLayout();
             this.groupBoxRoute.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStops)).BeginInit();
@@ -122,7 +122,7 @@
             this.groupBoxRoute.Controls.Add(this.labelRouteTime);
             this.groupBoxRoute.Controls.Add(this.label2);
             this.groupBoxRoute.Controls.Add(this.label1);
-            this.groupBoxRoute.Controls.Add(this.buttonAddNewRoute);
+            this.groupBoxRoute.Controls.Add(this.buttonAddNewStop);
             this.groupBoxRoute.Font = new System.Drawing.Font("Century", 10F);
             this.groupBoxRoute.Location = new System.Drawing.Point(31, 160);
             this.groupBoxRoute.Name = "groupBoxRoute";
@@ -130,6 +130,18 @@
             this.groupBoxRoute.TabIndex = 9;
             this.groupBoxRoute.TabStop = false;
             this.groupBoxRoute.Text = "Ruta";
+            // 
+            // buttonPreviewRoute
+            // 
+            this.buttonPreviewRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonPreviewRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonPreviewRoute.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonPreviewRoute.Location = new System.Drawing.Point(13, 229);
+            this.buttonPreviewRoute.Name = "buttonPreviewRoute";
+            this.buttonPreviewRoute.Size = new System.Drawing.Size(95, 23);
+            this.buttonPreviewRoute.TabIndex = 23;
+            this.buttonPreviewRoute.Text = "Ver ruta";
+            this.buttonPreviewRoute.UseVisualStyleBackColor = false;
             // 
             // textBoxLongitude
             // 
@@ -277,18 +289,18 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Tiempo estimado";
             // 
-            // buttonAddNewRoute
+            // buttonAddNewStop
             // 
-            this.buttonAddNewRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonAddNewRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddNewRoute.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonAddNewRoute.Location = new System.Drawing.Point(274, 333);
-            this.buttonAddNewRoute.Name = "buttonAddNewRoute";
-            this.buttonAddNewRoute.Size = new System.Drawing.Size(95, 23);
-            this.buttonAddNewRoute.TabIndex = 5;
-            this.buttonAddNewRoute.Text = "Añadir nuevo";
-            this.buttonAddNewRoute.UseVisualStyleBackColor = false;
-            this.buttonAddNewRoute.Click += new System.EventHandler(this.buttonAddNewRoute_Click);
+            this.buttonAddNewStop.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonAddNewStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAddNewStop.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonAddNewStop.Location = new System.Drawing.Point(274, 333);
+            this.buttonAddNewStop.Name = "buttonAddNewStop";
+            this.buttonAddNewStop.Size = new System.Drawing.Size(95, 23);
+            this.buttonAddNewStop.TabIndex = 5;
+            this.buttonAddNewStop.Text = "Añadir nuevo";
+            this.buttonAddNewStop.UseVisualStyleBackColor = false;
+            this.buttonAddNewStop.Click += new System.EventHandler(this.buttonAddNewStop_Click);
             // 
             // buttonCreateRoute
             // 
@@ -317,18 +329,6 @@
             this.buttonCancelRoute.Text = "Cancelar";
             this.buttonCancelRoute.UseVisualStyleBackColor = false;
             this.buttonCancelRoute.Click += new System.EventHandler(this.buttonCancelRoute_Click);
-            // 
-            // buttonPreviewRoute
-            // 
-            this.buttonPreviewRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonPreviewRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonPreviewRoute.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonPreviewRoute.Location = new System.Drawing.Point(13, 229);
-            this.buttonPreviewRoute.Name = "buttonPreviewRoute";
-            this.buttonPreviewRoute.Size = new System.Drawing.Size(95, 23);
-            this.buttonPreviewRoute.TabIndex = 23;
-            this.buttonPreviewRoute.Text = "Ver ruta";
-            this.buttonPreviewRoute.UseVisualStyleBackColor = false;
             // 
             // RouteCreationForm
             // 
@@ -363,7 +363,7 @@
         private System.Windows.Forms.Button buttonGenerateRoute;
         private System.Windows.Forms.TextBox textBoxGenerateRouteAI;
         private System.Windows.Forms.GroupBox groupBoxRoute;
-        private System.Windows.Forms.Button buttonAddNewRoute;
+        private System.Windows.Forms.Button buttonAddNewStop;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelRouteDistance;

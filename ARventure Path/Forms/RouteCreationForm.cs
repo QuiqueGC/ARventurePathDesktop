@@ -36,9 +36,10 @@ namespace ARventure_Path.Forms
             dataGridViewStops.Columns[0].Visible = false;
             dataGridViewStops.Columns[4].Visible = false;
             dataGridViewStops.Columns[5].Visible = false;
+            
         }
 
-        private void refreshOverlaysMap(double lat, double lng)
+        private void refreshOverlaysMap(string name,double lat, double lng)
         {
             // Marcador
             markerOverlay = new GMapOverlay("Marcador");
@@ -47,7 +48,7 @@ namespace ARventure_Path.Forms
 
             // Agregamos un tooltip de texto a los marcadores
             marker.ToolTipMode = MarkerTooltipMode.Always;
-            marker.ToolTipText = string.Format("Ubicación: \n Latitud:{0} \n Longitud: {1}", lat, lng);
+            marker.ToolTipText = string.Format("Ubicación:{0} \n Latitud:{1} \n Longitud: {2}", name, lat, lng);
 
             // Ahora agregamos el overlay en el mapa
             gMapControl1.Overlays.Add(markerOverlay);
@@ -55,6 +56,8 @@ namespace ARventure_Path.Forms
             // Actualizar el mapa
             gMapControl1.Zoom = gMapControl1.Zoom + 1;
             gMapControl1.Zoom = gMapControl1.Zoom - 1;
+
+            gMapControl1.Position = marker.Position;
         }
 
         private void RouteCreationForm_Load(object sender, EventArgs e)
@@ -73,12 +76,11 @@ namespace ARventure_Path.Forms
             textBoxLatitude.Text = LatStart.ToString();
             textBoxLongitude.Text = LngStart.ToString();
 
-            refreshOverlaysMap(LatStart, LngStart);
-
+            refreshOverlaysMap("Barcelona",LatStart, LngStart);
 
         }
 
-        private void buttonAddNewRoute_Click(object sender, EventArgs e)
+        private void buttonAddNewStop_Click(object sender, EventArgs e)
         {
             stop newStop = new stop();
             newStop.name = textBoxStopName.Text;
@@ -88,7 +90,8 @@ namespace ARventure_Path.Forms
 
             refreshTable();
             previewRoute();
-            refreshOverlaysMap((Double)newStop.latitude, (Double)newStop.longitude);
+            refreshOverlaysMap(newStop.name,(Double)newStop.latitude, (Double)newStop.longitude);
+
         }
 
         private void buttonDeleteStop_Click(object sender, EventArgs e)
@@ -112,8 +115,25 @@ namespace ARventure_Path.Forms
                     refreshTable();
 
                     previewRoute();
-
-                    refreshOverlaysMap((Double)stopsList[selectedIndex - 1].latitude, (Double)stopsList[selectedIndex - 1].longitude);
+                    if (stopsList.Count > 1)
+                    {
+                        if (selectedIndex > 0)
+                        {
+                            refreshOverlaysMap(stopsList[selectedIndex - 1].name, (Double)stopsList[selectedIndex - 1].latitude, (Double)stopsList[selectedIndex - 1].longitude);
+                        }
+                        else
+                        {
+                            refreshOverlaysMap(stopsList[selectedIndex].name, (Double)stopsList[selectedIndex].latitude, (Double)stopsList[selectedIndex].longitude);
+                        }
+                    }
+                    else if(stopsList.Count == 1)
+                    {
+                        refreshOverlaysMap(stopsList[selectedIndex].name, (Double)stopsList[selectedIndex].latitude, (Double)stopsList[selectedIndex].longitude);
+                    }
+                    else
+                    {
+                        refreshOverlaysMap("Barcelona",LatStart, LngStart);
+                    }
 
                 }
             }
@@ -156,6 +176,8 @@ namespace ARventure_Path.Forms
                 marker.Position = new PointLatLng(Convert.ToDouble(textBoxLatitude.Text), Convert.ToDouble(textBoxLongitude.Text));
                 // Se posiciona el foco del mapa en ese punto
                 gMapControl1.Position = marker.Position;
+                previewRoute();
+                refreshOverlaysMap(textBoxStopName.Text, Convert.ToDouble(textBoxLatitude.Text), Convert.ToDouble(textBoxLongitude.Text));
             }
 
         }
@@ -214,13 +236,13 @@ namespace ARventure_Path.Forms
             // Mostrar la distancia en kilómetros con dos decimales
             labelRouteDistance.Text = stopsRoute.Distance.ToString("N2") + " km";
 
-            // Calcular el tiempo estimado para la nueva ruta
-            double tiempoPorKilometro = 15; // minutos
-            double tiempoEstimado = tiempoPorKilometro * stopsRoute.Distance;
+            // Calculate the estimated time for the new route
+            TimeSpan time = TimeSpan.FromMinutes(15 * stopsRoute.Distance);
 
-            // Mostrar el tiempo estimado en minutos sin decimales
-            labelRouteTime.Text = tiempoEstimado.ToString("N0") + " min";
+            // Show the estimated time in minutes without decimals
+            labelRouteTime.Text = ((int)time.TotalMinutes).ToString() + " min";
         }
+
 
     }
 }
