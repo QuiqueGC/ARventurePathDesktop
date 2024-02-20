@@ -1,0 +1,682 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ARDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="achievement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="img" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="arventure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idRoute" Type="int" Nullable="false" />
+          <Property Name="idStory" Type="int" Nullable="false" />
+          <Property Name="idAchievement" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="arventure_have_happening">
+          <Key>
+            <PropertyRef Name="idArventure" />
+            <PropertyRef Name="idHappening" />
+          </Key>
+          <Property Name="idArventure" Type="int" Nullable="false" />
+          <Property Name="idHappening" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fragment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ordinal" Type="int" Nullable="false" />
+          <Property Name="idStory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="happening">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="text" Type="varchar" MaxLength="500" />
+          <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="url" Type="varchar" MaxLength="50" />
+          <Property Name="idStory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="route">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="steps" Type="int" />
+          <Property Name="distance" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stop">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="longitude" Type="float" Nullable="false" />
+          <Property Name="latitude" Type="float" Nullable="false" />
+          <Property Name="idRoute" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="story">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="img" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="summary" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="passwd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="img" Type="varchar" MaxLength="50" />
+          <Property Name="distance" Type="float" />
+          <Property Name="steps" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_have_achievement">
+          <Key>
+            <PropertyRef Name="idUser" />
+            <PropertyRef Name="idAchievement" />
+          </Key>
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="idAchievement" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_play_arventure">
+          <Key>
+            <PropertyRef Name="idUser" />
+            <PropertyRef Name="idArventure" />
+          </Key>
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="idArventure" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_arventure_achievement">
+          <End Role="achievement" Type="Self.achievement" Multiplicity="1" />
+          <End Role="arventure" Type="Self.arventure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="achievement">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arventure">
+              <PropertyRef Name="idAchievement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_arventure_have_happening_arventure">
+          <End Role="arventure" Type="Self.arventure" Multiplicity="1" />
+          <End Role="arventure_have_happening" Type="Self.arventure_have_happening" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="arventure">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arventure_have_happening">
+              <PropertyRef Name="idArventure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_arventure_have_happening_happening">
+          <End Role="happening" Type="Self.happening" Multiplicity="1" />
+          <End Role="arventure_have_happening" Type="Self.arventure_have_happening" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="happening">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arventure_have_happening">
+              <PropertyRef Name="idHappening" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_arventure_route">
+          <End Role="route" Type="Self.route" Multiplicity="1" />
+          <End Role="arventure" Type="Self.arventure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="route">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arventure">
+              <PropertyRef Name="idRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_arventure_story">
+          <End Role="story" Type="Self.story" Multiplicity="1" />
+          <End Role="arventure" Type="Self.arventure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="story">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arventure">
+              <PropertyRef Name="idStory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fragment_story">
+          <End Role="story" Type="Self.story" Multiplicity="1" />
+          <End Role="fragment" Type="Self.fragment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="story">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="fragment">
+              <PropertyRef Name="idStory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_happening_story">
+          <End Role="story" Type="Self.story" Multiplicity="1" />
+          <End Role="happening" Type="Self.happening" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="story">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="happening">
+              <PropertyRef Name="idStory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stop_route">
+          <End Role="route" Type="Self.route" Multiplicity="1" />
+          <End Role="stop" Type="Self.stop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="route">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stop">
+              <PropertyRef Name="idRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_have_achievement_achievement">
+          <End Role="achievement" Type="Self.achievement" Multiplicity="1" />
+          <End Role="user_have_achievement" Type="Self.user_have_achievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="achievement">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_have_achievement">
+              <PropertyRef Name="idAchievement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_have_achievement_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="user_have_achievement" Type="Self.user_have_achievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_have_achievement">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_play_arventure_arventure">
+          <End Role="arventure" Type="Self.arventure" Multiplicity="1" />
+          <End Role="user_play_arventure" Type="Self.user_play_arventure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="arventure">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_play_arventure">
+              <PropertyRef Name="idArventure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_play_arventure_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="user_play_arventure" Type="Self.user_play_arventure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_play_arventure">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ARDBModelStoreContainer">
+          <EntitySet Name="achievement" EntityType="Self.achievement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="arventure" EntityType="Self.arventure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="arventure_have_happening" EntityType="Self.arventure_have_happening" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fragment" EntityType="Self.fragment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="happening" EntityType="Self.happening" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="route" EntityType="Self.route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stop" EntityType="Self.stop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="story" EntityType="Self.story" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_have_achievement" EntityType="Self.user_have_achievement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_play_arventure" EntityType="Self.user_play_arventure" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_arventure_achievement" Association="Self.FK_arventure_achievement">
+            <End Role="achievement" EntitySet="achievement" />
+            <End Role="arventure" EntitySet="arventure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_arventure_have_happening_arventure" Association="Self.FK_arventure_have_happening_arventure">
+            <End Role="arventure" EntitySet="arventure" />
+            <End Role="arventure_have_happening" EntitySet="arventure_have_happening" />
+          </AssociationSet>
+          <AssociationSet Name="FK_arventure_have_happening_happening" Association="Self.FK_arventure_have_happening_happening">
+            <End Role="happening" EntitySet="happening" />
+            <End Role="arventure_have_happening" EntitySet="arventure_have_happening" />
+          </AssociationSet>
+          <AssociationSet Name="FK_arventure_route" Association="Self.FK_arventure_route">
+            <End Role="route" EntitySet="route" />
+            <End Role="arventure" EntitySet="arventure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_arventure_story" Association="Self.FK_arventure_story">
+            <End Role="story" EntitySet="story" />
+            <End Role="arventure" EntitySet="arventure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fragment_story" Association="Self.FK_fragment_story">
+            <End Role="story" EntitySet="story" />
+            <End Role="fragment" EntitySet="fragment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_happening_story" Association="Self.FK_happening_story">
+            <End Role="story" EntitySet="story" />
+            <End Role="happening" EntitySet="happening" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stop_route" Association="Self.FK_stop_route">
+            <End Role="route" EntitySet="route" />
+            <End Role="stop" EntitySet="stop" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_have_achievement_achievement" Association="Self.FK_user_have_achievement_achievement">
+            <End Role="achievement" EntitySet="achievement" />
+            <End Role="user_have_achievement" EntitySet="user_have_achievement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_have_achievement_user" Association="Self.FK_user_have_achievement_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_have_achievement" EntitySet="user_have_achievement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_play_arventure_arventure" Association="Self.FK_user_play_arventure_arventure">
+            <End Role="arventure" EntitySet="arventure" />
+            <End Role="user_play_arventure" EntitySet="user_play_arventure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_play_arventure_user" Association="Self.FK_user_play_arventure_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_play_arventure" EntitySet="user_play_arventure" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ARDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="achievement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="arventure" Relationship="Self.FK_arventure_achievement" FromRole="achievement" ToRole="arventure" />
+          <NavigationProperty Name="user" Relationship="Self.user_have_achievement" FromRole="achievement" ToRole="user" />
+        </EntityType>
+        <EntityType Name="arventure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idRoute" Type="Int32" Nullable="false" />
+          <Property Name="idStory" Type="Int32" Nullable="false" />
+          <Property Name="idAchievement" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="achievement" Relationship="Self.FK_arventure_achievement" FromRole="arventure" ToRole="achievement" />
+          <NavigationProperty Name="route" Relationship="Self.FK_arventure_route" FromRole="arventure" ToRole="route" />
+          <NavigationProperty Name="story" Relationship="Self.FK_arventure_story" FromRole="arventure" ToRole="story" />
+          <NavigationProperty Name="happening" Relationship="Self.arventure_have_happening" FromRole="arventure" ToRole="happening" />
+          <NavigationProperty Name="user" Relationship="Self.user_play_arventure" FromRole="arventure" ToRole="user" />
+        </EntityType>
+        <EntityType Name="fragment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ordinal" Type="Int32" Nullable="false" />
+          <Property Name="idStory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="story" Relationship="Self.FK_fragment_story" FromRole="fragment" ToRole="story" />
+        </EntityType>
+        <EntityType Name="happening">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idStory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="story" Relationship="Self.FK_happening_story" FromRole="happening" ToRole="story" />
+          <NavigationProperty Name="arventure" Relationship="Self.arventure_have_happening" FromRole="happening" ToRole="arventure" />
+        </EntityType>
+        <EntityType Name="route">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="steps" Type="Int32" />
+          <Property Name="distance" Type="Double" Nullable="false" />
+          <NavigationProperty Name="arventure" Relationship="Self.FK_arventure_route" FromRole="route" ToRole="arventure" />
+          <NavigationProperty Name="stop" Relationship="Self.FK_stop_route" FromRole="route" ToRole="stop" />
+        </EntityType>
+        <EntityType Name="stop">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="longitude" Type="Double" Nullable="false" />
+          <Property Name="latitude" Type="Double" Nullable="false" />
+          <Property Name="idRoute" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="route" Relationship="Self.FK_stop_route" FromRole="stop" ToRole="route" />
+        </EntityType>
+        <EntityType Name="story">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="summary" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="arventure" Relationship="Self.FK_arventure_story" FromRole="story" ToRole="arventure" />
+          <NavigationProperty Name="fragment" Relationship="Self.FK_fragment_story" FromRole="story" ToRole="fragment" />
+          <NavigationProperty Name="happening" Relationship="Self.FK_happening_story" FromRole="story" ToRole="happening" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="distance" Type="Double" />
+          <Property Name="steps" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="achievement" Relationship="Self.user_have_achievement" FromRole="user" ToRole="achievement" />
+          <NavigationProperty Name="arventure" Relationship="Self.user_play_arventure" FromRole="user" ToRole="arventure" />
+        </EntityType>
+        <Association Name="FK_arventure_achievement">
+          <End Role="achievement" Type="Self.achievement" Multiplicity="1" />
+          <End Role="arventure" Type="Self.arventure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="achievement">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arventure">
+              <PropertyRef Name="idAchievement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_arventure_route">
+          <End Role="route" Type="Self.route" Multiplicity="1" />
+          <End Role="arventure" Type="Self.arventure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="route">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arventure">
+              <PropertyRef Name="idRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_arventure_story">
+          <End Role="story" Type="Self.story" Multiplicity="1" />
+          <End Role="arventure" Type="Self.arventure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="story">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arventure">
+              <PropertyRef Name="idStory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fragment_story">
+          <End Role="story" Type="Self.story" Multiplicity="1" />
+          <End Role="fragment" Type="Self.fragment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="story">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="fragment">
+              <PropertyRef Name="idStory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_happening_story">
+          <End Role="story" Type="Self.story" Multiplicity="1" />
+          <End Role="happening" Type="Self.happening" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="story">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="happening">
+              <PropertyRef Name="idStory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stop_route">
+          <End Role="route" Type="Self.route" Multiplicity="1" />
+          <End Role="stop" Type="Self.stop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="route">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stop">
+              <PropertyRef Name="idRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="arventure_have_happening">
+          <End Role="arventure" Type="Self.arventure" Multiplicity="*" />
+          <End Role="happening" Type="Self.happening" Multiplicity="*" />
+        </Association>
+        <Association Name="user_have_achievement">
+          <End Role="achievement" Type="Self.achievement" Multiplicity="*" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+        </Association>
+        <Association Name="user_play_arventure">
+          <End Role="arventure" Type="Self.arventure" Multiplicity="*" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ARDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="achievement" EntityType="Self.achievement" />
+          <EntitySet Name="arventure" EntityType="Self.arventure" />
+          <EntitySet Name="fragment" EntityType="Self.fragment" />
+          <EntitySet Name="happening" EntityType="Self.happening" />
+          <EntitySet Name="route" EntityType="Self.route" />
+          <EntitySet Name="stop" EntityType="Self.stop" />
+          <EntitySet Name="story" EntityType="Self.story" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <AssociationSet Name="FK_arventure_achievement" Association="Self.FK_arventure_achievement">
+            <End Role="achievement" EntitySet="achievement" />
+            <End Role="arventure" EntitySet="arventure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_arventure_route" Association="Self.FK_arventure_route">
+            <End Role="route" EntitySet="route" />
+            <End Role="arventure" EntitySet="arventure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_arventure_story" Association="Self.FK_arventure_story">
+            <End Role="story" EntitySet="story" />
+            <End Role="arventure" EntitySet="arventure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fragment_story" Association="Self.FK_fragment_story">
+            <End Role="story" EntitySet="story" />
+            <End Role="fragment" EntitySet="fragment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_happening_story" Association="Self.FK_happening_story">
+            <End Role="story" EntitySet="story" />
+            <End Role="happening" EntitySet="happening" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stop_route" Association="Self.FK_stop_route">
+            <End Role="route" EntitySet="route" />
+            <End Role="stop" EntitySet="stop" />
+          </AssociationSet>
+          <AssociationSet Name="arventure_have_happening" Association="Self.arventure_have_happening">
+            <End Role="arventure" EntitySet="arventure" />
+            <End Role="happening" EntitySet="happening" />
+          </AssociationSet>
+          <AssociationSet Name="user_have_achievement" Association="Self.user_have_achievement">
+            <End Role="achievement" EntitySet="achievement" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="user_play_arventure" Association="Self.user_play_arventure">
+            <End Role="arventure" EntitySet="arventure" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ARDBModelStoreContainer" CdmEntityContainer="ARDBEntities">
+          <EntitySetMapping Name="achievement">
+            <EntityTypeMapping TypeName="ARDBModel.achievement">
+              <MappingFragment StoreEntitySet="achievement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="arventure">
+            <EntityTypeMapping TypeName="ARDBModel.arventure">
+              <MappingFragment StoreEntitySet="arventure">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idRoute" ColumnName="idRoute" />
+                <ScalarProperty Name="idStory" ColumnName="idStory" />
+                <ScalarProperty Name="idAchievement" ColumnName="idAchievement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fragment">
+            <EntityTypeMapping TypeName="ARDBModel.fragment">
+              <MappingFragment StoreEntitySet="fragment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ordinal" ColumnName="ordinal" />
+                <ScalarProperty Name="idStory" ColumnName="idStory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="happening">
+            <EntityTypeMapping TypeName="ARDBModel.happening">
+              <MappingFragment StoreEntitySet="happening">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="idStory" ColumnName="idStory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="route">
+            <EntityTypeMapping TypeName="ARDBModel.route">
+              <MappingFragment StoreEntitySet="route">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="steps" ColumnName="steps" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stop">
+            <EntityTypeMapping TypeName="ARDBModel.stop">
+              <MappingFragment StoreEntitySet="stop">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="idRoute" ColumnName="idRoute" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="story">
+            <EntityTypeMapping TypeName="ARDBModel.story">
+              <MappingFragment StoreEntitySet="story">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="ARDBModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="passwd" ColumnName="passwd" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+                <ScalarProperty Name="steps" ColumnName="steps" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="arventure_have_happening" TypeName="ARDBModel.arventure_have_happening" StoreEntitySet="arventure_have_happening">
+            <EndProperty Name="arventure">
+              <ScalarProperty Name="id" ColumnName="idArventure" />
+            </EndProperty>
+            <EndProperty Name="happening">
+              <ScalarProperty Name="id" ColumnName="idHappening" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="user_have_achievement" TypeName="ARDBModel.user_have_achievement" StoreEntitySet="user_have_achievement">
+            <EndProperty Name="achievement">
+              <ScalarProperty Name="id" ColumnName="idAchievement" />
+            </EndProperty>
+            <EndProperty Name="user">
+              <ScalarProperty Name="id" ColumnName="idUser" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="user_play_arventure" TypeName="ARDBModel.user_play_arventure" StoreEntitySet="user_play_arventure">
+            <EndProperty Name="arventure">
+              <ScalarProperty Name="id" ColumnName="idArventure" />
+            </EndProperty>
+            <EndProperty Name="user">
+              <ScalarProperty Name="id" ColumnName="idUser" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

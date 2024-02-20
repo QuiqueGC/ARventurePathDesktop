@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.Core.dll</HintPath>
     </Reference>
@@ -46,7 +49,9 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -57,6 +62,8 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,13 +75,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataClases\Happenings\AbstractHappening.cs" />
-    <Compile Include="DataClases\Happenings\ImageHappening.cs" />
-    <Compile Include="DataClases\Happenings\SoundHappening.cs" />
-    <Compile Include="DataClases\Happenings\TextHappening.cs" />
-    <Compile Include="DataClases\Route.cs" />
-    <Compile Include="DataClases\Stop.cs" />
-    <Compile Include="DataClases\Story.cs" />
     <Compile Include="Forms\AddStopForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +135,45 @@
     <Compile Include="Forms\StoryCreationForm.Designer.cs">
       <DependentUpon>StoryCreationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\achievement.cs">
+      <DependentUpon>ModelARDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\arventure.cs">
+      <DependentUpon>ModelARDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\fragment.cs">
+      <DependentUpon>ModelARDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\happening.cs">
+      <DependentUpon>ModelARDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelARDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelARDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelARDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelARDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelARDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelARDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\route.cs">
+      <DependentUpon>ModelARDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stop.cs">
+      <DependentUpon>ModelARDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\story.cs">
+      <DependentUpon>ModelARDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user.cs">
+      <DependentUpon>ModelARDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AddStopForm.resx">
@@ -177,6 +216,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EntityDeploy Include="Models\ModelARDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelARDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ModelARDB.edmx.diagram">
+      <DependentUpon>ModelARDB.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -214,6 +260,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cerrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ModelARDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelARDB.Context.cs</LastGenOutput>
+      <DependentUpon>ModelARDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ModelARDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelARDB.edmx</DependentUpon>
+      <LastGenOutput>ModelARDB.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
