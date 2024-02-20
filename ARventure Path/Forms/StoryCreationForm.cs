@@ -18,7 +18,9 @@ namespace ARventure_Path.Forms
     {
 
         story story = new story();
-        
+
+        private const string StoryImagePath = @"C:\Desktop\StoryImagePath";
+
 
         public StoryCreationForm()
         {
@@ -60,13 +62,13 @@ namespace ARventure_Path.Forms
         private void SaveImage(Image image)
         {
             // Si la carpeta no existe, la crea
-            /*if (!Directory.Exists(story.StoryImagePath))
+            if (!Directory.Exists(StoryImagePath))
             {
-                Directory.CreateDirectory(story.StoryImagePath);
+                Directory.CreateDirectory(StoryImagePath);
             }
-            String destinationPath = Path.Combine(story.StoryImagePath, story.id.ToString() + ".png");
+            String destinationPath = Path.Combine(StoryImagePath, story.id.ToString() + ".png");
             image.Save(destinationPath, ImageFormat.Png);
-            story.img = destinationPath;*/
+            story.img = destinationPath;
         }
 
         private void buttonAddNewFragment_Click(object sender, EventArgs e)
