@@ -40,6 +40,8 @@
             this.textboxIAPrompt = new System.Windows.Forms.TextBox();
             this.buttonGenerateHappening = new System.Windows.Forms.Button();
             this.groupboxIA = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxStories = new System.Windows.Forms.ComboBox();
             this.groupboxTxtHappening.SuspendLayout();
             this.groupboxIA.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +56,7 @@
             this.groupboxTxtHappening.Location = new System.Drawing.Point(12, 224);
             this.groupboxTxtHappening.Name = "groupboxTxtHappening";
             this.groupboxTxtHappening.Size = new System.Drawing.Size(511, 158);
-            this.groupboxTxtHappening.TabIndex = 3;
+            this.groupboxTxtHappening.TabIndex = 4;
             this.groupboxTxtHappening.TabStop = false;
             this.groupboxTxtHappening.Text = "Evento de texto";
             // 
@@ -77,7 +79,7 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(13, 34);
+            this.textBoxName.Location = new System.Drawing.Point(13, 36);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(151, 24);
             this.textBoxName.TabIndex = 1;
@@ -85,7 +87,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(17, 18);
+            this.lblName.Location = new System.Drawing.Point(17, 20);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(59, 17);
             this.lblName.TabIndex = 0;
@@ -103,6 +105,7 @@
             this.buttonCreate.TabIndex = 4;
             this.buttonCreate.Text = "Crear";
             this.buttonCreate.UseVisualStyleBackColor = false;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonCancel
             // 
@@ -116,12 +119,13 @@
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Cancelar";
             this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // labelSelectHappening
             // 
             this.labelSelectHappening.AutoSize = true;
             this.labelSelectHappening.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSelectHappening.Location = new System.Drawing.Point(8, 19);
+            this.labelSelectHappening.Location = new System.Drawing.Point(8, 9);
             this.labelSelectHappening.Name = "labelSelectHappening";
             this.labelSelectHappening.Size = new System.Drawing.Size(164, 20);
             this.labelSelectHappening.TabIndex = 0;
@@ -131,7 +135,7 @@
             // 
             this.comboBoxHappenings.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxHappenings.FormattingEnabled = true;
-            this.comboBoxHappenings.Location = new System.Drawing.Point(178, 21);
+            this.comboBoxHappenings.Location = new System.Drawing.Point(198, 12);
             this.comboBoxHappenings.Name = "comboBoxHappenings";
             this.comboBoxHappenings.Size = new System.Drawing.Size(235, 21);
             this.comboBoxHappenings.TabIndex = 1;
@@ -164,9 +168,28 @@
             this.groupboxIA.Location = new System.Drawing.Point(12, 69);
             this.groupboxIA.Name = "groupboxIA";
             this.groupboxIA.Size = new System.Drawing.Size(511, 134);
-            this.groupboxIA.TabIndex = 2;
+            this.groupboxIA.TabIndex = 3;
             this.groupboxIA.TabStop = false;
             this.groupboxIA.Text = "Generar por IA";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(174, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Seleccionar historia";
+            // 
+            // comboBoxStories
+            // 
+            this.comboBoxStories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStories.FormattingEnabled = true;
+            this.comboBoxStories.Location = new System.Drawing.Point(198, 48);
+            this.comboBoxStories.Name = "comboBoxStories";
+            this.comboBoxStories.Size = new System.Drawing.Size(235, 21);
+            this.comboBoxStories.TabIndex = 2;
             // 
             // HappeningTextForm
             // 
@@ -174,6 +197,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(544, 422);
+            this.Controls.Add(this.comboBoxStories);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.groupboxTxtHappening);
             this.Controls.Add(this.buttonCreate);
@@ -207,5 +232,7 @@
         private System.Windows.Forms.TextBox textboxIAPrompt;
         private System.Windows.Forms.Button buttonGenerateHappening;
         private System.Windows.Forms.GroupBox groupboxIA;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxStories;
     }
 }
