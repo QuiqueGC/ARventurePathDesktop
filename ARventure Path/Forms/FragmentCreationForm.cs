@@ -14,8 +14,6 @@ namespace ARventure_Path.Forms
     public partial class FragmentCreationForm : Form
     {
 
-        // private Story story;
-
         public FragmentCreationForm()
         {
             InitializeComponent();

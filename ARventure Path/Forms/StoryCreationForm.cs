@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ARventure_Path.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,20 +17,23 @@ namespace ARventure_Path.Forms
     public partial class StoryCreationForm : Form
     {
 
-        //Story story = new Story();
+        story story = new story();
+        
 
         public StoryCreationForm()
         {
             InitializeComponent();
             //listBoxFragmentStory.DataSource = story.TxtFragments;
+
+            //story.Id = ClaseDeDB.GetNewStoryId(); devolver tamaño de la lista de stories + 1
         }
 
         private void buttonCreateStory_Click(object sender, EventArgs e)
         {
-            //story.Name = textBoxStoryTitle.Text;
-            //story.Img = pictureBoxStory.Image; Cómo guardar las fotos...Guardar las fotos con el nombre de la foto(string)
-            //story.Summary = textBoxSummary.Text;
+            story.name = textBoxStoryTitle.Text;
+            story.summary = textBoxSummary.Text;
             //Guardar en la lista de stories...//Guardar en un objeto story que tenga los parámetros
+            Console.WriteLine(story);
         }
 
         private void buttonSearchImage_Click(object sender, EventArgs e)
@@ -37,18 +42,39 @@ namespace ARventure_Path.Forms
             OpenFileDialog abrir = new OpenFileDialog();
             abrir.Filter = "JPEG(*.JPG)|*.JPG|PNG(*.PNG)|*.PNG";
 
-            if (abrir.ShowDialog() == DialogResult.OK) 
+            if (abrir.ShowDialog() == DialogResult.OK)
             {
-                pictureBoxStory.Image = Image.FromFile(abrir.FileName);
+                var image = Image.FromFile(abrir.FileName);
+                pictureBoxStory.Image = image;
                 textBoxImageRoute.Text = abrir.FileName;
+                SaveImage(image);
             }
+        }
+
+        /// <summary>
+        /// Guarda la imagen en la carpeta local
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// 
+        
+        private void SaveImage(Image image)
+        {
+            // Si la carpeta no existe, la crea
+            /*if (!Directory.Exists(story.StoryImagePath))
+            {
+                Directory.CreateDirectory(story.StoryImagePath);
+            }
+            String destinationPath = Path.Combine(story.StoryImagePath, story.id.ToString() + ".png");
+            image.Save(destinationPath, ImageFormat.Png);
+            story.img = destinationPath;*/
         }
 
         private void buttonAddNewFragment_Click(object sender, EventArgs e)
         {
 
-            //Si hay 5 fragments en la lista, no dejar añadir más
-            if (CanAddFragments()) 
+            // Añadir fragmento cuando el número de fragmentos en la
+            // lista no supera al número indicado por el usuario
+            if (CanAddFragments())
             {
                 //FragmentCreationForm fragmentCreationForm = new FragmentCreationForm(story);
                 //fragmentCreationForm.ShowDialog();
@@ -59,15 +85,15 @@ namespace ARventure_Path.Forms
         public bool CanAddFragments() 
         {
             int numberTextBoxFragment = int.Parse(textBoxFragmentQuantity.Text);
-            //Si el número de fragments es igual a 5 o si el número añadido es mayor al número de fragments
-            /*if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > story.TxtFragments.Count))
+            //Si es número que escribe el usuario es mayor que uno, y si el número añadido es mayor al número de fragments
+            //if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > story.TxtFragments.Count))
             {
 
                 return true;
 
-            }*/
+            }
 
-            return false;
+            //return false;
 
         }
 
@@ -88,7 +114,7 @@ namespace ARventure_Path.Forms
             }
 
 
-            if (string.IsNullOrEmpty(textBoxFragmentQuantity.Text)) 
+            if (string.IsNullOrEmpty(textBoxFragmentQuantity.Text))
             {
                 buttonAddNewFragment.Enabled = true;
                 return;
@@ -113,8 +139,9 @@ namespace ARventure_Path.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            
-           // story.TxtFragments.Remove((string)listBoxFragmentStory.SelectedItem);
+
+            // story.TxtFragments.Remove((string)listBoxFragmentStory.SelectedItem);
+          
 
         }
 
