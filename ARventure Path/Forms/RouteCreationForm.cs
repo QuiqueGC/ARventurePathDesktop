@@ -1,5 +1,4 @@
-﻿using ARventure_Path.DataClases;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
@@ -15,7 +14,7 @@ namespace ARventure_Path.Forms
     public partial class RouteCreationForm : Form
     {
 
-        private List<Stop> stopsList = new List<Stop>(); // Lista para almacenar las paradas
+       // private List<Stop> stopsList = new List<Stop>(); // Lista para almacenar las paradas
         GMarkerGoogle marker;
         GMapOverlay markerOverlay;
 
@@ -32,7 +31,7 @@ namespace ARventure_Path.Forms
         private void refreshTable()
         {
             dataGridViewStops.DataSource = null;
-            dataGridViewStops.DataSource = stopsList;
+            //dataGridViewStops.DataSource = stopsList;
             dataGridViewStops.Columns[0].Visible = false;
             dataGridViewStops.Columns[2].Visible = false;
             dataGridViewStops.Columns[3].Visible = false;
@@ -40,8 +39,8 @@ namespace ARventure_Path.Forms
 
         private void RouteCreationForm_Load(object sender, EventArgs e)
         {
-            Stop stop = new Stop ("Ubicación 1", LngStart, LatStart);
-            stopsList.Add (stop);
+           // Stop stop = new Stop ("Ubicación 1", LngStart, LatStart);
+            //stopsList.Add (stop);
             refreshTable();
 
 
@@ -73,8 +72,8 @@ namespace ARventure_Path.Forms
 
         private void buttonAddNewRoute_Click(object sender, EventArgs e)
         {
-            Stop newStop = new Stop(textBoxStopName.Text, Convert.ToDouble(textBoxLongitude.Text), Convert.ToDouble(textBoxLatitude.Text));
-            stopsList.Add(newStop);
+            //Stop newStop = new Stop(textBoxStopName.Text, Convert.ToDouble(textBoxLongitude.Text), Convert.ToDouble(textBoxLatitude.Text));
+           //stopsList.Add(newStop);
 
             refreshTable();
         }
@@ -94,7 +93,7 @@ namespace ARventure_Path.Forms
                     int selectedIndex = dataGridViewStops.SelectedRows[0].Index;
 
                     // Eliminar la parada de la lista
-                    stopsList.RemoveAt(selectedIndex);
+                   // stopsList.RemoveAt(selectedIndex);
 
                     // Actualizar la DataGridView
                     refreshTable();

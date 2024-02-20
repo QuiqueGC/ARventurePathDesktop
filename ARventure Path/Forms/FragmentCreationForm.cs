@@ -1,5 +1,4 @@
-﻿using ARventure_Path.DataClases;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,17 +14,17 @@ namespace ARventure_Path.Forms
     public partial class FragmentCreationForm : Form
     {
 
-        private Story story;
+        // private Story story;
 
-        public FragmentCreationForm(Story story)
+        public FragmentCreationForm()
         {
             InitializeComponent();
-            this.story = story;
+            
         }
 
         private void buttonAcceptFragment_Click(object sender, EventArgs e)
         {
-            story.TxtFragments.Add(textBoxCreateFragment.Text);
+            //story.TxtFragments.Add(textBoxCreateFragment.Text);
             this.Close();
             
         }

@@ -1,5 +1,4 @@
-﻿using ARventure_Path.DataClases;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,19 +15,19 @@ namespace ARventure_Path.Forms
     public partial class StoryCreationForm : Form
     {
 
-        Story story = new Story();
+        //Story story = new Story();
 
         public StoryCreationForm()
         {
             InitializeComponent();
-            listBoxFragmentStory.DataSource = story.TxtFragments;
+            //listBoxFragmentStory.DataSource = story.TxtFragments;
         }
 
         private void buttonCreateStory_Click(object sender, EventArgs e)
         {
-            story.Name = textBoxStoryTitle.Text;
+            //story.Name = textBoxStoryTitle.Text;
             //story.Img = pictureBoxStory.Image; Cómo guardar las fotos...Guardar las fotos con el nombre de la foto(string)
-            story.Summary = textBoxSummary.Text;
+            //story.Summary = textBoxSummary.Text;
             //Guardar en la lista de stories...//Guardar en un objeto story que tenga los parámetros
         }
 
@@ -51,8 +50,8 @@ namespace ARventure_Path.Forms
             //Si hay 5 fragments en la lista, no dejar añadir más
             if (CanAddFragments()) 
             {
-                FragmentCreationForm fragmentCreationForm = new FragmentCreationForm(story);
-                fragmentCreationForm.ShowDialog();
+                //FragmentCreationForm fragmentCreationForm = new FragmentCreationForm(story);
+                //fragmentCreationForm.ShowDialog();
             }
 
         }
@@ -61,12 +60,12 @@ namespace ARventure_Path.Forms
         {
             int numberTextBoxFragment = int.Parse(textBoxFragmentQuantity.Text);
             //Si el número de fragments es igual a 5 o si el número añadido es mayor al número de fragments
-            if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > story.TxtFragments.Count))
+            /*if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > story.TxtFragments.Count))
             {
 
                 return true;
 
-            }
+            }*/
 
             return false;
 
@@ -115,7 +114,7 @@ namespace ARventure_Path.Forms
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             
-            story.TxtFragments.Remove((string)listBoxFragmentStory.SelectedItem);
+           // story.TxtFragments.Remove((string)listBoxFragmentStory.SelectedItem);
 
         }
 
