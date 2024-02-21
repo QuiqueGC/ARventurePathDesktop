@@ -22,17 +22,19 @@ namespace ARventure_Path.Forms
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            if (textBoxName.Text != "" &&
-                textBoxContent.Text != "" &&
+            if (textBoxName.Text.Trim() != "" &&
+                textBoxContent.Text.Trim() != "" &&
                 comboBoxStories.SelectedIndex > 0)
             {
                 happening happening = new happening();
                 happening.name = textBoxName.Text.Trim();
                 happening.text = textBoxContent.Text.Trim();
                 happening.type = "text";
-                happening.idStory = 1;
+                happening.idStory = (int)comboBoxStories.SelectedValue;
 
                 HappeningOrm.Insert(happening);
+
+                MessageBox.Show("El evento se ha guardado correctamente.", "Éxito!");
 
             }
             else if (textBoxName.Text == "")
