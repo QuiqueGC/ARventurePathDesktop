@@ -70,6 +70,10 @@ namespace ARventure_Path.Forms
         {
             hideRouteSelection();
 
+            comboBoxSelectRoute.DataSource = RouteOrm.Select();
+
+            comboBoxSelectRoute.SelectedItem = null;
+
             gMapControl1.DragButton = MouseButtons.Left;
             gMapControl1.CanDragMap = true;
             gMapControl1.MapProvider = GMapProviders.GoogleMap;
@@ -179,6 +183,7 @@ namespace ARventure_Path.Forms
             {
                 route.time = time;
                 route.distance = distance;
+                route.name = textBoxNameRoute.Text;
                 RouteOrm.Insert(route);
 
                 for (int i = 0;i < stopsList.Count; i++)
@@ -204,7 +209,15 @@ namespace ARventure_Path.Forms
 
             if(stopsList.Count > 1)
             {
-                check = true;
+                if (textBoxNameRoute.Text.Trim() != "")
+                {
+                    check = true;
+                }
+                else
+                {
+                    MessageBox.Show("Introduce el nombre de la ruta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    check = false;
+                }
             }
             else
             {
