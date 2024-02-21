@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,10 @@ namespace ARventure_Path.Forms
     public partial class HappeningImageForm : Form
     {
         bool isCreation;
+        private const string StoryImagePath = @"C:\Desktop\StoryImagePath";
+        private static Image image;
+        string fileName;
+
         public HappeningImageForm(bool isCreation)
         {
             InitializeComponent();
@@ -27,22 +33,61 @@ namespace ARventure_Path.Forms
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                var image = Image.FromFile(openFileDialog.FileName);
+                image = Image.FromFile(openFileDialog.FileName);
                 
                 imgHappening.Image = image;
-                textBoxUrl.Text = openFileDialog.FileName;
-                SaveImage(image);
+                string filePath = openFileDialog.FileName;
+                textBoxUrl.Text = filePath;
+
+                fileName = Path.GetFileName(filePath);
             }
         }
 
-        private void SaveImage(Image image)
+        private void SaveImage()
         {
-            // TODO: guardar la imagen en donde sea que haya que guardarla
+            // Si la carpeta no existe, la crea
+            if (!Directory.Exists(StoryImagePath))
+            {
+                Directory.CreateDirectory(StoryImagePath);
+            }
+            String destinationPath = Path.Combine(StoryImagePath, fileName);
+            image.Save(destinationPath, ImageFormat.Png);
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            happening happening = new happening();
+            if (textBoxName.Text.Trim() != "" &&
+                fileName != null &&
+                comboBoxStories.SelectedItem != null) 
+            {
+                happening happening = new happening();
+                happening.name = textBoxName.Text.Trim();
+                happening.url = fileName;
+                happening.type = "image";
+                happening.idStory = (int)comboBoxStories.SelectedValue;
+                SaveImage();
+
+                HappeningOrm.Insert(happening);
+
+                MessageBox.Show("Evento creado satisfactoriamente.", "Éxito!");
+
+                Close();
+
+            }
+            else if(textBoxName.Text.Trim() == "")
+            {
+                MessageBox.Show("No has introducido nombre de evento.", "Error");
+
+            }
+            else if (comboBoxStories.SelectedItem == null)
+            {
+                MessageBox.Show("No has escogido la historia a la que pertenece.", "Error");
+
+            }
+            else if (comboBoxStories.SelectedIndex <= 0)
+            {
+                MessageBox.Show("No has escrito nada en el contenido.", "Error");
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -54,6 +99,7 @@ namespace ARventure_Path.Forms
         {
             bindingSourceStory.DataSource = StoryOrm.Select();
             hideHappeningSelection();
+            comboBoxStories.SelectedItem = null;
         }
         private void hideHappeningSelection()
         {

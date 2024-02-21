@@ -15,7 +15,10 @@ namespace ARventure_Path.Forms
     // https://www.youtube.com/watch?v=ZyyU6MfbXvc&list=PLlD7n_T-mUjVuqIhWVfaNhnpqCZmNcA9e&index=10
     public partial class RouteCreationForm : Form
     {
-
+        route route = new route();
+        TimeSpan time;
+        double distance;
+        stop stop = new stop();
         private List<stop> stopsList = new List<stop>(); // Lista para almacenar las paradas
         GMarkerGoogle marker;
         GMapOverlay markerOverlay;
@@ -66,6 +69,10 @@ namespace ARventure_Path.Forms
         private void RouteCreationForm_Load(object sender, EventArgs e)
         {
             hideRouteSelection();
+
+            comboBoxSelectRoute.DataSource = RouteOrm.Select();
+
+            comboBoxSelectRoute.SelectedItem = null;
 
             gMapControl1.DragButton = MouseButtons.Left;
             gMapControl1.CanDragMap = true;
@@ -141,7 +148,7 @@ namespace ARventure_Path.Forms
                     }
                     else if(stopsList.Count == 1)
                     {
-                        refreshOverlaysMap(stopsList[selectedIndex].name, (Double)stopsList[selectedIndex].latitude, (Double)stopsList[selectedIndex].longitude);
+                        refreshOverlaysMap(stopsList[0].name, (Double)stopsList[0].latitude, (Double)stopsList[0].longitude);
                     }
                     else
                     {
@@ -172,8 +179,53 @@ namespace ARventure_Path.Forms
 
         private void buttonCreateRoute_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ruta creada con éxito.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (check())
+            {
+                route.time = time;
+                route.distance = distance;
+                route.name = textBoxNameRoute.Text;
+                RouteOrm.Insert(route);
 
+                for (int i = 0;i < stopsList.Count; i++)
+                {
+                    stop.name = stopsList[i].name;
+                    stop.longitude = stopsList[i].longitude;
+                    stop.latitude = stopsList[i].latitude;
+                    stop.route = route;
+                    StopOrm.Insert(stop);
+                }
+                MessageBox.Show("Ruta creada con éxito.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+
+
+
+        }
+
+
+        private Boolean check()
+        {
+            Boolean check;
+
+            if(stopsList.Count > 1)
+            {
+                if (textBoxNameRoute.Text.Trim() != "")
+                {
+                    check = true;
+                }
+                else
+                {
+                    MessageBox.Show("Introduce el nombre de la ruta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    check = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("La ruta debe tener mínimo de 2 paradas", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                check = false;
+            }
+
+            return check;
         }
 
         private void dataGridViewStops_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -247,10 +299,11 @@ namespace ARventure_Path.Forms
             gMapControl1.Zoom = gMapControl1.Zoom - 1;
 
             // Mostrar la distancia en kilómetros con dos decimales
-            labelRouteDistance.Text = stopsRoute.Distance.ToString("N2") + " km";
+            distance = stopsRoute.Distance;
+            labelRouteDistance.Text = distance.ToString("N2") + " km";
 
             // Calculate the estimated time for the new route
-            TimeSpan time = TimeSpan.FromMinutes(15 * stopsRoute.Distance);
+            time = TimeSpan.FromMinutes(15 * stopsRoute.Distance);
 
             // Show the estimated time in minutes without decimals
             labelRouteTime.Text = ((int)time.TotalMinutes).ToString() + " min";

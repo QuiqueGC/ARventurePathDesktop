@@ -24,6 +24,7 @@ namespace ARventure_Path.Models
         public System.TimeSpan time { get; set; }
         public Nullable<int> steps { get; set; }
         public double distance { get; set; }
+        public string name { get; set; }
     
         public virtual ICollection<arventure> arventure { get; set; }
         public virtual ICollection<stop> stop { get; set; }

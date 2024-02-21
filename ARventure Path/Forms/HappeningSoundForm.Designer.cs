@@ -33,7 +33,7 @@
             this.groupboxTxtHappening = new System.Windows.Forms.GroupBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.imgPlay = new System.Windows.Forms.PictureBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBarAudio = new System.Windows.Forms.ProgressBar();
             this.textBoxUrl = new System.Windows.Forms.TextBox();
             this.lblUrl = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -58,7 +58,7 @@
             // 
             this.groupboxTxtHappening.Controls.Add(this.buttonSearch);
             this.groupboxTxtHappening.Controls.Add(this.imgPlay);
-            this.groupboxTxtHappening.Controls.Add(this.progressBar1);
+            this.groupboxTxtHappening.Controls.Add(this.progressBarAudio);
             this.groupboxTxtHappening.Controls.Add(this.textBoxUrl);
             this.groupboxTxtHappening.Controls.Add(this.lblUrl);
             this.groupboxTxtHappening.Controls.Add(this.textBoxName);
@@ -94,12 +94,12 @@
             this.imgPlay.TabIndex = 7;
             this.imgPlay.TabStop = false;
             // 
-            // progressBar1
+            // progressBarAudio
             // 
-            this.progressBar1.Location = new System.Drawing.Point(243, 102);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(245, 23);
-            this.progressBar1.TabIndex = 6;
+            this.progressBarAudio.Location = new System.Drawing.Point(243, 102);
+            this.progressBarAudio.Name = "progressBarAudio";
+            this.progressBarAudio.Size = new System.Drawing.Size(245, 23);
+            this.progressBarAudio.TabIndex = 6;
             // 
             // textBoxUrl
             // 
@@ -281,7 +281,7 @@
         private System.Windows.Forms.ComboBox comboBoxHappenings;
         private System.Windows.Forms.Label labelSelectHappening;
         private System.Windows.Forms.PictureBox imgPlay;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBarAudio;
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSearch;

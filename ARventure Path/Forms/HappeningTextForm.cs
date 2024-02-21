@@ -22,24 +22,28 @@ namespace ARventure_Path.Forms
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            if (textBoxName.Text != "" &&
-                textBoxContent.Text != "" &&
-                comboBoxStories.SelectedIndex > 0)
+            if (textBoxName.Text.Trim() != "" &&
+                textBoxContent.Text.Trim() != "" &&
+                comboBoxStories.SelectedItem != null)
             {
                 happening happening = new happening();
                 happening.name = textBoxName.Text.Trim();
                 happening.text = textBoxContent.Text.Trim();
                 happening.type = "text";
-                happening.idStory = 1;
+                happening.idStory = (int)comboBoxStories.SelectedValue;
 
                 HappeningOrm.Insert(happening);
+
+                MessageBox.Show("El evento se ha guardado correctamente.", "Éxito!");
+
+                Close();
 
             }
             else if (textBoxName.Text == "")
             {
                 MessageBox.Show("No has introducido nombre de evento.", "Error");
 
-            } else if (comboBoxStories.SelectedIndex <= 0)
+            } else if (comboBoxStories.SelectedItem == null)
             {
                 MessageBox.Show("No has escogido la historia a la que pertenece.", "Error");
 
@@ -57,8 +61,10 @@ namespace ARventure_Path.Forms
 
         private void HappeningTextForm_Load(object sender, EventArgs e)
         {
+            
             bindingSourceStory.DataSource = StoryOrm.Select();
             hideHappeningSelection();
+            comboBoxStories.SelectedItem = null;
         }
 
         private void hideHappeningSelection()

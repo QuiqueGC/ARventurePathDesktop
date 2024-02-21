@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelSelectRoute = new System.Windows.Forms.Label();
             this.comboBoxSelectRoute = new System.Windows.Forms.ComboBox();
+            this.bindingSourceRoute = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxGenerateRoute = new System.Windows.Forms.GroupBox();
             this.buttonGenerateRoute = new System.Windows.Forms.Button();
             this.textBoxGenerateRouteAI = new System.Windows.Forms.TextBox();
             this.groupBoxRoute = new System.Windows.Forms.GroupBox();
-            this.buttonPreviewRoute = new System.Windows.Forms.Button();
             this.textBoxLongitude = new System.Windows.Forms.TextBox();
             this.textBoxLatitude = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,6 +52,9 @@
             this.buttonAddNewStop = new System.Windows.Forms.Button();
             this.buttonCreateRoute = new System.Windows.Forms.Button();
             this.buttonCancelRoute = new System.Windows.Forms.Button();
+            this.textBoxNameRoute = new System.Windows.Forms.TextBox();
+            this.labelRuta = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRoute)).BeginInit();
             this.groupBoxGenerateRoute.SuspendLayout();
             this.groupBoxRoute.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStops)).BeginInit();
@@ -68,6 +72,8 @@
             // 
             // comboBoxSelectRoute
             // 
+            this.comboBoxSelectRoute.DataSource = this.bindingSourceRoute;
+            this.comboBoxSelectRoute.DisplayMember = "name";
             this.comboBoxSelectRoute.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSelectRoute.FormattingEnabled = true;
             this.comboBoxSelectRoute.Location = new System.Drawing.Point(174, 21);
@@ -75,6 +81,10 @@
             this.comboBoxSelectRoute.Size = new System.Drawing.Size(245, 21);
             this.comboBoxSelectRoute.TabIndex = 2;
             this.comboBoxSelectRoute.ValueMember = "id";
+            // 
+            // bindingSourceRoute
+            // 
+            this.bindingSourceRoute.DataSource = typeof(ARventure_Path.Models.route);
             // 
             // groupBoxGenerateRoute
             // 
@@ -109,7 +119,8 @@
             // 
             // groupBoxRoute
             // 
-            this.groupBoxRoute.Controls.Add(this.buttonPreviewRoute);
+            this.groupBoxRoute.Controls.Add(this.labelRuta);
+            this.groupBoxRoute.Controls.Add(this.textBoxNameRoute);
             this.groupBoxRoute.Controls.Add(this.textBoxLongitude);
             this.groupBoxRoute.Controls.Add(this.textBoxLatitude);
             this.groupBoxRoute.Controls.Add(this.label4);
@@ -132,28 +143,16 @@
             this.groupBoxRoute.TabStop = false;
             this.groupBoxRoute.Text = "Ruta";
             // 
-            // buttonPreviewRoute
-            // 
-            this.buttonPreviewRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonPreviewRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonPreviewRoute.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonPreviewRoute.Location = new System.Drawing.Point(13, 229);
-            this.buttonPreviewRoute.Name = "buttonPreviewRoute";
-            this.buttonPreviewRoute.Size = new System.Drawing.Size(95, 23);
-            this.buttonPreviewRoute.TabIndex = 23;
-            this.buttonPreviewRoute.Text = "Ver ruta";
-            this.buttonPreviewRoute.UseVisualStyleBackColor = false;
-            // 
             // textBoxLongitude
             // 
-            this.textBoxLongitude.Location = new System.Drawing.Point(13, 111);
+            this.textBoxLongitude.Location = new System.Drawing.Point(13, 192);
             this.textBoxLongitude.Name = "textBoxLongitude";
             this.textBoxLongitude.Size = new System.Drawing.Size(151, 24);
             this.textBoxLongitude.TabIndex = 22;
             // 
             // textBoxLatitude
             // 
-            this.textBoxLatitude.Location = new System.Drawing.Point(13, 186);
+            this.textBoxLatitude.Location = new System.Drawing.Point(13, 267);
             this.textBoxLatitude.Name = "textBoxLatitude";
             this.textBoxLatitude.Size = new System.Drawing.Size(151, 24);
             this.textBoxLatitude.TabIndex = 21;
@@ -162,7 +161,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 88);
+            this.label4.Location = new System.Drawing.Point(9, 169);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 20);
             this.label4.TabIndex = 20;
@@ -172,7 +171,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 166);
+            this.label5.Location = new System.Drawing.Point(9, 247);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 20);
             this.label5.TabIndex = 19;
@@ -180,7 +179,7 @@
             // 
             // textBoxStopName
             // 
-            this.textBoxStopName.Location = new System.Drawing.Point(13, 40);
+            this.textBoxStopName.Location = new System.Drawing.Point(13, 121);
             this.textBoxStopName.Name = "textBoxStopName";
             this.textBoxStopName.Size = new System.Drawing.Size(151, 24);
             this.textBoxStopName.TabIndex = 18;
@@ -189,11 +188,11 @@
             // 
             this.labelStopName.AutoSize = true;
             this.labelStopName.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStopName.Location = new System.Drawing.Point(9, 19);
+            this.labelStopName.Location = new System.Drawing.Point(9, 100);
             this.labelStopName.Name = "labelStopName";
-            this.labelStopName.Size = new System.Drawing.Size(68, 20);
+            this.labelStopName.Size = new System.Drawing.Size(126, 20);
             this.labelStopName.TabIndex = 17;
-            this.labelStopName.Text = "Nombre";
+            this.labelStopName.Text = "Nombre Parada";
             // 
             // gMapControl1
             // 
@@ -331,6 +330,23 @@
             this.buttonCancelRoute.UseVisualStyleBackColor = false;
             this.buttonCancelRoute.Click += new System.EventHandler(this.buttonCancelRoute_Click);
             // 
+            // textBoxNameRoute
+            // 
+            this.textBoxNameRoute.Location = new System.Drawing.Point(13, 55);
+            this.textBoxNameRoute.Name = "textBoxNameRoute";
+            this.textBoxNameRoute.Size = new System.Drawing.Size(151, 24);
+            this.textBoxNameRoute.TabIndex = 23;
+            // 
+            // labelRuta
+            // 
+            this.labelRuta.AutoSize = true;
+            this.labelRuta.Font = new System.Drawing.Font("Century", 12F);
+            this.labelRuta.Location = new System.Drawing.Point(10, 35);
+            this.labelRuta.Name = "labelRuta";
+            this.labelRuta.Size = new System.Drawing.Size(143, 20);
+            this.labelRuta.TabIndex = 24;
+            this.labelRuta.Text = "Nombre de la ruta";
+            // 
             // RouteCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,6 +362,7 @@
             this.Name = "RouteCreationForm";
             this.Text = "Creación de ruta";
             this.Load += new System.EventHandler(this.RouteCreationForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRoute)).EndInit();
             this.groupBoxGenerateRoute.ResumeLayout(false);
             this.groupBoxGenerateRoute.PerformLayout();
             this.groupBoxRoute.ResumeLayout(false);
@@ -380,6 +397,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxStopName;
         private System.Windows.Forms.Label labelStopName;
-        private System.Windows.Forms.Button buttonPreviewRoute;
+        private System.Windows.Forms.BindingSource bindingSourceRoute;
+        private System.Windows.Forms.Label labelRuta;
+        private System.Windows.Forms.TextBox textBoxNameRoute;
     }
 }
