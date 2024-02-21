@@ -225,5 +225,10 @@ namespace ARventure_Path
             eventSoundForm.ShowDialog();
 
         }
+
+        private void aventuraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace ARventure_Path.Forms
         {
             story.name = textBoxStoryTitle.Text;
             story.summary = textBoxSummary.Text;
-            story.img = "";
+            story.img = story.id.ToString() + ".png";
 
 
             StoryOrm.Insert(story);
@@ -97,8 +97,8 @@ namespace ARventure_Path.Forms
             // lista no supera al número indicado por el usuario
             if (CanAddFragments())
             {
-                //FragmentCreationForm fragmentCreationForm = new FragmentCreationForm(story);
-                //fragmentCreationForm.ShowDialog();
+                FragmentCreationForm fragmentCreationForm = new FragmentCreationForm(story);
+                fragmentCreationForm.ShowDialog();
             }
 
         }
@@ -107,7 +107,7 @@ namespace ARventure_Path.Forms
         {
             int numberTextBoxFragment = int.Parse(textBoxFragmentQuantity.Text);
             //Si es número que escribe el usuario es mayor que uno, y si el número añadido es mayor al número de fragments
-            //if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > story.TxtFragments.Count))
+            //if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > listBoxFragmentStory.Count))//nombre de la lista
             {
 
                 return true;
@@ -168,7 +168,7 @@ namespace ARventure_Path.Forms
 
         private void buttonCancelStory_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void StoryCreationForm_Load(object sender, EventArgs e)

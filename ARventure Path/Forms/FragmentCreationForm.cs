@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ARventure_Path.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace ARventure_Path.Forms
     public partial class FragmentCreationForm : Form
     {
 
-        public FragmentCreationForm()
+        public FragmentCreationForm(story story)
         {
             InitializeComponent();
             

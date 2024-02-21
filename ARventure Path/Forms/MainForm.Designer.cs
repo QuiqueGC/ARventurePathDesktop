@@ -32,6 +32,7 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.asdasdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +58,8 @@
             this.crearToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.borrarToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.achievementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +90,7 @@
             this.rutaToolStripMenuItem,
             this.aventuraToolStripMenuItem,
             this.eventosToolStripMenuItem,
+            this.achievementToolStripMenuItem,
             this.toolStripSeparator1,
             this.salirToolStripMenuItem});
             this.archivoToolStripMenuItem.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -95,6 +98,11 @@
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.archivoToolStripMenuItem.Text = "Archivo";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // asdasdToolStripMenuItem
             // 
@@ -170,6 +178,7 @@
             this.aventuraToolStripMenuItem.Name = "aventuraToolStripMenuItem";
             this.aventuraToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.aventuraToolStripMenuItem.Text = "Aventura";
+            this.aventuraToolStripMenuItem.Click += new System.EventHandler(this.aventuraToolStripMenuItem_Click);
             // 
             // crearToolStripMenuItem2
             // 
@@ -247,21 +256,21 @@
             // crearToolStripMenuItem4
             // 
             this.crearToolStripMenuItem4.Name = "crearToolStripMenuItem4";
-            this.crearToolStripMenuItem4.Size = new System.Drawing.Size(180, 24);
+            this.crearToolStripMenuItem4.Size = new System.Drawing.Size(157, 24);
             this.crearToolStripMenuItem4.Text = "Crear";
             this.crearToolStripMenuItem4.Click += new System.EventHandler(this.crearEventoImagenToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem3
             // 
             this.modificarToolStripMenuItem3.Name = "modificarToolStripMenuItem3";
-            this.modificarToolStripMenuItem3.Size = new System.Drawing.Size(180, 24);
+            this.modificarToolStripMenuItem3.Size = new System.Drawing.Size(157, 24);
             this.modificarToolStripMenuItem3.Text = "Modificar";
             this.modificarToolStripMenuItem3.Click += new System.EventHandler(this.modificarEventoImagenToolStripMenuItem_Click);
             // 
             // borrarToolStripMenuItem4
             // 
             this.borrarToolStripMenuItem4.Name = "borrarToolStripMenuItem4";
-            this.borrarToolStripMenuItem4.Size = new System.Drawing.Size(180, 24);
+            this.borrarToolStripMenuItem4.Size = new System.Drawing.Size(157, 24);
             this.borrarToolStripMenuItem4.Text = "Borrar";
             this.borrarToolStripMenuItem4.Click += new System.EventHandler(this.borrarEventoImagenToolStripMenuItem_Click);
             // 
@@ -278,28 +287,38 @@
             // crearToolStripMenuItem5
             // 
             this.crearToolStripMenuItem5.Name = "crearToolStripMenuItem5";
-            this.crearToolStripMenuItem5.Size = new System.Drawing.Size(180, 24);
+            this.crearToolStripMenuItem5.Size = new System.Drawing.Size(157, 24);
             this.crearToolStripMenuItem5.Text = "Crear";
             this.crearToolStripMenuItem5.Click += new System.EventHandler(this.crearEventoSonidoToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem4
             // 
             this.modificarToolStripMenuItem4.Name = "modificarToolStripMenuItem4";
-            this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(180, 24);
+            this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(157, 24);
             this.modificarToolStripMenuItem4.Text = "Modificar";
             this.modificarToolStripMenuItem4.Click += new System.EventHandler(this.modificarEventoSonidoToolStripMenuItem_Click);
             // 
             // borrarToolStripMenuItem5
             // 
             this.borrarToolStripMenuItem5.Name = "borrarToolStripMenuItem5";
-            this.borrarToolStripMenuItem5.Size = new System.Drawing.Size(180, 24);
+            this.borrarToolStripMenuItem5.Size = new System.Drawing.Size(157, 24);
             this.borrarToolStripMenuItem5.Text = "Borrar";
             this.borrarToolStripMenuItem5.Click += new System.EventHandler(this.borrarEventoSonidoToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
+            // achievementToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.achievementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.crearToolStripMenuItem6});
+            this.achievementToolStripMenuItem.Image = global::ARventure_Path.Properties.Resources.logro;
+            this.achievementToolStripMenuItem.Name = "achievementToolStripMenuItem";
+            this.achievementToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.achievementToolStripMenuItem.Text = "Logros";
+            // 
+            // crearToolStripMenuItem6
+            // 
+            this.crearToolStripMenuItem6.Name = "crearToolStripMenuItem6";
+            this.crearToolStripMenuItem6.Size = new System.Drawing.Size(180, 24);
+            this.crearToolStripMenuItem6.Text = "Crear";
             // 
             // salirToolStripMenuItem
             // 
@@ -364,6 +383,8 @@
         private System.Windows.Forms.ToolStripMenuItem crearToolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem borrarToolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem achievementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crearToolStripMenuItem6;
     }
 }
 
