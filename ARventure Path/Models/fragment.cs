@@ -17,6 +17,7 @@ namespace ARventure_Path.Models
         public int id { get; set; }
         public int ordinal { get; set; }
         public int idStory { get; set; }
+        public string content { get; set; }
     
         public virtual story story { get; set; }
     }
