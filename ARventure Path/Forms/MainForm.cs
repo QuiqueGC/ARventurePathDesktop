@@ -21,7 +21,7 @@ namespace ARventure_Path
         private HappeningTextForm eventTextForm;
         private HappeningImageForm eventImageForm;
         private HappeningSoundForm eventSoundForm;
-
+        private AchievementForm achievementForm;
 
         public MainForm()
         {
@@ -233,7 +233,14 @@ namespace ARventure_Path
 
         private void crearToolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            
+            achievementForm = new AchievementForm(true);
+            achievementForm.ShowDialog();
+        }
+
+        private void borrarToolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            achievementForm = new AchievementForm(false);
+            achievementForm.ShowDialog();
         }
     }
 }

@@ -293,6 +293,7 @@
       <DependentUpon>ModelARDB.edmx</DependentUpon>
       <LastGenOutput>ModelARDB.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logros.png" />
     <None Include="Resources\logro.png" />
   </ItemGroup>
   <ItemGroup />

@@ -61,6 +61,7 @@
             this.crearToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.borrarToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -303,7 +304,8 @@
             // achievementToolStripMenuItem
             // 
             this.achievementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.crearToolStripMenuItem6});
+            this.crearToolStripMenuItem6,
+            this.borrarToolStripMenuItem6});
             this.achievementToolStripMenuItem.Image = global::ARventure_Path.Properties.Resources.logro;
             this.achievementToolStripMenuItem.Name = "achievementToolStripMenuItem";
             this.achievementToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
@@ -328,6 +330,13 @@
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
+            // borrarToolStripMenuItem6
+            // 
+            this.borrarToolStripMenuItem6.Name = "borrarToolStripMenuItem6";
+            this.borrarToolStripMenuItem6.Size = new System.Drawing.Size(180, 24);
+            this.borrarToolStripMenuItem6.Text = "Borrar";
+            this.borrarToolStripMenuItem6.Click += new System.EventHandler(this.borrarToolStripMenuItem6_Click);
             // 
             // MainForm
             // 
@@ -386,6 +395,7 @@
         private System.Windows.Forms.ToolStripMenuItem borrarToolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem achievementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearToolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem borrarToolStripMenuItem6;
     }
 }
 

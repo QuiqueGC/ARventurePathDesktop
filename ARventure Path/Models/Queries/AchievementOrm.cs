@@ -13,5 +13,11 @@ namespace ARventure_Path.Models
             Orm.db.achievement.Add(achievement);
             Orm.db.SaveChanges();
         }
+        public static List<achievement> Select()
+        {
+            List<achievement> _achievement = Orm.db.achievement.ToList();
+
+            return _achievement;
+        }
     }
 }
