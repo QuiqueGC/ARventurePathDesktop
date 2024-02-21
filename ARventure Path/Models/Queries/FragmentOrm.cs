@@ -8,5 +8,10 @@ namespace ARventure_Path.Models
 {
     public static class FragmentOrm
     {
+        public static void Insert(fragment fragment)
+        {
+            Orm.db.fragment.Add(fragment);
+            Orm.db.SaveChanges();
+        }
     }
 }

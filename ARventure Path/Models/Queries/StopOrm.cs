@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace ARventure_Path.Models
 {
-    public static class StoryOrm
+    public static class StopOrm
     {
+        public static void Insert(stop stop)
+        {
+            Orm.db.stop.Add(stop);
+            Orm.db.SaveChanges();
+        }
     }
 }

@@ -132,19 +132,19 @@
     <Compile Include="Models\achievement.cs">
       <DependentUpon>ModelARDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AchievementOrm.cs" />
+    <Compile Include="Models\Queries\AchievementOrm.cs" />
     <Compile Include="Models\arventure.cs">
       <DependentUpon>ModelARDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ArventureOrm.cs" />
+    <Compile Include="Models\Queries\ArventureOrm.cs" />
     <Compile Include="Models\fragment.cs">
       <DependentUpon>ModelARDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FragmentOrm.cs" />
+    <Compile Include="Models\Queries\FragmentOrm.cs" />
     <Compile Include="Models\happening.cs">
       <DependentUpon>ModelARDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HappeningOrm.cs" />
+    <Compile Include="Models\Queries\HappeningOrm.cs" />
     <Compile Include="Models\ModelARDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -160,23 +160,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelARDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Orm.cs" />
+    <Compile Include="Models\Queries\Orm.cs" />
     <Compile Include="Models\route.cs">
       <DependentUpon>ModelARDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RouteOrm.cs" />
+    <Compile Include="Models\Queries\RouteOrm.cs" />
     <Compile Include="Models\stop.cs">
       <DependentUpon>ModelARDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StopOrm.cs" />
+    <Compile Include="Models\Queries\StopOrm.cs" />
     <Compile Include="Models\story.cs">
       <DependentUpon>ModelARDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StoryOrm.cs" />
+    <Compile Include="Models\Queries\StoryOrm.cs" />
     <Compile Include="Models\user.cs">
       <DependentUpon>ModelARDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserOrm.cs" />
+    <Compile Include="Models\Queries\UserOrm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\ARventureCreationForm.resx">
@@ -224,6 +224,15 @@
       <DependentUpon>ModelARDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.achievement.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.arventure.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.fragment.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.happening.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.Orm.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.route.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.stop.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.story.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.user.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
