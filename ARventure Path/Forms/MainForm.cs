@@ -230,5 +230,10 @@ namespace ARventure_Path
         {
 
         }
+
+        private void crearToolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -32,7 +32,6 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.asdasdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +59,7 @@
             this.borrarToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.achievementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -98,11 +98,6 @@
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.archivoToolStripMenuItem.Text = "Archivo";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // asdasdToolStripMenuItem
             // 
@@ -183,21 +178,21 @@
             // crearToolStripMenuItem2
             // 
             this.crearToolStripMenuItem2.Name = "crearToolStripMenuItem2";
-            this.crearToolStripMenuItem2.Size = new System.Drawing.Size(180, 24);
+            this.crearToolStripMenuItem2.Size = new System.Drawing.Size(157, 24);
             this.crearToolStripMenuItem2.Text = "Crear";
             this.crearToolStripMenuItem2.Click += new System.EventHandler(this.crearAventuraToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem1
             // 
             this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
-            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(157, 24);
             this.modificarToolStripMenuItem1.Text = "Modificar";
             this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarAventuraToolStripMenuItem_Click);
             // 
             // borrarToolStripMenuItem2
             // 
             this.borrarToolStripMenuItem2.Name = "borrarToolStripMenuItem2";
-            this.borrarToolStripMenuItem2.Size = new System.Drawing.Size(180, 24);
+            this.borrarToolStripMenuItem2.Size = new System.Drawing.Size(157, 24);
             this.borrarToolStripMenuItem2.Text = "Borrar";
             this.borrarToolStripMenuItem2.Click += new System.EventHandler(this.borrarAventuraToolStripMenuItem_Click);
             // 
@@ -319,6 +314,12 @@
             this.crearToolStripMenuItem6.Name = "crearToolStripMenuItem6";
             this.crearToolStripMenuItem6.Size = new System.Drawing.Size(180, 24);
             this.crearToolStripMenuItem6.Text = "Crear";
+            this.crearToolStripMenuItem6.Click += new System.EventHandler(this.crearToolStripMenuItem6_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // salirToolStripMenuItem
             // 
