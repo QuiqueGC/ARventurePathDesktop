@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ARDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ARDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="achievement">
           <Key>
             <PropertyRef Name="id" />
@@ -38,6 +38,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ordinal" Type="int" Nullable="false" />
           <Property Name="idStory" Type="int" Nullable="false" />
+          <Property Name="content" Type="varchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <EntityType Name="happening">
           <Key>
@@ -58,6 +59,7 @@
           <Property Name="time" Type="time" Precision="7" Nullable="false" />
           <Property Name="steps" Type="int" />
           <Property Name="distance" Type="float" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="stop">
           <Key>
@@ -311,8 +313,7 @@
             <End Role="user_play_arventure" EntitySet="user_play_arventure" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ARDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -349,6 +350,7 @@
           <Property Name="ordinal" Type="Int32" Nullable="false" />
           <Property Name="idStory" Type="Int32" Nullable="false" />
           <NavigationProperty Name="story" Relationship="Self.FK_fragment_story" FromRole="fragment" ToRole="story" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="happening">
           <Key>
@@ -373,6 +375,7 @@
           <Property Name="distance" Type="Double" Nullable="false" />
           <NavigationProperty Name="arventure" Relationship="Self.FK_arventure_route" FromRole="route" ToRole="arventure" />
           <NavigationProperty Name="stop" Relationship="Self.FK_stop_route" FromRole="route" ToRole="stop" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="stop">
           <Key>
@@ -570,6 +573,7 @@
           <EntitySetMapping Name="fragment">
             <EntityTypeMapping TypeName="ARDBModel.fragment">
               <MappingFragment StoreEntitySet="fragment">
+                <ScalarProperty Name="content" ColumnName="content" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ordinal" ColumnName="ordinal" />
                 <ScalarProperty Name="idStory" ColumnName="idStory" />
@@ -591,6 +595,7 @@
           <EntitySetMapping Name="route">
             <EntityTypeMapping TypeName="ARDBModel.route">
               <MappingFragment StoreEntitySet="route">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="time" ColumnName="time" />
                 <ScalarProperty Name="steps" ColumnName="steps" />
