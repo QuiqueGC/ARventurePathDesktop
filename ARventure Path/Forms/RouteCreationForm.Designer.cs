@@ -74,7 +74,6 @@
             this.comboBoxSelectRoute.Name = "comboBoxSelectRoute";
             this.comboBoxSelectRoute.Size = new System.Drawing.Size(245, 21);
             this.comboBoxSelectRoute.TabIndex = 2;
-            this.comboBoxSelectRoute.ValueMember = "id";
             // 
             // groupBoxGenerateRoute
             // 
