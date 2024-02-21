@@ -24,7 +24,7 @@ namespace ARventure_Path.Forms
         {
             if (textBoxName.Text.Trim() != "" &&
                 textBoxContent.Text.Trim() != "" &&
-                comboBoxStories.SelectedIndex > 0)
+                comboBoxStories.SelectedItem != null)
             {
                 happening happening = new happening();
                 happening.name = textBoxName.Text.Trim();
@@ -36,12 +36,14 @@ namespace ARventure_Path.Forms
 
                 MessageBox.Show("El evento se ha guardado correctamente.", "Éxito!");
 
+                Close();
+
             }
             else if (textBoxName.Text == "")
             {
                 MessageBox.Show("No has introducido nombre de evento.", "Error");
 
-            } else if (comboBoxStories.SelectedIndex <= 0)
+            } else if (comboBoxStories.SelectedItem == null)
             {
                 MessageBox.Show("No has escogido la historia a la que pertenece.", "Error");
 
@@ -59,8 +61,10 @@ namespace ARventure_Path.Forms
 
         private void HappeningTextForm_Load(object sender, EventArgs e)
         {
+            
             bindingSourceStory.DataSource = StoryOrm.Select();
             hideHappeningSelection();
+            comboBoxStories.SelectedItem = null;
         }
 
         private void hideHappeningSelection()
