@@ -18,10 +18,12 @@ namespace ARventure_Path.Forms
     {
 
         story story = new story();
+        bool isCreation;
         
 
-        public StoryCreationForm()
+        public StoryCreationForm(bool isCreation)
         {
+            this.isCreation = isCreation;
             InitializeComponent();
             //listBoxFragmentStory.DataSource = story.TxtFragments;
 
@@ -32,8 +34,25 @@ namespace ARventure_Path.Forms
         {
             story.name = textBoxStoryTitle.Text;
             story.summary = textBoxSummary.Text;
+            story.img = "";
+
+
+            StoryOrm.Insert(story);
+
+
+            /*for (int i = 0; listaLength; i++)
+            {
+                fragment fragment = new fragment();
+                fragment.story = story;
+                fragment.ordinal = i;
+                fragment.
+                FragmentOrm.Insert(fragment);
+            }*/
+
+            //FragmentOrm.Insert(fragment);
+
             //Guardar en la lista de stories...//Guardar en un objeto story que tenga los parámetros
-            Console.WriteLine(story);
+            //Console.WriteLine(story);
         }
 
         private void buttonSearchImage_Click(object sender, EventArgs e)
@@ -148,6 +167,21 @@ namespace ARventure_Path.Forms
         private void buttonCancelStory_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void StoryCreationForm_Load(object sender, EventArgs e)
+        {
+            hideStorySelection();
+            bindingSourceStory.DataSource = StoryOrm.Select();
+        }
+
+        private void hideStorySelection()
+        {
+            if (isCreation)
+            {
+                labelSelectStory.Visible = false;
+                comboBoxSelectStory.Visible = false;
+            }
         }
     }
 }

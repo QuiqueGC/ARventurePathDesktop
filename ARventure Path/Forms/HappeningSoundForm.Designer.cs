@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HappeningSoundForm));
             this.groupboxTxtHappening = new System.Windows.Forms.GroupBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.imgPlay = new System.Windows.Forms.PictureBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.textBoxUrl = new System.Windows.Forms.TextBox();
@@ -43,10 +45,13 @@
             this.labelSelectHappening = new System.Windows.Forms.Label();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
+            this.comboBoxStories = new System.Windows.Forms.ComboBox();
+            this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.groupboxTxtHappening.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlay)).BeginInit();
             this.gbIA.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.SuspendLayout();
             // 
             // groupboxTxtHappening
@@ -62,9 +67,22 @@
             this.groupboxTxtHappening.Location = new System.Drawing.Point(17, 218);
             this.groupboxTxtHappening.Name = "groupboxTxtHappening";
             this.groupboxTxtHappening.Size = new System.Drawing.Size(511, 163);
-            this.groupboxTxtHappening.TabIndex = 7;
+            this.groupboxTxtHappening.TabIndex = 3;
             this.groupboxTxtHappening.TabStop = false;
             this.groupboxTxtHappening.Text = "Evento de Audio";
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSearch.Font = new System.Drawing.Font("Century", 10F);
+            this.buttonSearch.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonSearch.Location = new System.Drawing.Point(195, 69);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.TabIndex = 15;
+            this.buttonSearch.Text = "Buscar";
+            this.buttonSearch.UseVisualStyleBackColor = false;
             // 
             // imgPlay
             // 
@@ -123,7 +141,7 @@
             this.gbIA.Location = new System.Drawing.Point(17, 63);
             this.gbIA.Name = "gbIA";
             this.gbIA.Size = new System.Drawing.Size(511, 134);
-            this.gbIA.TabIndex = 6;
+            this.gbIA.TabIndex = 2;
             this.gbIA.TabStop = false;
             this.gbIA.Text = "Generar por IA";
             // 
@@ -151,16 +169,16 @@
             // 
             this.comboBoxHappenings.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxHappenings.FormattingEnabled = true;
-            this.comboBoxHappenings.Location = new System.Drawing.Point(189, 24);
+            this.comboBoxHappenings.Location = new System.Drawing.Point(215, 11);
             this.comboBoxHappenings.Name = "comboBoxHappenings";
             this.comboBoxHappenings.Size = new System.Drawing.Size(235, 21);
-            this.comboBoxHappenings.TabIndex = 5;
+            this.comboBoxHappenings.TabIndex = 0;
             // 
             // labelSelectHappening
             // 
             this.labelSelectHappening.AutoSize = true;
             this.labelSelectHappening.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSelectHappening.Location = new System.Drawing.Point(19, 22);
+            this.labelSelectHappening.Location = new System.Drawing.Point(25, 9);
             this.labelSelectHappening.Name = "labelSelectHappening";
             this.labelSelectHappening.Size = new System.Drawing.Size(164, 20);
             this.labelSelectHappening.TabIndex = 4;
@@ -191,19 +209,33 @@
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Cancelar";
             this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // buttonSearch
+            // comboBoxStories
             // 
-            this.buttonSearch.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonSearch.Font = new System.Drawing.Font("Century", 10F);
-            this.buttonSearch.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSearch.Location = new System.Drawing.Point(195, 69);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearch.TabIndex = 15;
-            this.buttonSearch.Text = "Buscar";
-            this.buttonSearch.UseVisualStyleBackColor = false;
+            this.comboBoxStories.DataSource = this.bindingSourceStory;
+            this.comboBoxStories.DisplayMember = "name";
+            this.comboBoxStories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStories.FormattingEnabled = true;
+            this.comboBoxStories.Location = new System.Drawing.Point(215, 37);
+            this.comboBoxStories.Name = "comboBoxStories";
+            this.comboBoxStories.Size = new System.Drawing.Size(235, 21);
+            this.comboBoxStories.TabIndex = 1;
+            this.comboBoxStories.ValueMember = "id";
+            // 
+            // bindingSourceStory
+            // 
+            this.bindingSourceStory.DataSource = typeof(ARventure_Path.Models.story);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(25, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(174, 20);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Seleccionar historia";
             // 
             // HappeningSoundForm
             // 
@@ -211,6 +243,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(544, 422);
+            this.Controls.Add(this.comboBoxStories);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupboxTxtHappening);
             this.Controls.Add(this.gbIA);
             this.Controls.Add(this.buttonCancel);
@@ -221,12 +255,14 @@
             this.MaximizeBox = false;
             this.Name = "HappeningSoundForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "                          ";
+            this.Text = "Creación de evento de audio                       ";
+            this.Load += new System.EventHandler(this.HappeningSoundForm_Load);
             this.groupboxTxtHappening.ResumeLayout(false);
             this.groupboxTxtHappening.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlay)).EndInit();
             this.gbIA.ResumeLayout(false);
             this.gbIA.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,5 +285,8 @@
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.ComboBox comboBoxStories;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.BindingSource bindingSourceStory;
     }
 }

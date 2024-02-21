@@ -13,9 +13,11 @@ namespace ARventure_Path.Forms
 {
     public partial class HappeningTextForm : Form
     {
-        public HappeningTextForm()
+        bool isCreation;
+        public HappeningTextForm(bool isCreation)
         {
             InitializeComponent();
+            this.isCreation = isCreation;
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
@@ -28,7 +30,7 @@ namespace ARventure_Path.Forms
                 happening.name = textBoxName.Text.Trim();
                 happening.text = textBoxContent.Text.Trim();
                 happening.type = "text";
-                happening.idStory = comboBoxStories.SelectedIndex;
+                happening.idStory = 1;
 
                 HappeningOrm.Insert(happening);
 
@@ -51,6 +53,21 @@ namespace ARventure_Path.Forms
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void HappeningTextForm_Load(object sender, EventArgs e)
+        {
+            bindingSourceStory.DataSource = StoryOrm.Select();
+            hideHappeningSelection();
+        }
+
+        private void hideHappeningSelection()
+        {
+            if (isCreation)
+            {
+                labelSelectHappening.Visible = false;
+                comboBoxHappenings.Visible = false;
+            }
         }
     }
 }

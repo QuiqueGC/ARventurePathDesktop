@@ -8,5 +8,10 @@ namespace ARventure_Path.Models
 {
     public static class ArventureOrm
     {
+        public static void Insert(arventure arventure)
+        {
+            Orm.db.arventure.Add(arventure);
+            Orm.db.SaveChanges();
+        }
     }
 }

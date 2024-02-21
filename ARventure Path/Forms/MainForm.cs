@@ -83,24 +83,6 @@ namespace ARventure_Path
             }
         }
 
-        private void eventoDeTextoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            eventTextForm = new HappeningTextForm();
-            eventTextForm.ShowDialog();
-        }
-
-        private void eventoDeImagenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            eventImageForm = new HappeningImageForm();
-            eventImageForm.ShowDialog();
-        }
-
-        private void eventoDeSonidoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            eventSoundForm = new HappeningSoundForm();
-            eventSoundForm.ShowDialog();
-        }
-
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -110,48 +92,48 @@ namespace ARventure_Path
         private void crearHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            storyCreationForm = new StoryCreationForm();
+            storyCreationForm = new StoryCreationForm(true);
             addingFormmToPanel(storyCreationForm);
         }
 
         private void modificarHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            storyCreationForm = new StoryCreationForm();
+            storyCreationForm = new StoryCreationForm(false);
             addingFormmToPanel(storyCreationForm);
         }
         private void borrarHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            storyCreationForm = new StoryCreationForm();
+            storyCreationForm = new StoryCreationForm(false);
             addingFormmToPanel(storyCreationForm);
         }
 
         private void crearRutaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            routeCreationForm = new RouteCreationForm();
+            routeCreationForm = new RouteCreationForm(true);
             addingFormmToPanel(routeCreationForm);
         }
 
         private void modificarRutaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            routeCreationForm = new RouteCreationForm();
+            routeCreationForm = new RouteCreationForm(false);
             addingFormmToPanel(routeCreationForm);
         }
 
         private void borrarRutaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            routeCreationForm = new RouteCreationForm();
+            routeCreationForm = new RouteCreationForm(false);
             addingFormmToPanel(routeCreationForm);
         }
 
         private void crearAventuraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            arventureCreationForm = new ARventureCreationForm();
+            arventureCreationForm = new ARventureCreationForm(true);
             addingFormmToPanel(arventureCreationForm);
 
         }
@@ -159,14 +141,14 @@ namespace ARventure_Path
         private void modificarAventuraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            arventureCreationForm = new ARventureCreationForm();
+            arventureCreationForm = new ARventureCreationForm(false);
             addingFormmToPanel(arventureCreationForm);
         }
 
         private void borrarAventuraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            arventureCreationForm = new ARventureCreationForm();
+            arventureCreationForm = new ARventureCreationForm(false);
             addingFormmToPanel(arventureCreationForm);
         }
 
@@ -187,6 +169,61 @@ namespace ARventure_Path
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             showConfirmDialogAndExit(e);
+        }
+
+        private void crearEventoTextoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventTextForm = new HappeningTextForm(true);
+            eventTextForm.ShowDialog();
+        }
+
+        private void modificarEventoTextoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventTextForm = new HappeningTextForm(false);
+            eventTextForm.ShowDialog();
+        }
+
+        private void borrarEventoTextoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventTextForm = new HappeningTextForm(false);
+            eventTextForm.ShowDialog();
+        }
+
+        private void crearEventoImagenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventImageForm = new HappeningImageForm(true);
+            eventImageForm.ShowDialog();
+        }
+
+        private void modificarEventoImagenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventImageForm = new HappeningImageForm(false);
+            eventImageForm.ShowDialog();
+        }
+
+        private void borrarEventoImagenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventImageForm = new HappeningImageForm(false);
+            eventImageForm.ShowDialog();
+        }
+
+        private void crearEventoSonidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventSoundForm = new HappeningSoundForm(true);
+            eventSoundForm.ShowDialog();
+        }
+
+        private void modificarEventoSonidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventSoundForm = new HappeningSoundForm(false);
+            eventSoundForm.ShowDialog();
+        }
+
+        private void borrarEventoSonidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventSoundForm = new HappeningSoundForm(false);
+            eventSoundForm.ShowDialog();
+
         }
     }
 }

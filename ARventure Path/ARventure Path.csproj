@@ -224,6 +224,15 @@
       <DependentUpon>ModelARDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.achievement.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.arventure.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.fragment.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.happening.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.Orm.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.route.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.stop.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.story.datasource" />
+    <None Include="Properties\DataSources\ARventure_Path.Models.user.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

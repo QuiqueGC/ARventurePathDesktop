@@ -24,9 +24,12 @@ namespace ARventure_Path.Forms
         double LatStart = 41.390712;
         double LngStart = 2.169874;
 
-        public RouteCreationForm()
+        bool isCreation;
+
+        public RouteCreationForm(bool isCreation)
         {
             InitializeComponent();
+            this.isCreation = isCreation;
         }
 
         private void refreshTable()
@@ -62,6 +65,7 @@ namespace ARventure_Path.Forms
 
         private void RouteCreationForm_Load(object sender, EventArgs e)
         {
+            hideRouteSelection();
 
             gMapControl1.DragButton = MouseButtons.Left;
             gMapControl1.CanDragMap = true;
@@ -78,6 +82,15 @@ namespace ARventure_Path.Forms
 
             refreshOverlaysMap("Barcelona",LatStart, LngStart);
 
+        }
+
+        private void hideRouteSelection()
+        {
+            if (isCreation)
+            {
+                labelSelectRoute.Visible = false;
+                comboBoxSelectRoute.Visible = false;
+            }
         }
 
         private void buttonAddNewStop_Click(object sender, EventArgs e)

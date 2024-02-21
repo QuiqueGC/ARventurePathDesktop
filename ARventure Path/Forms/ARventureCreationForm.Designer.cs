@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelSelectRoute = new System.Windows.Forms.Label();
-            this.comboBoxSelectRoute = new System.Windows.Forms.ComboBox();
+            this.components = new System.ComponentModel.Container();
+            this.labelSelectArventure = new System.Windows.Forms.Label();
+            this.comboBoxSelectArventure = new System.Windows.Forms.ComboBox();
             this.groupBoxStory = new System.Windows.Forms.GroupBox();
             this.buttonSeeDetailStory = new System.Windows.Forms.Button();
             this.buttonSelectStory = new System.Windows.Forms.Button();
             this.listBoxStories = new System.Windows.Forms.ListBox();
+            this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxRoutes = new System.Windows.Forms.GroupBox();
             this.buttonSeeDetailRoute = new System.Windows.Forms.Button();
             this.buttonSelectRoute = new System.Windows.Forms.Button();
@@ -63,6 +65,7 @@
             this.buttonCreateArventure = new System.Windows.Forms.Button();
             this.buttonCancelArventure = new System.Windows.Forms.Button();
             this.groupBoxStory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.groupBoxRoutes.SuspendLayout();
             this.groupBoxHappening.SuspendLayout();
             this.groupBoxArventure.SuspendLayout();
@@ -72,24 +75,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStoryImg)).BeginInit();
             this.SuspendLayout();
             // 
-            // labelSelectRoute
+            // labelSelectArventure
             // 
-            this.labelSelectRoute.AutoSize = true;
-            this.labelSelectRoute.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSelectRoute.Location = new System.Drawing.Point(22, 18);
-            this.labelSelectRoute.Name = "labelSelectRoute";
-            this.labelSelectRoute.Size = new System.Drawing.Size(120, 16);
-            this.labelSelectRoute.TabIndex = 2;
-            this.labelSelectRoute.Text = "Seleccionar ruta";
+            this.labelSelectArventure.AutoSize = true;
+            this.labelSelectArventure.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSelectArventure.Location = new System.Drawing.Point(22, 18);
+            this.labelSelectArventure.Name = "labelSelectArventure";
+            this.labelSelectArventure.Size = new System.Drawing.Size(160, 16);
+            this.labelSelectArventure.TabIndex = 2;
+            this.labelSelectArventure.Text = "Seleccionar Arventure";
             // 
-            // comboBoxSelectRoute
+            // comboBoxSelectArventure
             // 
-            this.comboBoxSelectRoute.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSelectRoute.FormattingEnabled = true;
-            this.comboBoxSelectRoute.Location = new System.Drawing.Point(148, 17);
-            this.comboBoxSelectRoute.Name = "comboBoxSelectRoute";
-            this.comboBoxSelectRoute.Size = new System.Drawing.Size(245, 21);
-            this.comboBoxSelectRoute.TabIndex = 3;
+            this.comboBoxSelectArventure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSelectArventure.FormattingEnabled = true;
+            this.comboBoxSelectArventure.Location = new System.Drawing.Point(188, 17);
+            this.comboBoxSelectArventure.Name = "comboBoxSelectArventure";
+            this.comboBoxSelectArventure.Size = new System.Drawing.Size(245, 21);
+            this.comboBoxSelectArventure.TabIndex = 3;
             // 
             // groupBoxStory
             // 
@@ -130,12 +133,19 @@
             // 
             // listBoxStories
             // 
+            this.listBoxStories.DataSource = this.bindingSourceStory;
+            this.listBoxStories.DisplayMember = "name";
             this.listBoxStories.FormattingEnabled = true;
             this.listBoxStories.ItemHeight = 16;
             this.listBoxStories.Location = new System.Drawing.Point(16, 19);
             this.listBoxStories.Name = "listBoxStories";
             this.listBoxStories.Size = new System.Drawing.Size(167, 132);
             this.listBoxStories.TabIndex = 0;
+            this.listBoxStories.ValueMember = "id";
+            // 
+            // bindingSourceStory
+            // 
+            this.bindingSourceStory.DataSource = typeof(ARventure_Path.Models.story);
             // 
             // groupBoxRoutes
             // 
@@ -437,6 +447,7 @@
             this.buttonCancelArventure.TabIndex = 9;
             this.buttonCancelArventure.Text = "Cancelar";
             this.buttonCancelArventure.UseVisualStyleBackColor = false;
+            this.buttonCancelArventure.Click += new System.EventHandler(this.buttonCancelArventure_Click);
             // 
             // ARventureCreationForm
             // 
@@ -450,11 +461,13 @@
             this.Controls.Add(this.groupBoxRoutes);
             this.Controls.Add(this.groupBoxHappening);
             this.Controls.Add(this.groupBoxStory);
-            this.Controls.Add(this.comboBoxSelectRoute);
-            this.Controls.Add(this.labelSelectRoute);
+            this.Controls.Add(this.comboBoxSelectArventure);
+            this.Controls.Add(this.labelSelectArventure);
             this.Name = "ARventureCreationForm";
             this.Text = "Creación de aventura";
+            this.Load += new System.EventHandler(this.ARventureCreationForm_Load);
             this.groupBoxStory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.groupBoxRoutes.ResumeLayout(false);
             this.groupBoxHappening.ResumeLayout(false);
             this.groupBoxArventure.ResumeLayout(false);
@@ -472,8 +485,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelSelectRoute;
-        private System.Windows.Forms.ComboBox comboBoxSelectRoute;
+        private System.Windows.Forms.Label labelSelectArventure;
+        private System.Windows.Forms.ComboBox comboBoxSelectArventure;
         private System.Windows.Forms.GroupBox groupBoxStory;
         private System.Windows.Forms.ListBox listBoxStories;
         private System.Windows.Forms.GroupBox groupBoxRoutes;
@@ -506,5 +519,6 @@
         private System.Windows.Forms.Label labelTimeRoute;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelDistanceRoute;
+        private System.Windows.Forms.BindingSource bindingSourceStory;
     }
 }
