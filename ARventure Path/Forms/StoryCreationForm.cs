@@ -47,7 +47,7 @@ namespace ARventure_Path.Forms
                 fragment fragment = new fragment();
                 fragment.story = story;
                 fragment.ordinal = i;
-                fragment.
+                fragment.content = ;
                 FragmentOrm.Insert(fragment);
             }*/
 
