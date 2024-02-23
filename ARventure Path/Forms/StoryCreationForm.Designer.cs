@@ -46,7 +46,7 @@
             this.buttonSearchImage = new System.Windows.Forms.Button();
             this.textBoxSummary = new System.Windows.Forms.TextBox();
             this.labelSummary = new System.Windows.Forms.Label();
-            this.textBoxImageRoute = new System.Windows.Forms.TextBox();
+            this.textBoxImageStory = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxStory = new System.Windows.Forms.PictureBox();
             this.textBoxStoryTitle = new System.Windows.Forms.TextBox();
@@ -136,7 +136,7 @@
             this.gbStory.Controls.Add(this.buttonSearchImage);
             this.gbStory.Controls.Add(this.textBoxSummary);
             this.gbStory.Controls.Add(this.labelSummary);
-            this.gbStory.Controls.Add(this.textBoxImageRoute);
+            this.gbStory.Controls.Add(this.textBoxImageStory);
             this.gbStory.Controls.Add(this.label1);
             this.gbStory.Controls.Add(this.pictureBoxStory);
             this.gbStory.Controls.Add(this.textBoxStoryTitle);
@@ -246,14 +246,14 @@
             this.labelSummary.TabIndex = 5;
             this.labelSummary.Text = "Resumen";
             // 
-            // textBoxImageRoute
+            // textBoxImageStory
             // 
-            this.textBoxImageRoute.Enabled = false;
-            this.textBoxImageRoute.Location = new System.Drawing.Point(13, 242);
-            this.textBoxImageRoute.Name = "textBoxImageRoute";
-            this.textBoxImageRoute.Size = new System.Drawing.Size(341, 21);
-            this.textBoxImageRoute.TabIndex = 1;
-            this.textBoxImageRoute.TabStop = false;
+            this.textBoxImageStory.Enabled = false;
+            this.textBoxImageStory.Location = new System.Drawing.Point(13, 242);
+            this.textBoxImageStory.Name = "textBoxImageStory";
+            this.textBoxImageStory.Size = new System.Drawing.Size(341, 21);
+            this.textBoxImageStory.TabIndex = 1;
+            this.textBoxImageStory.TabStop = false;
             // 
             // label1
             // 
@@ -362,7 +362,7 @@
         private System.Windows.Forms.Button buttonSearchImage;
         private System.Windows.Forms.TextBox textBoxSummary;
         private System.Windows.Forms.Label labelSummary;
-        private System.Windows.Forms.TextBox textBoxImageRoute;
+        private System.Windows.Forms.TextBox textBoxImageStory;
         private System.Windows.Forms.GroupBox gbFragments;
         private System.Windows.Forms.TextBox textBoxFragmentQuantity;
         private System.Windows.Forms.Label label2;

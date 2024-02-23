@@ -19,7 +19,7 @@ namespace ARventure_Path.Forms
 
         story story = new story();
         bool isCreation;
-        
+        string fileName;
 
         private string StoryImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
 
@@ -36,7 +36,7 @@ namespace ARventure_Path.Forms
         {
             story.name = textBoxStoryTitle.Text.ToLower().Trim();
             story.summary = textBoxSummary.Text.ToLower().Trim();
-            story.img = story.name + ".png";
+            story.img = fileName;
 
 
             StoryOrm.Insert(story);
@@ -67,7 +67,11 @@ namespace ARventure_Path.Forms
             {
                 var image = Image.FromFile(abrir.FileName);
                 pictureBoxStory.Image = image;
-                textBoxImageRoute.Text = abrir.FileName;
+                string filePath = abrir.FileName;
+                textBoxImageStory.Text = filePath;
+                fileName = Path.GetFileName(filePath);
+                MessageBox.Show(fileName);
+
                 SaveImage(image);
             }
         }
@@ -85,7 +89,7 @@ namespace ARventure_Path.Forms
             {
                 Directory.CreateDirectory(StoryImagePath);
             }
-            String destinationPath = Path.Combine(StoryImagePath, story.name + ".png");
+            String destinationPath = Path.Combine(StoryImagePath, fileName);
             image.Save(destinationPath, ImageFormat.Png);
             story.img = destinationPath;
         }

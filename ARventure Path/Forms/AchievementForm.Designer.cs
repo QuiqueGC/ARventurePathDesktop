@@ -33,7 +33,7 @@
             this.pictureBoxAchievement = new System.Windows.Forms.PictureBox();
             this.textBoxNameAchievement = new System.Windows.Forms.TextBox();
             this.buttonCancelAchievement = new System.Windows.Forms.Button();
-            this.buttonAchievement = new System.Windows.Forms.Button();
+            this.buttonAcceptAchievement = new System.Windows.Forms.Button();
             this.labelSelectAchievement = new System.Windows.Forms.Label();
             this.comboBoxSelectAchievement = new System.Windows.Forms.ComboBox();
             this.bindingSourceAchievement = new System.Windows.Forms.BindingSource(this.components);
@@ -86,19 +86,19 @@
             this.buttonCancelAchievement.UseVisualStyleBackColor = false;
             this.buttonCancelAchievement.Click += new System.EventHandler(this.buttonCancelAchievement_Click);
             // 
-            // buttonAchievement
+            // buttonAcceptAchievement
             // 
-            this.buttonAchievement.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonAchievement.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAchievement.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAchievement.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonAchievement.Location = new System.Drawing.Point(390, 377);
-            this.buttonAchievement.Name = "buttonAchievement";
-            this.buttonAchievement.Size = new System.Drawing.Size(75, 23);
-            this.buttonAchievement.TabIndex = 4;
-            this.buttonAchievement.Text = "Guardar";
-            this.buttonAchievement.UseVisualStyleBackColor = false;
-            this.buttonAchievement.Click += new System.EventHandler(this.buttonAchievement_Click);
+            this.buttonAcceptAchievement.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonAcceptAchievement.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAcceptAchievement.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAcceptAchievement.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonAcceptAchievement.Location = new System.Drawing.Point(390, 377);
+            this.buttonAcceptAchievement.Name = "buttonAcceptAchievement";
+            this.buttonAcceptAchievement.Size = new System.Drawing.Size(75, 23);
+            this.buttonAcceptAchievement.TabIndex = 4;
+            this.buttonAcceptAchievement.Text = "Guardar";
+            this.buttonAcceptAchievement.UseVisualStyleBackColor = false;
+            this.buttonAcceptAchievement.Click += new System.EventHandler(this.buttonAcceptAchievement_Click);
             // 
             // labelSelectAchievement
             // 
@@ -170,7 +170,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxSelectAchievement);
             this.Controls.Add(this.labelSelectAchievement);
-            this.Controls.Add(this.buttonAchievement);
+            this.Controls.Add(this.buttonAcceptAchievement);
             this.Controls.Add(this.buttonCancelAchievement);
             this.Controls.Add(this.textBoxNameAchievement);
             this.Controls.Add(this.pictureBoxAchievement);
@@ -194,7 +194,7 @@
         private System.Windows.Forms.PictureBox pictureBoxAchievement;
         private System.Windows.Forms.TextBox textBoxNameAchievement;
         private System.Windows.Forms.Button buttonCancelAchievement;
-        private System.Windows.Forms.Button buttonAchievement;
+        private System.Windows.Forms.Button buttonAcceptAchievement;
         private System.Windows.Forms.Label labelSelectAchievement;
         private System.Windows.Forms.ComboBox comboBoxSelectAchievement;
         private System.Windows.Forms.BindingSource bindingSourceAchievement;

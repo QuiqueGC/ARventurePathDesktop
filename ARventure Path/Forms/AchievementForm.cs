@@ -27,13 +27,13 @@ namespace ARventure_Path.Forms
             this.isCreation = isCreation;
         }
 
-        private void buttonAchievement_Click(object sender, EventArgs e)
+        private void buttonAcceptAchievement_Click(object sender, EventArgs e)
         {
 
-            if (buttonAchievement.Text.Equals("Guardar"))
+            if (buttonAcceptAchievement.Text.Equals("Guardar"))
             {
                 achievement.name = textBoxNameAchievement.Text;
-                achievement.img = achievement.name + ".png";
+                achievement.img = fileName;
 
                 //AchievementOrm.Insert(achievement);
 
@@ -58,10 +58,10 @@ namespace ARventure_Path.Forms
                 textBoxImageAchievement.Text = abrir.FileName;
                 SaveImage(image);*/
                 pictureBoxAchievement.Image = image;
-                string filename = abrir.FileName;
-                textBoxImageAchievement.Text = filename;
-                fileName = Path.GetFileName(filename);
-                MessageBox.Show(filename);
+                string filePath = abrir.FileName;
+                textBoxImageAchievement.Text = filePath;
+                fileName = Path.GetFileName(filePath);
+                MessageBox.Show(fileName);
 
                 SaveImage(image);
             }
@@ -74,7 +74,7 @@ namespace ARventure_Path.Forms
             {
                 Directory.CreateDirectory(AchievementImagePath);
             }
-            String destinationPath = Path.Combine(AchievementImagePath, achievement.name + ".png");
+            String destinationPath = Path.Combine(AchievementImagePath, fileName);
             image.Save(destinationPath, ImageFormat.Png);
             achievement.img = destinationPath;
 
