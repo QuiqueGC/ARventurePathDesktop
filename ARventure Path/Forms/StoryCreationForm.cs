@@ -34,13 +34,18 @@ namespace ARventure_Path.Forms
 
         private void buttonCreateStory_Click(object sender, EventArgs e)
         {
+            String msg = "";
             story.name = textBoxStoryTitle.Text;
             story.summary = textBoxSummary.Text;
             story.img = story.id.ToString() + ".png";
 
 
-            StoryOrm.Insert(story);
+            msg = StoryOrm.Insert(story);
 
+            if(msg != "")
+            {
+                MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             /*for (int i = 0; listaLength; i++)
             {

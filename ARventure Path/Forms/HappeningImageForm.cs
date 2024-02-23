@@ -56,6 +56,7 @@ namespace ARventure_Path.Forms
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
+            String msg = "";
             if (textBoxName.Text.Trim() != "" &&
                 fileName != null &&
                 comboBoxStories.SelectedItem != null) 
@@ -67,12 +68,16 @@ namespace ARventure_Path.Forms
                 happening.idStory = (int)comboBoxStories.SelectedValue;
                 SaveImage();
 
-                HappeningOrm.Insert(happening);
-
-                MessageBox.Show("Evento creado satisfactoriamente.", "Éxito!");
-
-                Close();
-
+                msg = HappeningOrm.Insert(happening);
+                if (msg != "")
+                {
+                    MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Evento creado satisfactoriamente.", "Éxito!");
+                    Close();
+                }
             }
             else if(textBoxName.Text.Trim() == "")
             {
@@ -83,10 +88,6 @@ namespace ARventure_Path.Forms
             {
                 MessageBox.Show("No has escogido la historia a la que pertenece.", "Error");
 
-            }
-            else if (comboBoxStories.SelectedIndex <= 0)
-            {
-                MessageBox.Show("No has escrito nada en el contenido.", "Error");
             }
         }
 
