@@ -34,6 +34,7 @@ namespace ARventure_Path.Forms
 
         private void buttonCreateStory_Click(object sender, EventArgs e)
         {
+            string msg = "";
             story.name = textBoxStoryTitle.Text.ToLower().Trim();
             story.summary = textBoxSummary.Text.ToLower().Trim();
             story.img = fileName;
