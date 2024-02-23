@@ -8,10 +8,10 @@ namespace ARventure_Path.Models
 {
     public static class FragmentOrm
     {
-        public static void Insert(fragment fragment)
+        public static String Insert(fragment fragment)
         {
             Orm.db.fragment.Add(fragment);
-            Orm.db.SaveChanges();
+            return Orm.MySaveChanges();
         }
 
         public static List<fragment> Select()
@@ -21,10 +21,10 @@ namespace ARventure_Path.Models
             return _fragment;
         }
 
-        public static void Delete(fragment _fragment)
+        public static String Delete(fragment _fragment)
         {
             Orm.db.fragment.Remove(_fragment);
-            Orm.db.SaveChanges();
+            return Orm.MySaveChanges();
         }
     }
 }

@@ -8,10 +8,10 @@ namespace ARventure_Path.Models
 {
     public static class ArventureOrm
     {
-        public static void Insert(arventure arventure)
+        public static String Insert(arventure arventure)
         {
             Orm.db.arventure.Add(arventure);
-            Orm.db.SaveChanges();
+            return Orm.MySaveChanges();
         }
 
         public static List<arventure> Select()
@@ -20,10 +20,10 @@ namespace ARventure_Path.Models
 
             return _arventure;
         }
-        public static void Delete(arventure _arventure)
+        public static String Delete(arventure _arventure)
         {
             Orm.db.arventure.Remove(_arventure);
-            Orm.db.SaveChanges();
+            return Orm.MySaveChanges();
         }
     }
 }

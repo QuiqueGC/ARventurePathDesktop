@@ -8,10 +8,10 @@ namespace ARventure_Path.Models
 {
     public static class RouteOrm
     {
-        public static void Insert(route route)
+        public static String Insert(route route)
         {
             Orm.db.route.Add(route);
-            Orm.db.SaveChanges();
+            return Orm.MySaveChanges();
         }
 
         public static List<route> Select()
@@ -21,10 +21,10 @@ namespace ARventure_Path.Models
             return _routes;
         }
 
-        public static void Delete(route _route)
+        public static String Delete(route _route)
         {
             Orm.db.route.Remove(_route);
-            Orm.db.SaveChanges();
+            return Orm.MySaveChanges();
         }
     }
 }

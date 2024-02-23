@@ -8,10 +8,10 @@ namespace ARventure_Path.Models
 {
     public static class AchievementOrm
     {
-        public static void Insert(achievement achievement)
+        public static String Insert(achievement achievement)
         {
             Orm.db.achievement.Add(achievement);
-            Orm.db.SaveChanges();
+            return Orm.MySaveChanges();
         }
         public static List<achievement> Select()
         {
@@ -20,10 +20,10 @@ namespace ARventure_Path.Models
             return _achievement;
         }
 
-        public static void Delete(achievement _achievement)
+        public static String Delete(achievement _achievement)
         {
             Orm.db.achievement.Remove(_achievement);
-            Orm.db.SaveChanges();
+            return Orm.MySaveChanges();
         }
     }
 }
