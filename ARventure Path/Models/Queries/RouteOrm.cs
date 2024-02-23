@@ -20,5 +20,11 @@ namespace ARventure_Path.Models
 
             return _routes;
         }
+
+        public static void Delete(route _route)
+        {
+            Orm.db.route.Remove(_route);
+            Orm.db.SaveChanges();
+        }
     }
 }

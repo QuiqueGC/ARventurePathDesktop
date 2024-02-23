@@ -19,5 +19,11 @@ namespace ARventure_Path.Models
 
             return _achievement;
         }
+
+        public static void Delete(achievement _achievement)
+        {
+            Orm.db.achievement.Remove(_achievement);
+            Orm.db.SaveChanges();
+        }
     }
 }

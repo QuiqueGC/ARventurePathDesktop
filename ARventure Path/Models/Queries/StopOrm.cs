@@ -13,5 +13,17 @@ namespace ARventure_Path.Models
             Orm.db.stop.Add(stop);
             Orm.db.SaveChanges();
         }
+
+        public static List<stop> Select()
+        {
+            List<stop> _stop = Orm.db.stop.ToList();
+
+            return _stop;
+        }
+        public static void Delete(stop _stop)
+        {
+            Orm.db.stop.Remove(_stop);
+            Orm.db.SaveChanges();
+        }
     }
 }

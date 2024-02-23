@@ -20,5 +20,10 @@ namespace ARventure_Path.Models
 
             return _stories;
         }
+        public static void Delete(story _story)
+        {
+            Orm.db.story.Remove(_story);
+            Orm.db.SaveChanges();
+        }
     }
 }
