@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.labelSelectStory = new System.Windows.Forms.Label();
             this.comboBoxSelectStory = new System.Windows.Forms.ComboBox();
+            this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
             this.gbGenerateForIA = new System.Windows.Forms.GroupBox();
             this.buttonGenerateStory = new System.Windows.Forms.Button();
             this.buttonGenerateImage = new System.Windows.Forms.Button();
@@ -52,12 +53,11 @@
             this.labelStoryTitle = new System.Windows.Forms.Label();
             this.buttonCreateStory = new System.Windows.Forms.Button();
             this.buttonCancelStory = new System.Windows.Forms.Button();
-            this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.gbGenerateForIA.SuspendLayout();
             this.gbStory.SuspendLayout();
             this.gbFragments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSelectStory
@@ -81,6 +81,10 @@
             this.comboBoxSelectStory.Size = new System.Drawing.Size(245, 21);
             this.comboBoxSelectStory.TabIndex = 0;
             this.comboBoxSelectStory.ValueMember = "id";
+            // 
+            // bindingSourceStory
+            // 
+            this.bindingSourceStory.DataSource = typeof(ARventure_Path.Models.story);
             // 
             // gbGenerateForIA
             // 
@@ -314,16 +318,12 @@
             this.buttonCancelStory.UseVisualStyleBackColor = false;
             this.buttonCancelStory.Click += new System.EventHandler(this.buttonCancelStory_Click);
             // 
-            // bindingSourceStory
-            // 
-            this.bindingSourceStory.DataSource = typeof(ARventure_Path.Models.story);
-            // 
             // StoryCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(818, 457);
+            this.ClientSize = new System.Drawing.Size(964, 611);
             this.Controls.Add(this.buttonCancelStory);
             this.Controls.Add(this.buttonCreateStory);
             this.Controls.Add(this.gbStory);
@@ -333,6 +333,7 @@
             this.Name = "StoryCreationForm";
             this.Text = "Creación de historia";
             this.Load += new System.EventHandler(this.StoryCreationForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.gbGenerateForIA.ResumeLayout(false);
             this.gbGenerateForIA.PerformLayout();
             this.gbStory.ResumeLayout(false);
@@ -340,7 +341,6 @@
             this.gbFragments.ResumeLayout(false);
             this.gbFragments.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

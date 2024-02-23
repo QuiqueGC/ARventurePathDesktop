@@ -21,7 +21,7 @@ namespace ARventure_Path.Forms
         bool isCreation;
         
 
-        private const string StoryImagePath = @"C:\Desktop\StoryImagePath";
+        private string StoryImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
 
         public StoryCreationForm(bool isCreation)
         {
@@ -34,9 +34,9 @@ namespace ARventure_Path.Forms
 
         private void buttonCreateStory_Click(object sender, EventArgs e)
         {
-            story.name = textBoxStoryTitle.Text;
-            story.summary = textBoxSummary.Text;
-            story.img = story.id.ToString() + ".png";
+            story.name = textBoxStoryTitle.Text.ToLower().Trim();
+            story.summary = textBoxSummary.Text.ToLower().Trim();
+            story.img = story.name + ".png";
 
 
             StoryOrm.Insert(story);
@@ -85,7 +85,7 @@ namespace ARventure_Path.Forms
             {
                 Directory.CreateDirectory(StoryImagePath);
             }
-            String destinationPath = Path.Combine(StoryImagePath, story.id.ToString() + ".png");
+            String destinationPath = Path.Combine(StoryImagePath, story.name + ".png");
             image.Save(destinationPath, ImageFormat.Png);
             story.img = destinationPath;
         }
