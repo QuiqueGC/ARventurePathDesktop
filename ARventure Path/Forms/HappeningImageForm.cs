@@ -16,7 +16,7 @@ namespace ARventure_Path.Forms
     public partial class HappeningImageForm : Form
     {
         bool isCreation;
-        private const string StoryImagePath = @"C:\Desktop\StoryImagePath";
+        private string imgPath = Path.Combine(Application.StartupPath,"..","..", "filesToServer", "imgHappening");
         private static Image image;
         string fileName;
 
@@ -46,11 +46,11 @@ namespace ARventure_Path.Forms
         private void SaveImage()
         {
             // Si la carpeta no existe, la crea
-            if (!Directory.Exists(StoryImagePath))
+            if (!Directory.Exists(imgPath))
             {
-                Directory.CreateDirectory(StoryImagePath);
+                Directory.CreateDirectory(imgPath);
             }
-            String destinationPath = Path.Combine(StoryImagePath, fileName);
+            String destinationPath = Path.Combine(imgPath, fileName);
             image.Save(destinationPath, ImageFormat.Png);
         }
 
