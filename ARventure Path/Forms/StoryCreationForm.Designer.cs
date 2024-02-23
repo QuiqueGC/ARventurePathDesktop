@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.labelSelectStory = new System.Windows.Forms.Label();
             this.comboBoxSelectStory = new System.Windows.Forms.ComboBox();
+            this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
             this.gbGenerateForIA = new System.Windows.Forms.GroupBox();
             this.buttonGenerateStory = new System.Windows.Forms.Button();
             this.buttonGenerateImage = new System.Windows.Forms.Button();
@@ -45,19 +46,18 @@
             this.buttonSearchImage = new System.Windows.Forms.Button();
             this.textBoxSummary = new System.Windows.Forms.TextBox();
             this.labelSummary = new System.Windows.Forms.Label();
-            this.textBoxImageRoute = new System.Windows.Forms.TextBox();
+            this.textBoxImageStory = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxStory = new System.Windows.Forms.PictureBox();
             this.textBoxStoryTitle = new System.Windows.Forms.TextBox();
             this.labelStoryTitle = new System.Windows.Forms.Label();
             this.buttonCreateStory = new System.Windows.Forms.Button();
             this.buttonCancelStory = new System.Windows.Forms.Button();
-            this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.gbGenerateForIA.SuspendLayout();
             this.gbStory.SuspendLayout();
             this.gbFragments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSelectStory
@@ -81,6 +81,10 @@
             this.comboBoxSelectStory.Size = new System.Drawing.Size(245, 21);
             this.comboBoxSelectStory.TabIndex = 0;
             this.comboBoxSelectStory.ValueMember = "id";
+            // 
+            // bindingSourceStory
+            // 
+            this.bindingSourceStory.DataSource = typeof(ARventure_Path.Models.story);
             // 
             // gbGenerateForIA
             // 
@@ -132,7 +136,7 @@
             this.gbStory.Controls.Add(this.buttonSearchImage);
             this.gbStory.Controls.Add(this.textBoxSummary);
             this.gbStory.Controls.Add(this.labelSummary);
-            this.gbStory.Controls.Add(this.textBoxImageRoute);
+            this.gbStory.Controls.Add(this.textBoxImageStory);
             this.gbStory.Controls.Add(this.label1);
             this.gbStory.Controls.Add(this.pictureBoxStory);
             this.gbStory.Controls.Add(this.textBoxStoryTitle);
@@ -242,14 +246,14 @@
             this.labelSummary.TabIndex = 5;
             this.labelSummary.Text = "Resumen";
             // 
-            // textBoxImageRoute
+            // textBoxImageStory
             // 
-            this.textBoxImageRoute.Enabled = false;
-            this.textBoxImageRoute.Location = new System.Drawing.Point(13, 242);
-            this.textBoxImageRoute.Name = "textBoxImageRoute";
-            this.textBoxImageRoute.Size = new System.Drawing.Size(341, 21);
-            this.textBoxImageRoute.TabIndex = 1;
-            this.textBoxImageRoute.TabStop = false;
+            this.textBoxImageStory.Enabled = false;
+            this.textBoxImageStory.Location = new System.Drawing.Point(13, 242);
+            this.textBoxImageStory.Name = "textBoxImageStory";
+            this.textBoxImageStory.Size = new System.Drawing.Size(341, 21);
+            this.textBoxImageStory.TabIndex = 1;
+            this.textBoxImageStory.TabStop = false;
             // 
             // label1
             // 
@@ -314,16 +318,12 @@
             this.buttonCancelStory.UseVisualStyleBackColor = false;
             this.buttonCancelStory.Click += new System.EventHandler(this.buttonCancelStory_Click);
             // 
-            // bindingSourceStory
-            // 
-            this.bindingSourceStory.DataSource = typeof(ARventure_Path.Models.story);
-            // 
             // StoryCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(818, 457);
+            this.ClientSize = new System.Drawing.Size(964, 611);
             this.Controls.Add(this.buttonCancelStory);
             this.Controls.Add(this.buttonCreateStory);
             this.Controls.Add(this.gbStory);
@@ -333,6 +333,7 @@
             this.Name = "StoryCreationForm";
             this.Text = "Creación de historia";
             this.Load += new System.EventHandler(this.StoryCreationForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.gbGenerateForIA.ResumeLayout(false);
             this.gbGenerateForIA.PerformLayout();
             this.gbStory.ResumeLayout(false);
@@ -340,7 +341,6 @@
             this.gbFragments.ResumeLayout(false);
             this.gbFragments.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -362,7 +362,7 @@
         private System.Windows.Forms.Button buttonSearchImage;
         private System.Windows.Forms.TextBox textBoxSummary;
         private System.Windows.Forms.Label labelSummary;
-        private System.Windows.Forms.TextBox textBoxImageRoute;
+        private System.Windows.Forms.TextBox textBoxImageStory;
         private System.Windows.Forms.GroupBox gbFragments;
         private System.Windows.Forms.TextBox textBoxFragmentQuantity;
         private System.Windows.Forms.Label label2;

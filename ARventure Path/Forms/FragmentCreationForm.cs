@@ -24,6 +24,7 @@ namespace ARventure_Path.Forms
         private void buttonAcceptFragment_Click(object sender, EventArgs e)
         {
             //story.TxtFragments.Add(textBoxCreateFragment.Text);
+            
             this.Close();
             
         }

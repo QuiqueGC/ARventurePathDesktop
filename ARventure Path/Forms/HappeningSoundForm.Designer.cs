@@ -31,13 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HappeningSoundForm));
             this.groupboxTxtHappening = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.macTrackBarVolume = new XComponent.SliderBar.MACTrackBar();
+            this.macTrackBarPlayer = new XComponent.SliderBar.MACTrackBar();
+            this.btnStop = new System.Windows.Forms.PictureBox();
+            this.btnPlay = new System.Windows.Forms.PictureBox();
             this.buttonSearch = new System.Windows.Forms.Button();
-            this.imgPlay = new System.Windows.Forms.PictureBox();
-            this.progressBarAudio = new System.Windows.Forms.ProgressBar();
             this.textBoxUrl = new System.Windows.Forms.TextBox();
             this.lblUrl = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
+            this.Mp3Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.gbIA = new System.Windows.Forms.GroupBox();
             this.buttonGenerateHappening = new System.Windows.Forms.Button();
             this.textboxIAPrompt = new System.Windows.Forms.TextBox();
@@ -48,17 +52,24 @@
             this.comboBoxStories = new System.Windows.Forms.ComboBox();
             this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupboxTxtHappening.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPlay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnStop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Mp3Player)).BeginInit();
             this.gbIA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.SuspendLayout();
             // 
             // groupboxTxtHappening
             // 
+            this.groupboxTxtHappening.Controls.Add(this.pictureBox1);
+            this.groupboxTxtHappening.Controls.Add(this.macTrackBarVolume);
+            this.groupboxTxtHappening.Controls.Add(this.macTrackBarPlayer);
+            this.groupboxTxtHappening.Controls.Add(this.btnStop);
+            this.groupboxTxtHappening.Controls.Add(this.btnPlay);
             this.groupboxTxtHappening.Controls.Add(this.buttonSearch);
-            this.groupboxTxtHappening.Controls.Add(this.imgPlay);
-            this.groupboxTxtHappening.Controls.Add(this.progressBarAudio);
             this.groupboxTxtHappening.Controls.Add(this.textBoxUrl);
             this.groupboxTxtHappening.Controls.Add(this.lblUrl);
             this.groupboxTxtHappening.Controls.Add(this.textBoxName);
@@ -71,41 +82,110 @@
             this.groupboxTxtHappening.TabStop = false;
             this.groupboxTxtHappening.Text = "Evento de Audio";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ARventure_Path.Properties.Resources.volume;
+            this.pictureBox1.Location = new System.Drawing.Point(200, 69);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            // 
+            // macTrackBarVolume
+            // 
+            this.macTrackBarVolume.BackColor = System.Drawing.Color.Transparent;
+            this.macTrackBarVolume.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.macTrackBarVolume.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.macTrackBarVolume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(125)))), ((int)(((byte)(123)))));
+            this.macTrackBarVolume.IndentHeight = 6;
+            this.macTrackBarVolume.Location = new System.Drawing.Point(244, 76);
+            this.macTrackBarVolume.Maximum = 100;
+            this.macTrackBarVolume.Minimum = 0;
+            this.macTrackBarVolume.Name = "macTrackBarVolume";
+            this.macTrackBarVolume.Size = new System.Drawing.Size(83, 24);
+            this.macTrackBarVolume.TabIndex = 20;
+            this.macTrackBarVolume.TextTickStyle = System.Windows.Forms.TickStyle.None;
+            this.macTrackBarVolume.TickColor = System.Drawing.Color.DarkSlateBlue;
+            this.macTrackBarVolume.TickHeight = 4;
+            this.macTrackBarVolume.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.macTrackBarVolume.TrackerColor = System.Drawing.Color.DarkSlateBlue;
+            this.macTrackBarVolume.TrackerSize = new System.Drawing.Size(12, 12);
+            this.macTrackBarVolume.TrackLineColor = System.Drawing.Color.Silver;
+            this.macTrackBarVolume.TrackLineHeight = 3;
+            this.macTrackBarVolume.TrackLineSelectedColor = System.Drawing.Color.DarkSlateBlue;
+            this.macTrackBarVolume.Value = 0;
+            this.macTrackBarVolume.ValueChanged += new XComponent.SliderBar.ValueChangedHandler(this.macTrackBarVolume_ValueChanged);
+            // 
+            // macTrackBarPlayer
+            // 
+            this.macTrackBarPlayer.BackColor = System.Drawing.Color.Transparent;
+            this.macTrackBarPlayer.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.macTrackBarPlayer.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.macTrackBarPlayer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(125)))), ((int)(((byte)(123)))));
+            this.macTrackBarPlayer.IndentHeight = 6;
+            this.macTrackBarPlayer.Location = new System.Drawing.Point(188, 106);
+            this.macTrackBarPlayer.Maximum = 100;
+            this.macTrackBarPlayer.Minimum = 0;
+            this.macTrackBarPlayer.Name = "macTrackBarPlayer";
+            this.macTrackBarPlayer.Size = new System.Drawing.Size(301, 28);
+            this.macTrackBarPlayer.TabIndex = 19;
+            this.macTrackBarPlayer.TextTickStyle = System.Windows.Forms.TickStyle.None;
+            this.macTrackBarPlayer.TickColor = System.Drawing.Color.DarkSlateBlue;
+            this.macTrackBarPlayer.TickHeight = 4;
+            this.macTrackBarPlayer.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.macTrackBarPlayer.TrackerColor = System.Drawing.Color.DarkSlateBlue;
+            this.macTrackBarPlayer.TrackerSize = new System.Drawing.Size(16, 16);
+            this.macTrackBarPlayer.TrackLineColor = System.Drawing.Color.Silver;
+            this.macTrackBarPlayer.TrackLineHeight = 3;
+            this.macTrackBarPlayer.TrackLineSelectedColor = System.Drawing.Color.DarkSlateBlue;
+            this.macTrackBarPlayer.Value = 0;
+            this.macTrackBarPlayer.ValueChanged += new XComponent.SliderBar.ValueChangedHandler(this.macTrackBarPlayer_ValueChanged);
+            // 
+            // btnStop
+            // 
+            this.btnStop.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStop.Image = global::ARventure_Path.Properties.Resources.stop;
+            this.btnStop.Location = new System.Drawing.Point(19, 76);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(80, 72);
+            this.btnStop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnStop.TabIndex = 18;
+            this.btnStop.TabStop = false;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPlay.Image = global::ARventure_Path.Properties.Resources.play;
+            this.btnPlay.Location = new System.Drawing.Point(105, 76);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(77, 72);
+            this.btnPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnPlay.TabIndex = 17;
+            this.btnPlay.TabStop = false;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            // 
             // buttonSearch
             // 
             this.buttonSearch.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSearch.Font = new System.Drawing.Font("Century", 10F);
             this.buttonSearch.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSearch.Location = new System.Drawing.Point(195, 69);
+            this.buttonSearch.Location = new System.Drawing.Point(430, 40);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(75, 23);
             this.buttonSearch.TabIndex = 15;
             this.buttonSearch.Text = "Buscar";
             this.buttonSearch.UseVisualStyleBackColor = false;
-            // 
-            // imgPlay
-            // 
-            this.imgPlay.Image = ((System.Drawing.Image)(resources.GetObject("imgPlay.Image")));
-            this.imgPlay.Location = new System.Drawing.Point(204, 102);
-            this.imgPlay.Name = "imgPlay";
-            this.imgPlay.Size = new System.Drawing.Size(27, 23);
-            this.imgPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgPlay.TabIndex = 7;
-            this.imgPlay.TabStop = false;
-            // 
-            // progressBarAudio
-            // 
-            this.progressBarAudio.Location = new System.Drawing.Point(243, 102);
-            this.progressBarAudio.Name = "progressBarAudio";
-            this.progressBarAudio.Size = new System.Drawing.Size(245, 23);
-            this.progressBarAudio.TabIndex = 6;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // textBoxUrl
             // 
             this.textBoxUrl.Location = new System.Drawing.Point(195, 39);
             this.textBoxUrl.Name = "textBoxUrl";
-            this.textBoxUrl.Size = new System.Drawing.Size(303, 24);
+            this.textBoxUrl.ReadOnly = true;
+            this.textBoxUrl.Size = new System.Drawing.Size(229, 24);
             this.textBoxUrl.TabIndex = 3;
             // 
             // lblUrl
@@ -132,6 +212,17 @@
             this.lblName.Size = new System.Drawing.Size(59, 17);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Nombre";
+            // 
+            // Mp3Player
+            // 
+            this.Mp3Player.Enabled = true;
+            this.Mp3Player.Location = new System.Drawing.Point(29, 387);
+            this.Mp3Player.Name = "Mp3Player";
+            this.Mp3Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Mp3Player.OcxState")));
+            this.Mp3Player.Size = new System.Drawing.Size(39, 35);
+            this.Mp3Player.TabIndex = 16;
+            this.Mp3Player.Visible = false;
+            this.Mp3Player.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.Mp3Player_PlayStateChange);
             // 
             // gbIA
             // 
@@ -196,6 +287,7 @@
             this.buttonCreate.TabIndex = 4;
             this.buttonCreate.Text = "Crear";
             this.buttonCreate.UseVisualStyleBackColor = false;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonCancel
             // 
@@ -237,6 +329,12 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Seleccionar historia";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // HappeningSoundForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +343,7 @@
             this.ClientSize = new System.Drawing.Size(544, 422);
             this.Controls.Add(this.comboBoxStories);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.Mp3Player);
             this.Controls.Add(this.groupboxTxtHappening);
             this.Controls.Add(this.gbIA);
             this.Controls.Add(this.buttonCancel);
@@ -259,7 +358,10 @@
             this.Load += new System.EventHandler(this.HappeningSoundForm_Load);
             this.groupboxTxtHappening.ResumeLayout(false);
             this.groupboxTxtHappening.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPlay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnStop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Mp3Player)).EndInit();
             this.gbIA.ResumeLayout(false);
             this.gbIA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
@@ -280,13 +382,18 @@
         private System.Windows.Forms.TextBox textboxIAPrompt;
         private System.Windows.Forms.ComboBox comboBoxHappenings;
         private System.Windows.Forms.Label labelSelectHappening;
-        private System.Windows.Forms.PictureBox imgPlay;
-        private System.Windows.Forms.ProgressBar progressBarAudio;
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.ComboBox comboBoxStories;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource bindingSourceStory;
+        private AxWMPLib.AxWindowsMediaPlayer Mp3Player;
+        private System.Windows.Forms.PictureBox btnPlay;
+        private System.Windows.Forms.PictureBox btnStop;
+        private XComponent.SliderBar.MACTrackBar macTrackBarVolume;
+        private XComponent.SliderBar.MACTrackBar macTrackBarPlayer;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

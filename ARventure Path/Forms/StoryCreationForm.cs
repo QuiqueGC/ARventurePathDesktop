@@ -19,9 +19,9 @@ namespace ARventure_Path.Forms
 
         story story = new story();
         bool isCreation;
-        
+        string fileName;
 
-        private const string StoryImagePath = @"C:\Desktop\StoryImagePath";
+        private string StoryImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
 
         public StoryCreationForm(bool isCreation)
         {
@@ -34,10 +34,9 @@ namespace ARventure_Path.Forms
 
         private void buttonCreateStory_Click(object sender, EventArgs e)
         {
-            String msg = "";
-            story.name = textBoxStoryTitle.Text;
-            story.summary = textBoxSummary.Text;
-            story.img = story.id.ToString() + ".png";
+            story.name = textBoxStoryTitle.Text.ToLower().Trim();
+            story.summary = textBoxSummary.Text.ToLower().Trim();
+            story.img = fileName;
 
 
             msg = StoryOrm.Insert(story);
@@ -52,7 +51,7 @@ namespace ARventure_Path.Forms
                 fragment fragment = new fragment();
                 fragment.story = story;
                 fragment.ordinal = i;
-                fragment.
+                fragment.content = ;
                 FragmentOrm.Insert(fragment);
             }*/
 
@@ -72,7 +71,11 @@ namespace ARventure_Path.Forms
             {
                 var image = Image.FromFile(abrir.FileName);
                 pictureBoxStory.Image = image;
-                textBoxImageRoute.Text = abrir.FileName;
+                string filePath = abrir.FileName;
+                textBoxImageStory.Text = filePath;
+                fileName = Path.GetFileName(filePath);
+                MessageBox.Show(fileName);
+
                 SaveImage(image);
             }
         }
@@ -90,7 +93,7 @@ namespace ARventure_Path.Forms
             {
                 Directory.CreateDirectory(StoryImagePath);
             }
-            String destinationPath = Path.Combine(StoryImagePath, story.id.ToString() + ".png");
+            String destinationPath = Path.Combine(StoryImagePath, fileName);
             image.Save(destinationPath, ImageFormat.Png);
             story.img = destinationPath;
         }
