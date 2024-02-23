@@ -128,7 +128,7 @@ namespace ARventure_Path.Forms
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            if (textBoxName.Text.Trim() != "" &&
+            /*if (textBoxName.Text.Trim() != "" &&
                 fileName != null &&
                 comboBoxStories.SelectedItem != null)
             {
@@ -153,7 +153,7 @@ namespace ARventure_Path.Forms
             else if (comboBoxStories.SelectedItem == null)
             {
                 MessageBox.Show("No has escogido la historia a la que pertenece.", "Error");
-            }
+            }*/
         }
     }
 }
