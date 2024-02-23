@@ -22,6 +22,7 @@ namespace ARventure_Path.Forms
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
+            string msg = "";
             if (textBoxName.Text.Trim() != "" &&
                 textBoxContent.Text.Trim() != "" &&
                 comboBoxStories.SelectedItem != null)
@@ -32,11 +33,17 @@ namespace ARventure_Path.Forms
                 happening.type = "text";
                 happening.idStory = (int)comboBoxStories.SelectedValue;
 
-                HappeningOrm.Insert(happening);
-
-                MessageBox.Show("El evento se ha guardado correctamente.", "Éxito!");
-
-                Close();
+                msg = HappeningOrm.Insert(happening);
+                if (msg != "")
+                {
+                    MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("El evento se ha guardado correctamente.", "Éxito!");
+                    Close();
+                }
+                
 
             }
             else if (textBoxName.Text == "")

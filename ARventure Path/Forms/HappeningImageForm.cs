@@ -16,7 +16,7 @@ namespace ARventure_Path.Forms
     public partial class HappeningImageForm : Form
     {
         bool isCreation;
-        private const string StoryImagePath = @"C:\Desktop\StoryImagePath";
+        private string imgPath = Path.Combine(Application.StartupPath,"..","..", "filesToServer", "imgHappening");
         private static Image image;
         string fileName;
 
@@ -46,17 +46,18 @@ namespace ARventure_Path.Forms
         private void SaveImage()
         {
             // Si la carpeta no existe, la crea
-            if (!Directory.Exists(StoryImagePath))
+            if (!Directory.Exists(imgPath))
             {
-                Directory.CreateDirectory(StoryImagePath);
+                Directory.CreateDirectory(imgPath);
             }
-            String destinationPath = Path.Combine(StoryImagePath, fileName);
+            String destinationPath = Path.Combine(imgPath, fileName);
             image.Save(destinationPath, ImageFormat.Png);
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            /*if (textBoxName.Text.Trim() != "" &&
+            String msg = "";
+            if (textBoxName.Text.Trim() != "" &&
                 fileName != null &&
                 comboBoxStories.SelectedItem != null) 
             {
@@ -67,12 +68,16 @@ namespace ARventure_Path.Forms
                 happening.idStory = (int)comboBoxStories.SelectedValue;
                 SaveImage();
 
-                HappeningOrm.Insert(happening);
-
-                MessageBox.Show("Evento creado satisfactoriamente.", "Éxito!");
-
-                Close();
-
+                msg = HappeningOrm.Insert(happening);
+                if (msg != "")
+                {
+                    MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Evento creado satisfactoriamente.", "Éxito!");
+                    Close();
+                }
             }
             else if(textBoxName.Text.Trim() == "")
             {
@@ -82,7 +87,8 @@ namespace ARventure_Path.Forms
             else if (comboBoxStories.SelectedItem == null)
             {
                 MessageBox.Show("No has escogido la historia a la que pertenece.", "Error");
-            }*/
+
+            }
         }
 
     private void buttonCancel_Click(object sender, EventArgs e)

@@ -179,23 +179,35 @@ namespace ARventure_Path.Forms
 
         private void buttonCreateRoute_Click(object sender, EventArgs e)
         {
+            string msg = "";
             if (check())
             {
                 route.time = time;
                 route.distance = distance;
                 route.name = textBoxNameRoute.Text;
-                RouteOrm.Insert(route);
 
-                for (int i = 0;i < stopsList.Count; i++)
+                msg = RouteOrm.Insert(route);
+                if (msg != "")
                 {
-                    stop.name = stopsList[i].name;
-                    stop.longitude = stopsList[i].longitude;
-                    stop.latitude = stopsList[i].latitude;
-                    stop.route = route;
-                    StopOrm.Insert(stop);
+                    MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                MessageBox.Show("Ruta creada con éxito.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                else
+                {
+                    for (int i = 0; i < stopsList.Count; i++)
+                    {
+                        stop.name = stopsList[i].name;
+                        stop.longitude = stopsList[i].longitude;
+                        stop.latitude = stopsList[i].latitude;
+                        stop.route = route;
+                        msg = "";
+                        msg = StopOrm.Insert(stop);
+                        if (msg != "")
+                        {
+                            MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    MessageBox.Show("Ruta creada con éxito.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
 
