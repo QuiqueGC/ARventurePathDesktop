@@ -113,21 +113,21 @@ namespace ARventure_Path
         private void crearRutaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            routeCreationForm = new RouteCreationForm(true);
+            routeCreationForm = new RouteCreationForm(MyUtils.FormType.Create);
             addingFormmToPanel(routeCreationForm);
         }
 
         private void modificarRutaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            routeCreationForm = new RouteCreationForm(false);
+            routeCreationForm = new RouteCreationForm(MyUtils.FormType.Modify);
             addingFormmToPanel(routeCreationForm);
         }
 
         private void borrarRutaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            routeCreationForm = new RouteCreationForm(false);
+            routeCreationForm = new RouteCreationForm(MyUtils.FormType.Delete);
             addingFormmToPanel(routeCreationForm);
         }
 

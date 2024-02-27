@@ -175,7 +175,19 @@ namespace ARventure_Path.Forms
 
         private void StoryCreationForm_Load(object sender, EventArgs e)
         {
-            if(formType == MyUtils.FormType.Create)
+            ChooseTypeOfForm();
+            
+            bindingSourceStory.DataSource = StoryOrm.Select();
+        }
+
+
+        /// <summary>
+        /// Escoge el tipo de form que será (creación/modificación/borrado)
+        /// en base al enum que se le haya pasado por parámetros al form
+        /// </summary>
+        private void ChooseTypeOfForm()
+        {
+            if (formType == MyUtils.FormType.Create)
             {
                 becomeInCreatonForm();
             }
@@ -187,8 +199,6 @@ namespace ARventure_Path.Forms
             {
                 becomeInDeleteForm();
             }
-            
-            bindingSourceStory.DataSource = StoryOrm.Select();
         }
 
         /// <summary>

@@ -8,6 +8,7 @@ using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using System.Data;
 using ARventure_Path.Models;
+using ARventure_Path.Utils;
 
 namespace ARventure_Path.Forms
 {
@@ -27,12 +28,12 @@ namespace ARventure_Path.Forms
         double LatStart = 41.390712;
         double LngStart = 2.169874;
 
-        bool isCreation;
+        private MyUtils.FormType formType;
 
-        public RouteCreationForm(bool isCreation)
+        public RouteCreationForm(MyUtils.FormType formType)
         {
             InitializeComponent();
-            this.isCreation = isCreation;
+            this.formType = formType;
         }
 
         private void refreshTable()
@@ -68,7 +69,7 @@ namespace ARventure_Path.Forms
 
         private void RouteCreationForm_Load(object sender, EventArgs e)
         {
-            hideRouteSelection();
+            ChooseTypeOfForm();
 
             comboBoxSelectRoute.DataSource = RouteOrm.Select();
 
@@ -91,10 +92,54 @@ namespace ARventure_Path.Forms
 
         }
 
-        private void hideRouteSelection()
+        /// <summary>
+        /// Escoge el tipo de form que será (creación/modificación/borrado)
+        /// en base al enum que se le haya pasado por parámetros al form
+        /// </summary>
+        private void ChooseTypeOfForm()
         {
-            if (isCreation)
+            if (formType == MyUtils.FormType.Create)
             {
+                becomeInCreatonForm();
+            }
+            else if (formType == MyUtils.FormType.Modify)
+            {
+                becomeInModifyForm();
+            }
+            else
+            {
+                becomeInDeleteForm();
+            }
+        }
+
+        /// <summary>
+        /// realiza los cambios pertinentes
+        /// en el formularion para el formato de borrado
+        /// </summary>
+        private void becomeInDeleteForm()
+        {
+            //buttonCreateStory.Text = "Borrar";
+        }
+
+        /// <summary>
+        /// realiza los cambios pertinentes
+        /// en el formularion para el formato de modificación
+        /// </summary>
+        private void becomeInModifyForm()
+        {
+            //buttonCreateStory.Text = "Guardar";
+        }
+
+        /// <summary>
+        /// realiza los cambios pertinentes
+        /// en el formularion para el formato de creación
+        /// </summary>
+        private void becomeInCreatonForm()
+        {
+            if (formType == MyUtils.FormType.Create)
+            {
+                //labelSelectStory.Visible = false;
+                //comboBoxSelectStory.Visible = false;
                 labelSelectRoute.Visible = false;
                 comboBoxSelectRoute.Visible = false;
             }
