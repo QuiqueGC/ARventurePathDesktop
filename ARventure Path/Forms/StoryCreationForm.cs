@@ -25,7 +25,6 @@ namespace ARventure_Path.Forms
             listBoxFragmentStory.DataSource = fragments;
             listBoxFragmentStory.DisplayMember = "content";
 
-            //story.Id = ClaseDeDB.GetNewStoryId(); devolver tamaño de la lista de stories + 1
         }
 
         private void buttonCreateStory_Click(object sender, EventArgs e)
@@ -66,7 +65,7 @@ namespace ARventure_Path.Forms
                 string filePath = abrir.FileName;
                 textBoxImageStory.Text = filePath;
                 fileName = Path.GetFileName(filePath);
-                MessageBox.Show(fileName);
+                
 
                 SaveImage(image);
             }

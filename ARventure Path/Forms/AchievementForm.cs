@@ -65,7 +65,7 @@ namespace ARventure_Path.Forms
                 string filePath = abrir.FileName;
                 textBoxImageAchievement.Text = filePath;
                 fileName = Path.GetFileName(filePath);
-                MessageBox.Show(fileName);
+               
 
                 SaveImage(image);
             }
