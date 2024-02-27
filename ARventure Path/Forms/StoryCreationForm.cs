@@ -2,24 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ARventure_Path.Forms
 {
     public partial class StoryCreationForm : Form
     {
-
-        story story = new story();
-        bool isCreation;
-        string fileName;
+        private story story = new story();
+        private bool isCreation;
+        private string fileName;
+        private BindingList<fragment> fragments = new BindingList<fragment>();
 
         private string StoryImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
 
@@ -27,9 +22,9 @@ namespace ARventure_Path.Forms
         {
             this.isCreation = isCreation;
             InitializeComponent();
-            //listBoxFragmentStory.DataSource = story.TxtFragments;
+            listBoxFragmentStory.DataSource = fragments;
+            listBoxFragmentStory.DisplayMember = "content";
 
-            //story.Id = ClaseDeDB.GetNewStoryId(); devolver tamaño de la lista de stories + 1
         }
 
         private void buttonCreateStory_Click(object sender, EventArgs e)
@@ -47,19 +42,14 @@ namespace ARventure_Path.Forms
                 MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            /*for (int i = 0; listaLength; i++)
+            foreach (fragment fragment in fragments)
             {
-                fragment fragment = new fragment();
-                fragment.story = story;
-                fragment.ordinal = i;
-                fragment.content = ;
-                FragmentOrm.Insert(fragment);
-            }*/
-
-            //FragmentOrm.Insert(fragment);
-
-            //Guardar en la lista de stories...//Guardar en un objeto story que tenga los parámetros
-            //Console.WriteLine(story);
+                msg = FragmentOrm.Insert(fragment);
+                if (msg != "")
+                {
+                    MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void buttonSearchImage_Click(object sender, EventArgs e)
@@ -75,7 +65,7 @@ namespace ARventure_Path.Forms
                 string filePath = abrir.FileName;
                 textBoxImageStory.Text = filePath;
                 fileName = Path.GetFileName(filePath);
-                MessageBox.Show(fileName);
+                
 
                 SaveImage(image);
             }
@@ -94,7 +84,7 @@ namespace ARventure_Path.Forms
             {
                 Directory.CreateDirectory(StoryImagePath);
             }
-            String destinationPath = Path.Combine(StoryImagePath, fileName);
+            string destinationPath = Path.Combine(StoryImagePath, fileName);
             image.Save(destinationPath, ImageFormat.Png);
             story.img = destinationPath;
         }
@@ -106,8 +96,16 @@ namespace ARventure_Path.Forms
             // lista no supera al número indicado por el usuario
             if (CanAddFragments())
             {
-                FragmentCreationForm fragmentCreationForm = new FragmentCreationForm(story);
+                FragmentCreationForm fragmentCreationForm = new FragmentCreationForm();
                 fragmentCreationForm.ShowDialog();
+
+                fragment newFragment = new fragment()
+                {
+                    story = story,
+                    content = fragmentCreationForm.getTextBoxCreateFragmentText(),
+                    ordinal = fragments.Count + 1,
+                };
+                fragments.Add(newFragment);
             }
 
         }
@@ -116,14 +114,14 @@ namespace ARventure_Path.Forms
         {
             int numberTextBoxFragment = int.Parse(textBoxFragmentQuantity.Text);
             //Si es número que escribe el usuario es mayor que uno, y si el número añadido es mayor al número de fragments
-            //if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > listBoxFragmentStory.Count))//nombre de la lista
+            if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > fragments.Count))//nombre de la lista
             {
 
                 return true;
 
             }
 
-            //return false;
+            return false;
 
         }
 
@@ -170,14 +168,13 @@ namespace ARventure_Path.Forms
         private void buttonDelete_Click(object sender, EventArgs e)
         {
 
-            // story.TxtFragments.Remove((string)listBoxFragmentStory.SelectedItem);
+            fragments.Remove((fragment)listBoxFragmentStory.SelectedItem);
           
-
         }
 
         private void buttonCancelStory_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void StoryCreationForm_Load(object sender, EventArgs e)
