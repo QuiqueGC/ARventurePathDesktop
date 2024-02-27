@@ -15,7 +15,7 @@ namespace ARventure_Path.Forms
     public partial class FragmentCreationForm : Form
     {
 
-        public FragmentCreationForm(story story)
+        public FragmentCreationForm()
         {
             InitializeComponent();
             
@@ -27,6 +27,11 @@ namespace ARventure_Path.Forms
             
             this.Close();
             
+        }
+
+        public string getTextBoxCreateFragmentText()
+        {
+            return textBoxCreateFragment.Text;
         }
 
         private void buttonCancelFragment_Click(object sender, EventArgs e)

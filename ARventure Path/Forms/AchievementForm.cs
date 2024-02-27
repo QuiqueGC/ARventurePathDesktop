@@ -1,14 +1,8 @@
 ﻿using ARventure_Path.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ARventure_Path.Forms
@@ -25,17 +19,27 @@ namespace ARventure_Path.Forms
         {
             InitializeComponent();
             this.isCreation = isCreation;
+
+            if (isCreation)
+            {
+                buttonAcceptAchievement.Text = "Guardar";
+            }
+            else 
+            {
+                buttonAcceptAchievement.Text = "Borrar";
+            }
+            
         }
 
         private void buttonAcceptAchievement_Click(object sender, EventArgs e)
         {
 
-            if (buttonAcceptAchievement.Text.Equals("Guardar"))
+            if (isCreation)
             {
                 achievement.name = textBoxNameAchievement.Text;
                 achievement.img = fileName;
 
-                //AchievementOrm.Insert(achievement);
+                AchievementOrm.Insert(achievement);
 
             }
             else
@@ -61,7 +65,7 @@ namespace ARventure_Path.Forms
                 string filePath = abrir.FileName;
                 textBoxImageAchievement.Text = filePath;
                 fileName = Path.GetFileName(filePath);
-                MessageBox.Show(fileName);
+               
 
                 SaveImage(image);
             }
@@ -89,6 +93,7 @@ namespace ARventure_Path.Forms
         {
             hideAchievementSelection();
             bindingSourceAchievement.DataSource = AchievementOrm.Select();
+            comboBoxSelectAchievement.DisplayMember = "name";
         }
 
         private void hideAchievementSelection()
@@ -100,5 +105,15 @@ namespace ARventure_Path.Forms
             }
         }
 
+        private void comboBoxSelectAchievement_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            achievement achievement = (achievement)comboBoxSelectAchievement.SelectedItem;
+            textBoxNameAchievement.Text = achievement.name;
+            textBoxImageAchievement.Text = achievement.img;
+
+            string imagePath = Path.Combine(AchievementImagePath, achievement.img);
+            var image = Image.FromFile(imagePath);
+            pictureBoxAchievement.Image = image;
+        }
     }
 }
