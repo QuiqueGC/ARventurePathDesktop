@@ -1,4 +1,5 @@
 ﻿using ARventure_Path.Forms;
+using ARventure_Path.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -92,20 +93,20 @@ namespace ARventure_Path
         private void crearHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            storyCreationForm = new StoryCreationForm(true);
+            storyCreationForm = new StoryCreationForm(MyUtils.FormType.Create);
             addingFormmToPanel(storyCreationForm);
         }
 
         private void modificarHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            storyCreationForm = new StoryCreationForm(false);
+            storyCreationForm = new StoryCreationForm(MyUtils.FormType.Modify);
             addingFormmToPanel(storyCreationForm);
         }
         private void borrarHistoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            storyCreationForm = new StoryCreationForm(false);
+            storyCreationForm = new StoryCreationForm(MyUtils.FormType.Delete);
             addingFormmToPanel(storyCreationForm);
         }
 

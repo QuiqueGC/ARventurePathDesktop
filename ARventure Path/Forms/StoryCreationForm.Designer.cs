@@ -279,7 +279,6 @@
             this.textBoxStoryTitle.Name = "textBoxStoryTitle";
             this.textBoxStoryTitle.Size = new System.Drawing.Size(401, 21);
             this.textBoxStoryTitle.TabIndex = 0;
-            this.textBoxStoryTitle.TextChanged += new System.EventHandler(this.textBoxStoryTitle_TextChanged);
             // 
             // labelStoryTitle
             // 

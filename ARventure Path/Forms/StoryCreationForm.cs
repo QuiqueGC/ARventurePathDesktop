@@ -1,4 +1,5 @@
 ﻿using ARventure_Path.Models;
+using ARventure_Path.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,15 +13,15 @@ namespace ARventure_Path.Forms
     public partial class StoryCreationForm : Form
     {
         private story story = new story();
-        private bool isCreation;
+        private MyUtils.FormType formType;
         private string fileName;
         private BindingList<fragment> fragments = new BindingList<fragment>();
 
         private string StoryImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
 
-        public StoryCreationForm(bool isCreation)
+        public StoryCreationForm(MyUtils.FormType formType)
         {
-            this.isCreation = isCreation;
+            this.formType = formType;
             InitializeComponent();
             listBoxFragmentStory.DataSource = fragments;
             listBoxFragmentStory.DisplayMember = "content";
@@ -160,11 +161,6 @@ namespace ARventure_Path.Forms
 
         }
 
-        private void textBoxStoryTitle_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonDelete_Click(object sender, EventArgs e)
         {
 
@@ -179,13 +175,47 @@ namespace ARventure_Path.Forms
 
         private void StoryCreationForm_Load(object sender, EventArgs e)
         {
-            hideStorySelection();
+            if(formType == MyUtils.FormType.Create)
+            {
+                becomeInCreatonForm();
+            }
+            else if (formType == MyUtils.FormType.Modify)
+            {
+                becomeInModifyForm();
+            }
+            else
+            {
+                becomeInDeleteForm();
+            }
+            
             bindingSourceStory.DataSource = StoryOrm.Select();
         }
 
-        private void hideStorySelection()
+        /// <summary>
+        /// realiza los cambios pertinentes
+        /// en el formularion para el formato de borrado
+        /// </summary>
+        private void becomeInDeleteForm()
         {
-            if (isCreation)
+            buttonCreateStory.Text = "Borrar";
+        }
+
+        /// <summary>
+        /// realiza los cambios pertinentes
+        /// en el formularion para el formato de modificación
+        /// </summary>
+        private void becomeInModifyForm()
+        {
+            buttonCreateStory.Text = "Guardar";
+        }
+
+        /// <summary>
+        /// realiza los cambios pertinentes
+        /// en el formularion para el formato de creación
+        /// </summary>
+        private void becomeInCreatonForm()
+        {
+            if (formType == MyUtils.FormType.Create)
             {
                 labelSelectStory.Visible = false;
                 comboBoxSelectStory.Visible = false;

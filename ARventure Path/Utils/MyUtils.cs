@@ -10,6 +10,18 @@ namespace ARventure_Path.Utils
     public static class MyUtils
     {
         /// <summary>
+        /// Enum para emplear a lo largo de la aplicación
+        /// que nos indicará si el usuario se abre para crear
+        /// modificar o borrar
+        /// </summary>
+        public enum FormType
+        {
+            Create,
+            Modify,
+            Delete
+        }
+
+        /// <summary>
         /// muestra el diálogo deconfirmaciónd de borrado
         /// </summary>
         /// <returns>true si confirma, false si cancela</returns>

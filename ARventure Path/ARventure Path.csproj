@@ -297,6 +297,7 @@
       <DependentUpon>ModelARDB.edmx</DependentUpon>
       <LastGenOutput>ModelARDB.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\ArventurePath.png" />
     <Content Include="Resources\volume.png" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\play.png" />

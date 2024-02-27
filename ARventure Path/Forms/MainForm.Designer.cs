@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.panelMain = new System.Windows.Forms.Panel();
             this.asdasdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +59,9 @@
             this.achievementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.borrarToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelMain = new System.Windows.Forms.Panel();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,21 +92,6 @@
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.archivoToolStripMenuItem.Text = "Archivo";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(154, 6);
-            // 
-            // panelMain
-            // 
-            this.panelMain.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panelMain.BackgroundImage = global::ARventure_Path.Properties.Resources.ArventurePath;
-            this.panelMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelMain.Location = new System.Drawing.Point(0, 24);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(965, 616);
-            this.panelMain.TabIndex = 0;
             // 
             // asdasdToolStripMenuItem
             // 
@@ -333,6 +318,11 @@
             this.borrarToolStripMenuItem6.Text = "Borrar";
             this.borrarToolStripMenuItem6.Click += new System.EventHandler(this.borrarToolStripMenuItem6_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(154, 6);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Image = global::ARventure_Path.Properties.Resources.cerrar;
@@ -340,6 +330,16 @@
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(157, 24);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
+            // panelMain
+            // 
+            this.panelMain.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panelMain.BackgroundImage = global::ARventure_Path.Properties.Resources.ArventurePath;
+            this.panelMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelMain.Location = new System.Drawing.Point(0, 24);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(965, 616);
+            this.panelMain.TabIndex = 0;
             // 
             // MainForm
             // 

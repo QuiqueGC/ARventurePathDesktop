@@ -94,6 +94,7 @@ namespace ARventure_Path.Forms
             hideAchievementSelection();
             bindingSourceAchievement.DataSource = AchievementOrm.Select();
             comboBoxSelectAchievement.DisplayMember = "name";
+            comboBoxSelectAchievement.SelectedItem = null;
         }
 
         private void hideAchievementSelection()
