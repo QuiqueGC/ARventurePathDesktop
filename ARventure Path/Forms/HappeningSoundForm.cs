@@ -128,7 +128,7 @@ namespace ARventure_Path.Forms
  
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            /*if (textBoxName.Text.Trim() != "" &&
+            if (textBoxName.Text.Trim() != "" &&
                 fileName != null &&
                 comboBoxStories.SelectedItem != null)
             {
@@ -138,11 +138,17 @@ namespace ARventure_Path.Forms
                 happening.type = "audio";
                 happening.idStory = (int)comboBoxStories.SelectedValue;
 
-                HappeningOrm.Insert(happening);
 
-                MessageBox.Show("Evento creado satisfactoriamente.", "Éxito!");
-
-                Close();
+                string msg = HappeningOrm.Insert(happening);
+                if (msg != "")
+                {
+                    MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Evento creado satisfactoriamente.", "Éxito!");
+                    Close();
+                }
 
             }
             else if (textBoxName.Text.Trim() == "")
@@ -153,7 +159,10 @@ namespace ARventure_Path.Forms
             else if (comboBoxStories.SelectedItem == null)
             {
                 MessageBox.Show("No has escogido la historia a la que pertenece.", "Error");
-            }*/
+            }else if(fileName == null)
+            {
+                MessageBox.Show("No has escogido un archivo de audio.", "Error");
+            }
         }
     }
 }
