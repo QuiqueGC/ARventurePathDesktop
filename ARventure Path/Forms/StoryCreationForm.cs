@@ -174,7 +174,7 @@ namespace ARventure_Path.Forms
 
         private void buttonCancelStory_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void StoryCreationForm_Load(object sender, EventArgs e)
