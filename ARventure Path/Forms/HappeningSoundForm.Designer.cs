@@ -53,6 +53,7 @@
             this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
             this.groupboxTxtHappening.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnStop)).BeginInit();
@@ -60,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Mp3Player)).BeginInit();
             this.gbIA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).BeginInit();
             this.SuspendLayout();
             // 
             // groupboxTxtHappening
@@ -258,12 +260,15 @@
             // 
             // comboBoxHappenings
             // 
+            this.comboBoxHappenings.DataSource = this.bindingSourceHappenings;
+            this.comboBoxHappenings.DisplayMember = "name";
             this.comboBoxHappenings.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxHappenings.FormattingEnabled = true;
             this.comboBoxHappenings.Location = new System.Drawing.Point(215, 11);
             this.comboBoxHappenings.Name = "comboBoxHappenings";
             this.comboBoxHappenings.Size = new System.Drawing.Size(235, 21);
             this.comboBoxHappenings.TabIndex = 0;
+            this.comboBoxHappenings.ValueMember = "id";
             // 
             // labelSelectHappening
             // 
@@ -335,6 +340,10 @@
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // bindingSourceHappenings
+            // 
+            this.bindingSourceHappenings.DataSource = typeof(ARventure_Path.Models.happening);
+            // 
             // HappeningSoundForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -365,6 +374,7 @@
             this.gbIA.ResumeLayout(false);
             this.gbIA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -395,5 +405,6 @@
         private XComponent.SliderBar.MACTrackBar macTrackBarPlayer;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.BindingSource bindingSourceHappenings;
     }
 }

@@ -57,7 +57,7 @@
             // pictureBoxAchievement
             // 
             this.pictureBoxAchievement.Image = global::ARventure_Path.Properties.Resources.logros;
-            this.pictureBoxAchievement.Location = new System.Drawing.Point(345, 44);
+            this.pictureBoxAchievement.Location = new System.Drawing.Point(331, 44);
             this.pictureBoxAchievement.Name = "pictureBoxAchievement";
             this.pictureBoxAchievement.Size = new System.Drawing.Size(350, 283);
             this.pictureBoxAchievement.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -96,7 +96,7 @@
             this.buttonAcceptAchievement.Name = "buttonAcceptAchievement";
             this.buttonAcceptAchievement.Size = new System.Drawing.Size(75, 23);
             this.buttonAcceptAchievement.TabIndex = 4;
-            this.buttonAcceptAchievement.Text = "Guardar";
+            this.buttonAcceptAchievement.Text = "Crear";
             this.buttonAcceptAchievement.UseVisualStyleBackColor = false;
             this.buttonAcceptAchievement.Click += new System.EventHandler(this.buttonAcceptAchievement_Click);
             // 

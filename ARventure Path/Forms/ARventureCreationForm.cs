@@ -1,4 +1,5 @@
 ﻿using ARventure_Path.Models;
+using ARventure_Path.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,32 +14,73 @@ namespace ARventure_Path.Forms
 {
     public partial class ARventureCreationForm : Form
     {
-        bool isCreation;
-        public ARventureCreationForm(bool isCreation)
+        private MyUtils.FormType formType;
+        public ARventureCreationForm(MyUtils.FormType formType)
         {
-            this.isCreation = isCreation;
+            this.formType = formType;
             InitializeComponent();
         }
 
         private void ARventureCreationForm_Load(object sender, EventArgs e)
         {
+            ChooseTypeOfForm();
             bindingSourceStory.DataSource = StoryOrm.Select();
-
-            hideArventureSelection();
-        }
-
-        private void hideArventureSelection()
-        {
-            if(isCreation)
-            {
-               labelSelectArventure.Visible = false;
-                comboBoxSelectArventure.Visible = false;
-            }
         }
 
         private void buttonCancelArventure_Click(object sender, EventArgs e)
         {
            Close();
+        }
+
+        private void buttonCreateArventure_Click(object sender, EventArgs e)
+        {
+            if (formType == MyUtils.FormType.Create)
+            {
+                // Crear ARventure
+            }
+            else if (formType == MyUtils.FormType.Modify)
+            {
+                // Modificar ARventure
+            }
+            else
+            {
+                // Borrar ARventure
+            }
+        }
+        private void ChooseTypeOfForm()
+        {
+
+            if (formType == MyUtils.FormType.Create)
+            {
+                becomeInCreatonForm();
+            }
+            else if (formType == MyUtils.FormType.Modify)
+            {
+                becomeInModifyForm();
+            }
+            else
+            {
+                becomeInDeleteForm();
+
+            }
+        }
+
+        private void becomeInDeleteForm()
+        {
+            buttonCreateArventure.Text = "Borrar";
+            bindingSourceArventure.DataSource = ArventureOrm.Select();
+        }
+
+        private void becomeInModifyForm()
+        {
+            buttonCreateArventure.Text = "Guardar";
+            bindingSourceArventure.DataSource = ArventureOrm.Select();
+        }
+
+        private void becomeInCreatonForm()
+        {
+            labelSelectArventure.Visible = false;
+            comboBoxSelectArventure.Visible = false;
         }
     }
 }

@@ -14,9 +14,11 @@ namespace ARventure_Path.Models
             return Orm.MySaveChanges();
         }
 
-        public static List<happening> Select()
+        public static List<happening> Select(String type)
         {
-            List<happening> _happening = Orm.db.happening.ToList();
+            List<happening> _happening = Orm.db.happening
+                .Where(h => h.type.Contains(type))
+                .ToList();
 
             return _happening;
         }

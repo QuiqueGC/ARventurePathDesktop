@@ -1,4 +1,5 @@
 ﻿using ARventure_Path.Models;
+using ARventure_Path.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,15 +16,15 @@ namespace ARventure_Path.Forms
 {
     public partial class HappeningImageForm : Form
     {
-        bool isCreation;
         private string imgPath = Path.Combine(Application.StartupPath,"..","..", "filesToServer", "imgHappening");
         private static Image image;
         string fileName;
+        private MyUtils.FormType formType;
 
-        public HappeningImageForm(bool isCreation)
+        public HappeningImageForm(MyUtils.FormType formType)
         {
+            this.formType = formType;
             InitializeComponent();
-            this.isCreation = isCreation;
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -56,6 +57,19 @@ namespace ARventure_Path.Forms
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
+            if (formType == MyUtils.FormType.Create)
+            {
+                // Crear Evento de imagen
+            }
+            else if (formType == MyUtils.FormType.Modify)
+            {
+                // Modificar Evento de imagen
+            }
+            else
+            {
+                // Borrar Evento de imagen
+            }
+
             String msg = "";
             if (textBoxName.Text.Trim() != "" &&
                 fileName != null &&
@@ -98,17 +112,45 @@ namespace ARventure_Path.Forms
 
         private void HappeningImageForm_Load(object sender, EventArgs e)
         {
+            ChooseTypeOfForm();
             bindingSourceStory.DataSource = StoryOrm.Select();
-            hideHappeningSelection();
             comboBoxStories.SelectedItem = null;
         }
-        private void hideHappeningSelection()
+        private void ChooseTypeOfForm()
         {
-            if (isCreation)
+
+            if (formType == MyUtils.FormType.Create)
             {
-                labelSelectHappening.Visible = false;
-                comboBoxHappenings.Visible = false;
+                becomeInCreatonForm();
             }
+            else if (formType == MyUtils.FormType.Modify)
+            {
+                becomeInModifyForm();
+            }
+            else
+            {
+                becomeInDeleteForm();
+            }
+        }
+
+        private void becomeInDeleteForm()
+        {
+            buttonCreate.Text = "Borrar";
+            bindingSourceHappenings.DataSource = HappeningOrm.Select("image");
+            Text = "Borrar evento de imagen";
+        }
+
+        private void becomeInModifyForm()
+        {
+            buttonCreate.Text = "Guardar";
+            bindingSourceHappenings.DataSource = HappeningOrm.Select("image");
+            Text = "Modificar evento de imagen";
+        }
+
+        private void becomeInCreatonForm()
+        {
+            labelSelectHappening.Visible = false;
+            comboBoxHappenings.Visible = false;
         }
     }
 }
