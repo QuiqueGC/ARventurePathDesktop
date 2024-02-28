@@ -134,7 +134,7 @@ namespace ARventure_Path
         private void crearAventuraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            arventureCreationForm = new ARventureCreationForm(true);
+            arventureCreationForm = new ARventureCreationForm(MyUtils.FormType.Create);
             addingFormmToPanel(arventureCreationForm);
 
         }
@@ -142,14 +142,14 @@ namespace ARventure_Path
         private void modificarAventuraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            arventureCreationForm = new ARventureCreationForm(false);
+            arventureCreationForm = new ARventureCreationForm(MyUtils.FormType.Modify);
             addingFormmToPanel(arventureCreationForm);
         }
 
         private void borrarAventuraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             removeFormsFromPanel();
-            arventureCreationForm = new ARventureCreationForm(false);
+            arventureCreationForm = new ARventureCreationForm(MyUtils.FormType.Delete);
             addingFormmToPanel(arventureCreationForm);
         }
 
@@ -174,55 +174,55 @@ namespace ARventure_Path
 
         private void crearEventoTextoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventTextForm = new HappeningTextForm(true);
+            eventTextForm = new HappeningTextForm(MyUtils.FormType.Create);
             eventTextForm.ShowDialog();
         }
 
         private void modificarEventoTextoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventTextForm = new HappeningTextForm(false);
+            eventTextForm = new HappeningTextForm(MyUtils.FormType.Modify);
             eventTextForm.ShowDialog();
         }
 
         private void borrarEventoTextoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventTextForm = new HappeningTextForm(false);
+            eventTextForm = new HappeningTextForm(MyUtils.FormType.Delete);
             eventTextForm.ShowDialog();
         }
 
         private void crearEventoImagenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventImageForm = new HappeningImageForm(true);
+            eventImageForm = new HappeningImageForm(MyUtils.FormType.Create);
             eventImageForm.ShowDialog();
         }
 
         private void modificarEventoImagenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventImageForm = new HappeningImageForm(false);
+            eventImageForm = new HappeningImageForm(MyUtils.FormType.Modify);
             eventImageForm.ShowDialog();
         }
 
         private void borrarEventoImagenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventImageForm = new HappeningImageForm(false);
+            eventImageForm = new HappeningImageForm(MyUtils.FormType.Delete);
             eventImageForm.ShowDialog();
         }
 
         private void crearEventoSonidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventSoundForm = new HappeningSoundForm(true);
+            eventSoundForm = new HappeningSoundForm(MyUtils.FormType.Create);
             eventSoundForm.ShowDialog();
         }
 
         private void modificarEventoSonidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventSoundForm = new HappeningSoundForm(false);
+            eventSoundForm = new HappeningSoundForm(MyUtils.FormType.Modify);
             eventSoundForm.ShowDialog();
         }
 
         private void borrarEventoSonidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventSoundForm = new HappeningSoundForm(false);
+            eventSoundForm = new HappeningSoundForm(MyUtils.FormType.Delete);
             eventSoundForm.ShowDialog();
 
         }
@@ -234,13 +234,13 @@ namespace ARventure_Path
 
         private void crearToolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            achievementForm = new AchievementForm(true);
+            achievementForm = new AchievementForm(MyUtils.FormType.Create);
             achievementForm.ShowDialog();
         }
 
         private void borrarToolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            achievementForm = new AchievementForm(false);
+            achievementForm = new AchievementForm(MyUtils.FormType.Delete);
             achievementForm.ShowDialog();
         }
     }

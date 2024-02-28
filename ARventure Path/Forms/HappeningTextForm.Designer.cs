@@ -44,9 +44,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxStories = new System.Windows.Forms.ComboBox();
             this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
             this.groupboxTxtHappening.SuspendLayout();
             this.groupboxIA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).BeginInit();
             this.SuspendLayout();
             // 
             // groupboxTxtHappening
@@ -102,9 +104,9 @@
             this.buttonCreate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCreate.Font = new System.Drawing.Font("Century", 10F);
             this.buttonCreate.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonCreate.Location = new System.Drawing.Point(448, 388);
+            this.buttonCreate.Location = new System.Drawing.Point(448, 390);
             this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(75, 25);
+            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
             this.buttonCreate.TabIndex = 4;
             this.buttonCreate.Text = "Crear";
             this.buttonCreate.UseVisualStyleBackColor = false;
@@ -136,12 +138,15 @@
             // 
             // comboBoxHappenings
             // 
+            this.comboBoxHappenings.DataSource = this.bindingSourceHappenings;
+            this.comboBoxHappenings.DisplayMember = "name";
             this.comboBoxHappenings.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxHappenings.FormattingEnabled = true;
             this.comboBoxHappenings.Location = new System.Drawing.Point(207, 12);
             this.comboBoxHappenings.Name = "comboBoxHappenings";
             this.comboBoxHappenings.Size = new System.Drawing.Size(235, 21);
             this.comboBoxHappenings.TabIndex = 1;
+            this.comboBoxHappenings.ValueMember = "id";
             // 
             // textboxIAPrompt
             // 
@@ -201,6 +206,10 @@
             // 
             this.bindingSourceStory.DataSource = typeof(ARventure_Path.Models.story);
             // 
+            // bindingSourceHappenings
+            // 
+            this.bindingSourceHappenings.DataSource = typeof(ARventure_Path.Models.happening);
+            // 
             // HappeningTextForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +235,7 @@
             this.groupboxIA.ResumeLayout(false);
             this.groupboxIA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,5 +257,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxStories;
         private System.Windows.Forms.BindingSource bindingSourceStory;
+        private System.Windows.Forms.BindingSource bindingSourceHappenings;
     }
 }

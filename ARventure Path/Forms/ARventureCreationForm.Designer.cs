@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.labelSelectArventure = new System.Windows.Forms.Label();
             this.comboBoxSelectArventure = new System.Windows.Forms.ComboBox();
+            this.bindingSourceArventure = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxStory = new System.Windows.Forms.GroupBox();
             this.buttonSeeDetailStory = new System.Windows.Forms.Button();
             this.buttonSelectStory = new System.Windows.Forms.Button();
@@ -64,6 +65,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCreateArventure = new System.Windows.Forms.Button();
             this.buttonCancelArventure = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceArventure)).BeginInit();
             this.groupBoxStory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.groupBoxRoutes.SuspendLayout();
@@ -87,12 +89,19 @@
             // 
             // comboBoxSelectArventure
             // 
+            this.comboBoxSelectArventure.DataSource = this.bindingSourceArventure;
+            this.comboBoxSelectArventure.DisplayMember = "name";
             this.comboBoxSelectArventure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSelectArventure.FormattingEnabled = true;
             this.comboBoxSelectArventure.Location = new System.Drawing.Point(188, 17);
             this.comboBoxSelectArventure.Name = "comboBoxSelectArventure";
             this.comboBoxSelectArventure.Size = new System.Drawing.Size(245, 21);
             this.comboBoxSelectArventure.TabIndex = 3;
+            this.comboBoxSelectArventure.ValueMember = "id";
+            // 
+            // bindingSourceArventure
+            // 
+            this.bindingSourceArventure.DataSource = typeof(ARventure_Path.Models.arventure);
             // 
             // groupBoxStory
             // 
@@ -434,6 +443,7 @@
             this.buttonCreateArventure.TabIndex = 8;
             this.buttonCreateArventure.Text = "Crear";
             this.buttonCreateArventure.UseVisualStyleBackColor = false;
+            this.buttonCreateArventure.Click += new System.EventHandler(this.buttonCreateArventure_Click);
             // 
             // buttonCancelArventure
             // 
@@ -466,6 +476,7 @@
             this.Name = "ARventureCreationForm";
             this.Text = "Creación de aventura";
             this.Load += new System.EventHandler(this.ARventureCreationForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceArventure)).EndInit();
             this.groupBoxStory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.groupBoxRoutes.ResumeLayout(false);
@@ -520,5 +531,6 @@
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelDistanceRoute;
         private System.Windows.Forms.BindingSource bindingSourceStory;
+        private System.Windows.Forms.BindingSource bindingSourceArventure;
     }
 }

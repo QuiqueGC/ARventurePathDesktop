@@ -1,4 +1,5 @@
 ﻿using ARventure_Path.Models;
+using ARventure_Path.Utils;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -10,44 +11,29 @@ namespace ARventure_Path.Forms
     public partial class AchievementForm : Form
     {
         achievement achievement = new achievement();
-        bool isCreation;
         string fileName;
+        private MyUtils.FormType formType;
+
 
         private string AchievementImagePath = Path.Combine(Application.StartupPath, "..", "..", "filesToServer", "imgAchievement");
 
-        public AchievementForm(bool isCreation)
+        public AchievementForm(MyUtils.FormType formType)
         {
+            this.formType = formType;
             InitializeComponent();
-            this.isCreation = isCreation;
 
-            if (isCreation)
-            {
-                buttonAcceptAchievement.Text = "Guardar";
-            }
-            else 
-            {
-                buttonAcceptAchievement.Text = "Borrar";
-            }
-            
         }
 
         private void buttonAcceptAchievement_Click(object sender, EventArgs e)
         {
-
-            if (isCreation)
+            if (formType == MyUtils.FormType.Create)
             {
-                achievement.name = textBoxNameAchievement.Text;
-                achievement.img = fileName;
-
-                AchievementOrm.Insert(achievement);
-
+                // Crear Logro
             }
             else
             {
-                //eliminar un logro
-
+                // Borrar Logro
             }
-
         }
 
         private void buttonSearchImageAchievement_Click(object sender, EventArgs e)
@@ -91,19 +77,7 @@ namespace ARventure_Path.Forms
 
         private void AchievementForm_Load_1(object sender, EventArgs e)
         {
-            hideAchievementSelection();
-            bindingSourceAchievement.DataSource = AchievementOrm.Select();
-            comboBoxSelectAchievement.DisplayMember = "name";
-            comboBoxSelectAchievement.SelectedItem = null;
-        }
-
-        private void hideAchievementSelection()
-        {
-            if (isCreation)
-            {
-                labelSelectAchievement.Visible = false;
-                comboBoxSelectAchievement.Visible = false;
-            }
+            ChooseTypeOfForm();
         }
 
         private void comboBoxSelectAchievement_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,6 +89,31 @@ namespace ARventure_Path.Forms
             string imagePath = Path.Combine(AchievementImagePath, achievement.img);
             var image = Image.FromFile(imagePath);
             pictureBoxAchievement.Image = image;
+        }
+        private void ChooseTypeOfForm()
+        {
+
+            if (formType == MyUtils.FormType.Create)
+            {
+                becomeInCreatonForm();
+            }
+            else
+            {
+                becomeInDeleteForm();
+
+            }
+        }
+
+        private void becomeInDeleteForm()
+        {
+            buttonAcceptAchievement.Text = "Borrar";
+            bindingSourceAchievement.DataSource = AchievementOrm.Select();
+            comboBoxSelectAchievement.SelectedItem = null;
+        }
+        private void becomeInCreatonForm()
+        {
+            labelSelectAchievement.Visible = false;
+            comboBoxSelectAchievement.Visible = false;
         }
     }
 }

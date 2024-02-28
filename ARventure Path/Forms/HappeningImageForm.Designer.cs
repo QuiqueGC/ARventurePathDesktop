@@ -44,12 +44,14 @@
             this.buttonCreate = new System.Windows.Forms.Button();
             this.labelSelectHappening = new System.Windows.Forms.Label();
             this.comboBoxStories = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
             this.groupboxTxtHappening.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgHappening)).BeginInit();
             this.groupboxIA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).BeginInit();
             this.SuspendLayout();
             // 
             // groupboxTxtHappening
@@ -173,12 +175,15 @@
             // 
             // comboBoxHappenings
             // 
+            this.comboBoxHappenings.DataSource = this.bindingSourceHappenings;
+            this.comboBoxHappenings.DisplayMember = "name";
             this.comboBoxHappenings.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxHappenings.FormattingEnabled = true;
             this.comboBoxHappenings.Location = new System.Drawing.Point(209, 9);
             this.comboBoxHappenings.Name = "comboBoxHappenings";
             this.comboBoxHappenings.Size = new System.Drawing.Size(235, 21);
             this.comboBoxHappenings.TabIndex = 0;
+            this.comboBoxHappenings.ValueMember = "id";
             // 
             // buttonCreate
             // 
@@ -216,6 +221,10 @@
             this.comboBoxStories.TabIndex = 1;
             this.comboBoxStories.ValueMember = "id";
             // 
+            // bindingSourceStory
+            // 
+            this.bindingSourceStory.DataSource = typeof(ARventure_Path.Models.story);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -226,9 +235,9 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Seleccionar historia";
             // 
-            // bindingSourceStory
+            // bindingSourceHappenings
             // 
-            this.bindingSourceStory.DataSource = typeof(ARventure_Path.Models.story);
+            this.bindingSourceHappenings.DataSource = typeof(ARventure_Path.Models.happening);
             // 
             // HappeningImageForm
             // 
@@ -256,6 +265,7 @@
             this.groupboxIA.ResumeLayout(false);
             this.groupboxIA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,5 +290,6 @@
         private System.Windows.Forms.ComboBox comboBoxStories;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource bindingSourceStory;
+        private System.Windows.Forms.BindingSource bindingSourceHappenings;
     }
 }
