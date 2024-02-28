@@ -39,7 +39,7 @@
             this.gbStory = new System.Windows.Forms.GroupBox();
             this.gbFragments = new System.Windows.Forms.GroupBox();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.listBoxFragmentStory = new System.Windows.Forms.ListBox();
+            this.bindingSourceFragments = new System.Windows.Forms.BindingSource(this.components);
             this.buttonAddNewFragment = new System.Windows.Forms.Button();
             this.textBoxFragmentQuantity = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,13 +53,16 @@
             this.labelStoryTitle = new System.Windows.Forms.Label();
             this.buttonCreateStory = new System.Windows.Forms.Button();
             this.buttonCancelStory = new System.Windows.Forms.Button();
-            this.bindingSourceFragments = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewFragments = new System.Windows.Forms.DataGridView();
+            this.ordinalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.gbGenerateForIA.SuspendLayout();
             this.gbStory.SuspendLayout();
             this.gbFragments.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFragments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFragments)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSelectStory
@@ -154,8 +157,8 @@
             // 
             // gbFragments
             // 
+            this.gbFragments.Controls.Add(this.dataGridViewFragments);
             this.gbFragments.Controls.Add(this.buttonDelete);
-            this.gbFragments.Controls.Add(this.listBoxFragmentStory);
             this.gbFragments.Controls.Add(this.buttonAddNewFragment);
             this.gbFragments.Controls.Add(this.textBoxFragmentQuantity);
             this.gbFragments.Controls.Add(this.label2);
@@ -179,17 +182,9 @@
             this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // listBoxFragmentStory
+            // bindingSourceFragments
             // 
-            this.listBoxFragmentStory.DataSource = this.bindingSourceFragments;
-            this.listBoxFragmentStory.DisplayMember = "content";
-            this.listBoxFragmentStory.FormattingEnabled = true;
-            this.listBoxFragmentStory.ItemHeight = 15;
-            this.listBoxFragmentStory.Location = new System.Drawing.Point(15, 101);
-            this.listBoxFragmentStory.Name = "listBoxFragmentStory";
-            this.listBoxFragmentStory.Size = new System.Drawing.Size(353, 199);
-            this.listBoxFragmentStory.TabIndex = 2;
-            this.listBoxFragmentStory.ValueMember = "id";
+            this.bindingSourceFragments.DataSource = typeof(ARventure_Path.Models.fragment);
             // 
             // buttonAddNewFragment
             // 
@@ -323,9 +318,40 @@
             this.buttonCancelStory.UseVisualStyleBackColor = false;
             this.buttonCancelStory.Click += new System.EventHandler(this.buttonCancelStory_Click);
             // 
-            // bindingSourceFragments
+            // dataGridViewFragments
             // 
-            this.bindingSourceFragments.DataSource = typeof(ARventure_Path.Models.fragment);
+            this.dataGridViewFragments.AllowUserToAddRows = false;
+            this.dataGridViewFragments.AllowUserToDeleteRows = false;
+            this.dataGridViewFragments.AllowUserToResizeRows = false;
+            this.dataGridViewFragments.AutoGenerateColumns = false;
+            this.dataGridViewFragments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewFragments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFragments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ordinalDataGridViewTextBoxColumn,
+            this.contentDataGridViewTextBoxColumn});
+            this.dataGridViewFragments.DataSource = this.bindingSourceFragments;
+            this.dataGridViewFragments.Location = new System.Drawing.Point(6, 104);
+            this.dataGridViewFragments.Name = "dataGridViewFragments";
+            this.dataGridViewFragments.ReadOnly = true;
+            this.dataGridViewFragments.RowHeadersVisible = false;
+            this.dataGridViewFragments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewFragments.Size = new System.Drawing.Size(368, 228);
+            this.dataGridViewFragments.TabIndex = 4;
+            // 
+            // ordinalDataGridViewTextBoxColumn
+            // 
+            this.ordinalDataGridViewTextBoxColumn.DataPropertyName = "ordinal";
+            this.ordinalDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.ordinalDataGridViewTextBoxColumn.HeaderText = "ordinal";
+            this.ordinalDataGridViewTextBoxColumn.Name = "ordinalDataGridViewTextBoxColumn";
+            this.ordinalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contentDataGridViewTextBoxColumn
+            // 
+            this.contentDataGridViewTextBoxColumn.DataPropertyName = "content";
+            this.contentDataGridViewTextBoxColumn.HeaderText = "content";
+            this.contentDataGridViewTextBoxColumn.Name = "contentDataGridViewTextBoxColumn";
+            this.contentDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // StoryCreationForm
             // 
@@ -349,8 +375,9 @@
             this.gbStory.PerformLayout();
             this.gbFragments.ResumeLayout(false);
             this.gbFragments.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFragments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFragments)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,12 +403,14 @@
         private System.Windows.Forms.GroupBox gbFragments;
         private System.Windows.Forms.TextBox textBoxFragmentQuantity;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBoxFragmentStory;
         private System.Windows.Forms.Button buttonAddNewFragment;
         private System.Windows.Forms.Button buttonCreateStory;
         private System.Windows.Forms.Button buttonCancelStory;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.BindingSource bindingSourceStory;
         private System.Windows.Forms.BindingSource bindingSourceFragments;
+        private System.Windows.Forms.DataGridView dataGridViewFragments;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ordinalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn;
     }
 }

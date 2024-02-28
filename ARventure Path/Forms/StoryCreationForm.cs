@@ -15,7 +15,7 @@ namespace ARventure_Path.Forms
         private story story = new story();
         private MyUtils.FormType formType;
         private string fileName;
-        private BindingList<fragment> fragments = new BindingList<fragment>();
+        //private BindingList<fragment> fragments = new BindingList<fragment>();
 
         private string StoryImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
 
@@ -23,9 +23,6 @@ namespace ARventure_Path.Forms
         {
             this.formType = formType;
             InitializeComponent();
-            listBoxFragmentStory.DataSource = fragments;
-            listBoxFragmentStory.DisplayMember = "content";
-
         }
 
         private void buttonCreateStory_Click(object sender, EventArgs e)
@@ -43,26 +40,32 @@ namespace ARventure_Path.Forms
                 //delete
             }
 
-
-
-
-
         }
 
         private void CreateStory()
         {
-            string msg = "";
-            story.name = textBoxStoryTitle.Text.ToLower().Trim();
-            story.summary = textBoxSummary.Text.ToLower().Trim();
-            story.img = fileName;
-            msg = StoryOrm.Insert(story);
-            MyUtils.ShowPosibleError(msg);
-
-            foreach (fragment fragment in fragments)
+            if(textBoxStoryTitle.Text.Trim() != "" &&
+               textBoxSummary.Text.Trim() != "" &&
+               fileName != null) 
             {
-                msg = FragmentOrm.Insert(fragment);
-                MyUtils .ShowPosibleError(msg);
+                string msg = "";
+                story.name = textBoxStoryTitle.Text.Trim();
+                story.summary = textBoxSummary.Text.Trim();
+                story.img = fileName;
+                msg = StoryOrm.Insert(story);
+                MyUtils.ShowPosibleError(msg);
+
+                foreach (fragment fragment in story.fragment)
+                {
+                    msg = FragmentOrm.Insert(fragment);
+                    MyUtils.ShowPosibleError(msg);
+                }
             }
+            else
+            {
+                MessageBox.Show("Debes rellenar nombre, resumen y añadir una imagen.", "¡Maravilloso!");
+            }
+           
         }
 
         private void buttonSearchImage_Click(object sender, EventArgs e)
@@ -116,9 +119,14 @@ namespace ARventure_Path.Forms
                 {
                     story = story,
                     content = fragmentCreationForm.getTextBoxCreateFragmentText(),
-                    ordinal = fragments.Count + 1,
+                    ordinal = story.fragment.Count + 1,
                 };
-                fragments.Add(newFragment);
+
+                bindingSourceFragments.DataSource = story.fragment;
+                /*string msg = FragmentOrm.Insert(newFragment);
+                MyUtils.ShowPosibleError(msg);*/
+
+                
             }
         }
 
@@ -126,7 +134,7 @@ namespace ARventure_Path.Forms
         {
             int numberTextBoxFragment = int.Parse(textBoxFragmentQuantity.Text);
             //Si es número que escribe el usuario es mayor que uno, y si el número añadido es mayor al número de fragments
-            if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > fragments.Count))//nombre de la lista
+            if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > story.fragment.Count))//nombre de la lista
             {
 
                 return true;
@@ -174,9 +182,12 @@ namespace ARventure_Path.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            if(dataGridViewFragments.SelectedRows.Count > 0)
+            {
+                FragmentOrm.Delete((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
 
-            fragments.Remove((fragment)listBoxFragmentStory.SelectedItem);
-          
+                bindingSourceFragments.DataSource = story.fragment;
+            }
         }
 
         private void buttonCancelStory_Click(object sender, EventArgs e)
@@ -217,7 +228,7 @@ namespace ARventure_Path.Forms
         private void becomeInDeleteForm()
         {
             buttonCreateStory.Text = "Borrar";
-            bindingSourceStory.DataSource = StoryOrm.Select();
+            bindingSourceStory.DataSource = story.fragment;
         }
 
         /// <summary>
@@ -227,7 +238,7 @@ namespace ARventure_Path.Forms
         private void becomeInModifyForm()
         {
             buttonCreateStory.Text = "Guardar";
-            bindingSourceStory.DataSource = StoryOrm.Select();
+            bindingSourceStory.DataSource = story.fragment;
         }
 
         /// <summary>
@@ -238,6 +249,7 @@ namespace ARventure_Path.Forms
         {
             labelSelectStory.Visible = false;
             comboBoxSelectStory.Visible = false;
+            bindingSourceStory.DataSource = story.fragment;
         }
 
         private void comboBoxSelectStory_SelectedIndexChanged(object sender, EventArgs e)
@@ -245,13 +257,11 @@ namespace ARventure_Path.Forms
             if(comboBoxSelectStory.SelectedItem != null)
             {
                 story story = (story)comboBoxSelectStory.SelectedItem;
-                bindingSourceFragments.DataSource = FragmentOrm.Select(story);
                 textBoxStoryTitle.Text = story.name;
                 textBoxSummary.Text = story.summary;
                 textBoxFragmentQuantity.Text = story.fragment.Count.ToString();
+                bindingSourceFragments.DataSource = story.fragment;
             }
-            
-
         }
     }
 }
