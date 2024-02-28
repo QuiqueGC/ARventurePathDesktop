@@ -53,11 +53,13 @@
             this.labelStoryTitle = new System.Windows.Forms.Label();
             this.buttonCreateStory = new System.Windows.Forms.Button();
             this.buttonCancelStory = new System.Windows.Forms.Button();
+            this.bindingSourceFragments = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.gbGenerateForIA.SuspendLayout();
             this.gbStory.SuspendLayout();
             this.gbFragments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFragments)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSelectStory
@@ -81,6 +83,7 @@
             this.comboBoxSelectStory.Size = new System.Drawing.Size(245, 21);
             this.comboBoxSelectStory.TabIndex = 0;
             this.comboBoxSelectStory.ValueMember = "id";
+            this.comboBoxSelectStory.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectStory_SelectedIndexChanged);
             // 
             // bindingSourceStory
             // 
@@ -178,12 +181,15 @@
             // 
             // listBoxFragmentStory
             // 
+            this.listBoxFragmentStory.DataSource = this.bindingSourceFragments;
+            this.listBoxFragmentStory.DisplayMember = "content";
             this.listBoxFragmentStory.FormattingEnabled = true;
             this.listBoxFragmentStory.ItemHeight = 15;
             this.listBoxFragmentStory.Location = new System.Drawing.Point(15, 101);
             this.listBoxFragmentStory.Name = "listBoxFragmentStory";
             this.listBoxFragmentStory.Size = new System.Drawing.Size(353, 199);
             this.listBoxFragmentStory.TabIndex = 2;
+            this.listBoxFragmentStory.ValueMember = "id";
             // 
             // buttonAddNewFragment
             // 
@@ -317,6 +323,10 @@
             this.buttonCancelStory.UseVisualStyleBackColor = false;
             this.buttonCancelStory.Click += new System.EventHandler(this.buttonCancelStory_Click);
             // 
+            // bindingSourceFragments
+            // 
+            this.bindingSourceFragments.DataSource = typeof(ARventure_Path.Models.fragment);
+            // 
             // StoryCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +350,7 @@
             this.gbFragments.ResumeLayout(false);
             this.gbFragments.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFragments)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,5 +382,6 @@
         private System.Windows.Forms.Button buttonCancelStory;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.BindingSource bindingSourceStory;
+        private System.Windows.Forms.BindingSource bindingSourceFragments;
     }
 }

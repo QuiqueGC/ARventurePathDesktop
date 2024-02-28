@@ -94,24 +94,18 @@ namespace ARventure_Path.Models
                         break;
                     default:
                         break;
-
-                        /*case System.Data.Entity.EntityState.Detached:
-                            break;
-                        case System.Data.Entity.EntityState.Unchanged:
-                            break;
-                        case System.Data.Entity.EntityState.Added:
-                            item.State = System.Data.Entity.EntityState.Detached;
-                            break;
-                        case System.Data.Entity.EntityState.Deleted:
-                            item.Reload();
-                            break;
-                        case System.Data.Entity.EntityState.Added:
-                            item.State = System.Data.Entity.EntityState.Unchanged;
-                            break;
-                        default:
-                            break;*/
                 }
             }
+        }
+
+        /// <summary>
+        /// Update genérico para todas las clases
+        /// </summary>
+        /// <returns>El mensaje de error en caso de que
+        /// lo haya, o un String vacío si todo es correcto</returns>
+        public static String Update()
+        {
+            return MySaveChanges();
         }
 
     }

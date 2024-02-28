@@ -21,6 +21,15 @@ namespace ARventure_Path.Models
             return _fragment;
         }
 
+        public static List<fragment> Select(story story)
+        {
+            List<fragment> fragments = Orm.db.fragment
+                .Where(f =>
+                f.story.id == story.id)
+                .ToList();
+            return fragments;
+        }
+
         public static String Delete(fragment _fragment)
         {
             Orm.db.fragment.Remove(_fragment);
