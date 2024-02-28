@@ -38,17 +38,17 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.labelSelectHappening = new System.Windows.Forms.Label();
             this.comboBoxHappenings = new System.Windows.Forms.ComboBox();
+            this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
             this.textboxIAPrompt = new System.Windows.Forms.TextBox();
             this.buttonGenerateHappening = new System.Windows.Forms.Button();
             this.groupboxIA = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxStories = new System.Windows.Forms.ComboBox();
             this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
             this.groupboxTxtHappening.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).BeginInit();
             this.groupboxIA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).BeginInit();
             this.SuspendLayout();
             // 
             // groupboxTxtHappening
@@ -147,6 +147,11 @@
             this.comboBoxHappenings.Size = new System.Drawing.Size(235, 21);
             this.comboBoxHappenings.TabIndex = 1;
             this.comboBoxHappenings.ValueMember = "id";
+            this.comboBoxHappenings.SelectedIndexChanged += new System.EventHandler(this.comboBoxHappenings_SelectedIndexChanged);
+            // 
+            // bindingSourceHappenings
+            // 
+            this.bindingSourceHappenings.DataSource = typeof(ARventure_Path.Models.happening);
             // 
             // textboxIAPrompt
             // 
@@ -206,10 +211,6 @@
             // 
             this.bindingSourceStory.DataSource = typeof(ARventure_Path.Models.story);
             // 
-            // bindingSourceHappenings
-            // 
-            this.bindingSourceHappenings.DataSource = typeof(ARventure_Path.Models.happening);
-            // 
             // HappeningTextForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,10 +233,10 @@
             this.Load += new System.EventHandler(this.HappeningTextForm_Load);
             this.groupboxTxtHappening.ResumeLayout(false);
             this.groupboxTxtHappening.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).EndInit();
             this.groupboxIA.ResumeLayout(false);
             this.groupboxIA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

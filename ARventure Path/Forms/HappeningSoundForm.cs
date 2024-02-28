@@ -10,16 +10,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace ARventure_Path.Forms
 {
     public partial class HappeningSoundForm : Form
     {
-        private MyUtils.FormType formType;
         bool Play = false;
+        private string audioPath = Path.Combine(System.Windows.Forms.Application.StartupPath, "..", "..", "filesToServer", "audioHappening");
         private string audioRoute;
         private string audio;
         private string fileName;
+        private MyUtils.FormType formType;
+
         public HappeningSoundForm(MyUtils.FormType formType)
         {
             this.formType = formType;
@@ -54,8 +58,20 @@ namespace ARventure_Path.Forms
 
                 fileName = Path.GetFileName(audioRoute);
             }
+        }
+        private void comboBoxHappenings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            happening happening = (happening)comboBoxHappenings.SelectedItem;
+            if (happening != null)
             {
+                comboBoxStories.Enabled = true;
+                groupboxIA.Enabled = true;
+                groupboxAudioHappening.Enabled = true;
+                comboBoxStories.SelectedItem = happening.story;
+                textBoxName.Text = happening.name;
+                fileName = happening.url;
 
+                textBoxUrl.Text = (Path.Combine(audioPath, fileName));
             }
         }
 

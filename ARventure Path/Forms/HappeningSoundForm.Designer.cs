@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HappeningSoundForm));
-            this.groupboxTxtHappening = new System.Windows.Forms.GroupBox();
+            this.groupboxAudioHappening = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.macTrackBarVolume = new XComponent.SliderBar.MACTrackBar();
             this.macTrackBarPlayer = new XComponent.SliderBar.MACTrackBar();
@@ -42,10 +42,11 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.Mp3Player = new AxWMPLib.AxWindowsMediaPlayer();
-            this.gbIA = new System.Windows.Forms.GroupBox();
+            this.groupboxIA = new System.Windows.Forms.GroupBox();
             this.buttonGenerateHappening = new System.Windows.Forms.Button();
             this.textboxIAPrompt = new System.Windows.Forms.TextBox();
             this.comboBoxHappenings = new System.Windows.Forms.ComboBox();
+            this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
             this.labelSelectHappening = new System.Windows.Forms.Label();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -53,36 +54,35 @@
             this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
-            this.groupboxTxtHappening.SuspendLayout();
+            this.groupboxAudioHappening.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnStop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Mp3Player)).BeginInit();
-            this.gbIA.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
+            this.groupboxIA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupboxTxtHappening
+            // groupboxAudioHappening
             // 
-            this.groupboxTxtHappening.Controls.Add(this.pictureBox1);
-            this.groupboxTxtHappening.Controls.Add(this.macTrackBarVolume);
-            this.groupboxTxtHappening.Controls.Add(this.macTrackBarPlayer);
-            this.groupboxTxtHappening.Controls.Add(this.btnStop);
-            this.groupboxTxtHappening.Controls.Add(this.btnPlay);
-            this.groupboxTxtHappening.Controls.Add(this.buttonSearch);
-            this.groupboxTxtHappening.Controls.Add(this.textBoxUrl);
-            this.groupboxTxtHappening.Controls.Add(this.lblUrl);
-            this.groupboxTxtHappening.Controls.Add(this.textBoxName);
-            this.groupboxTxtHappening.Controls.Add(this.lblName);
-            this.groupboxTxtHappening.Font = new System.Drawing.Font("Century", 10F);
-            this.groupboxTxtHappening.Location = new System.Drawing.Point(17, 218);
-            this.groupboxTxtHappening.Name = "groupboxTxtHappening";
-            this.groupboxTxtHappening.Size = new System.Drawing.Size(511, 163);
-            this.groupboxTxtHappening.TabIndex = 3;
-            this.groupboxTxtHappening.TabStop = false;
-            this.groupboxTxtHappening.Text = "Evento de Audio";
+            this.groupboxAudioHappening.Controls.Add(this.pictureBox1);
+            this.groupboxAudioHappening.Controls.Add(this.macTrackBarVolume);
+            this.groupboxAudioHappening.Controls.Add(this.macTrackBarPlayer);
+            this.groupboxAudioHappening.Controls.Add(this.btnStop);
+            this.groupboxAudioHappening.Controls.Add(this.btnPlay);
+            this.groupboxAudioHappening.Controls.Add(this.buttonSearch);
+            this.groupboxAudioHappening.Controls.Add(this.textBoxUrl);
+            this.groupboxAudioHappening.Controls.Add(this.lblUrl);
+            this.groupboxAudioHappening.Controls.Add(this.textBoxName);
+            this.groupboxAudioHappening.Controls.Add(this.lblName);
+            this.groupboxAudioHappening.Font = new System.Drawing.Font("Century", 10F);
+            this.groupboxAudioHappening.Location = new System.Drawing.Point(17, 218);
+            this.groupboxAudioHappening.Name = "groupboxAudioHappening";
+            this.groupboxAudioHappening.Size = new System.Drawing.Size(511, 163);
+            this.groupboxAudioHappening.TabIndex = 3;
+            this.groupboxAudioHappening.TabStop = false;
+            this.groupboxAudioHappening.Text = "Evento de Audio";
             // 
             // pictureBox1
             // 
@@ -226,17 +226,17 @@
             this.Mp3Player.Visible = false;
             this.Mp3Player.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.Mp3Player_PlayStateChange);
             // 
-            // gbIA
+            // groupboxIA
             // 
-            this.gbIA.Controls.Add(this.buttonGenerateHappening);
-            this.gbIA.Controls.Add(this.textboxIAPrompt);
-            this.gbIA.Font = new System.Drawing.Font("Century", 10F);
-            this.gbIA.Location = new System.Drawing.Point(17, 63);
-            this.gbIA.Name = "gbIA";
-            this.gbIA.Size = new System.Drawing.Size(511, 134);
-            this.gbIA.TabIndex = 2;
-            this.gbIA.TabStop = false;
-            this.gbIA.Text = "Generar por IA";
+            this.groupboxIA.Controls.Add(this.buttonGenerateHappening);
+            this.groupboxIA.Controls.Add(this.textboxIAPrompt);
+            this.groupboxIA.Font = new System.Drawing.Font("Century", 10F);
+            this.groupboxIA.Location = new System.Drawing.Point(17, 63);
+            this.groupboxIA.Name = "groupboxIA";
+            this.groupboxIA.Size = new System.Drawing.Size(511, 134);
+            this.groupboxIA.TabIndex = 2;
+            this.groupboxIA.TabStop = false;
+            this.groupboxIA.Text = "Generar por IA";
             // 
             // buttonGenerateHappening
             // 
@@ -269,6 +269,11 @@
             this.comboBoxHappenings.Size = new System.Drawing.Size(235, 21);
             this.comboBoxHappenings.TabIndex = 0;
             this.comboBoxHappenings.ValueMember = "id";
+            this.comboBoxHappenings.SelectedIndexChanged += new System.EventHandler(this.comboBoxHappenings_SelectedIndexChanged);
+            // 
+            // bindingSourceHappenings
+            // 
+            this.bindingSourceHappenings.DataSource = typeof(ARventure_Path.Models.happening);
             // 
             // labelSelectHappening
             // 
@@ -340,10 +345,6 @@
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // bindingSourceHappenings
-            // 
-            this.bindingSourceHappenings.DataSource = typeof(ARventure_Path.Models.happening);
-            // 
             // HappeningSoundForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,8 +354,8 @@
             this.Controls.Add(this.comboBoxStories);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Mp3Player);
-            this.Controls.Add(this.groupboxTxtHappening);
-            this.Controls.Add(this.gbIA);
+            this.Controls.Add(this.groupboxAudioHappening);
+            this.Controls.Add(this.groupboxIA);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.comboBoxHappenings);
             this.Controls.Add(this.buttonCreate);
@@ -365,16 +366,16 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Creación de evento de audio                       ";
             this.Load += new System.EventHandler(this.HappeningSoundForm_Load);
-            this.groupboxTxtHappening.ResumeLayout(false);
-            this.groupboxTxtHappening.PerformLayout();
+            this.groupboxAudioHappening.ResumeLayout(false);
+            this.groupboxAudioHappening.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnStop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Mp3Player)).EndInit();
-            this.gbIA.ResumeLayout(false);
-            this.gbIA.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
+            this.groupboxIA.ResumeLayout(false);
+            this.groupboxIA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,12 +383,12 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupboxTxtHappening;
+        private System.Windows.Forms.GroupBox groupboxAudioHappening;
         private System.Windows.Forms.TextBox textBoxUrl;
         private System.Windows.Forms.Label lblUrl;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.GroupBox gbIA;
+        private System.Windows.Forms.GroupBox groupboxIA;
         private System.Windows.Forms.Button buttonGenerateHappening;
         private System.Windows.Forms.TextBox textboxIAPrompt;
         private System.Windows.Forms.ComboBox comboBoxHappenings;

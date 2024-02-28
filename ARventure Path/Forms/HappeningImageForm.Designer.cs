@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.groupboxTxtHappening = new System.Windows.Forms.GroupBox();
+            this.groupboxImgHappening = new System.Windows.Forms.GroupBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.imgHappening = new System.Windows.Forms.PictureBox();
             this.textBoxUrl = new System.Windows.Forms.TextBox();
@@ -41,34 +41,34 @@
             this.textboxIAPrompt = new System.Windows.Forms.TextBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.comboBoxHappenings = new System.Windows.Forms.ComboBox();
+            this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
             this.buttonCreate = new System.Windows.Forms.Button();
             this.labelSelectHappening = new System.Windows.Forms.Label();
             this.comboBoxStories = new System.Windows.Forms.ComboBox();
             this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
-            this.groupboxTxtHappening.SuspendLayout();
+            this.groupboxImgHappening.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgHappening)).BeginInit();
             this.groupboxIA.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupboxTxtHappening
+            // groupboxImgHappening
             // 
-            this.groupboxTxtHappening.Controls.Add(this.buttonSearch);
-            this.groupboxTxtHappening.Controls.Add(this.imgHappening);
-            this.groupboxTxtHappening.Controls.Add(this.textBoxUrl);
-            this.groupboxTxtHappening.Controls.Add(this.labelUrl);
-            this.groupboxTxtHappening.Controls.Add(this.textBoxName);
-            this.groupboxTxtHappening.Controls.Add(this.lblName);
-            this.groupboxTxtHappening.Font = new System.Drawing.Font("Century", 10F);
-            this.groupboxTxtHappening.Location = new System.Drawing.Point(17, 215);
-            this.groupboxTxtHappening.Name = "groupboxTxtHappening";
-            this.groupboxTxtHappening.Size = new System.Drawing.Size(511, 163);
-            this.groupboxTxtHappening.TabIndex = 3;
-            this.groupboxTxtHappening.TabStop = false;
-            this.groupboxTxtHappening.Text = "Evento de Imagen";
+            this.groupboxImgHappening.Controls.Add(this.buttonSearch);
+            this.groupboxImgHappening.Controls.Add(this.imgHappening);
+            this.groupboxImgHappening.Controls.Add(this.textBoxUrl);
+            this.groupboxImgHappening.Controls.Add(this.labelUrl);
+            this.groupboxImgHappening.Controls.Add(this.textBoxName);
+            this.groupboxImgHappening.Controls.Add(this.lblName);
+            this.groupboxImgHappening.Font = new System.Drawing.Font("Century", 10F);
+            this.groupboxImgHappening.Location = new System.Drawing.Point(17, 215);
+            this.groupboxImgHappening.Name = "groupboxImgHappening";
+            this.groupboxImgHappening.Size = new System.Drawing.Size(511, 163);
+            this.groupboxImgHappening.TabIndex = 3;
+            this.groupboxImgHappening.TabStop = false;
+            this.groupboxImgHappening.Text = "Evento de Imagen";
             // 
             // buttonSearch
             // 
@@ -184,6 +184,11 @@
             this.comboBoxHappenings.Size = new System.Drawing.Size(235, 21);
             this.comboBoxHappenings.TabIndex = 0;
             this.comboBoxHappenings.ValueMember = "id";
+            this.comboBoxHappenings.SelectedIndexChanged += new System.EventHandler(this.comboBoxHappenings_SelectedIndexChanged);
+            // 
+            // bindingSourceHappenings
+            // 
+            this.bindingSourceHappenings.DataSource = typeof(ARventure_Path.Models.happening);
             // 
             // buttonCreate
             // 
@@ -235,10 +240,6 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Seleccionar historia";
             // 
-            // bindingSourceHappenings
-            // 
-            this.bindingSourceHappenings.DataSource = typeof(ARventure_Path.Models.happening);
-            // 
             // HappeningImageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,7 +247,7 @@
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(544, 422);
             this.Controls.Add(this.comboBoxStories);
-            this.Controls.Add(this.groupboxTxtHappening);
+            this.Controls.Add(this.groupboxImgHappening);
             this.Controls.Add(this.groupboxIA);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonCancel);
@@ -259,13 +260,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Creación de evento de imagen";
             this.Load += new System.EventHandler(this.HappeningImageForm_Load);
-            this.groupboxTxtHappening.ResumeLayout(false);
-            this.groupboxTxtHappening.PerformLayout();
+            this.groupboxImgHappening.ResumeLayout(false);
+            this.groupboxImgHappening.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgHappening)).EndInit();
             this.groupboxIA.ResumeLayout(false);
             this.groupboxIA.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,7 +274,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupboxTxtHappening;
+        private System.Windows.Forms.GroupBox groupboxImgHappening;
         private System.Windows.Forms.TextBox textBoxUrl;
         private System.Windows.Forms.Label labelUrl;
         private System.Windows.Forms.TextBox textBoxName;
