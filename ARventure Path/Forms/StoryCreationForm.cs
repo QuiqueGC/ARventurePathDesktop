@@ -15,7 +15,7 @@ namespace ARventure_Path.Forms
         private story story = new story();
         private MyUtils.FormType formType;
         private string fileName;
-        //private BindingList<fragment> fragments = new BindingList<fragment>();
+        private BindingList<fragment> fragments = new BindingList<fragment>();
 
         private string StoryImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
 
@@ -55,7 +55,7 @@ namespace ARventure_Path.Forms
                 msg = StoryOrm.Insert(story);
                 MyUtils.ShowPosibleError(msg);
 
-                foreach (fragment fragment in story.fragment)
+                foreach (fragment fragment in fragments)
                 {
                     msg = FragmentOrm.Insert(fragment);
                     MyUtils.ShowPosibleError(msg);
@@ -121,12 +121,18 @@ namespace ARventure_Path.Forms
                     content = fragmentCreationForm.getTextBoxCreateFragmentText(),
                     ordinal = story.fragment.Count + 1,
                 };
-
-                bindingSourceFragments.DataSource = story.fragment;
-                /*string msg = FragmentOrm.Insert(newFragment);
-                MyUtils.ShowPosibleError(msg);*/
-
-                
+                if (formType == MyUtils.FormType.Create)
+                {
+                    fragments.Add(newFragment);
+                    DoSelectFragmentsDependingOnType();
+                }
+                else
+                {
+                    string msg = FragmentOrm.Insert(newFragment);
+                    MyUtils.ShowPosibleError(msg);
+                    DoSelectFragmentsDependingOnType();
+                }
+               
             }
         }
 
@@ -134,14 +140,34 @@ namespace ARventure_Path.Forms
         {
             int numberTextBoxFragment = int.Parse(textBoxFragmentQuantity.Text);
             //Si es número que escribe el usuario es mayor que uno, y si el número añadido es mayor al número de fragments
-            if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > story.fragment.Count))//nombre de la lista
-            {
 
-                return true;
+            if (formType == MyUtils.FormType.Create)
+            {
+                if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > fragments.Count))//nombre de la lista
+                {
+
+                    return true;
+
+                }
+
+                return false;
 
             }
+            else
+            {
+                if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > story.fragment.Count))//nombre de la lista
+                {
 
-            return false;
+                    return true;
+
+                }
+
+                return false;
+            }
+
+
+
+            
 
         }
 
@@ -184,9 +210,18 @@ namespace ARventure_Path.Forms
         {
             if(dataGridViewFragments.SelectedRows.Count > 0)
             {
-                FragmentOrm.Delete((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                if (formType == MyUtils.FormType.Create)
+                {
+                    fragments.Remove((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                    DoSelectFragmentsDependingOnType();
+                }
+                else
+                {
+                    FragmentOrm.Delete((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                    DoSelectFragmentsDependingOnType();
+                }
 
-                bindingSourceFragments.DataSource = story.fragment;
+                
             }
         }
 
@@ -228,7 +263,8 @@ namespace ARventure_Path.Forms
         private void becomeInDeleteForm()
         {
             buttonCreateStory.Text = "Borrar";
-            bindingSourceStory.DataSource = story.fragment;
+            bindingSourceStory.DataSource = StoryOrm.Select();
+            DoSelectFragmentsDependingOnType();
         }
 
         /// <summary>
@@ -238,7 +274,8 @@ namespace ARventure_Path.Forms
         private void becomeInModifyForm()
         {
             buttonCreateStory.Text = "Guardar";
-            bindingSourceStory.DataSource = story.fragment;
+            bindingSourceStory.DataSource = StoryOrm.Select();
+            DoSelectFragmentsDependingOnType();
         }
 
         /// <summary>
@@ -249,17 +286,37 @@ namespace ARventure_Path.Forms
         {
             labelSelectStory.Visible = false;
             comboBoxSelectStory.Visible = false;
-            bindingSourceStory.DataSource = story.fragment;
+            DoSelectFragmentsDependingOnType();
         }
 
         private void comboBoxSelectStory_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(comboBoxSelectStory.SelectedItem != null)
             {
-                story story = (story)comboBoxSelectStory.SelectedItem;
+                story = (story)comboBoxSelectStory.SelectedItem;
                 textBoxStoryTitle.Text = story.name;
                 textBoxSummary.Text = story.summary;
                 textBoxFragmentQuantity.Text = story.fragment.Count.ToString();
+                DoSelectFragmentsDependingOnType();
+            }
+        }
+
+
+        /// <summary>
+        /// Escoge si va a hacer un select de fragmentos en caso
+        /// de creación y modificación o si va a
+        /// acceder a la nueva lista en caso de creación
+        /// </summary>
+        private void DoSelectFragmentsDependingOnType()
+        {
+            if (formType == MyUtils.FormType.Create)
+            {
+                bindingSourceFragments.DataSource = null;
+                bindingSourceFragments.DataSource = fragments;
+            }
+            else
+            {
+                bindingSourceFragments.DataSource = null;
                 bindingSourceFragments.DataSource = story.fragment;
             }
         }
