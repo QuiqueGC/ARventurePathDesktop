@@ -37,16 +37,45 @@ namespace ARventure_Path.Forms
             }
             else
             {
-                //delete
+                //Tengo que pelearme con el delete
+                delete();
             }
 
         }
 
+        private void delete()
+        {
+            BindingList<fragment> fragmentsToRemove = new BindingList<fragment>();
+            foreach(fragment fragment in story.fragment)
+            {
+                fragmentsToRemove.Add(fragment);
+            }
+
+            foreach (fragment fragment in fragmentsToRemove)
+            {
+                fragmentsToRemove.Add(fragment);
+                string msg = FragmentOrm.Delete(fragment);
+                MyUtils.ShowPosibleError(msg);
+            }
+
+
+            StoryOrm.Delete(story);
+            comboBoxSelectStory.SelectedItem = null;
+            bindingSourceFragments.DataSource = null;
+            bindingSourceStory.DataSource = StoryOrm.Select();
+        }
+
+
+        /// <summary>
+        /// Crea la historia y hace el insert pertinente
+        /// </summary>
         private void CreateStory()
         {
             if(textBoxStoryTitle.Text.Trim() != "" &&
                textBoxSummary.Text.Trim() != "" &&
-               fileName != null) 
+               fileName != null &&
+               fragments.Count > 2 ||
+               story.fragment.Count > 2) 
             {
                 string msg = "";
                 story.name = textBoxStoryTitle.Text.Trim();
@@ -63,7 +92,7 @@ namespace ARventure_Path.Forms
             }
             else
             {
-                MessageBox.Show("Debes rellenar nombre, resumen y añadir una imagen.", "¡Maravilloso!");
+                MessageBox.Show("Debes rellenar nombre, resumen, añadir una imagen y poner un mínimo de 2 fragmentos.", "¡Maravilloso!");
             }
            
         }
@@ -119,7 +148,9 @@ namespace ARventure_Path.Forms
                 {
                     story = story,
                     content = fragmentCreationForm.getTextBoxCreateFragmentText(),
-                    ordinal = story.fragment.Count + 1,
+                    ordinal =formType == MyUtils.FormType.Create ?
+                    fragments.Count + 1 : story.fragment.Count + 1,
+
                 };
                 if (formType == MyUtils.FormType.Create)
                 {
@@ -143,31 +174,23 @@ namespace ARventure_Path.Forms
 
             if (formType == MyUtils.FormType.Create)
             {
-                if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > fragments.Count))//nombre de la lista
+                if ((numberTextBoxFragment >= 1) &&
+                    (numberTextBoxFragment > fragments.Count))//nombre de la lista
                 {
-
                     return true;
 
                 }
-
                 return false;
-
             }
             else
             {
-                if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > story.fragment.Count))//nombre de la lista
+                if ((numberTextBoxFragment >= 1) &&
+                    (numberTextBoxFragment > story.fragment.Count))//nombre de la lista
                 {
-
                     return true;
-
                 }
-
                 return false;
             }
-
-
-
-            
 
         }
 
@@ -181,7 +204,7 @@ namespace ARventure_Path.Forms
             //https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers
             if (System.Text.RegularExpressions.Regex.IsMatch(textBoxFragmentQuantity.Text, "[^0-9]"))
             {
-                MessageBox.Show("Please enter only numbers.");
+                MessageBox.Show("Por favor, introduce un número (superior a 1).");
                 textBoxFragmentQuantity.Text = textBoxFragmentQuantity.Text.Remove(textBoxFragmentQuantity.Text.Length - 1);
 
                 return;
@@ -196,11 +219,21 @@ namespace ARventure_Path.Forms
 
             int numberTextBoxFragment = int.Parse(textBoxFragmentQuantity.Text);
 
-            if (CanAddFragments())
+            if (numberTextBoxFragment < 2) 
             {
-                buttonAddNewFragment.Enabled = true;
+                MessageBox.Show("Por favor, introduce un número (superior a 1).");
                 return;
             }
+            else
+            {
+                if (CanAddFragments())
+                {
+                    buttonAddNewFragment.Enabled = true;
+                    return;
+                }
+            }
+
+            
 
             buttonAddNewFragment.Enabled = false;
 
@@ -213,16 +246,51 @@ namespace ARventure_Path.Forms
                 if (formType == MyUtils.FormType.Create)
                 {
                     fragments.Remove((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                    ReorderingFragments();
                     DoSelectFragmentsDependingOnType();
                 }
                 else
                 {
-                    FragmentOrm.Delete((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                    string msg = FragmentOrm.Delete((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                    MyUtils.ShowPosibleError(msg);
+                    ReorderingFragmentsOfStory();
                     DoSelectFragmentsDependingOnType();
                 }
-
-                
             }
+        }
+
+
+        /// <summary>
+        /// Reordena los ordinales de los fragmentos (en caso de ser form de creación)
+        /// tras el borrado de uno de ellos
+        /// </summary>
+        /// <param name="fragmentsToOrder"></param>
+        private void ReorderingFragments()
+        {
+            for (int i = 0; i < fragments.Count; i++)
+            {
+                fragments[i].ordinal = i+1;
+            }
+            string msg = Orm.Update();
+            MyUtils.ShowPosibleError(msg);
+        }
+
+        /// <summary>
+        /// Reordena los ordinales de los fragmentos
+        /// (en caso de ser form de modificación o borrado)
+        /// tras el borrado de uno de ellos
+        /// </summary>
+        /// <param name="fragmentsToOrder"></param>
+        private void ReorderingFragmentsOfStory()
+        {
+            int ordinalToPut = 1;
+            foreach(fragment fragmentToOrder in story.fragment)
+            {
+                fragmentToOrder.ordinal = ordinalToPut;
+                ordinalToPut++;
+            }
+            string msg = Orm.Update();
+            MyUtils.ShowPosibleError(msg);
         }
 
         private void buttonCancelStory_Click(object sender, EventArgs e)
@@ -303,9 +371,9 @@ namespace ARventure_Path.Forms
 
 
         /// <summary>
-        /// Escoge si va a hacer un select de fragmentos en caso
-        /// de creación y modificación o si va a
-        /// acceder a la nueva lista en caso de creación
+        /// Escoge si va a hacer un select el la BBDD
+        /// en caso de que sea modificación o borrado.
+        /// En caso con
         /// </summary>
         private void DoSelectFragmentsDependingOnType()
         {
@@ -317,7 +385,7 @@ namespace ARventure_Path.Forms
             else
             {
                 bindingSourceFragments.DataSource = null;
-                bindingSourceFragments.DataSource = story.fragment;
+                bindingSourceFragments.DataSource = FragmentOrm.Select(story);
             }
         }
     }
