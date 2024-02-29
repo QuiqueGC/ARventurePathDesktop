@@ -188,7 +188,7 @@ namespace ARventure_Path.Forms
         {
 
             happening happening = (happening)comboBoxHappenings.SelectedItem;
-            if(happening != null)
+            if(happening != null && formType == MyUtils.FormType.Modify)
             {
                 comboBoxStories.Enabled = true;
                 groupboxIA.Enabled = true;
