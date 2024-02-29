@@ -10,7 +10,7 @@ namespace ARventure_Path.Models
 {
     public static class Orm
     {
-        public static ARDBEntities db = new ARDBEntities();
+        public static AbpEntities db = new AbpEntities();
 
         /// <summary>
         /// Extrae el mensaje de error de la excepción pertinente

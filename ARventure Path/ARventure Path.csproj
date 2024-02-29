@@ -139,53 +139,53 @@
       <DependentUpon>StoryCreationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\achievement.cs">
-      <DependentUpon>ModelARDB.tt</DependentUpon>
+      <DependentUpon>ModelAbp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\arventure.cs">
+      <DependentUpon>ModelAbp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\fragment.cs">
+      <DependentUpon>ModelAbp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\happening.cs">
+      <DependentUpon>ModelAbp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelAbp.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAbp.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelAbp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAbp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelAbp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAbp.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Queries\AchievementOrm.cs" />
-    <Compile Include="Models\arventure.cs">
-      <DependentUpon>ModelARDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Queries\ArventureOrm.cs" />
-    <Compile Include="Models\fragment.cs">
-      <DependentUpon>ModelARDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Queries\FragmentOrm.cs" />
-    <Compile Include="Models\happening.cs">
-      <DependentUpon>ModelARDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Queries\HappeningOrm.cs" />
-    <Compile Include="Models\ModelARDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelARDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModelARDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelARDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModelARDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelARDB.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Queries\Orm.cs" />
-    <Compile Include="Models\route.cs">
-      <DependentUpon>ModelARDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Queries\RouteOrm.cs" />
-    <Compile Include="Models\stop.cs">
-      <DependentUpon>ModelARDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Queries\StopOrm.cs" />
-    <Compile Include="Models\story.cs">
-      <DependentUpon>ModelARDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Queries\StoryOrm.cs" />
-    <Compile Include="Models\user.cs">
-      <DependentUpon>ModelARDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Queries\UserOrm.cs" />
+    <Compile Include="Models\route.cs">
+      <DependentUpon>ModelAbp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stop.cs">
+      <DependentUpon>ModelAbp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\story.cs">
+      <DependentUpon>ModelAbp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user.cs">
+      <DependentUpon>ModelAbp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\MyUtils.cs" />
@@ -229,12 +229,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="Models\ModelARDB.edmx">
+    <EntityDeploy Include="Models\ModelAbp.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelARDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelAbp.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\ModelARDB.edmx.diagram">
-      <DependentUpon>ModelARDB.edmx</DependentUpon>
+    <None Include="Models\ModelAbp.edmx.diagram">
+      <DependentUpon>ModelAbp.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ARventure_Path.Models.achievement.datasource" />
@@ -287,17 +287,17 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\ModelARDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelARDB.Context.cs</LastGenOutput>
-      <DependentUpon>ModelARDB.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\ModelARDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelARDB.edmx</DependentUpon>
-      <LastGenOutput>ModelARDB.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\ArventurePath.png" />
+    <Content Include="Models\ModelAbp.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAbp.edmx</DependentUpon>
+      <LastGenOutput>ModelAbp.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelAbp.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAbp.edmx</DependentUpon>
+      <LastGenOutput>ModelAbp.cs</LastGenOutput>
+    </Content>
     <Content Include="Resources\volume.png" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\play.png" />

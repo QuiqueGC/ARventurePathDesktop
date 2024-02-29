@@ -13,10 +13,10 @@ namespace ARventure_Path.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ARDBEntities : DbContext
+    public partial class AbpEntities : DbContext
     {
-        public ARDBEntities()
-            : base("name=ARDBEntities")
+        public AbpEntities()
+            : base("name=AbpEntities")
         {
         }
     

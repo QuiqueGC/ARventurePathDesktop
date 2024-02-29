@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ARDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AbpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="achievement">
           <Key>
             <PropertyRef Name="id" />
@@ -252,7 +252,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ARDBModelStoreContainer">
+        <EntityContainer Name="AbpModelStoreContainer">
           <EntitySet Name="achievement" EntityType="Self.achievement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="arventure" EntityType="Self.arventure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="arventure_have_happening" EntityType="Self.arventure_have_happening" Schema="dbo" store:Type="Tables" />
@@ -313,10 +313,11 @@
             <End Role="user_play_arventure" EntitySet="user_play_arventure" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ARDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AbpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="achievement">
           <Key>
             <PropertyRef Name="id" />
@@ -349,8 +350,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ordinal" Type="Int32" Nullable="false" />
           <Property Name="idStory" Type="Int32" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="story" Relationship="Self.FK_fragment_story" FromRole="fragment" ToRole="story" />
-          <Property Name="content" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="happening">
           <Key>
@@ -373,9 +374,9 @@
           <Property Name="time" Type="Time" Nullable="false" Precision="7" />
           <Property Name="steps" Type="Int32" />
           <Property Name="distance" Type="Double" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="arventure" Relationship="Self.FK_arventure_route" FromRole="route" ToRole="arventure" />
           <NavigationProperty Name="stop" Relationship="Self.FK_stop_route" FromRole="route" ToRole="stop" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="stop">
           <Key>
@@ -498,7 +499,7 @@
           <End Role="arventure" Type="Self.arventure" Multiplicity="*" />
           <End Role="user" Type="Self.user" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="ARDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AbpEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="achievement" EntityType="Self.achievement" />
           <EntitySet Name="arventure" EntityType="Self.arventure" />
           <EntitySet Name="fragment" EntityType="Self.fragment" />
@@ -549,9 +550,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ARDBModelStoreContainer" CdmEntityContainer="ARDBEntities">
+        <EntityContainerMapping StorageEntityContainer="AbpModelStoreContainer" CdmEntityContainer="AbpEntities">
           <EntitySetMapping Name="achievement">
-            <EntityTypeMapping TypeName="ARDBModel.achievement">
+            <EntityTypeMapping TypeName="AbpModel.achievement">
               <MappingFragment StoreEntitySet="achievement">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -560,7 +561,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="arventure">
-            <EntityTypeMapping TypeName="ARDBModel.arventure">
+            <EntityTypeMapping TypeName="AbpModel.arventure">
               <MappingFragment StoreEntitySet="arventure">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -571,17 +572,17 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="fragment">
-            <EntityTypeMapping TypeName="ARDBModel.fragment">
+            <EntityTypeMapping TypeName="AbpModel.fragment">
               <MappingFragment StoreEntitySet="fragment">
-                <ScalarProperty Name="content" ColumnName="content" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ordinal" ColumnName="ordinal" />
                 <ScalarProperty Name="idStory" ColumnName="idStory" />
+                <ScalarProperty Name="content" ColumnName="content" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="happening">
-            <EntityTypeMapping TypeName="ARDBModel.happening">
+            <EntityTypeMapping TypeName="AbpModel.happening">
               <MappingFragment StoreEntitySet="happening">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -593,18 +594,18 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="route">
-            <EntityTypeMapping TypeName="ARDBModel.route">
+            <EntityTypeMapping TypeName="AbpModel.route">
               <MappingFragment StoreEntitySet="route">
-                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="time" ColumnName="time" />
                 <ScalarProperty Name="steps" ColumnName="steps" />
                 <ScalarProperty Name="distance" ColumnName="distance" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="stop">
-            <EntityTypeMapping TypeName="ARDBModel.stop">
+            <EntityTypeMapping TypeName="AbpModel.stop">
               <MappingFragment StoreEntitySet="stop">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -615,7 +616,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="story">
-            <EntityTypeMapping TypeName="ARDBModel.story">
+            <EntityTypeMapping TypeName="AbpModel.story">
               <MappingFragment StoreEntitySet="story">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -625,7 +626,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="user">
-            <EntityTypeMapping TypeName="ARDBModel.user">
+            <EntityTypeMapping TypeName="AbpModel.user">
               <MappingFragment StoreEntitySet="user">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -637,7 +638,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="arventure_have_happening" TypeName="ARDBModel.arventure_have_happening" StoreEntitySet="arventure_have_happening">
+          <AssociationSetMapping Name="arventure_have_happening" TypeName="AbpModel.arventure_have_happening" StoreEntitySet="arventure_have_happening">
             <EndProperty Name="arventure">
               <ScalarProperty Name="id" ColumnName="idArventure" />
             </EndProperty>
@@ -645,7 +646,7 @@
               <ScalarProperty Name="id" ColumnName="idHappening" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="user_have_achievement" TypeName="ARDBModel.user_have_achievement" StoreEntitySet="user_have_achievement">
+          <AssociationSetMapping Name="user_have_achievement" TypeName="AbpModel.user_have_achievement" StoreEntitySet="user_have_achievement">
             <EndProperty Name="achievement">
               <ScalarProperty Name="id" ColumnName="idAchievement" />
             </EndProperty>
@@ -653,7 +654,7 @@
               <ScalarProperty Name="id" ColumnName="idUser" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="user_play_arventure" TypeName="ARDBModel.user_play_arventure" StoreEntitySet="user_play_arventure">
+          <AssociationSetMapping Name="user_play_arventure" TypeName="AbpModel.user_play_arventure" StoreEntitySet="user_play_arventure">
             <EndProperty Name="arventure">
               <ScalarProperty Name="id" ColumnName="idArventure" />
             </EndProperty>

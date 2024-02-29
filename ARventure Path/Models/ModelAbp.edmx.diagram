@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1ed95c00cc2e494cbe9176d305f843fe" Name="Diagram1">
+        <EntityTypeShape EntityType="AbpModel.achievement" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbpModel.arventure" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbpModel.fragment" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbpModel.happening" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbpModel.route" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbpModel.stop" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbpModel.story" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbpModel.user" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="AbpModel.FK_arventure_achievement" ManuallyRouted="false" />
+        <AssociationConnector Association="AbpModel.FK_arventure_route" ManuallyRouted="false" />
+        <AssociationConnector Association="AbpModel.FK_arventure_story" ManuallyRouted="false" />
+        <AssociationConnector Association="AbpModel.FK_fragment_story" ManuallyRouted="false" />
+        <AssociationConnector Association="AbpModel.FK_happening_story" ManuallyRouted="false" />
+        <AssociationConnector Association="AbpModel.FK_stop_route" ManuallyRouted="false" />
+        <AssociationConnector Association="AbpModel.arventure_have_happening" ManuallyRouted="false" />
+        <AssociationConnector Association="AbpModel.user_have_achievement" ManuallyRouted="false" />
+        <AssociationConnector Association="AbpModel.user_play_arventure" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

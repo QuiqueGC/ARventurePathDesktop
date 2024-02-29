@@ -25,11 +25,9 @@ namespace ARventure_Path.Models
         public string name { get; set; }
         public string img { get; set; }
         public string summary { get; set; }
-
+    
         public virtual ICollection<arventure> arventure { get; set; }
         public virtual ICollection<fragment> fragment { get; set; }
         public virtual ICollection<happening> happening { get; set; }
-
-        
     }
 }
