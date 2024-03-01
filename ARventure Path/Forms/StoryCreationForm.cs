@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ARventure_Path.Forms
@@ -46,20 +47,17 @@ namespace ARventure_Path.Forms
 
         private void delete()
         {
-            BindingList<fragment> fragmentsToRemove = new BindingList<fragment>();
-            foreach(fragment fragment in story.fragment)
-            {
-                fragmentsToRemove.Add(fragment);
-            }
+            
+            int i = story.fragment.Count;
 
-            foreach (fragment fragment in fragmentsToRemove)
+            do
             {
-                fragmentsToRemove.Add(fragment);
-                string msg = FragmentOrm.Delete(fragment);
+                string msg = FragmentOrm.Delete(story.fragment.FirstOrDefault());
                 MyUtils.ShowPosibleError(msg);
-            }
+                i--;
 
-
+            }while (i > 0);
+            
             StoryOrm.Delete(story);
             comboBoxSelectStory.SelectedItem = null;
             bindingSourceFragments.DataSource = null;
@@ -358,6 +356,8 @@ namespace ARventure_Path.Forms
         {
             buttonCreateStory.Text = "Borrar";
             bindingSourceStory.DataSource = StoryOrm.Select();
+            gbGenerateForIA.Enabled = false;
+            gbStory.Enabled = false;
             DoSelectFragmentsDependingOnType();
         }
 
