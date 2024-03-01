@@ -366,17 +366,17 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(384, 19);
+            this.textBox2.Location = new System.Drawing.Point(384, 16);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(288, 16);
+            this.textBox2.Size = new System.Drawing.Size(288, 30);
             this.textBox2.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(212, 19);
+            this.label2.Location = new System.Drawing.Point(212, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 16);
             this.label2.TabIndex = 7;
@@ -398,7 +398,7 @@
             // labelStoryTitle
             // 
             this.labelStoryTitle.AutoSize = true;
-            this.labelStoryTitle.Location = new System.Drawing.Point(93, 16);
+            this.labelStoryTitle.Location = new System.Drawing.Point(75, 16);
             this.labelStoryTitle.Name = "labelStoryTitle";
             this.labelStoryTitle.Size = new System.Drawing.Size(125, 16);
             this.labelStoryTitle.TabIndex = 3;

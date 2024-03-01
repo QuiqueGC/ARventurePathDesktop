@@ -30,7 +30,7 @@ namespace ARventure_Path.Forms
             {
                 // Crear Logro
                 string msg = "";
-                achievement.name = textBoxNameAchievement.Text;
+                achievement.name = textBoxNameAchievement.Text.Trim();
                 achievement.img = fileName;
 
                 msg = AchievementOrm.Insert(achievement);
@@ -100,13 +100,17 @@ namespace ARventure_Path.Forms
 
         private void comboBoxSelectAchievement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            achievement achievement = (achievement)comboBoxSelectAchievement.SelectedItem;
-            textBoxNameAchievement.Text = achievement.name;
-            textBoxImageAchievement.Text = achievement.img;
+            if (comboBoxSelectAchievement.SelectedItem != null) 
+            {
+                achievement = (achievement)comboBoxSelectAchievement.SelectedItem;
+                textBoxNameAchievement.Text = achievement.name;
+                textBoxImageAchievement.Text = achievement.img;
 
-            string imagePath = Path.Combine(AchievementImagePath, achievement.img);
-            var image = Image.FromFile(imagePath);
-            pictureBoxAchievement.Image = image;
+                string imagePath = Path.Combine(AchievementImagePath, achievement.img);
+                var image = Image.FromFile(imagePath);
+                pictureBoxAchievement.Image = image;
+            }
+
         }
         private void ChooseTypeOfForm()
         {
@@ -126,7 +130,7 @@ namespace ARventure_Path.Forms
         {
             buttonAcceptAchievement.Text = "Borrar";
             bindingSourceAchievement.DataSource = AchievementOrm.Select();
-            comboBoxSelectAchievement.DisplayMember = "name";
+            comboBoxSelectAchievement.SelectedItem = null;
         }
         private void becomeInCreatonForm()
         {

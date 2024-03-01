@@ -25,6 +25,7 @@ namespace ARventure_Path.Forms
         {
             ChooseTypeOfForm();
             bindingSourceStory.DataSource = StoryOrm.Select();
+            
         }
 
         private void buttonCancelArventure_Click(object sender, EventArgs e)
