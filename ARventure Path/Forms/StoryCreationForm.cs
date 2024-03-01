@@ -90,6 +90,16 @@ namespace ARventure_Path.Forms
                     msg = FragmentOrm.Insert(fragment);
                     MyUtils.ShowPosibleError(msg);
                 }
+
+                textBoxStoryTitle.Clear();
+                textBoxSummary.Clear();
+                textBoxGenerateStoryAI.Clear();
+                textBoxImageStory.Clear();
+                textBoxFragmentQuantity.Clear();
+                pictureBoxStory.Image = null;
+                story = new story();
+                fragments.Clear();
+                DoSelectFragmentsDependingOnType();
             }
             else
             {
