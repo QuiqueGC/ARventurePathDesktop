@@ -29,10 +29,28 @@ namespace ARventure_Path.Forms
             if (formType == MyUtils.FormType.Create)
             {
                 // Crear Logro
+                string msg = "";
+                achievement.name = textBoxNameAchievement.Text.Trim();
+                achievement.img = fileName;
+
+                msg = AchievementOrm.Insert(achievement);
+                MyUtils.ShowPosibleError(msg);
+
             }
             else
             {
                 // Borrar Logro
+                string msg = "";
+
+                if (comboBoxSelectAchievement.SelectedItem != null) 
+                {
+                    achievement = (achievement)comboBoxSelectAchievement.SelectedItem;
+                    achievement.name = textBoxNameAchievement.Text;
+                    achievement.img = fileName;
+                }
+
+                msg = AchievementOrm.Delete(achievement);
+                MyUtils.ShowPosibleError(msg);
             }
         }
 
@@ -82,13 +100,17 @@ namespace ARventure_Path.Forms
 
         private void comboBoxSelectAchievement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            achievement achievement = (achievement)comboBoxSelectAchievement.SelectedItem;
-            textBoxNameAchievement.Text = achievement.name;
-            textBoxImageAchievement.Text = achievement.img;
+            if (comboBoxSelectAchievement.SelectedItem != null) 
+            {
+                achievement = (achievement)comboBoxSelectAchievement.SelectedItem;
+                textBoxNameAchievement.Text = achievement.name;
+                textBoxImageAchievement.Text = achievement.img;
 
-            string imagePath = Path.Combine(AchievementImagePath, achievement.img);
-            var image = Image.FromFile(imagePath);
-            pictureBoxAchievement.Image = image;
+                string imagePath = Path.Combine(AchievementImagePath, achievement.img);
+                var image = Image.FromFile(imagePath);
+                pictureBoxAchievement.Image = image;
+            }
+
         }
         private void ChooseTypeOfForm()
         {

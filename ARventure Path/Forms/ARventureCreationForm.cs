@@ -14,6 +14,8 @@ namespace ARventure_Path.Forms
 {
     public partial class ARventureCreationForm : Form
     {
+        arventure arventure = new arventure();
+        story story = new story();
         private MyUtils.FormType formType;
         public ARventureCreationForm(MyUtils.FormType formType)
         {
@@ -25,6 +27,7 @@ namespace ARventure_Path.Forms
         {
             ChooseTypeOfForm();
             bindingSourceStory.DataSource = StoryOrm.Select();
+            //bindingSourceRoute.DataSource = RouteOrm.Select();
         }
 
         private void buttonCancelArventure_Click(object sender, EventArgs e)
@@ -37,14 +40,34 @@ namespace ARventure_Path.Forms
             if (formType == MyUtils.FormType.Create)
             {
                 // Crear ARventure
+                string msg = "";
+                arventure.name = textBoxTitleArventure.Text;
+                story.name = labelStoryTitle.Text;
+                //story.img = pictureBoxStoryImg.Image;
+                story.summary = textBoxStorySummary.Text;
+
+
+                msg = ArventureOrm.Insert(arventure);
+                MyUtils.ShowPosibleError(msg);
+
             }
             else if (formType == MyUtils.FormType.Modify)
             {
                 // Modificar ARventure
+                
+
             }
             else
             {
                 // Borrar ARventure
+                string msg = "";
+                if (comboBoxSelectArventure.SelectedItem != null)
+                {
+
+                }
+
+                msg = ArventureOrm.Delete(arventure);
+                MyUtils.ShowPosibleError(msg);
             }
         }
         private void ChooseTypeOfForm()
@@ -69,18 +92,25 @@ namespace ARventure_Path.Forms
         {
             buttonCreateArventure.Text = "Borrar";
             bindingSourceArventure.DataSource = ArventureOrm.Select();
+            comboBoxSelectArventure.SelectedItem = null;
         }
 
         private void becomeInModifyForm()
         {
             buttonCreateArventure.Text = "Guardar";
             bindingSourceArventure.DataSource = ArventureOrm.Select();
+            comboBoxSelectArventure.SelectedItem = null;
         }
 
         private void becomeInCreatonForm()
         {
             labelSelectArventure.Visible = false;
             comboBoxSelectArventure.Visible = false;
+        }
+
+        private void listBoxStories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

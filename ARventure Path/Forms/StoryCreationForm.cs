@@ -3,9 +3,11 @@ using ARventure_Path.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ARventure_Path.Forms
@@ -18,6 +20,7 @@ namespace ARventure_Path.Forms
         private BindingList<fragment> fragments = new BindingList<fragment>();
 
         private string StoryImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
+        public string contentToFragment = "";
 
         public StoryCreationForm(MyUtils.FormType formType)
         {
@@ -33,20 +36,86 @@ namespace ARventure_Path.Forms
             }
             else if (formType == MyUtils.FormType.Modify)
             {
-                //modificar
+                ModifyStory();
             }
             else
             {
-                //delete
+                //Tengo que pelearme con el delete
+                DeleteStory();
             }
 
         }
 
+
+        /// <summary>
+        /// Modifica la historia y hace el update en la base de
+        /// </summary>
+        private void ModifyStory()
+        {
+            string msg = "";
+            if (textBoxStoryTitle.Text.Trim() != "" &&
+               textBoxSummary.Text.Trim() != "" &&
+               story.fragment.Count >= 2)
+            {
+                story.name = textBoxStoryTitle.Text.Trim();
+                story.summary = textBoxSummary.Text.Trim();
+
+                if (fileName != null)
+                {
+                    story.img = fileName;
+                }
+
+                bindingSourceStory.DataSource = StoryOrm.Select();
+            }
+            else
+            {
+                MessageBox.Show("Debes rellenar nombre, resumen, añadir una imagen y poner un mínimo de 2 fragmentos.", "¡Error!");
+            }
+            
+        }
+
+
+        /// <summary>
+        /// borra la historia y la lista de fragmentos
+        /// asociados a ella haciendo sus respectivos deletes
+        /// </summary>
+        private void DeleteStory()
+        {
+            DeleteFragments();
+
+            StoryOrm.Delete(story);
+            comboBoxSelectStory.SelectedItem = null;
+            bindingSourceFragments.DataSource = null;
+            bindingSourceStory.DataSource = StoryOrm.Select();
+        }
+
+        /// <summary>
+        /// borra los fragmentos de la historia
+        /// </summary>
+        private void DeleteFragments()
+        {
+            int i = story.fragment.Count;
+
+            do
+            {
+                string msg = FragmentOrm.Delete(story.fragment.FirstOrDefault());
+                MyUtils.ShowPosibleError(msg);
+                i--;
+
+            } while (i > 0);
+        }
+
+
+        /// <summary>
+        /// Crea la historia y hace el insert pertinente
+        /// </summary>
         private void CreateStory()
         {
             if(textBoxStoryTitle.Text.Trim() != "" &&
                textBoxSummary.Text.Trim() != "" &&
-               fileName != null) 
+               fileName != null &&
+               fragments.Count >= 2 ||
+               story.fragment.Count >= 2) 
             {
                 string msg = "";
                 story.name = textBoxStoryTitle.Text.Trim();
@@ -60,12 +129,35 @@ namespace ARventure_Path.Forms
                     msg = FragmentOrm.Insert(fragment);
                     MyUtils.ShowPosibleError(msg);
                 }
+
+                CleanForm();
+                
             }
             else
             {
-                MessageBox.Show("Debes rellenar nombre, resumen y añadir una imagen.", "¡Maravilloso!");
+                MessageBox.Show("Debes rellenar nombre, resumen, añadir una imagen y poner un mínimo de 2 fragmentos.", "¡Error!");
             }
            
+        }
+
+
+        /// <summary>
+        /// vacía todos los campos y vuelve
+        /// a inicializar los objetos
+        /// para volver a crear una nueva historia
+        /// </summary>
+        private void CleanForm()
+        {
+            textBoxStoryTitle.Clear();
+            textBoxSummary.Clear();
+            textBoxGenerateStoryAI.Clear();
+            textBoxImageStory.Clear();
+            textBoxFragmentQuantity.Clear();
+            pictureBoxStory.Image = null;
+            story = new story();
+            fileName = null;
+            fragments.Clear();
+            DoSelectFragmentsDependingOnType();
         }
 
         private void buttonSearchImage_Click(object sender, EventArgs e)
@@ -112,28 +204,42 @@ namespace ARventure_Path.Forms
             // lista no supera al número indicado por el usuario
             if (CanAddFragments())
             {
-                FragmentCreationForm fragmentCreationForm = new FragmentCreationForm();
+                FragmentCreationForm fragmentCreationForm = new FragmentCreationForm(this);
                 fragmentCreationForm.ShowDialog();
 
-                fragment newFragment = new fragment()
+                if(contentToFragment != "")
                 {
-                    story = story,
-                    content = fragmentCreationForm.getTextBoxCreateFragmentText(),
-                    ordinal = story.fragment.Count + 1,
-                };
-                if (formType == MyUtils.FormType.Create)
-                {
-                    fragments.Add(newFragment);
-                    DoSelectFragmentsDependingOnType();
+                    fragment newFragment = CreateFragment();
+
+                    if (formType == MyUtils.FormType.Create)
+                    {
+                        fragments.Add(newFragment);
+                        DoSelectFragmentsDependingOnType();
+                        contentToFragment = "";
+                    }
+                    else
+                    {
+                        string msg = FragmentOrm.Insert(newFragment);
+                        MyUtils.ShowPosibleError(msg);
+                        DoSelectFragmentsDependingOnType();
+                        contentToFragment = "";
+                    }
                 }
-                else
-                {
-                    string msg = FragmentOrm.Insert(newFragment);
-                    MyUtils.ShowPosibleError(msg);
-                    DoSelectFragmentsDependingOnType();
-                }
-               
             }
+        }
+
+        private fragment CreateFragment()
+        {
+            fragment newFragment = new fragment()
+            {
+                story = story,
+                content = contentToFragment,
+                ordinal = formType == MyUtils.FormType.Create ?
+                    fragments.Count + 1 : story.fragment.Count + 1,
+
+            };
+
+            return newFragment;
         }
 
         public bool CanAddFragments() 
@@ -143,31 +249,23 @@ namespace ARventure_Path.Forms
 
             if (formType == MyUtils.FormType.Create)
             {
-                if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > fragments.Count))//nombre de la lista
+                if ((numberTextBoxFragment >= 2) &&
+                    (numberTextBoxFragment > fragments.Count))//nombre de la lista
                 {
-
                     return true;
 
                 }
-
                 return false;
-
             }
             else
             {
-                if ((numberTextBoxFragment >= 1) && (numberTextBoxFragment > story.fragment.Count))//nombre de la lista
+                if ((numberTextBoxFragment >= 2) &&
+                    (numberTextBoxFragment > story.fragment.Count))//nombre de la lista
                 {
-
                     return true;
-
                 }
-
                 return false;
             }
-
-
-
-            
 
         }
 
@@ -181,8 +279,8 @@ namespace ARventure_Path.Forms
             //https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers
             if (System.Text.RegularExpressions.Regex.IsMatch(textBoxFragmentQuantity.Text, "[^0-9]"))
             {
-                MessageBox.Show("Please enter only numbers.");
-                textBoxFragmentQuantity.Text = textBoxFragmentQuantity.Text.Remove(textBoxFragmentQuantity.Text.Length - 1);
+                //MessageBox.Show("Por favor, introduce un número (superior a 1).");
+                textBoxFragmentQuantity.Text = dataGridViewFragments.RowCount.ToString();
 
                 return;
             }
@@ -196,12 +294,20 @@ namespace ARventure_Path.Forms
 
             int numberTextBoxFragment = int.Parse(textBoxFragmentQuantity.Text);
 
-            if (CanAddFragments())
+            if (numberTextBoxFragment < 2) 
             {
-                buttonAddNewFragment.Enabled = true;
+                //MessageBox.Show("Por favor, introduce un número (superior a 1).");
+                textBoxFragmentQuantity.Text = dataGridViewFragments.RowCount.ToString();
                 return;
             }
-
+            else
+            {
+                if (CanAddFragments())
+                {
+                    buttonAddNewFragment.Enabled = true;
+                    return;
+                }
+            }
             buttonAddNewFragment.Enabled = false;
 
         }
@@ -213,16 +319,51 @@ namespace ARventure_Path.Forms
                 if (formType == MyUtils.FormType.Create)
                 {
                     fragments.Remove((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                    ReorderingFragments();
                     DoSelectFragmentsDependingOnType();
                 }
                 else
                 {
-                    FragmentOrm.Delete((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                    string msg = FragmentOrm.Delete((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                    MyUtils.ShowPosibleError(msg);
+                    ReorderingFragmentsOfStory();
                     DoSelectFragmentsDependingOnType();
                 }
-
-                
             }
+        }
+
+
+        /// <summary>
+        /// Reordena los ordinales de los fragmentos (en caso de ser form de creación)
+        /// tras el borrado de uno de ellos
+        /// </summary>
+        /// <param name="fragmentsToOrder"></param>
+        private void ReorderingFragments()
+        {
+            for (int i = 0; i < fragments.Count; i++)
+            {
+                fragments[i].ordinal = i+1;
+            }
+            string msg = Orm.Update();
+            MyUtils.ShowPosibleError(msg);
+        }
+
+        /// <summary>
+        /// Reordena los ordinales de los fragmentos
+        /// (en caso de ser form de modificación o borrado)
+        /// tras el borrado de uno de ellos
+        /// </summary>
+        /// <param name="fragmentsToOrder"></param>
+        private void ReorderingFragmentsOfStory()
+        {
+            int ordinalToPut = 1;
+            foreach(fragment fragmentToOrder in story.fragment)
+            {
+                fragmentToOrder.ordinal = ordinalToPut;
+                ordinalToPut++;
+            }
+            string msg = Orm.Update();
+            MyUtils.ShowPosibleError(msg);
         }
 
         private void buttonCancelStory_Click(object sender, EventArgs e)
@@ -264,6 +405,8 @@ namespace ARventure_Path.Forms
         {
             buttonCreateStory.Text = "Borrar";
             bindingSourceStory.DataSource = StoryOrm.Select();
+            gbGenerateForIA.Enabled = false;
+            gbStory.Enabled = false;
             DoSelectFragmentsDependingOnType();
         }
 
@@ -303,9 +446,9 @@ namespace ARventure_Path.Forms
 
 
         /// <summary>
-        /// Escoge si va a hacer un select de fragmentos en caso
-        /// de creación y modificación o si va a
-        /// acceder a la nueva lista en caso de creación
+        /// Escoge si va a hacer un select el la BBDD
+        /// en caso de que sea modificación o borrado.
+        /// En caso con
         /// </summary>
         private void DoSelectFragmentsDependingOnType()
         {
@@ -317,7 +460,7 @@ namespace ARventure_Path.Forms
             else
             {
                 bindingSourceFragments.DataSource = null;
-                bindingSourceFragments.DataSource = story.fragment;
+                bindingSourceFragments.DataSource = FragmentOrm.Select(story);
             }
         }
     }
