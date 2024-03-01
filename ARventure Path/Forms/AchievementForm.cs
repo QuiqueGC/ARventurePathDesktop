@@ -40,6 +40,17 @@ namespace ARventure_Path.Forms
             else
             {
                 // Borrar Logro
+                string msg = "";
+
+                if (comboBoxSelectAchievement.SelectedItem != null) 
+                {
+                    achievement = (achievement)comboBoxSelectAchievement.SelectedItem;
+                    achievement.name = textBoxNameAchievement.Text;
+                    achievement.img = fileName;
+                }
+
+                msg = AchievementOrm.Delete(achievement);
+                MyUtils.ShowPosibleError(msg);
             }
         }
 
@@ -115,7 +126,7 @@ namespace ARventure_Path.Forms
         {
             buttonAcceptAchievement.Text = "Borrar";
             bindingSourceAchievement.DataSource = AchievementOrm.Select();
-            comboBoxSelectAchievement.SelectedItem = null;
+            comboBoxSelectAchievement.DisplayMember = "name";
         }
         private void becomeInCreatonForm()
         {
