@@ -151,6 +151,7 @@
             this.listBoxStories.Size = new System.Drawing.Size(167, 132);
             this.listBoxStories.TabIndex = 0;
             this.listBoxStories.ValueMember = "id";
+            this.listBoxStories.SelectedIndexChanged += new System.EventHandler(this.listBoxStories_SelectedIndexChanged);
             // 
             // bindingSourceStory
             // 

@@ -25,7 +25,7 @@ namespace ARventure_Path.Forms
         {
             ChooseTypeOfForm();
             bindingSourceStory.DataSource = StoryOrm.Select();
-            
+            //bindingSourceRoute.DataSource = RouteOrm.Select();
         }
 
         private void buttonCancelArventure_Click(object sender, EventArgs e)
@@ -70,18 +70,25 @@ namespace ARventure_Path.Forms
         {
             buttonCreateArventure.Text = "Borrar";
             bindingSourceArventure.DataSource = ArventureOrm.Select();
+            comboBoxSelectArventure.SelectedItem = null;
         }
 
         private void becomeInModifyForm()
         {
             buttonCreateArventure.Text = "Guardar";
             bindingSourceArventure.DataSource = ArventureOrm.Select();
+            comboBoxSelectArventure.SelectedItem = null;
         }
 
         private void becomeInCreatonForm()
         {
             labelSelectArventure.Visible = false;
             comboBoxSelectArventure.Visible = false;
+        }
+
+        private void listBoxStories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
