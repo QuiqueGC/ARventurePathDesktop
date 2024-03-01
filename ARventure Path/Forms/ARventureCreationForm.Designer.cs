@@ -44,7 +44,6 @@
             this.groupBoxHappening = new System.Windows.Forms.GroupBox();
             this.buttonSeeDetailEvent = new System.Windows.Forms.Button();
             this.buttonSelectEvent = new System.Windows.Forms.Button();
-            this.listBoxEvents = new System.Windows.Forms.ListBox();
             this.groupBoxArventure = new System.Windows.Forms.GroupBox();
             this.groupBoxHappenings = new System.Windows.Forms.GroupBox();
             this.buttonRemoveEvent = new System.Windows.Forms.Button();
@@ -56,7 +55,7 @@
             this.labelDistanceRoute = new System.Windows.Forms.Label();
             this.labelRouteName = new System.Windows.Forms.Label();
             this.labelDistance = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxTitleArventure = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.labelStoryTitle = new System.Windows.Forms.Label();
@@ -65,6 +64,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCreateArventure = new System.Windows.Forms.Button();
             this.buttonCancelArventure = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceArventure)).BeginInit();
             this.groupBoxStory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
@@ -75,6 +77,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStoryImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSelectArventure
@@ -109,9 +112,9 @@
             this.groupBoxStory.Controls.Add(this.buttonSelectStory);
             this.groupBoxStory.Controls.Add(this.listBoxStories);
             this.groupBoxStory.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxStory.Location = new System.Drawing.Point(108, 48);
+            this.groupBoxStory.Location = new System.Drawing.Point(25, 48);
             this.groupBoxStory.Name = "groupBoxStory";
-            this.groupBoxStory.Size = new System.Drawing.Size(200, 207);
+            this.groupBoxStory.Size = new System.Drawing.Size(269, 207);
             this.groupBoxStory.TabIndex = 4;
             this.groupBoxStory.TabStop = false;
             this.groupBoxStory.Text = "Historias";
@@ -121,9 +124,9 @@
             this.buttonSeeDetailStory.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonSeeDetailStory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSeeDetailStory.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSeeDetailStory.Location = new System.Drawing.Point(108, 169);
+            this.buttonSeeDetailStory.Location = new System.Drawing.Point(145, 169);
             this.buttonSeeDetailStory.Name = "buttonSeeDetailStory";
-            this.buttonSeeDetailStory.Size = new System.Drawing.Size(75, 23);
+            this.buttonSeeDetailStory.Size = new System.Drawing.Size(102, 23);
             this.buttonSeeDetailStory.TabIndex = 2;
             this.buttonSeeDetailStory.Text = "Ver detalles";
             this.buttonSeeDetailStory.UseVisualStyleBackColor = false;
@@ -133,9 +136,9 @@
             this.buttonSelectStory.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonSelectStory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSelectStory.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSelectStory.Location = new System.Drawing.Point(16, 169);
+            this.buttonSelectStory.Location = new System.Drawing.Point(21, 169);
             this.buttonSelectStory.Name = "buttonSelectStory";
-            this.buttonSelectStory.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectStory.Size = new System.Drawing.Size(108, 23);
             this.buttonSelectStory.TabIndex = 1;
             this.buttonSelectStory.Text = "Seleccionar";
             this.buttonSelectStory.UseVisualStyleBackColor = false;
@@ -146,9 +149,9 @@
             this.listBoxStories.DisplayMember = "name";
             this.listBoxStories.FormattingEnabled = true;
             this.listBoxStories.ItemHeight = 16;
-            this.listBoxStories.Location = new System.Drawing.Point(16, 19);
+            this.listBoxStories.Location = new System.Drawing.Point(12, 24);
             this.listBoxStories.Name = "listBoxStories";
-            this.listBoxStories.Size = new System.Drawing.Size(167, 132);
+            this.listBoxStories.Size = new System.Drawing.Size(248, 132);
             this.listBoxStories.TabIndex = 0;
             this.listBoxStories.ValueMember = "id";
             this.listBoxStories.SelectedIndexChanged += new System.EventHandler(this.listBoxStories_SelectedIndexChanged);
@@ -163,9 +166,9 @@
             this.groupBoxRoutes.Controls.Add(this.buttonSelectRoute);
             this.groupBoxRoutes.Controls.Add(this.listBoxRoutes);
             this.groupBoxRoutes.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxRoutes.Location = new System.Drawing.Point(380, 48);
+            this.groupBoxRoutes.Location = new System.Drawing.Point(336, 48);
             this.groupBoxRoutes.Name = "groupBoxRoutes";
-            this.groupBoxRoutes.Size = new System.Drawing.Size(200, 207);
+            this.groupBoxRoutes.Size = new System.Drawing.Size(260, 207);
             this.groupBoxRoutes.TabIndex = 5;
             this.groupBoxRoutes.TabStop = false;
             this.groupBoxRoutes.Text = "Rutas";
@@ -175,9 +178,9 @@
             this.buttonSeeDetailRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonSeeDetailRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSeeDetailRoute.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSeeDetailRoute.Location = new System.Drawing.Point(107, 169);
+            this.buttonSeeDetailRoute.Location = new System.Drawing.Point(128, 169);
             this.buttonSeeDetailRoute.Name = "buttonSeeDetailRoute";
-            this.buttonSeeDetailRoute.Size = new System.Drawing.Size(75, 23);
+            this.buttonSeeDetailRoute.Size = new System.Drawing.Size(102, 23);
             this.buttonSeeDetailRoute.TabIndex = 3;
             this.buttonSeeDetailRoute.Text = "Ver detalles";
             this.buttonSeeDetailRoute.UseVisualStyleBackColor = false;
@@ -187,9 +190,9 @@
             this.buttonSelectRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonSelectRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSelectRoute.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSelectRoute.Location = new System.Drawing.Point(15, 169);
+            this.buttonSelectRoute.Location = new System.Drawing.Point(30, 169);
             this.buttonSelectRoute.Name = "buttonSelectRoute";
-            this.buttonSelectRoute.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectRoute.Size = new System.Drawing.Size(92, 23);
             this.buttonSelectRoute.TabIndex = 3;
             this.buttonSelectRoute.Text = "Seleccionar";
             this.buttonSelectRoute.UseVisualStyleBackColor = false;
@@ -198,20 +201,20 @@
             // 
             this.listBoxRoutes.FormattingEnabled = true;
             this.listBoxRoutes.ItemHeight = 16;
-            this.listBoxRoutes.Location = new System.Drawing.Point(15, 19);
+            this.listBoxRoutes.Location = new System.Drawing.Point(13, 24);
             this.listBoxRoutes.Name = "listBoxRoutes";
-            this.listBoxRoutes.Size = new System.Drawing.Size(167, 132);
+            this.listBoxRoutes.Size = new System.Drawing.Size(237, 132);
             this.listBoxRoutes.TabIndex = 1;
             // 
             // groupBoxHappening
             // 
+            this.groupBoxHappening.Controls.Add(this.dataGridView1);
             this.groupBoxHappening.Controls.Add(this.buttonSeeDetailEvent);
             this.groupBoxHappening.Controls.Add(this.buttonSelectEvent);
-            this.groupBoxHappening.Controls.Add(this.listBoxEvents);
             this.groupBoxHappening.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxHappening.Location = new System.Drawing.Point(647, 48);
+            this.groupBoxHappening.Location = new System.Drawing.Point(636, 48);
             this.groupBoxHappening.Name = "groupBoxHappening";
-            this.groupBoxHappening.Size = new System.Drawing.Size(200, 207);
+            this.groupBoxHappening.Size = new System.Drawing.Size(293, 207);
             this.groupBoxHappening.TabIndex = 6;
             this.groupBoxHappening.TabStop = false;
             this.groupBoxHappening.Text = "Eventos";
@@ -221,9 +224,9 @@
             this.buttonSeeDetailEvent.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonSeeDetailEvent.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSeeDetailEvent.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSeeDetailEvent.Location = new System.Drawing.Point(109, 169);
+            this.buttonSeeDetailEvent.Location = new System.Drawing.Point(157, 169);
             this.buttonSeeDetailEvent.Name = "buttonSeeDetailEvent";
-            this.buttonSeeDetailEvent.Size = new System.Drawing.Size(75, 23);
+            this.buttonSeeDetailEvent.Size = new System.Drawing.Size(98, 23);
             this.buttonSeeDetailEvent.TabIndex = 4;
             this.buttonSeeDetailEvent.Text = "Ver detalles";
             this.buttonSeeDetailEvent.UseVisualStyleBackColor = false;
@@ -233,27 +236,18 @@
             this.buttonSelectEvent.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonSelectEvent.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSelectEvent.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSelectEvent.Location = new System.Drawing.Point(17, 169);
+            this.buttonSelectEvent.Location = new System.Drawing.Point(41, 169);
             this.buttonSelectEvent.Name = "buttonSelectEvent";
-            this.buttonSelectEvent.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectEvent.Size = new System.Drawing.Size(97, 23);
             this.buttonSelectEvent.TabIndex = 4;
             this.buttonSelectEvent.Text = "Seleccionar";
             this.buttonSelectEvent.UseVisualStyleBackColor = false;
-            // 
-            // listBoxEvents
-            // 
-            this.listBoxEvents.FormattingEnabled = true;
-            this.listBoxEvents.ItemHeight = 16;
-            this.listBoxEvents.Location = new System.Drawing.Point(17, 19);
-            this.listBoxEvents.Name = "listBoxEvents";
-            this.listBoxEvents.Size = new System.Drawing.Size(167, 132);
-            this.listBoxEvents.TabIndex = 2;
             // 
             // groupBoxArventure
             // 
             this.groupBoxArventure.Controls.Add(this.groupBoxHappenings);
             this.groupBoxArventure.Controls.Add(this.groupBox5);
-            this.groupBoxArventure.Controls.Add(this.textBox2);
+            this.groupBoxArventure.Controls.Add(this.textBoxTitleArventure);
             this.groupBoxArventure.Controls.Add(this.label2);
             this.groupBoxArventure.Controls.Add(this.groupBox4);
             this.groupBoxArventure.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -280,11 +274,11 @@
             this.buttonRemoveEvent.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonRemoveEvent.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRemoveEvent.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonRemoveEvent.Location = new System.Drawing.Point(92, 190);
+            this.buttonRemoveEvent.Location = new System.Drawing.Point(74, 191);
             this.buttonRemoveEvent.Name = "buttonRemoveEvent";
-            this.buttonRemoveEvent.Size = new System.Drawing.Size(91, 23);
+            this.buttonRemoveEvent.Size = new System.Drawing.Size(125, 23);
             this.buttonRemoveEvent.TabIndex = 8;
-            this.buttonRemoveEvent.Text = "Quitar evento";
+            this.buttonRemoveEvent.Text = "Eliminar evento";
             this.buttonRemoveEvent.UseVisualStyleBackColor = false;
             // 
             // listBoxSelectEvents
@@ -293,7 +287,7 @@
             this.listBoxSelectEvents.ItemHeight = 16;
             this.listBoxSelectEvents.Location = new System.Drawing.Point(13, 33);
             this.listBoxSelectEvents.Name = "listBoxSelectEvents";
-            this.listBoxSelectEvents.Size = new System.Drawing.Size(240, 132);
+            this.listBoxSelectEvents.Size = new System.Drawing.Size(240, 148);
             this.listBoxSelectEvents.TabIndex = 7;
             // 
             // groupBox5
@@ -350,7 +344,7 @@
             // labelRouteName
             // 
             this.labelRouteName.AutoSize = true;
-            this.labelRouteName.Location = new System.Drawing.Point(92, 16);
+            this.labelRouteName.Location = new System.Drawing.Point(75, 19);
             this.labelRouteName.Name = "labelRouteName";
             this.labelRouteName.Size = new System.Drawing.Size(117, 16);
             this.labelRouteName.TabIndex = 3;
@@ -365,13 +359,13 @@
             this.labelDistance.TabIndex = 5;
             this.labelDistance.Text = "Distancia";
             // 
-            // textBox2
+            // textBoxTitleArventure
             // 
-            this.textBox2.Location = new System.Drawing.Point(384, 16);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(288, 30);
-            this.textBox2.TabIndex = 7;
+            this.textBoxTitleArventure.Location = new System.Drawing.Point(384, 16);
+            this.textBoxTitleArventure.Multiline = true;
+            this.textBoxTitleArventure.Name = "textBoxTitleArventure";
+            this.textBoxTitleArventure.Size = new System.Drawing.Size(288, 22);
+            this.textBoxTitleArventure.TabIndex = 7;
             // 
             // label2
             // 
@@ -399,7 +393,7 @@
             // labelStoryTitle
             // 
             this.labelStoryTitle.AutoSize = true;
-            this.labelStoryTitle.Location = new System.Drawing.Point(75, 16);
+            this.labelStoryTitle.Location = new System.Drawing.Point(70, 19);
             this.labelStoryTitle.Name = "labelStoryTitle";
             this.labelStoryTitle.Size = new System.Drawing.Size(125, 16);
             this.labelStoryTitle.TabIndex = 3;
@@ -460,6 +454,29 @@
             this.buttonCancelArventure.UseVisualStyleBackColor = false;
             this.buttonCancelArventure.Click += new System.EventHandler(this.buttonCancelArventure_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.dataGridView1.Location = new System.Drawing.Point(15, 22);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(262, 134);
+            this.dataGridView1.TabIndex = 5;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "Tipo";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nombre";
+            this.Column2.Name = "Column2";
+            // 
             // ARventureCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -490,6 +507,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStoryImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,7 +528,6 @@
         private System.Windows.Forms.ListBox listBoxRoutes;
         private System.Windows.Forms.Button buttonSeeDetailEvent;
         private System.Windows.Forms.Button buttonSelectEvent;
-        private System.Windows.Forms.ListBox listBoxEvents;
         private System.Windows.Forms.GroupBox groupBoxArventure;
         private System.Windows.Forms.Button buttonCreateArventure;
         private System.Windows.Forms.Button buttonCancelArventure;
@@ -524,7 +541,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label labelRouteName;
         private System.Windows.Forms.Label labelDistance;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxTitleArventure;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ListBox listBoxRouteStops;
@@ -533,5 +550,8 @@
         private System.Windows.Forms.Label labelDistanceRoute;
         private System.Windows.Forms.BindingSource bindingSourceStory;
         private System.Windows.Forms.BindingSource bindingSourceArventure;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

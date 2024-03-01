@@ -14,6 +14,8 @@ namespace ARventure_Path.Forms
 {
     public partial class ARventureCreationForm : Form
     {
+        arventure arventure = new arventure();
+        story story = new story();
         private MyUtils.FormType formType;
         public ARventureCreationForm(MyUtils.FormType formType)
         {
@@ -38,14 +40,34 @@ namespace ARventure_Path.Forms
             if (formType == MyUtils.FormType.Create)
             {
                 // Crear ARventure
+                string msg = "";
+                arventure.name = textBoxTitleArventure.Text;
+                story.name = labelStoryTitle.Text;
+                //story.img = pictureBoxStoryImg.Image;
+                story.summary = textBoxStorySummary.Text;
+
+
+                msg = ArventureOrm.Insert(arventure);
+                MyUtils.ShowPosibleError(msg);
+
             }
             else if (formType == MyUtils.FormType.Modify)
             {
                 // Modificar ARventure
+                
+
             }
             else
             {
                 // Borrar ARventure
+                string msg = "";
+                if (comboBoxSelectArventure.SelectedItem != null)
+                {
+
+                }
+
+                msg = ArventureOrm.Delete(arventure);
+                MyUtils.ShowPosibleError(msg);
             }
         }
         private void ChooseTypeOfForm()
