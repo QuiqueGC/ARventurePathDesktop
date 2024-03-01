@@ -1,13 +1,6 @@
 ﻿using ARventure_Path.Models;
 using ARventure_Path.Utils;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ARventure_Path.Forms
@@ -108,23 +101,25 @@ namespace ARventure_Path.Forms
             else if (formType == MyUtils.FormType.Delete)
             {
                 // Borrar Evento de texto
-                happening happening = (happening)comboBoxHappenings.SelectedItem;
-                if (happening != null)
-                {
-                    string msg = HappeningOrm.Delete(happening);
-                    if (msg != "")
+                
+                    happening happening = (happening)comboBoxHappenings.SelectedItem;
+                    if (happening != null)
                     {
-                        MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        string msg = HappeningOrm.Delete(happening);
+                        if (msg != "")
+                        {
+                            MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("El evento se ha eliminado correctamente.", "Éxito!");
+                            Close();
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("El evento se ha eliminado correctamente.", "Éxito!");
-                        Close();
-                    }
-                }
-            }               
+                
+                }               
             
-        }
+            }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
@@ -182,17 +177,22 @@ namespace ARventure_Path.Forms
         {
             labelSelectHappening.Visible = false;
             comboBoxHappenings.Visible = false;
+            buttonCreate.Enabled = true;
         }
 
         private void comboBoxHappenings_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             happening happening = (happening)comboBoxHappenings.SelectedItem;
-            if(happening != null && formType == MyUtils.FormType.Modify)
+            if(happening != null)
             {
-                comboBoxStories.Enabled = true;
-                groupboxIA.Enabled = true;
-                groupboxTxtHappening.Enabled = true;
+                if (formType == MyUtils.FormType.Modify)
+                {
+                    comboBoxStories.Enabled = true;
+                    groupboxIA.Enabled = true;
+                    groupboxTxtHappening.Enabled = true;
+                }
+                buttonCreate.Enabled = true;
                 comboBoxStories.SelectedItem = happening.story;
                 textBoxName.Text = happening.name;
                 textBoxContent.Text = happening.text;

@@ -1,16 +1,9 @@
 ﻿using ARventure_Path.Models;
 using ARventure_Path.Utils;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ARventure_Path.Forms
@@ -19,7 +12,8 @@ namespace ARventure_Path.Forms
     {
         private string imgPath = Path.Combine(Application.StartupPath, "..", "..", "filesToServer", "imgHappening");
         private static Image image;
-        string fileName;
+        private string fileName;
+        private string filePath;
         private MyUtils.FormType formType;
 
         public HappeningImageForm(MyUtils.FormType formType)
@@ -49,15 +43,16 @@ namespace ARventure_Path.Forms
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     image.Dispose();
-                    deleteImage();
                     image = Image.FromFile(openFileDialog.FileName);
-
                     imgHappening.Image = image;
-                    string filePath = openFileDialog.FileName;
+                    filePath = openFileDialog.FileName;
+                    if(Path.GetFileName(filePath) != fileName)
+                    {
+                        deleteImage();
+                    }
                     textBoxUrl.Text = filePath;
 
                     fileName = Path.GetFileName(filePath);
-
                 }
             }
             
@@ -68,15 +63,20 @@ namespace ARventure_Path.Forms
             happening happening = (happening)comboBoxHappenings.SelectedItem;
             if (happening != null)
             {
-                comboBoxStories.Enabled = true;
-                groupboxIA.Enabled = true;
-                groupboxImgHappening.Enabled = true;
+                if(formType == MyUtils.FormType.Modify)
+                {
+                    comboBoxStories.Enabled = true;
+                    groupboxIA.Enabled = true;
+                    groupboxImgHappening.Enabled = true;
+                }
+                buttonCreate.Enabled = true;
                 comboBoxStories.SelectedItem = happening.story;
                 textBoxName.Text = happening.name;
                 fileName = happening.url;
+                filePath = Path.Combine(imgPath, fileName);
 
-                textBoxUrl.Text = (Path.Combine(imgPath, fileName));
-                image = Image.FromFile(Path.Combine(imgPath, fileName));
+                textBoxUrl.Text = filePath;
+                image = Image.FromFile(filePath);
 
                 imgHappening.Image = image;
             }
@@ -133,6 +133,7 @@ namespace ARventure_Path.Forms
             }
             else if (formType == MyUtils.FormType.Modify)
             {
+                // Modificar Evento de imagen
                 happening happening = (happening)comboBoxHappenings.SelectedItem;
 
                 if (happening != null
@@ -140,17 +141,17 @@ namespace ARventure_Path.Forms
                     fileName != null &&
                     comboBoxStories.SelectedItem != null)
                 {
-                    happening.name = textBoxName.Text.Trim();
-                    happening.url = fileName;
-                    happening.type = "image";
-                    happening.idStory = (int)comboBoxStories.SelectedValue;
                     if (happening.url != fileName)
                     {
                         SaveImage();
                     }
+                    happening.name = textBoxName.Text.Trim();
+                    happening.url = fileName;
+                    happening.type = "image";
+                    happening.idStory = (int)comboBoxStories.SelectedValue;
+                    
                     
 
-                    // Modificar Evento de imagen
                     string msg = Orm.Update();
                     if (msg != "")
                     {
@@ -269,6 +270,7 @@ namespace ARventure_Path.Forms
         {
             labelSelectHappening.Visible = false;
             comboBoxHappenings.Visible = false;
+            buttonCreate.Enabled = true;
         }
 
     }

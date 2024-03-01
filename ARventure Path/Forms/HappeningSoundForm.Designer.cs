@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HappeningSoundForm));
             this.groupboxAudioHappening = new System.Windows.Forms.GroupBox();
+            this.labelDuration = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.macTrackBarVolume = new XComponent.SliderBar.MACTrackBar();
             this.macTrackBarPlayer = new XComponent.SliderBar.MACTrackBar();
@@ -66,6 +67,7 @@
             // 
             // groupboxAudioHappening
             // 
+            this.groupboxAudioHappening.Controls.Add(this.labelDuration);
             this.groupboxAudioHappening.Controls.Add(this.pictureBox1);
             this.groupboxAudioHappening.Controls.Add(this.macTrackBarVolume);
             this.groupboxAudioHappening.Controls.Add(this.macTrackBarPlayer);
@@ -83,6 +85,15 @@
             this.groupboxAudioHappening.TabIndex = 3;
             this.groupboxAudioHappening.TabStop = false;
             this.groupboxAudioHappening.Text = "Evento de Audio";
+            // 
+            // labelDuration
+            // 
+            this.labelDuration.AutoSize = true;
+            this.labelDuration.Location = new System.Drawing.Point(452, 112);
+            this.labelDuration.Name = "labelDuration";
+            this.labelDuration.Size = new System.Drawing.Size(36, 17);
+            this.labelDuration.TabIndex = 22;
+            this.labelDuration.Text = "0:00";
             // 
             // pictureBox1
             // 
@@ -130,7 +141,7 @@
             this.macTrackBarPlayer.Maximum = 100;
             this.macTrackBarPlayer.Minimum = 0;
             this.macTrackBarPlayer.Name = "macTrackBarPlayer";
-            this.macTrackBarPlayer.Size = new System.Drawing.Size(301, 28);
+            this.macTrackBarPlayer.Size = new System.Drawing.Size(268, 28);
             this.macTrackBarPlayer.TabIndex = 19;
             this.macTrackBarPlayer.TextTickStyle = System.Windows.Forms.TickStyle.None;
             this.macTrackBarPlayer.TickColor = System.Drawing.Color.DarkSlateBlue;
@@ -288,6 +299,7 @@
             // buttonCreate
             // 
             this.buttonCreate.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonCreate.Enabled = false;
             this.buttonCreate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCreate.Font = new System.Drawing.Font("Century", 10F);
             this.buttonCreate.ForeColor = System.Drawing.SystemColors.Control;
@@ -365,6 +377,7 @@
             this.Name = "HappeningSoundForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Creación de evento de audio                       ";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HappeningSoundForm_FormClosed);
             this.Load += new System.EventHandler(this.HappeningSoundForm_Load);
             this.groupboxAudioHappening.ResumeLayout(false);
             this.groupboxAudioHappening.PerformLayout();
@@ -407,5 +420,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.BindingSource bindingSourceHappenings;
+        private System.Windows.Forms.Label labelDuration;
     }
 }
