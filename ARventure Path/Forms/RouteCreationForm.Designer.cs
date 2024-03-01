@@ -36,6 +36,8 @@
             this.buttonGenerateRoute = new System.Windows.Forms.Button();
             this.textBoxGenerateRouteAI = new System.Windows.Forms.TextBox();
             this.groupBoxRoute = new System.Windows.Forms.GroupBox();
+            this.labelRuta = new System.Windows.Forms.Label();
+            this.textBoxNameRoute = new System.Windows.Forms.TextBox();
             this.textBoxLongitude = new System.Windows.Forms.TextBox();
             this.textBoxLatitude = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,12 +54,15 @@
             this.buttonAddNewStop = new System.Windows.Forms.Button();
             this.buttonCreateRoute = new System.Windows.Forms.Button();
             this.buttonCancelRoute = new System.Windows.Forms.Button();
-            this.textBoxNameRoute = new System.Windows.Forms.TextBox();
-            this.labelRuta = new System.Windows.Forms.Label();
+            this.bindingSourceStops = new System.Windows.Forms.BindingSource(this.components);
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.longitudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.latitudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRoute)).BeginInit();
             this.groupBoxGenerateRoute.SuspendLayout();
             this.groupBoxRoute.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStops)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStops)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSelectRoute
@@ -81,6 +86,7 @@
             this.comboBoxSelectRoute.Size = new System.Drawing.Size(245, 21);
             this.comboBoxSelectRoute.TabIndex = 2;
             this.comboBoxSelectRoute.ValueMember = "id";
+            this.comboBoxSelectRoute.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectRoute_SelectedIndexChanged);
             // 
             // bindingSourceRoute
             // 
@@ -142,6 +148,23 @@
             this.groupBoxRoute.TabIndex = 9;
             this.groupBoxRoute.TabStop = false;
             this.groupBoxRoute.Text = "Ruta";
+            // 
+            // labelRuta
+            // 
+            this.labelRuta.AutoSize = true;
+            this.labelRuta.Font = new System.Drawing.Font("Century", 12F);
+            this.labelRuta.Location = new System.Drawing.Point(10, 35);
+            this.labelRuta.Name = "labelRuta";
+            this.labelRuta.Size = new System.Drawing.Size(143, 20);
+            this.labelRuta.TabIndex = 24;
+            this.labelRuta.Text = "Nombre de la ruta";
+            // 
+            // textBoxNameRoute
+            // 
+            this.textBoxNameRoute.Location = new System.Drawing.Point(13, 55);
+            this.textBoxNameRoute.Name = "textBoxNameRoute";
+            this.textBoxNameRoute.Size = new System.Drawing.Size(151, 24);
+            this.textBoxNameRoute.TabIndex = 23;
             // 
             // textBoxLongitude
             // 
@@ -227,8 +250,14 @@
             this.dataGridViewStops.AllowUserToDeleteRows = false;
             this.dataGridViewStops.AllowUserToResizeColumns = false;
             this.dataGridViewStops.AllowUserToResizeRows = false;
+            this.dataGridViewStops.AutoGenerateColumns = false;
             this.dataGridViewStops.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewStops.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStops.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn,
+            this.longitudeDataGridViewTextBoxColumn,
+            this.latitudeDataGridViewTextBoxColumn});
+            this.dataGridViewStops.DataSource = this.bindingSourceStops;
             this.dataGridViewStops.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewStops.Location = new System.Drawing.Point(170, 14);
             this.dataGridViewStops.Name = "dataGridViewStops";
@@ -330,22 +359,30 @@
             this.buttonCancelRoute.UseVisualStyleBackColor = false;
             this.buttonCancelRoute.Click += new System.EventHandler(this.buttonCancelRoute_Click);
             // 
-            // textBoxNameRoute
+            // bindingSourceStops
             // 
-            this.textBoxNameRoute.Location = new System.Drawing.Point(13, 55);
-            this.textBoxNameRoute.Name = "textBoxNameRoute";
-            this.textBoxNameRoute.Size = new System.Drawing.Size(151, 24);
-            this.textBoxNameRoute.TabIndex = 23;
+            this.bindingSourceStops.DataSource = typeof(ARventure_Path.Models.stop);
             // 
-            // labelRuta
+            // nameDataGridViewTextBoxColumn
             // 
-            this.labelRuta.AutoSize = true;
-            this.labelRuta.Font = new System.Drawing.Font("Century", 12F);
-            this.labelRuta.Location = new System.Drawing.Point(10, 35);
-            this.labelRuta.Name = "labelRuta";
-            this.labelRuta.Size = new System.Drawing.Size(143, 20);
-            this.labelRuta.TabIndex = 24;
-            this.labelRuta.Text = "Nombre de la ruta";
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // longitudeDataGridViewTextBoxColumn
+            // 
+            this.longitudeDataGridViewTextBoxColumn.DataPropertyName = "longitude";
+            this.longitudeDataGridViewTextBoxColumn.HeaderText = "longitude";
+            this.longitudeDataGridViewTextBoxColumn.Name = "longitudeDataGridViewTextBoxColumn";
+            this.longitudeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // latitudeDataGridViewTextBoxColumn
+            // 
+            this.latitudeDataGridViewTextBoxColumn.DataPropertyName = "latitude";
+            this.latitudeDataGridViewTextBoxColumn.HeaderText = "latitude";
+            this.latitudeDataGridViewTextBoxColumn.Name = "latitudeDataGridViewTextBoxColumn";
+            this.latitudeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // RouteCreationForm
             // 
@@ -368,6 +405,7 @@
             this.groupBoxRoute.ResumeLayout(false);
             this.groupBoxRoute.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStops)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStops)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,5 +438,9 @@
         private System.Windows.Forms.BindingSource bindingSourceRoute;
         private System.Windows.Forms.Label labelRuta;
         private System.Windows.Forms.TextBox textBoxNameRoute;
+        private System.Windows.Forms.BindingSource bindingSourceStops;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn longitudeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn latitudeDataGridViewTextBoxColumn;
     }
 }
