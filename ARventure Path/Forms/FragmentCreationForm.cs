@@ -14,24 +14,26 @@ namespace ARventure_Path.Forms
 {
     public partial class FragmentCreationForm : Form
     {
-
-        public FragmentCreationForm()
+        StoryCreationForm storyCreationForm;
+        public FragmentCreationForm(StoryCreationForm storyCreationForm)
         {
             InitializeComponent();
-            
+            this.storyCreationForm = storyCreationForm;
+
         }
 
         private void buttonAcceptFragment_Click(object sender, EventArgs e)
         {
             //story.TxtFragments.Add(textBoxCreateFragment.Text);
-            
-            this.Close();
-            
-        }
-
-        public string getTextBoxCreateFragmentText()
-        {
-            return textBoxCreateFragment.Text;
+            if (textBoxCreateFragment.Text.Trim() == "")
+            {
+                MessageBox.Show("El campo de texto no puede estar vacío.", "¡Error!");
+            }
+            else
+            {
+                storyCreationForm.contentToFragment = textBoxCreateFragment.Text;
+                this.Close();
+            }
         }
 
         private void buttonCancelFragment_Click(object sender, EventArgs e)

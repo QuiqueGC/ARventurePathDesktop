@@ -18,6 +18,7 @@ namespace ARventure_Path.Forms
         private BindingList<fragment> fragments = new BindingList<fragment>();
 
         private string StoryImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
+        public string contentToFragment = "";
 
         public StoryCreationForm(MyUtils.FormType formType)
         {
@@ -74,8 +75,8 @@ namespace ARventure_Path.Forms
             if(textBoxStoryTitle.Text.Trim() != "" &&
                textBoxSummary.Text.Trim() != "" &&
                fileName != null &&
-               fragments.Count > 2 ||
-               story.fragment.Count > 2) 
+               fragments.Count >= 2 ||
+               story.fragment.Count >= 2) 
             {
                 string msg = "";
                 story.name = textBoxStoryTitle.Text.Trim();
@@ -141,30 +142,44 @@ namespace ARventure_Path.Forms
             // lista no supera al número indicado por el usuario
             if (CanAddFragments())
             {
-                FragmentCreationForm fragmentCreationForm = new FragmentCreationForm();
+                FragmentCreationForm fragmentCreationForm = new FragmentCreationForm(this);
                 fragmentCreationForm.ShowDialog();
 
-                fragment newFragment = new fragment()
+                if(contentToFragment != "")
                 {
-                    story = story,
-                    content = fragmentCreationForm.getTextBoxCreateFragmentText(),
-                    ordinal =formType == MyUtils.FormType.Create ?
-                    fragments.Count + 1 : story.fragment.Count + 1,
+                    fragment newFragment = CreateFragment();
 
-                };
-                if (formType == MyUtils.FormType.Create)
-                {
-                    fragments.Add(newFragment);
-                    DoSelectFragmentsDependingOnType();
+                    if (formType == MyUtils.FormType.Create)
+                    {
+                        fragments.Add(newFragment);
+                        DoSelectFragmentsDependingOnType();
+                        contentToFragment = "";
+                    }
+                    else
+                    {
+                        string msg = FragmentOrm.Insert(newFragment);
+                        MyUtils.ShowPosibleError(msg);
+                        DoSelectFragmentsDependingOnType();
+                        contentToFragment = "";
+                    }
                 }
-                else
-                {
-                    string msg = FragmentOrm.Insert(newFragment);
-                    MyUtils.ShowPosibleError(msg);
-                    DoSelectFragmentsDependingOnType();
-                }
+                
                
             }
+        }
+
+        private fragment CreateFragment()
+        {
+            fragment newFragment = new fragment()
+            {
+                story = story,
+                content = contentToFragment,
+                ordinal = formType == MyUtils.FormType.Create ?
+                    fragments.Count + 1 : story.fragment.Count + 1,
+
+            };
+
+            return newFragment;
         }
 
         public bool CanAddFragments() 
@@ -174,7 +189,7 @@ namespace ARventure_Path.Forms
 
             if (formType == MyUtils.FormType.Create)
             {
-                if ((numberTextBoxFragment >= 1) &&
+                if ((numberTextBoxFragment >= 2) &&
                     (numberTextBoxFragment > fragments.Count))//nombre de la lista
                 {
                     return true;
@@ -184,7 +199,7 @@ namespace ARventure_Path.Forms
             }
             else
             {
-                if ((numberTextBoxFragment >= 1) &&
+                if ((numberTextBoxFragment >= 2) &&
                     (numberTextBoxFragment > story.fragment.Count))//nombre de la lista
                 {
                     return true;
@@ -204,8 +219,8 @@ namespace ARventure_Path.Forms
             //https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers
             if (System.Text.RegularExpressions.Regex.IsMatch(textBoxFragmentQuantity.Text, "[^0-9]"))
             {
-                MessageBox.Show("Por favor, introduce un número (superior a 1).");
-                textBoxFragmentQuantity.Text = textBoxFragmentQuantity.Text.Remove(textBoxFragmentQuantity.Text.Length - 1);
+                //MessageBox.Show("Por favor, introduce un número (superior a 1).");
+                textBoxFragmentQuantity.Text = dataGridViewFragments.RowCount.ToString();
 
                 return;
             }
@@ -221,7 +236,8 @@ namespace ARventure_Path.Forms
 
             if (numberTextBoxFragment < 2) 
             {
-                MessageBox.Show("Por favor, introduce un número (superior a 1).");
+                //MessageBox.Show("Por favor, introduce un número (superior a 1).");
+                textBoxFragmentQuantity.Text = dataGridViewFragments.RowCount.ToString();
                 return;
             }
             else
