@@ -41,8 +41,8 @@ namespace ARventure_Path.Forms
         {
             if (formType == MyUtils.FormType.Create)
             {
-                dataGridViewStops.DataSource = null;
-                dataGridViewStops.DataSource = stopsList;
+                bindingSourceRoute.DataSource = null;
+                bindingSourceRoute.DataSource = stopsList;
                 dataGridViewStops.Columns[0].Visible = false;
                 dataGridViewStops.Columns[4].Visible = false;
                 dataGridViewStops.Columns[5].Visible = false;
