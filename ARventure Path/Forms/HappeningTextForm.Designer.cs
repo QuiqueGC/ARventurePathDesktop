@@ -101,6 +101,7 @@
             // buttonCreate
             // 
             this.buttonCreate.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonCreate.Enabled = false;
             this.buttonCreate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCreate.Font = new System.Drawing.Font("Century", 10F);
             this.buttonCreate.ForeColor = System.Drawing.SystemColors.Control;
