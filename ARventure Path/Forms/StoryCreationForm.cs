@@ -3,6 +3,7 @@ using ARventure_Path.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -35,19 +36,64 @@ namespace ARventure_Path.Forms
             }
             else if (formType == MyUtils.FormType.Modify)
             {
-                //modificar
+                ModifyStory();
             }
             else
             {
                 //Tengo que pelearme con el delete
-                delete();
+                DeleteStory();
             }
 
         }
 
-        private void delete()
+
+        /// <summary>
+        /// Modifica la historia y hace el update en la base de
+        /// </summary>
+        private void ModifyStory()
         {
+            string msg = "";
+            if (textBoxStoryTitle.Text.Trim() != "" &&
+               textBoxSummary.Text.Trim() != "" &&
+               story.fragment.Count >= 2)
+            {
+                story.name = textBoxStoryTitle.Text.Trim();
+                story.summary = textBoxSummary.Text.Trim();
+
+                if (fileName != null)
+                {
+                    story.img = fileName;
+                }
+
+                bindingSourceStory.DataSource = StoryOrm.Select();
+            }
+            else
+            {
+                MessageBox.Show("Debes rellenar nombre, resumen, añadir una imagen y poner un mínimo de 2 fragmentos.", "¡Error!");
+            }
             
+        }
+
+
+        /// <summary>
+        /// borra la historia y la lista de fragmentos
+        /// asociados a ella haciendo sus respectivos deletes
+        /// </summary>
+        private void DeleteStory()
+        {
+            DeleteFragments();
+
+            StoryOrm.Delete(story);
+            comboBoxSelectStory.SelectedItem = null;
+            bindingSourceFragments.DataSource = null;
+            bindingSourceStory.DataSource = StoryOrm.Select();
+        }
+
+        /// <summary>
+        /// borra los fragmentos de la historia
+        /// </summary>
+        private void DeleteFragments()
+        {
             int i = story.fragment.Count;
 
             do
@@ -56,12 +102,7 @@ namespace ARventure_Path.Forms
                 MyUtils.ShowPosibleError(msg);
                 i--;
 
-            }while (i > 0);
-            
-            StoryOrm.Delete(story);
-            comboBoxSelectStory.SelectedItem = null;
-            bindingSourceFragments.DataSource = null;
-            bindingSourceStory.DataSource = StoryOrm.Select();
+            } while (i > 0);
         }
 
 
@@ -89,21 +130,34 @@ namespace ARventure_Path.Forms
                     MyUtils.ShowPosibleError(msg);
                 }
 
-                textBoxStoryTitle.Clear();
-                textBoxSummary.Clear();
-                textBoxGenerateStoryAI.Clear();
-                textBoxImageStory.Clear();
-                textBoxFragmentQuantity.Clear();
-                pictureBoxStory.Image = null;
-                story = new story();
-                fragments.Clear();
-                DoSelectFragmentsDependingOnType();
+                CleanForm();
+                
             }
             else
             {
-                MessageBox.Show("Debes rellenar nombre, resumen, añadir una imagen y poner un mínimo de 2 fragmentos.", "¡Maravilloso!");
+                MessageBox.Show("Debes rellenar nombre, resumen, añadir una imagen y poner un mínimo de 2 fragmentos.", "¡Error!");
             }
            
+        }
+
+
+        /// <summary>
+        /// vacía todos los campos y vuelve
+        /// a inicializar los objetos
+        /// para volver a crear una nueva historia
+        /// </summary>
+        private void CleanForm()
+        {
+            textBoxStoryTitle.Clear();
+            textBoxSummary.Clear();
+            textBoxGenerateStoryAI.Clear();
+            textBoxImageStory.Clear();
+            textBoxFragmentQuantity.Clear();
+            pictureBoxStory.Image = null;
+            story = new story();
+            fileName = null;
+            fragments.Clear();
+            DoSelectFragmentsDependingOnType();
         }
 
         private void buttonSearchImage_Click(object sender, EventArgs e)
@@ -171,8 +225,6 @@ namespace ARventure_Path.Forms
                         contentToFragment = "";
                     }
                 }
-                
-               
             }
         }
 
@@ -256,9 +308,6 @@ namespace ARventure_Path.Forms
                     return;
                 }
             }
-
-            
-
             buttonAddNewFragment.Enabled = false;
 
         }
