@@ -29,6 +29,13 @@ namespace ARventure_Path.Forms
             if (formType == MyUtils.FormType.Create)
             {
                 // Crear Logro
+                string msg = "";
+                achievement.name = textBoxNameAchievement.Text;
+                achievement.img = fileName;
+
+                msg = AchievementOrm.Insert(achievement);
+                MyUtils.ShowPosibleError(msg);
+
             }
             else
             {
