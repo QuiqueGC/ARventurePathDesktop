@@ -182,6 +182,7 @@
             this.contentDataGridViewTextBoxColumn});
             this.dataGridViewFragments.DataSource = this.bindingSourceFragments;
             this.dataGridViewFragments.Location = new System.Drawing.Point(6, 104);
+            this.dataGridViewFragments.MultiSelect = false;
             this.dataGridViewFragments.Name = "dataGridViewFragments";
             this.dataGridViewFragments.ReadOnly = true;
             this.dataGridViewFragments.RowHeadersVisible = false;

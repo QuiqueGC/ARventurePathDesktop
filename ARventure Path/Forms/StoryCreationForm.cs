@@ -43,7 +43,6 @@ namespace ARventure_Path.Forms
             {
                 DeleteStory();
             }
-
         }
 
 
@@ -75,9 +74,17 @@ namespace ARventure_Path.Forms
                     MessageBox.Show("El nombre del archivo de imagen es demasiado largo. Debes cambiarlo.", "¡Error!");
                 }
             }
+            else if (textBoxStoryTitle.Text.Trim() == "") 
+            {
+                MessageBox.Show("El campo de título está vacío.", "¡Error!");
+            }
+            else if (textBoxSummary.Text.Trim() == "") 
+            {
+                MessageBox.Show("El campo de resumen está vacío.", "¡Error!");
+            }
             else
             {
-                MessageBox.Show("Debes rellenar nombre, resumen, añadir una imagen y poner un mínimo de 2 fragmentos.", "¡Error!");
+                MessageBox.Show("La historia debe tener un mínimo de dos fragmentos.", "¡Error!");
             }
             
         }
@@ -149,11 +156,22 @@ namespace ARventure_Path.Forms
                 {
                     MessageBox.Show("El nombre del archivo de imagen es demasiado largo. Debes cambiarlo.", "¡Error!");
                 }
-
+            }
+            else if (textBoxStoryTitle.Text.Trim() == "") 
+            {
+                MessageBox.Show("Debes poner un título en la historia.", "¡Error!");
+            }
+            else if (textBoxSummary.Text.Trim() == "") 
+            {
+                MessageBox.Show("Debes poner un resumen en la historia.", "¡Error!");
+            }
+            else if (fileName == "") 
+            {
+                MessageBox.Show("Debes asignar una imagen a la historia.", "¡Error!");
             }
             else
             {
-                MessageBox.Show("Debes rellenar nombre, resumen, añadir una imagen y poner un mínimo de 2 fragmentos.", "¡Error!");
+                MessageBox.Show("La historia debe tener un mínimo de dos fragmentos.", "¡Error!");
             }
            
         }
@@ -460,6 +478,7 @@ namespace ARventure_Path.Forms
         private void becomeInDeleteForm()
         {
             buttonCreateStory.Text = "Borrar";
+            buttonCreateStory.Enabled = false;
             bindingSourceStory.DataSource = StoryOrm.Select();
             gbGenerateForIA.Enabled = false;
             gbStory.Enabled = false;
@@ -473,6 +492,7 @@ namespace ARventure_Path.Forms
         private void becomeInModifyForm()
         {
             buttonCreateStory.Text = "Guardar";
+            buttonCreateStory.Enabled = false;
             bindingSourceStory.DataSource = StoryOrm.Select();
             DoSelectFragmentsDependingOnType();
         }
@@ -492,6 +512,7 @@ namespace ARventure_Path.Forms
         {
             if(comboBoxSelectStory.SelectedItem != null)
             {
+                buttonCreateStory.Enabled = true;
                 story = (story)comboBoxSelectStory.SelectedItem;
                 textBoxStoryTitle.Text = story.name;
                 textBoxSummary.Text = story.summary;
