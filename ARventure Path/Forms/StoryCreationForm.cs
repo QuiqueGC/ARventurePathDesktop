@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace ARventure_Path.Forms
@@ -16,10 +17,10 @@ namespace ARventure_Path.Forms
     {
         private story story = new story();
         private MyUtils.FormType formType;
-        private string fileName;
+        private string fileName = "";
         private BindingList<fragment> fragments = new BindingList<fragment>();
 
-        private string StoryImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
+        private string storyImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
         public string contentToFragment = "";
 
         public StoryCreationForm(MyUtils.FormType formType)
@@ -40,7 +41,6 @@ namespace ARventure_Path.Forms
             }
             else
             {
-                //Tengo que pelearme con el delete
                 DeleteStory();
             }
 
@@ -57,15 +57,23 @@ namespace ARventure_Path.Forms
                textBoxSummary.Text.Trim() != "" &&
                story.fragment.Count >= 2)
             {
-                story.name = textBoxStoryTitle.Text.Trim();
-                story.summary = textBoxSummary.Text.Trim();
-
-                if (fileName != null)
+                if (fileName.Length < 50)
                 {
-                    story.img = fileName;
-                }
+                    story.name = textBoxStoryTitle.Text.Trim();
+                    story.summary = textBoxSummary.Text.Trim();
 
-                bindingSourceStory.DataSource = StoryOrm.Select();
+                    if (fileName != "")
+                    {
+                        story.img = fileName;
+                    }
+                    msg = Orm.Update();
+                    MyUtils.ShowPosibleError(msg);
+                    bindingSourceStory.DataSource = StoryOrm.Select();
+                }
+                else
+                {
+                    MessageBox.Show("El nombre del archivo de imagen es demasiado largo. Debes cambiarlo.", "¡Error!");
+                }
             }
             else
             {
@@ -83,7 +91,8 @@ namespace ARventure_Path.Forms
         {
             DeleteFragments();
 
-            StoryOrm.Delete(story);
+            string msg = StoryOrm.Delete(story);
+            MyUtils.ShowPosibleError(msg);
             comboBoxSelectStory.SelectedItem = null;
             bindingSourceFragments.DataSource = null;
             bindingSourceStory.DataSource = StoryOrm.Select();
@@ -98,8 +107,11 @@ namespace ARventure_Path.Forms
 
             do
             {
-                string msg = FragmentOrm.Delete(story.fragment.FirstOrDefault());
-                MyUtils.ShowPosibleError(msg);
+                if (story.fragment.FirstOrDefault() != null) 
+                {
+                    string msg = FragmentOrm.Delete(story.fragment.FirstOrDefault());
+                    MyUtils.ShowPosibleError(msg);
+                }
                 i--;
 
             } while (i > 0);
@@ -113,25 +125,31 @@ namespace ARventure_Path.Forms
         {
             if(textBoxStoryTitle.Text.Trim() != "" &&
                textBoxSummary.Text.Trim() != "" &&
-               fileName != null &&
+               fileName != "" &&
                fragments.Count >= 2 ||
                story.fragment.Count >= 2) 
             {
-                string msg = "";
-                story.name = textBoxStoryTitle.Text.Trim();
-                story.summary = textBoxSummary.Text.Trim();
-                story.img = fileName;
-                msg = StoryOrm.Insert(story);
-                MyUtils.ShowPosibleError(msg);
-
-                foreach (fragment fragment in fragments)
+                if (fileName.Length < 50) 
                 {
-                    msg = FragmentOrm.Insert(fragment);
+                    string msg = "";
+                    story.name = textBoxStoryTitle.Text.Trim();
+                    story.summary = textBoxSummary.Text.Trim();
+                    story.img = fileName;
+                    msg = StoryOrm.Insert(story);
                     MyUtils.ShowPosibleError(msg);
+
+                    foreach (fragment fragment in fragments)
+                    {
+                        msg = FragmentOrm.Insert(fragment);
+                        MyUtils.ShowPosibleError(msg);
+                    }
+                    CleanForm();
+                }
+                else
+                {
+                    MessageBox.Show("El nombre del archivo de imagen es demasiado largo. Debes cambiarlo.", "¡Error!");
                 }
 
-                CleanForm();
-                
             }
             else
             {
@@ -188,13 +206,32 @@ namespace ARventure_Path.Forms
         private void SaveImage(Image image)
         {
             // Si la carpeta no existe, la crea
-            if (!Directory.Exists(StoryImagePath))
+            if (!Directory.Exists(storyImagePath))
             {
-                Directory.CreateDirectory(StoryImagePath);
+                Directory.CreateDirectory(storyImagePath);
             }
-            string destinationPath = Path.Combine(StoryImagePath, fileName);
-            image.Save(destinationPath, ImageFormat.Png);
-            story.img = destinationPath;
+            string destinationPath = Path.Combine(storyImagePath, fileName);
+            try
+            {
+                image.Save(destinationPath, ImageFormat.Png);
+              
+            }
+            catch (ExternalException ex)
+            {
+                MessageBox.Show("Imagen no válida.", "Error!");
+                if(formType == MyUtils.FormType.Create)
+                {
+                    textBoxImageStory.Text = "";
+                    pictureBoxStory.Image = null;
+                }
+                else
+                {
+                    textBoxImageStory.Text = Path.Combine(storyImagePath, story.img);
+                    var savedImage = Image.FromFile(Path.Combine(storyImagePath, story.img));
+                    pictureBoxStory.Image = savedImage;
+                }
+                
+            }
         }
 
         private void buttonAddNewFragment_Click(object sender, EventArgs e)
@@ -202,8 +239,8 @@ namespace ARventure_Path.Forms
 
             // Añadir fragmento cuando el número de fragmentos en la
             // lista no supera al número indicado por el usuario
-            if (CanAddFragments())
-            {
+            //if (CanAddFragments())
+            //{
                 FragmentCreationForm fragmentCreationForm = new FragmentCreationForm(this);
                 fragmentCreationForm.ShowDialog();
 
@@ -216,6 +253,7 @@ namespace ARventure_Path.Forms
                         fragments.Add(newFragment);
                         DoSelectFragmentsDependingOnType();
                         contentToFragment = "";
+                        textBoxFragmentQuantity.Text = fragments.Count.ToString();
                     }
                     else
                     {
@@ -223,8 +261,9 @@ namespace ARventure_Path.Forms
                         MyUtils.ShowPosibleError(msg);
                         DoSelectFragmentsDependingOnType();
                         contentToFragment = "";
+                        textBoxFragmentQuantity.Text = story.fragment.Count.ToString();
                     }
-                }
+                //}
             }
         }
 
@@ -277,7 +316,7 @@ namespace ARventure_Path.Forms
 
             //TextBox acepta solo números
             //https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers
-            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxFragmentQuantity.Text, "[^0-9]"))
+            /*if (System.Text.RegularExpressions.Regex.IsMatch(textBoxFragmentQuantity.Text, "[^0-9]"))
             {
                 //MessageBox.Show("Por favor, introduce un número (superior a 1).");
                 textBoxFragmentQuantity.Text = dataGridViewFragments.RowCount.ToString();
@@ -308,7 +347,7 @@ namespace ARventure_Path.Forms
                     return;
                 }
             }
-            buttonAddNewFragment.Enabled = false;
+            buttonAddNewFragment.Enabled = false;*/
 
         }
 
@@ -318,16 +357,33 @@ namespace ARventure_Path.Forms
             {
                 if (formType == MyUtils.FormType.Create)
                 {
-                    fragments.Remove((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
-                    ReorderingFragments();
-                    DoSelectFragmentsDependingOnType();
+                    if(fragments.Count > 2)
+                    {
+                        fragments.Remove((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                        ReorderingFragments();
+                        DoSelectFragmentsDependingOnType();
+                        textBoxFragmentQuantity.Text = fragments.Count.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No puede haber menos de dos fragmentos en una historia.", "Error!");
+                    }
+                    
                 }
                 else
                 {
-                    string msg = FragmentOrm.Delete((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
-                    MyUtils.ShowPosibleError(msg);
-                    ReorderingFragmentsOfStory();
-                    DoSelectFragmentsDependingOnType();
+                    if (story.fragment.Count > 2)
+                    {
+                        string msg = FragmentOrm.Delete((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                        MyUtils.ShowPosibleError(msg);
+                        ReorderingFragmentsOfStory();
+                        DoSelectFragmentsDependingOnType();
+                        textBoxFragmentQuantity.Text = story.fragment.Count.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No puede haber menos de dos fragmentos en una historia.", "Error!");
+                    }
                 }
             }
         }
@@ -440,7 +496,13 @@ namespace ARventure_Path.Forms
                 textBoxStoryTitle.Text = story.name;
                 textBoxSummary.Text = story.summary;
                 textBoxFragmentQuantity.Text = story.fragment.Count.ToString();
+                textBoxImageStory.Text = Path.Combine(storyImagePath, story.img);
+                var image = Image.FromFile(Path.Combine(storyImagePath, story.img));
+                pictureBoxStory.Image = image;
+
+
                 DoSelectFragmentsDependingOnType();
+
             }
         }
 
