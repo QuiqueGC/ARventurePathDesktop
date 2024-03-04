@@ -96,13 +96,17 @@ namespace ARventure_Path.Forms
         /// </summary>
         private void DeleteStory()
         {
-            DeleteFragments();
+            if (MyUtils.ShowConfirmDialogAndDelete()) 
+            {
+                DeleteFragments();
 
-            string msg = StoryOrm.Delete(story);
-            MyUtils.ShowPosibleError(msg);
-            comboBoxSelectStory.SelectedItem = null;
-            bindingSourceFragments.DataSource = null;
-            bindingSourceStory.DataSource = StoryOrm.Select();
+                string msg = StoryOrm.Delete(story);
+                MyUtils.ShowPosibleError(msg);
+                bindingSourceStory.DataSource = StoryOrm.Select();
+                comboBoxSelectStory.SelectedItem = null;
+                bindingSourceFragments.DataSource = null;
+                CleanForm();
+            }
         }
 
         /// <summary>
@@ -442,7 +446,16 @@ namespace ARventure_Path.Forms
 
         private void buttonCancelStory_Click(object sender, EventArgs e)
         {
-            Close();
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(
+                "¿Estás seguro de que deseas salir?",
+                "¡No abandones!",
+                buttons);
+
+            if (result == DialogResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void StoryCreationForm_Load(object sender, EventArgs e)
