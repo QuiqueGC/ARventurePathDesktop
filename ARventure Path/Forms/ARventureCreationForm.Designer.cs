@@ -41,10 +41,8 @@
             this.buttonSeeDetailRoute = new System.Windows.Forms.Button();
             this.buttonSelectRoute = new System.Windows.Forms.Button();
             this.listBoxRoutes = new System.Windows.Forms.ListBox();
+            this.bindingSourceRoute = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxHappening = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonSeeDetailEvent = new System.Windows.Forms.Button();
             this.buttonSelectEvent = new System.Windows.Forms.Button();
             this.groupBoxArventure = new System.Windows.Forms.GroupBox();
@@ -67,21 +65,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCreateArventure = new System.Windows.Forms.Button();
             this.buttonCancelArventure = new System.Windows.Forms.Button();
-            this.bindingSourceRoute = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewHappening = new System.Windows.Forms.DataGridView();
+            this.bindingSourceHappening = new System.Windows.Forms.BindingSource(this.components);
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceArventure)).BeginInit();
             this.groupBoxStory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.groupBoxRoutes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRoute)).BeginInit();
             this.groupBoxHappening.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxArventure.SuspendLayout();
             this.groupBoxHappenings.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStoryImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRoute)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHappening)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappening)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSelectArventure
@@ -147,6 +147,7 @@
             this.buttonSelectStory.TabIndex = 1;
             this.buttonSelectStory.Text = "Seleccionar";
             this.buttonSelectStory.UseVisualStyleBackColor = false;
+            this.buttonSelectStory.Click += new System.EventHandler(this.buttonSelectStory_Click);
             // 
             // listBoxStories
             // 
@@ -214,9 +215,13 @@
             this.listBoxRoutes.TabIndex = 1;
             this.listBoxRoutes.ValueMember = "id";
             // 
+            // bindingSourceRoute
+            // 
+            this.bindingSourceRoute.DataSource = typeof(ARventure_Path.Models.route);
+            // 
             // groupBoxHappening
             // 
-            this.groupBoxHappening.Controls.Add(this.dataGridView1);
+            this.groupBoxHappening.Controls.Add(this.dataGridViewHappening);
             this.groupBoxHappening.Controls.Add(this.buttonSeeDetailEvent);
             this.groupBoxHappening.Controls.Add(this.buttonSelectEvent);
             this.groupBoxHappening.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -226,30 +231,6 @@
             this.groupBoxHappening.TabIndex = 6;
             this.groupBoxHappening.TabStop = false;
             this.groupBoxHappening.Text = "Eventos";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
-            this.dataGridView1.Location = new System.Drawing.Point(15, 22);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(262, 134);
-            this.dataGridView1.TabIndex = 5;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "Tipo";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nombre";
-            this.Column2.Name = "Column2";
             // 
             // buttonSeeDetailEvent
             // 
@@ -486,9 +467,40 @@
             this.buttonCancelArventure.UseVisualStyleBackColor = false;
             this.buttonCancelArventure.Click += new System.EventHandler(this.buttonCancelArventure_Click);
             // 
-            // bindingSourceRoute
+            // dataGridViewHappening
             // 
-            this.bindingSourceRoute.DataSource = typeof(ARventure_Path.Models.route);
+            this.dataGridViewHappening.AllowUserToAddRows = false;
+            this.dataGridViewHappening.AllowUserToDeleteRows = false;
+            this.dataGridViewHappening.AutoGenerateColumns = false;
+            this.dataGridViewHappening.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewHappening.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn});
+            this.dataGridViewHappening.DataSource = this.bindingSourceHappening;
+            this.dataGridViewHappening.Location = new System.Drawing.Point(13, 23);
+            this.dataGridViewHappening.Name = "dataGridViewHappening";
+            this.dataGridViewHappening.ReadOnly = true;
+            this.dataGridViewHappening.RowHeadersVisible = false;
+            this.dataGridViewHappening.Size = new System.Drawing.Size(270, 134);
+            this.dataGridViewHappening.TabIndex = 5;
+            // 
+            // bindingSourceHappening
+            // 
+            this.bindingSourceHappening.DataSource = typeof(ARventure_Path.Models.happening);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Tipo";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ARventureCreationForm
             // 
@@ -511,8 +523,8 @@
             this.groupBoxStory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.groupBoxRoutes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRoute)).EndInit();
             this.groupBoxHappening.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBoxArventure.ResumeLayout(false);
             this.groupBoxArventure.PerformLayout();
             this.groupBoxHappenings.ResumeLayout(false);
@@ -521,8 +533,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStoryImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRoute)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHappening)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappening)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -565,10 +577,10 @@
         private System.Windows.Forms.Label labelDistanceRoute;
         private System.Windows.Forms.BindingSource bindingSourceStory;
         private System.Windows.Forms.BindingSource bindingSourceArventure;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.BindingSource bindingSourceRoute;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.DataGridView dataGridViewHappening;
+        private System.Windows.Forms.BindingSource bindingSourceHappening;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
     }
 }

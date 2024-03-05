@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,8 @@ namespace ARventure_Path.Forms
     public partial class ARventureCreationForm : Form
     {
         arventure arventure = new arventure();
-        story story = new story();
-        route route = new route();
+        private string storyImagePath = Path.Combine(Application.StartupPath, "..", "..", "filesToServer", "imgStory");
+
         private MyUtils.FormType formType;
         public ARventureCreationForm(MyUtils.FormType formType)
         {
@@ -43,9 +44,7 @@ namespace ARventure_Path.Forms
                 // Crear ARventure
                 string msg = "";
                 arventure.name = textBoxTitleArventure.Text;
-                arventure.story = story;
-                arventure.route = route;
-                //arventure.happening.Add();
+                
 
 
 
@@ -112,7 +111,10 @@ namespace ARventure_Path.Forms
 
         private void listBoxStories_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (listBoxStories.SelectedItems.Count > 0) 
+            {
+                bindingSourceHappening.DataSource = HappeningOrm.Select((story)listBoxStories.SelectedItem);
+            }
         }
 
         private void comboBoxSelectArventure_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,6 +126,21 @@ namespace ARventure_Path.Forms
 
 
             }
+        }
+
+        private void buttonSelectStory_Click(object sender, EventArgs e)
+        {
+            if (listBoxStories.SelectedItems.Count > 0)
+            {
+                
+                story story = (story)listBoxStories.SelectedItem;
+                labelStoryTitle.Text = story.name;
+                var image = Image.FromFile(Path.Combine(storyImagePath, story.img));
+                pictureBoxStoryImg.Image = image;
+                textBoxStorySummary.Text = story.summary;
+            }
+
+            
         }
     }
 }
