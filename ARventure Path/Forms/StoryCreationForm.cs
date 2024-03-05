@@ -105,6 +105,7 @@ namespace ARventure_Path.Forms
                 bindingSourceStory.DataSource = StoryOrm.Select();
                 comboBoxSelectStory.SelectedItem = null;
                 bindingSourceFragments.DataSource = null;
+                buttonCreateStory.Enabled = false;
                 CleanForm();
             }
         }
