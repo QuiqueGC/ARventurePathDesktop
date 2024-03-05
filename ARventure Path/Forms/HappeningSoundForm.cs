@@ -36,35 +36,72 @@ namespace ARventure_Path.Forms
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Archivos MP3|*.mp3";
+            openFileDialog.Filter = "Archivos de audio|*.mp3;*.wav;*.flac;*.wma;*.aac;*.ogg";
+
 
             if (formType == MyUtils.FormType.Create)
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    Mp3Player.URL = filePath;
-                    btnPlay.Image = Properties.Resources.pause;
-                    textBoxUrl.Text = filePath;
-
                     fileName = Path.GetFileName(filePath);
+
+                    if (!audioExists(fileName))
+                    {
+                        
+                        Mp3Player.URL = filePath;
+                        btnPlay.Image = Properties.Resources.pause;
+                        textBoxUrl.Text = filePath;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe una audio con el mismo nombre.", "Error");
+                    }
+
+
                 }
             } else if (formType == MyUtils.FormType.Modify)
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 { 
                     filePath = openFileDialog.FileName;
-                    Mp3Player.URL = filePath;
-                    btnPlay.Image = Properties.Resources.pause;
-                    if (Path.GetFileName(filePath) != fileName)
-                    {
-                        deleteAudio();
-                    }
-                    textBoxUrl.Text = filePath;
-
                     fileName = Path.GetFileName(filePath);
+                    if (!audioExists(fileName))
+                    {
+                        Mp3Player.URL = null;
+                        Mp3Player.URL = filePath;
+                        btnPlay.Image = Properties.Resources.pause;
+                        textBoxUrl.Text = filePath;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe una audio con el mismo nombre.", "Error");
+
+                    }
+
                 }
             }
+        }
+
+        private bool audioExists(string audioName)
+        {
+            // Obtenemos la lista de archivos en la carpeta audioPath
+            string[] files = Directory.GetFiles(audioPath);
+
+            // Recorremos la lista de archivos
+            foreach (string file in files)
+            {
+                // Obtenemos solo el nombre del archivo sin la ruta completa
+                string fileName = Path.GetFileName(file);
+
+                // Comparamos el nombre del archivo con el nombre de la imagen seleccionada
+                if (fileName.Equals(audioName, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true; // Si encontramos una coincidencia, devolvemos true
+                }
+            }
+
+            return false; // Si no encontramos ninguna coincidencia, devolvemos false
         }
         private void saveAudio()
         {
@@ -76,9 +113,9 @@ namespace ARventure_Path.Forms
             File.Copy(filePath, destinationPath, true);                
             
         }
-        private void deleteAudio()
+        private void deleteAudio(happening happening)
         {
-            String destinationPath = Path.Combine(audioPath, fileName);
+            String destinationPath = Path.Combine(audioPath, happening.url);
             if (File.Exists(destinationPath))
             {
                 try
@@ -223,7 +260,11 @@ namespace ARventure_Path.Forms
                     else
                     {
                         MessageBox.Show("Evento creado satisfactoriamente.", "Éxito!");
-                        Close();
+                        textBoxName.Text = "";
+                        textBoxUrl.Text = "";
+                        Mp3Player.URL = null;
+                        comboBoxStories.SelectedItem = null;
+
                     }
 
                 }
@@ -254,6 +295,8 @@ namespace ARventure_Path.Forms
                     if (happening.url != fileName)
                     {
                         saveAudio();
+                        deleteAudio(happening);
+                        
                     }
                     happening.name = textBoxName.Text.Trim();
                     happening.url = fileName;
@@ -302,7 +345,7 @@ namespace ARventure_Path.Forms
                     else
                     {
                         MessageBox.Show("El evento se ha eliminado correctamente.", "Éxito!");
-                        deleteAudio();
+                        deleteAudio(happening);
                         Close();
                     }
                 }
