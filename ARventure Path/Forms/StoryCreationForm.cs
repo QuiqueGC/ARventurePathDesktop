@@ -224,8 +224,7 @@ namespace ARventure_Path.Forms
         /// Guarda la imagen en la carpeta local
         /// </summary>
         /// <param name="fileName"></param>
-        /// 
-        
+        ///
         private void SaveImage(Image image)
         {
             // Si la carpeta no existe, la crea
@@ -259,11 +258,6 @@ namespace ARventure_Path.Forms
 
         private void buttonAddNewFragment_Click(object sender, EventArgs e)
         {
-
-            // Añadir fragmento cuando el número de fragmentos en la
-            // lista no supera al número indicado por el usuario
-            //if (CanAddFragments())
-            //{
                 FragmentCreationForm fragmentCreationForm = new FragmentCreationForm(this);
                 fragmentCreationForm.ShowDialog();
 
@@ -286,7 +280,6 @@ namespace ARventure_Path.Forms
                         contentToFragment = "";
                         textBoxFragmentQuantity.Text = story.fragment.Count.ToString();
                     }
-                //}
             }
         }
 
@@ -304,75 +297,6 @@ namespace ARventure_Path.Forms
             return newFragment;
         }
 
-        public bool CanAddFragments() 
-        {
-            int numberTextBoxFragment = int.Parse(textBoxFragmentQuantity.Text);
-            //Si es número que escribe el usuario es mayor que uno, y si el número añadido es mayor al número de fragments
-
-            if (formType == MyUtils.FormType.Create)
-            {
-                if ((numberTextBoxFragment >= 2) &&
-                    (numberTextBoxFragment > fragments.Count))//nombre de la lista
-                {
-                    return true;
-
-                }
-                return false;
-            }
-            else
-            {
-                if ((numberTextBoxFragment >= 2) &&
-                    (numberTextBoxFragment > story.fragment.Count))//nombre de la lista
-                {
-                    return true;
-                }
-                return false;
-            }
-
-        }
-
-        private void textBoxFragmentQuantity_TextChanged(object sender, EventArgs e)
-        {
-            //Si los números del campo son de 1 - 5, si el número de fragmets en la lista es mayor al número del campo
-            //Activar el botón de añadir fragment 
-            //numeroFragments
-
-            //TextBox acepta solo números
-            //https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers
-            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxFragmentQuantity.Text, "[^0-9]"))
-            {
-                //MessageBox.Show("Por favor, introduce un número (superior a 1).");
-                textBoxFragmentQuantity.Text = dataGridViewFragments.RowCount.ToString();
-
-                return;
-            }
-
-
-            if (string.IsNullOrEmpty(textBoxFragmentQuantity.Text))
-            {
-                buttonAddNewFragment.Enabled = true;
-                return;
-            }
-
-            int numberTextBoxFragment = int.Parse(textBoxFragmentQuantity.Text);
-
-            if (numberTextBoxFragment < 2) 
-            {
-                //MessageBox.Show("Por favor, introduce un número (superior a 1).");
-                textBoxFragmentQuantity.Text = dataGridViewFragments.RowCount.ToString();
-                return;
-            }
-            else
-            {
-                if (CanAddFragments())
-                {
-                    buttonAddNewFragment.Enabled = true;
-                    return;
-                }
-            }
-            buttonAddNewFragment.Enabled = false;
-
-        }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
@@ -537,7 +461,6 @@ namespace ARventure_Path.Forms
 
 
                 DoSelectFragmentsDependingOnType();
-
             }
         }
 
@@ -567,6 +490,14 @@ namespace ARventure_Path.Forms
             {
                 textBoxFragmentsIA.Clear();
                 MessageBox.Show("Sólo puedes introducir números en esta celda.", "Error!");
+            }
+        }
+
+        private void dataGridViewFragments_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                buttonDelete.PerformClick();
             }
         }
     }

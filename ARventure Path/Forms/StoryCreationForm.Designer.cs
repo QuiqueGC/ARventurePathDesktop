@@ -210,6 +210,7 @@
             this.dataGridViewFragments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewFragments.Size = new System.Drawing.Size(368, 228);
             this.dataGridViewFragments.TabIndex = 4;
+            this.dataGridViewFragments.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewFragments_KeyDown);
             // 
             // ordinalDataGridViewTextBoxColumn
             // 
@@ -263,7 +264,6 @@
             this.textBoxFragmentQuantity.Name = "textBoxFragmentQuantity";
             this.textBoxFragmentQuantity.Size = new System.Drawing.Size(63, 21);
             this.textBoxFragmentQuantity.TabIndex = 0;
-            this.textBoxFragmentQuantity.TextChanged += new System.EventHandler(this.textBoxFragmentQuantity_TextChanged);
             // 
             // label2
             // 
