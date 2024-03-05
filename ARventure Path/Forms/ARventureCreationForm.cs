@@ -16,6 +16,7 @@ namespace ARventure_Path.Forms
     {
         arventure arventure = new arventure();
         story story = new story();
+        route route = new route();
         private MyUtils.FormType formType;
         public ARventureCreationForm(MyUtils.FormType formType)
         {
@@ -27,7 +28,7 @@ namespace ARventure_Path.Forms
         {
             ChooseTypeOfForm();
             bindingSourceStory.DataSource = StoryOrm.Select();
-            //bindingSourceRoute.DataSource = RouteOrm.Select();
+            bindingSourceRoute.DataSource = RouteOrm.Select();
         }
 
         private void buttonCancelArventure_Click(object sender, EventArgs e)
@@ -42,9 +43,10 @@ namespace ARventure_Path.Forms
                 // Crear ARventure
                 string msg = "";
                 arventure.name = textBoxTitleArventure.Text;
-                story.name = labelStoryTitle.Text;
-                //story.img = pictureBoxStoryImg.Image;
-                story.summary = textBoxStorySummary.Text;
+                arventure.story = story;
+                arventure.route = route;
+                arventure.happening.Add();
+
 
 
                 msg = ArventureOrm.Insert(arventure);
@@ -111,6 +113,17 @@ namespace ARventure_Path.Forms
         private void listBoxStories_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBoxSelectArventure_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxSelectArventure.SelectedItem != null) 
+            {
+                arventure = (arventure)comboBoxSelectArventure.SelectedItem;
+                textBoxTitleArventure.Text = arventure.name;
+
+
+            }
         }
     }
 }
