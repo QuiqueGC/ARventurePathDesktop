@@ -43,17 +43,17 @@ namespace ARventure_Path.Forms
             {
                 dataGridViewStops.DataSource = null;
                 dataGridViewStops.DataSource = stopsList;
-                
+
             }
             else
             {
                 bindingSourceStops.DataSource = null;
                 bindingSourceStops.DataSource = StopOrm.Select(route);
             }
-           
+
         }
 
-        private void refreshOverlaysMap(string name,double lat, double lng)
+        private void refreshOverlaysMap(string name, double lat, double lng)
         {
             // Marcador
             markerOverlay = new GMapOverlay("Marcador");
@@ -91,7 +91,7 @@ namespace ARventure_Path.Forms
             textBoxLatitude.Text = LatStart.ToString();
             textBoxLongitude.Text = LngStart.ToString();
 
-            refreshOverlaysMap("Barcelona",LatStart, LngStart);
+            refreshOverlaysMap("Barcelona", LatStart, LngStart);
 
         }
         private void comboBoxSelectRoute_SelectedIndexChanged(object sender, EventArgs e)
@@ -170,12 +170,13 @@ namespace ARventure_Path.Forms
         /// </summary>
         private void becomeInCreatonForm()
         {
-             labelSelectRoute.Visible = false;
-             comboBoxSelectRoute.Visible = false;
+            labelSelectRoute.Visible = false;
+            comboBoxSelectRoute.Visible = false;
         }
 
         private void buttonAddNewStop_Click(object sender, EventArgs e)
         {
+
             stop newStop = new stop();
             newStop.name = textBoxStopName.Text;
             newStop.longitude = Convert.ToDouble(textBoxLongitude.Text);
@@ -198,7 +199,7 @@ namespace ARventure_Path.Forms
                 previewRoute();
                 refreshOverlaysMap(newStop.name, (Double)newStop.latitude, (Double)newStop.longitude);
             }
-            
+
 
         }
 
@@ -247,20 +248,13 @@ namespace ARventure_Path.Forms
                     }
                     else
                     {
-                        // Obtener el índice de la fila seleccionada
-                        //int selectedIndex = dataGridViewStops.SelectedRows[0].Index;
-
-                        //route.stop.Remove(stop.)
                         string msg = StopOrm.Delete((stop)dataGridViewStops.SelectedRows[0].DataBoundItem);
                         MyUtils.ShowPosibleError(msg);
                         refreshTable();
                         previewRoute();
                         refreshOverlaysMap("Barcelona", LatStart, LngStart);
 
-
                     }
-                    
-
                 }
             }
             else
@@ -285,7 +279,7 @@ namespace ARventure_Path.Forms
 
         private void buttonCreateRoute_Click(object sender, EventArgs e)
         {
-            switch(formType) 
+            switch (formType)
             {
                 case MyUtils.FormType.Create:
                     createRoute();
@@ -312,7 +306,12 @@ namespace ARventure_Path.Forms
             }
         }
 
-            private void deleteStops()
+        private void modifyRoute()
+        {
+
+        }
+
+        private void deleteStops()
         {
             int i = route.stop.Count;
 
@@ -332,31 +331,44 @@ namespace ARventure_Path.Forms
         {
             if (check())
             {
-                route.time = time;
-                route.distance = distance;
-                route.name = textBoxNameRoute.Text;
-
-                string msg = RouteOrm.Insert(route);
-                if (msg != "")
+                if ((int)time.TotalMinutes <= 180)
                 {
-                    MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    route.time = time;
+                    route.distance = distance;
+                    route.name = textBoxNameRoute.Text;
+
+                    string msg = RouteOrm.Insert(route);
+                    if (msg != "")
+                    {
+                        MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < stopsList.Count; i++)
+                        {
+                            stop.name = stopsList[i].name;
+                            stop.longitude = stopsList[i].longitude;
+                            stop.latitude = stopsList[i].latitude;
+                            stop.route = route;
+                            msg = "";
+                            msg = StopOrm.Insert(stop);
+                            if (msg != "")
+                            {
+                                MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        MessageBox.Show("Ruta creada con éxito.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        textBoxNameRoute.Text = "";
+                        textBoxStopName.Text = "";
+                        stopsList.Clear();
+                        refreshTable();
+                        gMapControl1.Overlays.Clear();
+                        refreshOverlaysMap("Barcelona", LatStart, LngStart);
+                    }
                 }
                 else
                 {
-                    for (int i = 0; i < stopsList.Count; i++)
-                    {
-                        stop.name = stopsList[i].name;
-                        stop.longitude = stopsList[i].longitude;
-                        stop.latitude = stopsList[i].latitude;
-                        stop.route = route;
-                        msg = "";
-                        msg = StopOrm.Insert(stop);
-                        if (msg != "")
-                        {
-                            MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    MessageBox.Show("Ruta creada con éxito.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("La ruta no debe superar los 180 minutos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -365,7 +377,7 @@ namespace ARventure_Path.Forms
         {
             Boolean check;
 
-            if(stopsList.Count > 1)
+            if (stopsList.Count > 1)
             {
                 if (textBoxNameRoute.Text.Trim() != "")
                 {
@@ -395,7 +407,7 @@ namespace ARventure_Path.Forms
                 textBoxStopName.Text = dataGridViewStops.Rows[selectedRow].Cells[0].Value.ToString();
                 textBoxLongitude.Text = dataGridViewStops.Rows[selectedRow].Cells[1].Value.ToString();
                 textBoxLatitude.Text = dataGridViewStops.Rows[selectedRow].Cells[2].Value.ToString();
-                
+
 
                 // Se asignan los valores del grid al marcador
                 marker.Position = new PointLatLng(Convert.ToDouble(textBoxLatitude.Text), Convert.ToDouble(textBoxLongitude.Text));
@@ -437,13 +449,13 @@ namespace ARventure_Path.Forms
             double lat, lng;
 
             // Obtener los datos del grid
-                for (int rows = 0; rows < dataGridViewStops.Rows.Count; rows++)
-                {
-                    lat = Convert.ToDouble(dataGridViewStops.Rows[rows].Cells[2].Value);
-                    lng = Convert.ToDouble(dataGridViewStops.Rows[rows].Cells[1].Value);
-                    stops.Add(new PointLatLng(lat, lng));
-                }   
-                
+            for (int rows = 0; rows < dataGridViewStops.Rows.Count; rows++)
+            {
+                lat = Convert.ToDouble(dataGridViewStops.Rows[rows].Cells[2].Value);
+                lng = Convert.ToDouble(dataGridViewStops.Rows[rows].Cells[1].Value);
+                stops.Add(new PointLatLng(lat, lng));
+            }
+
             // Crear la nueva ruta
             GMapRoute stopsRoute = new GMapRoute(stops, "Ruta");
 
@@ -466,6 +478,30 @@ namespace ARventure_Path.Forms
 
             // Show the estimated time in minutes without decimals
             labelRouteTime.Text = ((int)time.TotalMinutes).ToString() + " min";
+        }
+
+        private void buttonStopChange_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStops.SelectedRows.Count > 0)
+            {
+                if (formType == MyUtils.FormType.Create)
+                {
+                    int selectedIndex = dataGridViewStops.SelectedRows[0].Index;
+
+                    stop stop = new stop();
+
+                    stop.name = textBoxStopName.Text;
+                    stop.longitude = Convert.ToDouble(textBoxLongitude.Text);
+                    stop.latitude = Convert.ToDouble(textBoxLatitude.Text);
+
+                    stopsList.RemoveAt(selectedIndex);
+                    stopsList.Insert(selectedIndex, stop);
+                    refreshTable();
+                    previewRoute();
+                    refreshOverlaysMap(stop.name, stop.latitude, stop.longitude);
+
+                }
+            }
         }
     }
 }
