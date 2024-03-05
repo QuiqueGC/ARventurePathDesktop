@@ -45,7 +45,7 @@ namespace ARventure_Path.Forms
                 arventure.name = textBoxTitleArventure.Text;
                 arventure.story = story;
                 arventure.route = route;
-                arventure.happening.Add();
+                //arventure.happening.Add();
 
 
 
