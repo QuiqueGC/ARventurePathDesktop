@@ -33,6 +33,8 @@
             this.comboBoxSelectStory = new System.Windows.Forms.ComboBox();
             this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
             this.gbGenerateForIA = new System.Windows.Forms.GroupBox();
+            this.lblFragments = new System.Windows.Forms.Label();
+            this.textBoxFragmentsIA = new System.Windows.Forms.TextBox();
             this.buttonGenerateStory = new System.Windows.Forms.Button();
             this.buttonGenerateImage = new System.Windows.Forms.Button();
             this.textBoxGenerateStoryAI = new System.Windows.Forms.TextBox();
@@ -94,6 +96,8 @@
             // 
             // gbGenerateForIA
             // 
+            this.gbGenerateForIA.Controls.Add(this.lblFragments);
+            this.gbGenerateForIA.Controls.Add(this.textBoxFragmentsIA);
             this.gbGenerateForIA.Controls.Add(this.buttonGenerateStory);
             this.gbGenerateForIA.Controls.Add(this.buttonGenerateImage);
             this.gbGenerateForIA.Controls.Add(this.textBoxGenerateStoryAI);
@@ -104,6 +108,23 @@
             this.gbGenerateForIA.TabIndex = 1;
             this.gbGenerateForIA.TabStop = false;
             this.gbGenerateForIA.Text = "Generar por IA";
+            // 
+            // lblFragments
+            // 
+            this.lblFragments.AutoSize = true;
+            this.lblFragments.Location = new System.Drawing.Point(812, 15);
+            this.lblFragments.Name = "lblFragments";
+            this.lblFragments.Size = new System.Drawing.Size(84, 15);
+            this.lblFragments.TabIndex = 4;
+            this.lblFragments.Text = "Nº Fragmentos";
+            // 
+            // textBoxFragmentsIA
+            // 
+            this.textBoxFragmentsIA.Location = new System.Drawing.Point(829, 33);
+            this.textBoxFragmentsIA.Name = "textBoxFragmentsIA";
+            this.textBoxFragmentsIA.Size = new System.Drawing.Size(63, 21);
+            this.textBoxFragmentsIA.TabIndex = 3;
+            this.textBoxFragmentsIA.TextChanged += new System.EventHandler(this.textBoxFragmentsIA_TextChanged);
             // 
             // buttonGenerateStory
             // 
@@ -133,7 +154,7 @@
             // 
             this.textBoxGenerateStoryAI.Location = new System.Drawing.Point(18, 33);
             this.textBoxGenerateStoryAI.Name = "textBoxGenerateStoryAI";
-            this.textBoxGenerateStoryAI.Size = new System.Drawing.Size(807, 21);
+            this.textBoxGenerateStoryAI.Size = new System.Drawing.Size(794, 21);
             this.textBoxGenerateStoryAI.TabIndex = 0;
             // 
             // gbStory
@@ -413,5 +434,7 @@
         private System.Windows.Forms.DataGridView dataGridViewFragments;
         private System.Windows.Forms.DataGridViewTextBoxColumn ordinalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label lblFragments;
+        private System.Windows.Forms.TextBox textBoxFragmentsIA;
     }
 }
