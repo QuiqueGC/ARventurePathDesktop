@@ -339,7 +339,7 @@ namespace ARventure_Path.Forms
 
             //TextBox acepta solo números
             //https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers
-            /*if (System.Text.RegularExpressions.Regex.IsMatch(textBoxFragmentQuantity.Text, "[^0-9]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxFragmentQuantity.Text, "[^0-9]"))
             {
                 //MessageBox.Show("Por favor, introduce un número (superior a 1).");
                 textBoxFragmentQuantity.Text = dataGridViewFragments.RowCount.ToString();
@@ -370,7 +370,7 @@ namespace ARventure_Path.Forms
                     return;
                 }
             }
-            buttonAddNewFragment.Enabled = false;*/
+            buttonAddNewFragment.Enabled = false;
 
         }
 
@@ -558,6 +558,15 @@ namespace ARventure_Path.Forms
             {
                 bindingSourceFragments.DataSource = null;
                 bindingSourceFragments.DataSource = FragmentOrm.Select(story);
+            }
+        }
+
+        private void textBoxFragmentsIA_TextChanged(object sender, EventArgs e)
+        {
+            if (!int.TryParse(textBoxFragmentsIA.Text,out int parsedNum) && textBoxFragmentsIA.Text != "")
+            {
+                textBoxFragmentsIA.Clear();
+                MessageBox.Show("Sólo puedes introducir números en esta celda.", "Error!");
             }
         }
     }
