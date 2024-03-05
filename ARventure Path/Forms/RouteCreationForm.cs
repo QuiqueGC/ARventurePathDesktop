@@ -417,7 +417,6 @@ namespace ARventure_Path.Forms
             // Se posicionan en el textbox de la latidud y longitud
             textBoxLatitude.Text = lat.ToString();
             textBoxLongitude.Text = lng.ToString();
-            textBoxStopName.Text = "";
 
             // Creamos el marcador para moverlo al lugar indicado
             marker.Position = new PointLatLng(lat, lng);

@@ -30,33 +30,74 @@ namespace ARventure_Path.Forms
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    image = Image.FromFile(openFileDialog.FileName);
 
-                    imgHappening.Image = image;
                     string filePath = openFileDialog.FileName;
-                    textBoxUrl.Text = filePath;
 
                     fileName = Path.GetFileName(filePath);
+
+                    if (!ImageExists(fileName))
+                    {
+                        image = Image.FromFile(openFileDialog.FileName);
+
+                        imgHappening.Image = image;
+
+                        textBoxUrl.Text = filePath;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe una imagen con el mismo nombre.", "Error");
+                    }
+
                 }
             }else if(formType == MyUtils.FormType.Modify)
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    image.Dispose();
-                    image = Image.FromFile(openFileDialog.FileName);
-                    imgHappening.Image = image;
                     filePath = openFileDialog.FileName;
-                    if(Path.GetFileName(filePath) != fileName)
-                    {
-                        deleteImage();
-                    }
-                    textBoxUrl.Text = filePath;
 
                     fileName = Path.GetFileName(filePath);
+
+                    if (!ImageExists(fileName))
+                    {
+                        image.Dispose();
+                        image = null;
+                        imgHappening.Image.Dispose();
+                        imgHappening.Image = null;
+                        image = Image.FromFile(openFileDialog.FileName);
+                        imgHappening.Image = image;
+                        textBoxUrl.Text = filePath;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe una imagen con el mismo nombre.", "Error");
+                    }
+
+
                 }
             }
             
         }
+        private bool ImageExists(string imageName)
+        {
+            // Obtenemos la lista de archivos en la carpeta imgPath
+            string[] files = Directory.GetFiles(imgPath);
+
+            // Recorremos la lista de archivos
+            foreach (string file in files)
+            {
+                // Obtenemos solo el nombre del archivo sin la ruta completa
+                string fileName = Path.GetFileName(file);
+
+                // Comparamos el nombre del archivo con el nombre de la imagen seleccionada
+                if (fileName.Equals(imageName, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true; // Si encontramos una coincidencia, devolvemos true
+                }
+            }
+
+            return false; // Si no encontramos ninguna coincidencia, devolvemos false
+        }
+
 
         private void comboBoxHappenings_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -90,8 +131,32 @@ namespace ARventure_Path.Forms
                 Directory.CreateDirectory(imgPath);
             }
             String destinationPath = Path.Combine(imgPath, fileName);
-            image.Save(destinationPath, ImageFormat.Png);
-        }
+            // Verificar si el archivo ya existe
+            if (File.Exists(destinationPath))
+            {
+                try
+                {
+                    // Intentar eliminar el archivo existente
+                    File.Delete(destinationPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar el archivo existente: " + ex.Message, "Error");
+                    return; // Salir de la función si no se puede eliminar
+                }
+            }
+
+            try
+            {
+                // Guardar la nueva imagen
+                image.Save(destinationPath);//ERROR ERROR ERRORERRORERRORERROR
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar la imagen: " + ex.Message, "Error");
+            }
+        
+    }
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
@@ -143,6 +208,7 @@ namespace ARventure_Path.Forms
                 {
                     if (happening.url != fileName)
                     {
+                        deleteImage(happening);
                         SaveImage();
                     }
                     happening.name = textBoxName.Text.Trim();
@@ -188,24 +254,31 @@ namespace ARventure_Path.Forms
                     }
                     else
                     {
+
                         MessageBox.Show("El evento se ha eliminado correctamente.", "Éxito!");
-                        image.Dispose();
-                        deleteImage();
+                        deleteImage(happening);
                         Close();
                     }
                 }
             }
         }
 
-        private void deleteImage()
+        private void deleteImage(happening happening)
         {
-            String destinationPath = Path.Combine(imgPath, fileName);
+            String destinationPath = Path.Combine(imgPath, happening.url);
             if (File.Exists(destinationPath))
             {
                 try
                 {
+                    // Liberar los recursos de la imagen
+                    image.Dispose();
+                    image = null;
+                    imgHappening.Image.Dispose();
+                    imgHappening.Image = null;
+                    // Eliminar el archivo
                     File.Delete(destinationPath);
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show("Ocurrió un error al eliminar el archivo: " + ex.Message, "Error");
                 }
@@ -215,6 +288,7 @@ namespace ARventure_Path.Forms
                 MessageBox.Show("El archivo no existe en la ruta especificada.", "Error");
             }
         }
+
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
