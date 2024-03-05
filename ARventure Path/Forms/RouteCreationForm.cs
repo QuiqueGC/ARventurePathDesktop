@@ -41,14 +41,16 @@ namespace ARventure_Path.Forms
         {
             if (formType == MyUtils.FormType.Create)
             {
-                bindingSourceRoute.DataSource = null;
-                bindingSourceRoute.DataSource = stopsList;
-                dataGridViewStops.Columns[0].Visible = false;
-                dataGridViewStops.Columns[4].Visible = false;
-                dataGridViewStops.Columns[5].Visible = false;
+                dataGridViewStops.DataSource = null;
+                dataGridViewStops.DataSource = stopsList;
+                
             }
-            bindingSourceStops.DataSource = null;
-            bindingSourceStops.DataSource = route.stop;
+            else
+            {
+                bindingSourceStops.DataSource = null;
+                bindingSourceStops.DataSource = StopOrm.Select(route);
+            }
+           
         }
 
         private void refreshOverlaysMap(string name,double lat, double lng)
@@ -97,11 +99,19 @@ namespace ARventure_Path.Forms
             route = (route)comboBoxSelectRoute.SelectedItem;
             if (route != null)
             {
+                buttonCreateRoute.Enabled = true;
                 gMapControl1.Zoom = 12;
                 textBoxNameRoute.Text = route.name;
                 bindingSourceStops.DataSource = null;
                 bindingSourceStops.DataSource = route.stop;
                 previewRoute();
+                refreshOverlaysMap("Barcelona", LatStart, LngStart);
+                if (formType == MyUtils.FormType.Modify)
+                {
+                    groupBoxIA.Enabled = true;
+                    groupBoxRoute.Enabled = true;
+                    buttonCreateRoute.Enabled = true;
+                }
             }
         }
 
@@ -134,6 +144,10 @@ namespace ARventure_Path.Forms
             buttonCreateRoute.Text = "Borrar";
             bindingSourceRoute.DataSource = RouteOrm.Select();
             comboBoxSelectRoute.SelectedItem = null;
+            groupBoxIA.Enabled = false;
+            groupBoxRoute.Enabled = false;
+            buttonCreateRoute.Enabled = false;
+
         }
 
         /// <summary>
@@ -145,6 +159,9 @@ namespace ARventure_Path.Forms
             buttonCreateRoute.Text = "Guardar";
             bindingSourceRoute.DataSource = RouteOrm.Select();
             comboBoxSelectRoute.SelectedItem = null;
+            groupBoxIA.Enabled = false;
+            groupBoxRoute.Enabled = false;
+            buttonCreateRoute.Enabled = false;
         }
 
         /// <summary>
@@ -163,11 +180,25 @@ namespace ARventure_Path.Forms
             newStop.name = textBoxStopName.Text;
             newStop.longitude = Convert.ToDouble(textBoxLongitude.Text);
             newStop.latitude = Convert.ToDouble(textBoxLatitude.Text);
-            stopsList.Add(newStop);
 
-            refreshTable();
-            previewRoute();
-            refreshOverlaysMap(newStop.name,(Double)newStop.latitude, (Double)newStop.longitude);
+            if (formType == MyUtils.FormType.Create)
+            {
+                stopsList.Add(newStop);
+
+                refreshTable();
+                previewRoute();
+                refreshOverlaysMap(newStop.name, (Double)newStop.latitude, (Double)newStop.longitude);
+            }
+            else
+            {
+                newStop.route = route;
+                string msg = StopOrm.Insert(newStop);
+                MyUtils.ShowPosibleError(msg);
+                refreshTable();
+                previewRoute();
+                refreshOverlaysMap(newStop.name, (Double)newStop.latitude, (Double)newStop.longitude);
+            }
+            
 
         }
 
@@ -220,6 +251,12 @@ namespace ARventure_Path.Forms
                         //int selectedIndex = dataGridViewStops.SelectedRows[0].Index;
 
                         //route.stop.Remove(stop.)
+                        string msg = StopOrm.Delete((stop)dataGridViewStops.SelectedRows[0].DataBoundItem);
+                        MyUtils.ShowPosibleError(msg);
+                        refreshTable();
+                        previewRoute();
+                        refreshOverlaysMap("Barcelona", LatStart, LngStart);
+
 
                     }
                     
@@ -256,8 +293,39 @@ namespace ARventure_Path.Forms
                 case MyUtils.FormType.Modify:
                     break;
                 case MyUtils.FormType.Delete:
+                    deleteRoute();
                     break;
             }
+        }
+
+        private void deleteRoute()
+        {
+            if (MyUtils.ShowConfirmDialogAndDelete())
+            {
+                deleteStops();
+                string msg = RouteOrm.Delete(route);
+                MyUtils.ShowPosibleError(msg);
+                bindingSourceRoute.DataSource = RouteOrm.Select();
+                comboBoxSelectRoute.SelectedItem = null;
+                bindingSourceStops.DataSource = null;
+                buttonCreateRoute.Enabled = false;
+            }
+        }
+
+            private void deleteStops()
+        {
+            int i = route.stop.Count;
+
+            do
+            {
+                if (route.stop.FirstOrDefault() != null)
+                {
+                    string msg = StopOrm.Delete(route.stop.FirstOrDefault());
+                    MyUtils.ShowPosibleError(msg);
+                }
+                i--;
+
+            } while (i > 0);
         }
 
         private void createRoute()
@@ -400,6 +468,5 @@ namespace ARventure_Path.Forms
             // Show the estimated time in minutes without decimals
             labelRouteTime.Text = ((int)time.TotalMinutes).ToString() + " min";
         }
-
     }
 }

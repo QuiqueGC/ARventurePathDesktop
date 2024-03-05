@@ -14,11 +14,14 @@ namespace ARventure_Path.Models
             return Orm.MySaveChanges();
         }
 
-        public static List<stop> Select()
+        public static List<stop> Select(route route)
         {
-            List<stop> _stop = Orm.db.stop.ToList();
+            List<stop> stops = Orm.db.stop
+                .Where(f =>
+                f.route.id == route.id)
+                .ToList();
 
-            return _stop;
+            return stops;
         }
         public static String Delete(stop _stop)
         {

@@ -32,7 +32,7 @@
             this.labelSelectRoute = new System.Windows.Forms.Label();
             this.comboBoxSelectRoute = new System.Windows.Forms.ComboBox();
             this.bindingSourceRoute = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBoxGenerateRoute = new System.Windows.Forms.GroupBox();
+            this.groupBoxIA = new System.Windows.Forms.GroupBox();
             this.buttonGenerateRoute = new System.Windows.Forms.Button();
             this.textBoxGenerateRouteAI = new System.Windows.Forms.TextBox();
             this.groupBoxRoute = new System.Windows.Forms.GroupBox();
@@ -46,6 +46,10 @@
             this.labelStopName = new System.Windows.Forms.Label();
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.dataGridViewStops = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.longitudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.latitudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceStops = new System.Windows.Forms.BindingSource(this.components);
             this.buttonDeleteStop = new System.Windows.Forms.Button();
             this.labelRouteDistance = new System.Windows.Forms.Label();
             this.labelRouteTime = new System.Windows.Forms.Label();
@@ -54,12 +58,8 @@
             this.buttonAddNewStop = new System.Windows.Forms.Button();
             this.buttonCreateRoute = new System.Windows.Forms.Button();
             this.buttonCancelRoute = new System.Windows.Forms.Button();
-            this.bindingSourceStops = new System.Windows.Forms.BindingSource(this.components);
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.longitudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.latitudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRoute)).BeginInit();
-            this.groupBoxGenerateRoute.SuspendLayout();
+            this.groupBoxIA.SuspendLayout();
             this.groupBoxRoute.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStops)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStops)).BeginInit();
@@ -92,17 +92,17 @@
             // 
             this.bindingSourceRoute.DataSource = typeof(ARventure_Path.Models.route);
             // 
-            // groupBoxGenerateRoute
+            // groupBoxIA
             // 
-            this.groupBoxGenerateRoute.Controls.Add(this.buttonGenerateRoute);
-            this.groupBoxGenerateRoute.Controls.Add(this.textBoxGenerateRouteAI);
-            this.groupBoxGenerateRoute.Font = new System.Drawing.Font("Century", 10F);
-            this.groupBoxGenerateRoute.Location = new System.Drawing.Point(26, 52);
-            this.groupBoxGenerateRoute.Name = "groupBoxGenerateRoute";
-            this.groupBoxGenerateRoute.Size = new System.Drawing.Size(898, 91);
-            this.groupBoxGenerateRoute.TabIndex = 2;
-            this.groupBoxGenerateRoute.TabStop = false;
-            this.groupBoxGenerateRoute.Text = "Generar por IA";
+            this.groupBoxIA.Controls.Add(this.buttonGenerateRoute);
+            this.groupBoxIA.Controls.Add(this.textBoxGenerateRouteAI);
+            this.groupBoxIA.Font = new System.Drawing.Font("Century", 10F);
+            this.groupBoxIA.Location = new System.Drawing.Point(26, 52);
+            this.groupBoxIA.Name = "groupBoxIA";
+            this.groupBoxIA.Size = new System.Drawing.Size(898, 91);
+            this.groupBoxIA.TabIndex = 2;
+            this.groupBoxIA.TabStop = false;
+            this.groupBoxIA.Text = "Generar por IA";
             // 
             // buttonGenerateRoute
             // 
@@ -260,6 +260,7 @@
             this.dataGridViewStops.DataSource = this.bindingSourceStops;
             this.dataGridViewStops.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewStops.Location = new System.Drawing.Point(170, 14);
+            this.dataGridViewStops.MultiSelect = false;
             this.dataGridViewStops.Name = "dataGridViewStops";
             this.dataGridViewStops.ReadOnly = true;
             this.dataGridViewStops.RowHeadersVisible = false;
@@ -268,6 +269,31 @@
             this.dataGridViewStops.Size = new System.Drawing.Size(260, 307);
             this.dataGridViewStops.TabIndex = 15;
             this.dataGridViewStops.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewStops_CellMouseClick);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // longitudeDataGridViewTextBoxColumn
+            // 
+            this.longitudeDataGridViewTextBoxColumn.DataPropertyName = "longitude";
+            this.longitudeDataGridViewTextBoxColumn.HeaderText = "longitude";
+            this.longitudeDataGridViewTextBoxColumn.Name = "longitudeDataGridViewTextBoxColumn";
+            this.longitudeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // latitudeDataGridViewTextBoxColumn
+            // 
+            this.latitudeDataGridViewTextBoxColumn.DataPropertyName = "latitude";
+            this.latitudeDataGridViewTextBoxColumn.HeaderText = "latitude";
+            this.latitudeDataGridViewTextBoxColumn.Name = "latitudeDataGridViewTextBoxColumn";
+            this.latitudeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bindingSourceStops
+            // 
+            this.bindingSourceStops.DataSource = typeof(ARventure_Path.Models.stop);
             // 
             // buttonDeleteStop
             // 
@@ -359,31 +385,6 @@
             this.buttonCancelRoute.UseVisualStyleBackColor = false;
             this.buttonCancelRoute.Click += new System.EventHandler(this.buttonCancelRoute_Click);
             // 
-            // bindingSourceStops
-            // 
-            this.bindingSourceStops.DataSource = typeof(ARventure_Path.Models.stop);
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // longitudeDataGridViewTextBoxColumn
-            // 
-            this.longitudeDataGridViewTextBoxColumn.DataPropertyName = "longitude";
-            this.longitudeDataGridViewTextBoxColumn.HeaderText = "longitude";
-            this.longitudeDataGridViewTextBoxColumn.Name = "longitudeDataGridViewTextBoxColumn";
-            this.longitudeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // latitudeDataGridViewTextBoxColumn
-            // 
-            this.latitudeDataGridViewTextBoxColumn.DataPropertyName = "latitude";
-            this.latitudeDataGridViewTextBoxColumn.HeaderText = "latitude";
-            this.latitudeDataGridViewTextBoxColumn.Name = "latitudeDataGridViewTextBoxColumn";
-            this.latitudeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // RouteCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,15 +394,15 @@
             this.Controls.Add(this.buttonCancelRoute);
             this.Controls.Add(this.buttonCreateRoute);
             this.Controls.Add(this.groupBoxRoute);
-            this.Controls.Add(this.groupBoxGenerateRoute);
+            this.Controls.Add(this.groupBoxIA);
             this.Controls.Add(this.comboBoxSelectRoute);
             this.Controls.Add(this.labelSelectRoute);
             this.Name = "RouteCreationForm";
             this.Text = "Creación de ruta";
             this.Load += new System.EventHandler(this.RouteCreationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRoute)).EndInit();
-            this.groupBoxGenerateRoute.ResumeLayout(false);
-            this.groupBoxGenerateRoute.PerformLayout();
+            this.groupBoxIA.ResumeLayout(false);
+            this.groupBoxIA.PerformLayout();
             this.groupBoxRoute.ResumeLayout(false);
             this.groupBoxRoute.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStops)).EndInit();
@@ -415,7 +416,7 @@
 
         private System.Windows.Forms.Label labelSelectRoute;
         private System.Windows.Forms.ComboBox comboBoxSelectRoute;
-        private System.Windows.Forms.GroupBox groupBoxGenerateRoute;
+        private System.Windows.Forms.GroupBox groupBoxIA;
         private System.Windows.Forms.Button buttonGenerateRoute;
         private System.Windows.Forms.TextBox textBoxGenerateRouteAI;
         private System.Windows.Forms.GroupBox groupBoxRoute;
