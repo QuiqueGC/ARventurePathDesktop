@@ -36,6 +36,7 @@
             this.buttonGenerateRoute = new System.Windows.Forms.Button();
             this.textBoxGenerateRouteAI = new System.Windows.Forms.TextBox();
             this.groupBoxRoute = new System.Windows.Forms.GroupBox();
+            this.buttonStopChange = new System.Windows.Forms.Button();
             this.labelRuta = new System.Windows.Forms.Label();
             this.textBoxNameRoute = new System.Windows.Forms.TextBox();
             this.textBoxLongitude = new System.Windows.Forms.TextBox();
@@ -68,10 +69,10 @@
             // labelSelectRoute
             // 
             this.labelSelectRoute.AutoSize = true;
-            this.labelSelectRoute.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold);
+            this.labelSelectRoute.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.labelSelectRoute.Location = new System.Drawing.Point(23, 19);
             this.labelSelectRoute.Name = "labelSelectRoute";
-            this.labelSelectRoute.Size = new System.Drawing.Size(145, 20);
+            this.labelSelectRoute.Size = new System.Drawing.Size(140, 20);
             this.labelSelectRoute.TabIndex = 1;
             this.labelSelectRoute.Text = "Seleccionar ruta";
             // 
@@ -96,7 +97,7 @@
             // 
             this.groupBoxIA.Controls.Add(this.buttonGenerateRoute);
             this.groupBoxIA.Controls.Add(this.textBoxGenerateRouteAI);
-            this.groupBoxIA.Font = new System.Drawing.Font("Century", 10F);
+            this.groupBoxIA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.groupBoxIA.Location = new System.Drawing.Point(26, 52);
             this.groupBoxIA.Name = "groupBoxIA";
             this.groupBoxIA.Size = new System.Drawing.Size(898, 91);
@@ -120,11 +121,12 @@
             // 
             this.textBoxGenerateRouteAI.Location = new System.Drawing.Point(18, 33);
             this.textBoxGenerateRouteAI.Name = "textBoxGenerateRouteAI";
-            this.textBoxGenerateRouteAI.Size = new System.Drawing.Size(807, 24);
+            this.textBoxGenerateRouteAI.Size = new System.Drawing.Size(807, 23);
             this.textBoxGenerateRouteAI.TabIndex = 0;
             // 
             // groupBoxRoute
             // 
+            this.groupBoxRoute.Controls.Add(this.buttonStopChange);
             this.groupBoxRoute.Controls.Add(this.labelRuta);
             this.groupBoxRoute.Controls.Add(this.textBoxNameRoute);
             this.groupBoxRoute.Controls.Add(this.textBoxLongitude);
@@ -141,7 +143,7 @@
             this.groupBoxRoute.Controls.Add(this.label2);
             this.groupBoxRoute.Controls.Add(this.label1);
             this.groupBoxRoute.Controls.Add(this.buttonAddNewStop);
-            this.groupBoxRoute.Font = new System.Drawing.Font("Century", 10F);
+            this.groupBoxRoute.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.groupBoxRoute.Location = new System.Drawing.Point(31, 160);
             this.groupBoxRoute.Name = "groupBoxRoute";
             this.groupBoxRoute.Size = new System.Drawing.Size(893, 372);
@@ -149,13 +151,26 @@
             this.groupBoxRoute.TabStop = false;
             this.groupBoxRoute.Text = "Ruta";
             // 
+            // buttonStopChange
+            // 
+            this.buttonStopChange.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonStopChange.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonStopChange.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonStopChange.Location = new System.Drawing.Point(23, 296);
+            this.buttonStopChange.Name = "buttonStopChange";
+            this.buttonStopChange.Size = new System.Drawing.Size(132, 29);
+            this.buttonStopChange.TabIndex = 25;
+            this.buttonStopChange.Text = "Cambiar parada";
+            this.buttonStopChange.UseVisualStyleBackColor = false;
+            this.buttonStopChange.Click += new System.EventHandler(this.buttonStopChange_Click);
+            // 
             // labelRuta
             // 
             this.labelRuta.AutoSize = true;
-            this.labelRuta.Font = new System.Drawing.Font("Century", 12F);
+            this.labelRuta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labelRuta.Location = new System.Drawing.Point(10, 35);
             this.labelRuta.Name = "labelRuta";
-            this.labelRuta.Size = new System.Drawing.Size(143, 20);
+            this.labelRuta.Size = new System.Drawing.Size(135, 20);
             this.labelRuta.TabIndex = 24;
             this.labelRuta.Text = "Nombre de la ruta";
             // 
@@ -163,40 +178,40 @@
             // 
             this.textBoxNameRoute.Location = new System.Drawing.Point(13, 55);
             this.textBoxNameRoute.Name = "textBoxNameRoute";
-            this.textBoxNameRoute.Size = new System.Drawing.Size(151, 24);
+            this.textBoxNameRoute.Size = new System.Drawing.Size(151, 23);
             this.textBoxNameRoute.TabIndex = 23;
             // 
             // textBoxLongitude
             // 
             this.textBoxLongitude.Location = new System.Drawing.Point(13, 192);
             this.textBoxLongitude.Name = "textBoxLongitude";
-            this.textBoxLongitude.Size = new System.Drawing.Size(151, 24);
+            this.textBoxLongitude.Size = new System.Drawing.Size(151, 23);
             this.textBoxLongitude.TabIndex = 22;
             // 
             // textBoxLatitude
             // 
             this.textBoxLatitude.Location = new System.Drawing.Point(13, 267);
             this.textBoxLatitude.Name = "textBoxLatitude";
-            this.textBoxLatitude.Size = new System.Drawing.Size(151, 24);
+            this.textBoxLatitude.Size = new System.Drawing.Size(151, 23);
             this.textBoxLatitude.TabIndex = 21;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(9, 169);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 20);
+            this.label4.Size = new System.Drawing.Size(71, 20);
             this.label4.TabIndex = 20;
             this.label4.Text = "Longitud";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(9, 247);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 20);
+            this.label5.Size = new System.Drawing.Size(58, 20);
             this.label5.TabIndex = 19;
             this.label5.Text = "Latitud";
             // 
@@ -204,16 +219,16 @@
             // 
             this.textBoxStopName.Location = new System.Drawing.Point(13, 121);
             this.textBoxStopName.Name = "textBoxStopName";
-            this.textBoxStopName.Size = new System.Drawing.Size(151, 24);
+            this.textBoxStopName.Size = new System.Drawing.Size(151, 23);
             this.textBoxStopName.TabIndex = 18;
             // 
             // labelStopName
             // 
             this.labelStopName.AutoSize = true;
-            this.labelStopName.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStopName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelStopName.Location = new System.Drawing.Point(9, 100);
             this.labelStopName.Name = "labelStopName";
-            this.labelStopName.Size = new System.Drawing.Size(126, 20);
+            this.labelStopName.Size = new System.Drawing.Size(120, 20);
             this.labelStopName.TabIndex = 17;
             this.labelStopName.Text = "Nombre Parada";
             // 
@@ -300,9 +315,9 @@
             this.buttonDeleteStop.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonDeleteStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonDeleteStop.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonDeleteStop.Location = new System.Drawing.Point(173, 333);
+            this.buttonDeleteStop.Location = new System.Drawing.Point(170, 327);
             this.buttonDeleteStop.Name = "buttonDeleteStop";
-            this.buttonDeleteStop.Size = new System.Drawing.Size(95, 23);
+            this.buttonDeleteStop.Size = new System.Drawing.Size(129, 29);
             this.buttonDeleteStop.TabIndex = 14;
             this.buttonDeleteStop.Text = "Eliminar";
             this.buttonDeleteStop.UseVisualStyleBackColor = false;
@@ -331,7 +346,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(763, 333);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 17);
+            this.label2.Size = new System.Drawing.Size(66, 17);
             this.label2.TabIndex = 13;
             this.label2.Text = "Distancia";
             // 
@@ -349,11 +364,11 @@
             this.buttonAddNewStop.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonAddNewStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAddNewStop.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonAddNewStop.Location = new System.Drawing.Point(274, 333);
+            this.buttonAddNewStop.Location = new System.Drawing.Point(305, 327);
             this.buttonAddNewStop.Name = "buttonAddNewStop";
-            this.buttonAddNewStop.Size = new System.Drawing.Size(95, 23);
+            this.buttonAddNewStop.Size = new System.Drawing.Size(125, 29);
             this.buttonAddNewStop.TabIndex = 5;
-            this.buttonAddNewStop.Text = "Añadir nuevo";
+            this.buttonAddNewStop.Text = "Añadir";
             this.buttonAddNewStop.UseVisualStyleBackColor = false;
             this.buttonAddNewStop.Click += new System.EventHandler(this.buttonAddNewStop_Click);
             // 
@@ -361,7 +376,7 @@
             // 
             this.buttonCreateRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonCreateRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonCreateRoute.Font = new System.Drawing.Font("Century", 10F);
+            this.buttonCreateRoute.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.buttonCreateRoute.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonCreateRoute.Location = new System.Drawing.Point(433, 556);
             this.buttonCreateRoute.Name = "buttonCreateRoute";
@@ -375,7 +390,7 @@
             // 
             this.buttonCancelRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonCancelRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonCancelRoute.Font = new System.Drawing.Font("Century", 10F);
+            this.buttonCancelRoute.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.buttonCancelRoute.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonCancelRoute.Location = new System.Drawing.Point(528, 556);
             this.buttonCancelRoute.Name = "buttonCancelRoute";
@@ -443,5 +458,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn longitudeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn latitudeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button buttonStopChange;
     }
 }
