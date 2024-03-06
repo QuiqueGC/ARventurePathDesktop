@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace ARventure_Path.Forms
 {
@@ -17,6 +18,8 @@ namespace ARventure_Path.Forms
     {
         arventure arventure = new arventure();
         private story story;
+        private List<story> originalStories = new List<story>();
+        private List<route> originalRoutes = new List<route>();
         private route route;
         private string storyImagePath = Path.Combine(Application.StartupPath, "..", "..", "filesToServer", "imgStory");
         private BindingList<happening> happenings = new BindingList<happening>();
@@ -31,8 +34,10 @@ namespace ARventure_Path.Forms
         private void ARventureCreationForm_Load(object sender, EventArgs e)
         {
             ChooseTypeOfForm();
-            bindingSourceStory.DataSource = StoryOrm.Select();
-            bindingSourceRoute.DataSource = RouteOrm.Select();
+            originalStories = StoryOrm.Select();
+            originalRoutes = RouteOrm.Select();
+            bindingSourceStory.DataSource = originalStories;
+            bindingSourceRoute.DataSource = originalRoutes;
             listBoxSelectEvents.DataSource = happenings;
             listBoxSelectEvents.DisplayMember = "Name";
         }
@@ -124,6 +129,11 @@ namespace ARventure_Path.Forms
             if (listBoxStories.SelectedItems.Count > 0) 
             {
                 bindingSourceHappening.DataSource = HappeningOrm.Select((story)listBoxStories.SelectedItem);
+                story = (story)listBoxStories.SelectedItem;
+                labelStoryTitle.Text = story.name;
+                var image = Image.FromFile(Path.Combine(storyImagePath, story.img));
+                pictureBoxStoryImg.Image = image;
+                textBoxStorySummary.Text = story.summary;
             }
         }
 
@@ -155,39 +165,118 @@ namespace ARventure_Path.Forms
 
         private void listBoxRoutes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-        }
-        private void buttonSelectRoute_Click(object sender, EventArgs e)
-        {
-            if (listBoxRoutes.SelectedItems.Count > 0) 
-            { 
+            if (listBoxRoutes.SelectedItems.Count > 0)
+            {
                 route = (route)listBoxRoutes.SelectedItem;
                 labelRouteName.Text = route.name;
-                labelDistanceRoute.Text = route.distance.ToString();
-                labelTimeRoute.Text = route.time.ToString();
+                labelDistanceRoute.Text = route.distance.ToString("N2") + " km";
+                // Convertir a horas y minutos
+                int totalMinutes = (int)route.time.TotalMinutes;
+                int hours = totalMinutes / 60;
+                int minutes = totalMinutes % 60;
+
+                // Construir el texto para mostrar
+                string formattedTime;
+                if (hours > 0)
+                {
+                    formattedTime = hours + "h " + minutes + " min";
+                }
+                else
+                {
+                    formattedTime = minutes + " min";
+                }
+                labelTimeRoute.Text = formattedTime;
                 listBoxRouteStops.DataSource = route.stop.ToList();
                 listBoxRouteStops.DisplayMember = "Name";
-                
+
             }
         }
 
         private void buttonSelectEvent_Click(object sender, EventArgs e)
         {
+            if (dataGridViewHappening.SelectedRows.Count > 0)
+            {
+                happening selectedHappening = (happening)dataGridViewHappening.SelectedRows[0].DataBoundItem;
 
+                // Verificar si el evento ya está en la lista
+                if (happenings.Any(h => h.name == selectedHappening.name))
+                {
+                    MessageBox.Show("Este evento ya ha sido seleccionado.", "Evento Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
-            if (dataGridViewHappening.SelectedRows.Count > 0) 
-            { 
-                happening happening = (happening)dataGridViewHappening.SelectedRows[0].DataBoundItem;
-                happenings.Add(happening);
-
+                // Si no está en la lista, añadirlo
+                happenings.Add(selectedHappening);
             }
         }
+
 
         private void buttonRemoveEvent_Click(object sender, EventArgs e)
         {
             if (listBoxSelectEvents.SelectedItem != null) 
             {
                 happenings.Remove((happening)listBoxSelectEvents.SelectedItem);
+            }
+        }
+
+        private void textBoxSearchStory_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBoxSearchStory.Text.ToLower(); // Obtener el texto de búsqueda en minúsculas
+
+            // Verificar si el cuadro de búsqueda está vacío
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                // Si está vacío, mostrar todas las historias originales
+                bindingSourceStory.DataSource = null;
+                bindingSourceStory.DataSource = originalStories;
+                listBoxStories.DisplayMember = "Name";
+            }
+            else
+            {
+                // Si no está vacío, realizar el filtrado
+                List<story> filteredStories = new List<story>();
+                foreach (story storyItem in originalStories)
+                {
+                    if (storyItem.name.ToLower().Contains(searchText))
+                    {
+                        filteredStories.Add(storyItem);
+                    }
+                }
+
+                bindingSourceStory.DataSource = null;
+                bindingSourceStory.DataSource = filteredStories;
+                listBoxStories.DisplayMember = "Name";
+            }
+        }
+
+        private void textBoxSearchRoute_TextChanged(object sender, EventArgs e)
+        {
+
+            string searchText = textBoxSearchRoute.Text.ToLower(); // Obtener el texto de búsqueda en minúsculas
+
+            // Verificar si el cuadro de búsqueda está vacío
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                // Si está vacío, mostrar todas las historias originales
+                bindingSourceRoute.DataSource = null;
+                bindingSourceRoute.DataSource = originalRoutes;
+                listBoxRoutes.DisplayMember = "Name";
+            }
+            else
+            {
+                // Si no está vacío, realizar el filtrado
+                List<route> filteredRoutes = new List<route>();
+                foreach (route routeItem in originalRoutes)
+                {
+                    if (routeItem.name.ToLower().Contains(searchText))
+                    {
+                        filteredRoutes.Add(routeItem);
+                    }
+                }
+
+                bindingSourceRoute.DataSource = null;
+                bindingSourceRoute.DataSource = filteredRoutes;
+                listBoxRoutes.DisplayMember = "Name";
             }
         }
     }
