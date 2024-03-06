@@ -48,11 +48,12 @@ namespace ARventure_Path.Forms
             {
                 // Crear ARventure
                 string msg = "";
+                
                 arventure.name = textBoxTitleArventure.Text;
-                arventure.story = story;
-                arventure.route = route;
+                arventure.idStory = story.id;
+                arventure.idRoute = route.id;
                 arventure.happening = happenings;
-                //arventure.achievement = null;
+                arventure.achievement = null;
                 
 
 
