@@ -50,10 +50,10 @@ namespace ARventure_Path.Forms
                 string msg = "";
                 
                 arventure.name = textBoxTitleArventure.Text;
-                arventure.idStory = story.id;
-                arventure.idRoute = route.id;
+                arventure.story = story;
+                arventure.route = route;
+                arventure.idAchievement = 15;
                 arventure.happening = happenings;
-                arventure.achievement = null;
                 
 
 
