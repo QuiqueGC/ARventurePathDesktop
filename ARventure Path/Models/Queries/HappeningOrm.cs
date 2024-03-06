@@ -23,6 +23,15 @@ namespace ARventure_Path.Models
             return _happening;
         }
 
+        public static List<happening> Select(story story)
+        {
+            List<happening> _happening = Orm.db.happening
+                .Where(h => h.idStory == story.id)
+                .ToList();
+
+            return _happening;
+        }
+
         public static String Delete(happening _happening)
         {
             Orm.db.happening.Remove(_happening);
