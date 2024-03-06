@@ -16,7 +16,10 @@ namespace ARventure_Path.Forms
     public partial class ARventureCreationForm : Form
     {
         arventure arventure = new arventure();
+        private story story;
+        private route route;
         private string storyImagePath = Path.Combine(Application.StartupPath, "..", "..", "filesToServer", "imgStory");
+        private BindingList<happening> happenings = new BindingList<happening>();
 
         private MyUtils.FormType formType;
         public ARventureCreationForm(MyUtils.FormType formType)
@@ -30,6 +33,8 @@ namespace ARventure_Path.Forms
             ChooseTypeOfForm();
             bindingSourceStory.DataSource = StoryOrm.Select();
             bindingSourceRoute.DataSource = RouteOrm.Select();
+            listBoxSelectEvents.DataSource = happenings;
+            listBoxSelectEvents.DisplayMember = "Name";
         }
 
         private void buttonCancelArventure_Click(object sender, EventArgs e)
@@ -44,8 +49,11 @@ namespace ARventure_Path.Forms
                 // Crear ARventure
                 string msg = "";
                 arventure.name = textBoxTitleArventure.Text;
+                arventure.story = story;
+                arventure.route = route;
+                arventure.happening = happenings;
+                //arventure.achievement = null;
                 
-
 
 
                 msg = ArventureOrm.Insert(arventure);
@@ -133,7 +141,7 @@ namespace ARventure_Path.Forms
             if (listBoxStories.SelectedItems.Count > 0)
             {
                 
-                story story = (story)listBoxStories.SelectedItem;
+                story = (story)listBoxStories.SelectedItem;
                 labelStoryTitle.Text = story.name;
                 var image = Image.FromFile(Path.Combine(storyImagePath, story.img));
                 pictureBoxStoryImg.Image = image;
@@ -141,6 +149,44 @@ namespace ARventure_Path.Forms
             }
 
             
+        }
+
+        private void listBoxRoutes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+        private void buttonSelectRoute_Click(object sender, EventArgs e)
+        {
+            if (listBoxRoutes.SelectedItems.Count > 0) 
+            { 
+                route = (route)listBoxRoutes.SelectedItem;
+                labelRouteName.Text = route.name;
+                labelDistanceRoute.Text = route.distance.ToString();
+                labelTimeRoute.Text = route.time.ToString();
+                listBoxRouteStops.DataSource = route.stop.ToList();
+                listBoxRouteStops.DisplayMember = "Name";
+                
+            }
+        }
+
+        private void buttonSelectEvent_Click(object sender, EventArgs e)
+        {
+
+
+            if (dataGridViewHappening.SelectedRows.Count > 0) 
+            { 
+                happening happening = (happening)dataGridViewHappening.SelectedRows[0].DataBoundItem;
+                happenings.Add(happening);
+
+            }
+        }
+
+        private void buttonRemoveEvent_Click(object sender, EventArgs e)
+        {
+            if (listBoxSelectEvents.SelectedItem != null) 
+            {
+                happenings.Remove((happening)listBoxSelectEvents.SelectedItem);
+            }
         }
     }
 }
