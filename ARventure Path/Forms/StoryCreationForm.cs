@@ -86,7 +86,6 @@ namespace ARventure_Path.Forms
             {
                 MessageBox.Show("La historia debe tener un mínimo de dos fragmentos.", "¡Error!");
             }
-            
         }
 
 
@@ -498,6 +497,18 @@ namespace ARventure_Path.Forms
             if (e.KeyCode == Keys.Delete)
             {
                 buttonDelete.PerformClick();
+            }
+        }
+
+        private void btnModifyFragment_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewFragments.SelectedRows.Count > 0)
+            {
+                FragmentCreationForm fragmentCreationForm =
+                    new FragmentCreationForm((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                fragmentCreationForm.ShowDialog();
+
+                DoSelectFragmentsDependingOnType();
             }
         }
     }
