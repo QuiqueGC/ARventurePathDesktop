@@ -22,7 +22,7 @@ namespace ARventure_Path.Forms
         {
             // Cargar los detalles del story en el DataGridView
             bindingSourceFragments.DataSource = null;
-            bindingSourceFragments.DataSource = 
+            //bindingSourceFragments.DataSource = 
         }
     }
 }

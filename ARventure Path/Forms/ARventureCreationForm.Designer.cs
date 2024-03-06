@@ -62,7 +62,7 @@
             this.textBoxTitleArventure = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonFragments = new System.Windows.Forms.Button();
             this.labelStoryTitle = new System.Windows.Forms.Label();
             this.textBoxStorySummary = new System.Windows.Forms.TextBox();
             this.pictureBoxStoryImg = new System.Windows.Forms.PictureBox();
@@ -263,7 +263,7 @@
             this.buttonSelectEvent.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonSelectEvent.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSelectEvent.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSelectEvent.Location = new System.Drawing.Point(13, 178);
+            this.buttonSelectEvent.Location = new System.Drawing.Point(97, 175);
             this.buttonSelectEvent.Name = "buttonSelectEvent";
             this.buttonSelectEvent.Size = new System.Drawing.Size(97, 23);
             this.buttonSelectEvent.TabIndex = 4;
@@ -302,7 +302,7 @@
             this.buttonRemoveEvent.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonRemoveEvent.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRemoveEvent.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonRemoveEvent.Location = new System.Drawing.Point(6, 209);
+            this.buttonRemoveEvent.Location = new System.Drawing.Point(79, 209);
             this.buttonRemoveEvent.Name = "buttonRemoveEvent";
             this.buttonRemoveEvent.Size = new System.Drawing.Size(125, 23);
             this.buttonRemoveEvent.TabIndex = 8;
@@ -408,7 +408,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.buttonFragments);
             this.groupBox4.Controls.Add(this.labelStoryTitle);
             this.groupBox4.Controls.Add(this.textBoxStorySummary);
             this.groupBox4.Controls.Add(this.pictureBoxStoryImg);
@@ -420,18 +420,19 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Historia";
             // 
-            // button1
+            // buttonFragments
             // 
-            this.button1.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(162, 138);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Fragmentos";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonFragments.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonFragments.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonFragments.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFragments.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonFragments.Location = new System.Drawing.Point(162, 138);
+            this.buttonFragments.Name = "buttonFragments";
+            this.buttonFragments.Size = new System.Drawing.Size(97, 23);
+            this.buttonFragments.TabIndex = 10;
+            this.buttonFragments.Text = "Fragmentos";
+            this.buttonFragments.UseVisualStyleBackColor = false;
+            this.buttonFragments.Click += new System.EventHandler(this.buttonFragments_Click);
             // 
             // labelStoryTitle
             // 
@@ -575,7 +576,7 @@
         private System.Windows.Forms.BindingSource bindingSourceHappening;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonFragments;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxSearchStory;
         private System.Windows.Forms.Label label4;
