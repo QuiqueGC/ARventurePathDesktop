@@ -99,8 +99,13 @@ namespace ARventure_Path.Forms
             {
                 if(ArventureOrm.Select(story).Count == 0)
                 {
+
                     DeleteFragments();
+                    
+                    DeleteHappenings();
+
                     string msg = StoryOrm.Delete(story);
+
                     MyUtils.ShowPosibleError(msg);
                     bindingSourceStory.DataSource = StoryOrm.Select();
                     comboBoxSelectStory.SelectedItem = null;
@@ -113,6 +118,27 @@ namespace ARventure_Path.Forms
                     MessageBox.Show("No se puede borrar la historia, ya que pertenece a una aventura.", "¡Error!");
                 }
             }
+        }
+
+
+        /// <summary>
+        /// borra los eventos en la BBDD que 
+        /// están relacionados con la historia
+        /// </summary>
+        private void DeleteHappenings()
+        {
+            
+            int i = story.happening.Count;
+            do
+            {
+                if (story.happening.FirstOrDefault() != null)
+                {
+                    string msg = HappeningOrm.Delete(story.happening.FirstOrDefault());
+                    MyUtils.ShowPosibleError(msg);
+                }
+                i--;
+
+            } while (i > 0);
         }
 
 

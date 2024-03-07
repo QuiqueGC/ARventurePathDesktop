@@ -30,6 +30,15 @@ namespace ARventure_Path.Models
             return _arventure;
         }
 
+        public static List<arventure> Select(route route)
+        {
+            List<arventure> _arventure = Orm.db.arventure
+                .Where(a => a.idRoute == route.id)
+                .ToList();
+
+            return _arventure;
+        }
+
 
         public static String Delete(arventure arventure)
         {
