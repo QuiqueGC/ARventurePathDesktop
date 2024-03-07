@@ -289,7 +289,6 @@ namespace ARventure_Path.Forms
                     // Eventos arventure
                     listBoxSelectEvents.DataSource = HappeningOrm.Select(arventure);
                 }
-                
             }
         }
 

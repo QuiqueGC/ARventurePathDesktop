@@ -20,6 +20,17 @@ namespace ARventure_Path.Models
 
             return _arventure;
         }
+
+        public static List<arventure> Select(story story)
+        {
+            List<arventure> _arventure = Orm.db.arventure
+                .Where(a => a.idStory == story.id)
+                .ToList();
+
+            return _arventure;
+        }
+
+
         public static String Delete(arventure arventure)
         {
             Orm.db.arventure.Remove(arventure);

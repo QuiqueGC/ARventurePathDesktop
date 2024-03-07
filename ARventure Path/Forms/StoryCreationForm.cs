@@ -97,17 +97,25 @@ namespace ARventure_Path.Forms
         {
             if (MyUtils.ShowConfirmDialogAndDelete()) 
             {
-                DeleteFragments();
-
-                string msg = StoryOrm.Delete(story);
-                MyUtils.ShowPosibleError(msg);
-                bindingSourceStory.DataSource = StoryOrm.Select();
-                comboBoxSelectStory.SelectedItem = null;
-                bindingSourceFragments.DataSource = null;
-                buttonCreateStory.Enabled = false;
-                CleanForm();
+                if(ArventureOrm.Select(story).Count == 0)
+                {
+                    DeleteFragments();
+                    string msg = StoryOrm.Delete(story);
+                    MyUtils.ShowPosibleError(msg);
+                    bindingSourceStory.DataSource = StoryOrm.Select();
+                    comboBoxSelectStory.SelectedItem = null;
+                    bindingSourceFragments.DataSource = null;
+                    buttonCreateStory.Enabled = false;
+                    CleanForm();
+                }
+                else
+                {
+                    MessageBox.Show("No se puede borrar la historia, ya que pertenece a una aventura.", "¡Error!");
+                }
             }
         }
+
+
 
         /// <summary>
         /// borra los fragmentos de la historia
@@ -239,7 +247,7 @@ namespace ARventure_Path.Forms
             }
             catch (ExternalException ex)
             {
-                MessageBox.Show("Imagen no válida.", "Error!");
+                MessageBox.Show("Ya existe una imagen con ese nombre. Cámbiaselo o escoge otra, que seguro que tienes más.", "Error!");
                 if(formType == MyUtils.FormType.Create)
                 {
                     textBoxImageStory.Text = "";
