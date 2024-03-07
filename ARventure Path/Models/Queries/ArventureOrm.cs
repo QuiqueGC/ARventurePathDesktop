@@ -20,9 +20,9 @@ namespace ARventure_Path.Models
 
             return _arventure;
         }
-        public static String Delete(arventure _arventure)
+        public static String Delete(arventure arventure)
         {
-            Orm.db.arventure.Remove(_arventure);
+            Orm.db.arventure.Remove(arventure);
             return Orm.MySaveChanges();
         }
     }

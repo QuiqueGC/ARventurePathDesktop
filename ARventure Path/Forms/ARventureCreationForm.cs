@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations.Sql;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -18,6 +20,7 @@ namespace ARventure_Path.Forms
     {
         arventure arventure = new arventure();
         private story story;
+        private achievement achievement;
         private List<story> originalStories = new List<story>();
         private List<route> originalRoutes = new List<route>();
         private route route;
@@ -51,39 +54,96 @@ namespace ARventure_Path.Forms
         {
             if (formType == MyUtils.FormType.Create)
             {
-                // Crear ARventure
-                string msg = "";
-                
-                arventure.name = textBoxTitleArventure.Text;
-                arventure.story = story;
-                arventure.route = route;
-                arventure.idAchievement = 15;
-                arventure.happening = happenings;
-
-                
+                if (check())
+                {
+                    // Crear ARventure
+                    string msg = "";
 
 
-                msg = ArventureOrm.Insert(arventure);
-                MyUtils.ShowPosibleError(msg);
+                    arventure.name = textBoxTitleArventure.Text;
+                    arventure.story = story;
+                    arventure.route = route;
+
+                    achievement = new achievement();
+                    achievement.name = $"Completa la aventura: {arventure.name}";
+                    achievement.img = story.img;
+
+                    arventure.achievement = achievement;
+                    arventure.happening = happenings;
+                    
+                    msg = ArventureOrm.Insert(arventure);
+                    MyUtils.ShowPosibleError(msg);
+                    if (msg == "")
+                    {
+                        MessageBox.Show($"La arventure se ha creado con éxito.\nLogro: {achievement.name} creado con éxito ", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    cleanForm();
+                }
 
             }
             else if (formType == MyUtils.FormType.Modify)
             {
                 // Modificar ARventure
-                
 
+                arventure.name = textBoxTitleArventure.Text;
+                arventure.story = story;
+                arventure.route = route;
+                if (arventure.story!= story)
+                {
+                    arventure.happening = happenings;
+                }
+
+                string msg = Orm.Update();
+                MyUtils.ShowPosibleError(msg);
             }
             else
             {
                 // Borrar ARventure
                 string msg = "";
-                if (comboBoxSelectArventure.SelectedItem != null)
-                {
-
-                }
 
                 msg = ArventureOrm.Delete(arventure);
                 MyUtils.ShowPosibleError(msg);
+                if (msg == "")
+                {
+                    MessageBox.Show("La arventure se ha eliminado con éxito.", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private bool check()
+        {
+            if (story != null)
+            {
+                if (route != null)
+                {
+                    if (listBoxSelectEvents.Items.Count > 0)
+                    {
+                        if (textBoxTitleArventure.Text.Trim() != "")
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Introduce el titulo de la arventure", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Añade eventos", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecciona una ruta", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una historia", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
         }
         private void ChooseTypeOfForm()
@@ -109,6 +169,13 @@ namespace ARventure_Path.Forms
             buttonCreateArventure.Text = "Borrar";
             bindingSourceArventure.DataSource = ArventureOrm.Select();
             comboBoxSelectArventure.SelectedItem = null;
+            groupBoxStories.Enabled = false;
+            groupBoxRoutes.Enabled = false;
+            groupBoxHappeningStory.Enabled = false;
+            groupBoxSelectedHappenings.Enabled = false;
+            textBoxTitleArventure.Enabled = false;
+            buttonCreateArventure.Enabled = false;
+            
         }
 
         private void becomeInModifyForm()
@@ -116,6 +183,12 @@ namespace ARventure_Path.Forms
             buttonCreateArventure.Text = "Guardar";
             bindingSourceArventure.DataSource = ArventureOrm.Select();
             comboBoxSelectArventure.SelectedItem = null;
+            groupBoxStories.Enabled = false;
+            groupBoxRoutes.Enabled = false;
+            groupBoxHappeningStory.Enabled = false;
+            groupBoxSelectedHappenings.Enabled = false;
+            textBoxTitleArventure.Enabled = false;
+            buttonCreateArventure.Enabled = false;
         }
 
         private void becomeInCreatonForm()
@@ -128,6 +201,11 @@ namespace ARventure_Path.Forms
         {
             if (listBoxStories.SelectedItems.Count > 0) 
             {
+                listBoxSelectEvents.DataSource = null;
+                happenings.Clear();
+                listBoxSelectEvents.DataSource = happenings;
+                listBoxSelectEvents.DisplayMember = "Name";
+
                 bindingSourceHappening.DataSource = HappeningOrm.Select((story)listBoxStories.SelectedItem);
                 story = (story)listBoxStories.SelectedItem;
                 labelStoryTitle.Text = story.name;
@@ -139,28 +217,92 @@ namespace ARventure_Path.Forms
 
         private void comboBoxSelectArventure_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxSelectArventure.SelectedItem != null) 
+            if (comboBoxSelectArventure.SelectedItem != null)
             {
+                buttonCreateArventure.Enabled = true;
                 arventure = (arventure)comboBoxSelectArventure.SelectedItem;
+
                 textBoxTitleArventure.Text = arventure.name;
+                story = arventure.story;
+                route = arventure.route;
+                achievement = arventure.achievement;
+                arventure.happening = HappeningOrm.Select(arventure);
+                bindingSourceHappening.DataSource = HappeningOrm.Select(story);
 
-
-            }
-        }
-
-        private void buttonSelectStory_Click(object sender, EventArgs e)
-        {
-            if (listBoxStories.SelectedItems.Count > 0)
-            {
-                
-                story = (story)listBoxStories.SelectedItem;
+                // Story arventure
                 labelStoryTitle.Text = story.name;
+
                 var image = Image.FromFile(Path.Combine(storyImagePath, story.img));
                 pictureBoxStoryImg.Image = image;
                 textBoxStorySummary.Text = story.summary;
-            }
 
-            
+                // Ruta arventure
+                labelRouteName.Text = route.name;
+                labelDistanceRoute.Text = route.distance.ToString("N2") + " km";
+                // Convertir a horas y minutos
+                int totalMinutes = (int)route.time.TotalMinutes;
+                int hours = totalMinutes / 60;
+                int minutes = totalMinutes % 60;
+
+                // Construir el texto para mostrar
+                string formattedTime;
+                if (hours > 0)
+                {
+                    formattedTime = hours + "h " + minutes + " min";
+                }
+                else
+                {
+                    formattedTime = minutes + " min";
+                }
+                labelTimeRoute.Text = formattedTime;
+                listBoxRouteStops.DataSource = StopOrm.Select(route);
+                listBoxRouteStops.DisplayMember = "Name";
+
+
+                if (formType == MyUtils.FormType.Modify)
+                {
+                    groupBoxStories.Enabled = true;
+                    groupBoxRoutes.Enabled = true;
+                    groupBoxHappeningStory.Enabled = true;
+                    groupBoxSelectedHappenings.Enabled = true;
+                    textBoxTitleArventure.Enabled = true;
+                    buttonCreateArventure.Enabled = true;
+
+                    // Eventos arventure
+                    listBoxSelectEvents.DataSource = HappeningOrm.Select(arventure);
+
+                }
+                else
+                {
+                  
+                    bindingSourceStory.DataSource = arventure.story;
+                    bindingSourceRoute.DataSource = arventure.route;
+
+                    // Eventos arventure
+                    listBoxSelectEvents.DataSource = HappeningOrm.Select(arventure);
+                }
+                
+            }
+        }
+
+        private void cleanForm()
+        {
+            textBoxTitleArventure.Text = "";
+            labelStoryTitle.Text = "Titulo de la historia";
+            var image = Properties.Resources.Login_Aventuras;
+            pictureBoxStoryImg.Image = image;
+            textBoxStorySummary.Text = "";
+            bindingSourceHappening.DataSource = null;
+            story = null;
+            labelRouteName.Text = "Nombre de la ruta";
+            labelDistance.Text = "0";
+            labelTime.Text = "0";
+            listBoxRouteStops.DataSource = null;
+            route = null;
+            listBoxSelectEvents.DataSource = null;
+            happenings.Clear();
+            listBoxSelectEvents.DataSource = happenings;
+            achievement = null;
         }
 
         private void listBoxRoutes_SelectedIndexChanged(object sender, EventArgs e)
@@ -186,7 +328,7 @@ namespace ARventure_Path.Forms
                     formattedTime = minutes + " min";
                 }
                 labelTimeRoute.Text = formattedTime;
-                listBoxRouteStops.DataSource = route.stop.ToList();
+                listBoxRouteStops.DataSource = StopOrm.Select(route);
                 listBoxRouteStops.DisplayMember = "Name";
 
             }
@@ -194,19 +336,53 @@ namespace ARventure_Path.Forms
 
         private void buttonSelectEvent_Click(object sender, EventArgs e)
         {
+            
             if (dataGridViewHappening.SelectedRows.Count > 0)
             {
                 happening selectedHappening = (happening)dataGridViewHappening.SelectedRows[0].DataBoundItem;
-
-                // Verificar si el evento ya está en la lista
-                if (happenings.Any(h => h.name == selectedHappening.name))
+                if (formType == MyUtils.FormType.Modify)
                 {
-                    MessageBox.Show("Este evento ya ha sido seleccionado.", "Evento Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+                    if (arventure.story == story)
+                    {
+                        if (listBoxSelectEvents.Items.Cast<happening>().Any(h => h.name == selectedHappening.name))
+                        {
+                            MessageBox.Show("Este evento ya ha sido seleccionado.", "Evento Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
 
-                // Si no está en la lista, añadirlo
-                happenings.Add(selectedHappening);
+                            string msg = HappeningOrm.InsertForArventure(arventure, selectedHappening);
+                            MyUtils.ShowPosibleError(msg);
+                            listBoxSelectEvents.DataSource = HappeningOrm.Select(arventure);
+
+                    }
+                    else
+                    {
+                        // Verificar si el evento ya está en la lista
+                        if (happenings.Any(h => h.name == selectedHappening.name))
+                        {
+                            MessageBox.Show("Este evento ya ha sido seleccionado.", "Evento Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            // Si no está en la lista, añadirlo
+                            happenings.Add(selectedHappening);
+                        }
+                    }
+                }
+                else
+                {
+                    // Verificar si el evento ya está en la lista
+                    if (happenings.Any(h => h.name == selectedHappening.name))
+                    {
+                        MessageBox.Show("Este evento ya ha sido seleccionado.", "Evento Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                        // Si no está en la lista, añadirlo
+                        happenings.Add(selectedHappening);
+                    
+                }
+                
             }
         }
 
@@ -282,7 +458,25 @@ namespace ARventure_Path.Forms
 
         private void buttonFragments_Click(object sender, EventArgs e)
         {
+            if (listBoxStories.SelectedItem != null)
+            {
+                // Obtener el story seleccionado
+                story selectedStory = (story)listBoxStories.SelectedItem;
 
+                // Crear e inicializar el formulario del diálogo
+                using (FragmentsDialog storyDialog = new FragmentsDialog())
+                {
+                    // Pasar el story al diálogo para mostrar los detalles
+                    storyDialog.loadFragments(selectedStory);
+
+                    // Mostrar el diálogo
+                    storyDialog.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un story.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
