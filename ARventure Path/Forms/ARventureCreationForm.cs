@@ -100,7 +100,7 @@ namespace ARventure_Path.Forms
             {
                 // Borrar ARventure
                 string msg = "";
-
+                arventure.happening.Clear();
                 msg = ArventureOrm.Delete(arventure);
                 MyUtils.ShowPosibleError(msg);
                 if (msg == "")
@@ -203,6 +203,14 @@ namespace ARventure_Path.Forms
             {
                 listBoxSelectEvents.DataSource = null;
                 happenings.Clear();
+
+                if(formType == MyUtils.FormType.Modify)
+                {
+                    arventure.happening.Clear();
+                    string msg = Orm.Update();
+                    MyUtils.ShowPosibleError(msg);
+                }
+                
                 listBoxSelectEvents.DataSource = happenings;
                 listBoxSelectEvents.DisplayMember = "Name";
 
