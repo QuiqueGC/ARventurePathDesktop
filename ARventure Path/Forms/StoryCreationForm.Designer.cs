@@ -71,9 +71,10 @@
             // 
             this.labelSelectStory.AutoSize = true;
             this.labelSelectStory.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSelectStory.Location = new System.Drawing.Point(28, 18);
+            this.labelSelectStory.Location = new System.Drawing.Point(56, 35);
+            this.labelSelectStory.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelSelectStory.Name = "labelSelectStory";
-            this.labelSelectStory.Size = new System.Drawing.Size(147, 16);
+            this.labelSelectStory.Size = new System.Drawing.Size(277, 31);
             this.labelSelectStory.TabIndex = 0;
             this.labelSelectStory.Text = "Seleccionar Historia";
             // 
@@ -83,9 +84,10 @@
             this.comboBoxSelectStory.DisplayMember = "name";
             this.comboBoxSelectStory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSelectStory.FormattingEnabled = true;
-            this.comboBoxSelectStory.Location = new System.Drawing.Point(181, 17);
+            this.comboBoxSelectStory.Location = new System.Drawing.Point(362, 33);
+            this.comboBoxSelectStory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.comboBoxSelectStory.Name = "comboBoxSelectStory";
-            this.comboBoxSelectStory.Size = new System.Drawing.Size(245, 21);
+            this.comboBoxSelectStory.Size = new System.Drawing.Size(486, 33);
             this.comboBoxSelectStory.TabIndex = 0;
             this.comboBoxSelectStory.ValueMember = "id";
             this.comboBoxSelectStory.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectStory_SelectedIndexChanged);
@@ -102,9 +104,11 @@
             this.gbGenerateForIA.Controls.Add(this.buttonGenerateImage);
             this.gbGenerateForIA.Controls.Add(this.textBoxGenerateStoryAI);
             this.gbGenerateForIA.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbGenerateForIA.Location = new System.Drawing.Point(31, 47);
+            this.gbGenerateForIA.Location = new System.Drawing.Point(62, 90);
+            this.gbGenerateForIA.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.gbGenerateForIA.Name = "gbGenerateForIA";
-            this.gbGenerateForIA.Size = new System.Drawing.Size(898, 91);
+            this.gbGenerateForIA.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbGenerateForIA.Size = new System.Drawing.Size(1796, 175);
             this.gbGenerateForIA.TabIndex = 1;
             this.gbGenerateForIA.TabStop = false;
             this.gbGenerateForIA.Text = "Generar por IA";
@@ -112,17 +116,19 @@
             // lblFragments
             // 
             this.lblFragments.AutoSize = true;
-            this.lblFragments.Location = new System.Drawing.Point(812, 15);
+            this.lblFragments.Location = new System.Drawing.Point(1624, 29);
+            this.lblFragments.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblFragments.Name = "lblFragments";
-            this.lblFragments.Size = new System.Drawing.Size(84, 15);
+            this.lblFragments.Size = new System.Drawing.Size(166, 27);
             this.lblFragments.TabIndex = 4;
             this.lblFragments.Text = "Nº Fragmentos";
             // 
             // textBoxFragmentsIA
             // 
-            this.textBoxFragmentsIA.Location = new System.Drawing.Point(829, 33);
+            this.textBoxFragmentsIA.Location = new System.Drawing.Point(1658, 63);
+            this.textBoxFragmentsIA.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBoxFragmentsIA.Name = "textBoxFragmentsIA";
-            this.textBoxFragmentsIA.Size = new System.Drawing.Size(63, 21);
+            this.textBoxFragmentsIA.Size = new System.Drawing.Size(122, 34);
             this.textBoxFragmentsIA.TabIndex = 3;
             this.textBoxFragmentsIA.TextChanged += new System.EventHandler(this.textBoxFragmentsIA_TextChanged);
             // 
@@ -131,30 +137,34 @@
             this.buttonGenerateStory.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonGenerateStory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonGenerateStory.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonGenerateStory.Location = new System.Drawing.Point(145, 59);
+            this.buttonGenerateStory.Location = new System.Drawing.Point(290, 113);
+            this.buttonGenerateStory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonGenerateStory.Name = "buttonGenerateStory";
-            this.buttonGenerateStory.Size = new System.Drawing.Size(102, 23);
+            this.buttonGenerateStory.Size = new System.Drawing.Size(204, 44);
             this.buttonGenerateStory.TabIndex = 2;
             this.buttonGenerateStory.Text = "Generar historia";
             this.buttonGenerateStory.UseVisualStyleBackColor = false;
+            this.buttonGenerateStory.Click += new System.EventHandler(this.buttonGenerateStory_Click);
             // 
             // buttonGenerateImage
             // 
             this.buttonGenerateImage.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonGenerateImage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonGenerateImage.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonGenerateImage.Location = new System.Drawing.Point(18, 59);
+            this.buttonGenerateImage.Location = new System.Drawing.Point(36, 113);
+            this.buttonGenerateImage.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonGenerateImage.Name = "buttonGenerateImage";
-            this.buttonGenerateImage.Size = new System.Drawing.Size(103, 23);
+            this.buttonGenerateImage.Size = new System.Drawing.Size(206, 44);
             this.buttonGenerateImage.TabIndex = 1;
             this.buttonGenerateImage.Text = "Generar imagen";
             this.buttonGenerateImage.UseVisualStyleBackColor = false;
             // 
             // textBoxGenerateStoryAI
             // 
-            this.textBoxGenerateStoryAI.Location = new System.Drawing.Point(18, 33);
+            this.textBoxGenerateStoryAI.Location = new System.Drawing.Point(36, 63);
+            this.textBoxGenerateStoryAI.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBoxGenerateStoryAI.Name = "textBoxGenerateStoryAI";
-            this.textBoxGenerateStoryAI.Size = new System.Drawing.Size(794, 21);
+            this.textBoxGenerateStoryAI.Size = new System.Drawing.Size(1584, 34);
             this.textBoxGenerateStoryAI.TabIndex = 0;
             // 
             // gbStory
@@ -169,9 +179,11 @@
             this.gbStory.Controls.Add(this.textBoxStoryTitle);
             this.gbStory.Controls.Add(this.labelStoryTitle);
             this.gbStory.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbStory.Location = new System.Drawing.Point(36, 157);
+            this.gbStory.Location = new System.Drawing.Point(72, 302);
+            this.gbStory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.gbStory.Name = "gbStory";
-            this.gbStory.Size = new System.Drawing.Size(893, 372);
+            this.gbStory.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbStory.Size = new System.Drawing.Size(1786, 715);
             this.gbStory.TabIndex = 2;
             this.gbStory.TabStop = false;
             this.gbStory.Text = "Historia";
@@ -183,9 +195,11 @@
             this.gbFragments.Controls.Add(this.buttonAddNewFragment);
             this.gbFragments.Controls.Add(this.textBoxFragmentQuantity);
             this.gbFragments.Controls.Add(this.label2);
-            this.gbFragments.Location = new System.Drawing.Point(496, 19);
+            this.gbFragments.Location = new System.Drawing.Point(992, 37);
+            this.gbFragments.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.gbFragments.Name = "gbFragments";
-            this.gbFragments.Size = new System.Drawing.Size(380, 338);
+            this.gbFragments.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbFragments.Size = new System.Drawing.Size(760, 650);
             this.gbFragments.TabIndex = 4;
             this.gbFragments.TabStop = false;
             this.gbFragments.Text = "Fragmentos";
@@ -202,13 +216,15 @@
             this.ordinalDataGridViewTextBoxColumn,
             this.contentDataGridViewTextBoxColumn});
             this.dataGridViewFragments.DataSource = this.bindingSourceFragments;
-            this.dataGridViewFragments.Location = new System.Drawing.Point(6, 104);
+            this.dataGridViewFragments.Location = new System.Drawing.Point(12, 200);
+            this.dataGridViewFragments.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dataGridViewFragments.MultiSelect = false;
             this.dataGridViewFragments.Name = "dataGridViewFragments";
             this.dataGridViewFragments.ReadOnly = true;
             this.dataGridViewFragments.RowHeadersVisible = false;
+            this.dataGridViewFragments.RowHeadersWidth = 82;
             this.dataGridViewFragments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewFragments.Size = new System.Drawing.Size(368, 228);
+            this.dataGridViewFragments.Size = new System.Drawing.Size(736, 438);
             this.dataGridViewFragments.TabIndex = 4;
             this.dataGridViewFragments.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewFragments_KeyDown);
             // 
@@ -217,6 +233,7 @@
             this.ordinalDataGridViewTextBoxColumn.DataPropertyName = "ordinal";
             this.ordinalDataGridViewTextBoxColumn.FillWeight = 50F;
             this.ordinalDataGridViewTextBoxColumn.HeaderText = "ordinal";
+            this.ordinalDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.ordinalDataGridViewTextBoxColumn.Name = "ordinalDataGridViewTextBoxColumn";
             this.ordinalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -224,6 +241,7 @@
             // 
             this.contentDataGridViewTextBoxColumn.DataPropertyName = "content";
             this.contentDataGridViewTextBoxColumn.HeaderText = "content";
+            this.contentDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.contentDataGridViewTextBoxColumn.Name = "contentDataGridViewTextBoxColumn";
             this.contentDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -236,9 +254,10 @@
             this.buttonDelete.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonDelete.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonDelete.Location = new System.Drawing.Point(91, 63);
+            this.buttonDelete.Location = new System.Drawing.Point(182, 121);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(95, 23);
+            this.buttonDelete.Size = new System.Drawing.Size(190, 44);
             this.buttonDelete.TabIndex = 3;
             this.buttonDelete.Text = "Borrar seleccionado";
             this.buttonDelete.UseVisualStyleBackColor = false;
@@ -249,9 +268,10 @@
             this.buttonAddNewFragment.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonAddNewFragment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAddNewFragment.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonAddNewFragment.Location = new System.Drawing.Point(216, 63);
+            this.buttonAddNewFragment.Location = new System.Drawing.Point(432, 121);
+            this.buttonAddNewFragment.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonAddNewFragment.Name = "buttonAddNewFragment";
-            this.buttonAddNewFragment.Size = new System.Drawing.Size(95, 23);
+            this.buttonAddNewFragment.Size = new System.Drawing.Size(190, 44);
             this.buttonAddNewFragment.TabIndex = 1;
             this.buttonAddNewFragment.Text = "Añadir nuevo";
             this.buttonAddNewFragment.UseVisualStyleBackColor = false;
@@ -260,17 +280,19 @@
             // textBoxFragmentQuantity
             // 
             this.textBoxFragmentQuantity.Enabled = false;
-            this.textBoxFragmentQuantity.Location = new System.Drawing.Point(233, 26);
+            this.textBoxFragmentQuantity.Location = new System.Drawing.Point(466, 50);
+            this.textBoxFragmentQuantity.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBoxFragmentQuantity.Name = "textBoxFragmentQuantity";
-            this.textBoxFragmentQuantity.Size = new System.Drawing.Size(63, 21);
+            this.textBoxFragmentQuantity.Size = new System.Drawing.Size(122, 34);
             this.textBoxFragmentQuantity.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(88, 30);
+            this.label2.Location = new System.Drawing.Point(176, 58);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 15);
+            this.label2.Size = new System.Drawing.Size(258, 27);
             this.label2.TabIndex = 0;
             this.label2.Text = "Cantidad de fragmentos";
             // 
@@ -279,9 +301,10 @@
             this.buttonSearchImage.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonSearchImage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSearchImage.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSearchImage.Location = new System.Drawing.Point(360, 239);
+            this.buttonSearchImage.Location = new System.Drawing.Point(720, 460);
+            this.buttonSearchImage.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonSearchImage.Name = "buttonSearchImage";
-            this.buttonSearchImage.Size = new System.Drawing.Size(93, 23);
+            this.buttonSearchImage.Size = new System.Drawing.Size(186, 44);
             this.buttonSearchImage.TabIndex = 2;
             this.buttonSearchImage.Text = "Buscar imagen";
             this.buttonSearchImage.UseVisualStyleBackColor = false;
@@ -289,61 +312,68 @@
             // 
             // textBoxSummary
             // 
-            this.textBoxSummary.Location = new System.Drawing.Point(13, 299);
+            this.textBoxSummary.Location = new System.Drawing.Point(26, 575);
+            this.textBoxSummary.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBoxSummary.Multiline = true;
             this.textBoxSummary.Name = "textBoxSummary";
-            this.textBoxSummary.Size = new System.Drawing.Size(440, 58);
+            this.textBoxSummary.Size = new System.Drawing.Size(876, 108);
             this.textBoxSummary.TabIndex = 3;
             // 
             // labelSummary
             // 
             this.labelSummary.AutoSize = true;
-            this.labelSummary.Location = new System.Drawing.Point(10, 277);
+            this.labelSummary.Location = new System.Drawing.Point(20, 533);
+            this.labelSummary.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelSummary.Name = "labelSummary";
-            this.labelSummary.Size = new System.Drawing.Size(56, 15);
+            this.labelSummary.Size = new System.Drawing.Size(106, 27);
             this.labelSummary.TabIndex = 5;
             this.labelSummary.Text = "Resumen";
             // 
             // textBoxImageStory
             // 
             this.textBoxImageStory.Enabled = false;
-            this.textBoxImageStory.Location = new System.Drawing.Point(13, 242);
+            this.textBoxImageStory.Location = new System.Drawing.Point(26, 465);
+            this.textBoxImageStory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBoxImageStory.Name = "textBoxImageStory";
-            this.textBoxImageStory.Size = new System.Drawing.Size(341, 21);
+            this.textBoxImageStory.Size = new System.Drawing.Size(678, 34);
             this.textBoxImageStory.TabIndex = 1;
             this.textBoxImageStory.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 219);
+            this.label1.Location = new System.Drawing.Point(20, 421);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 15);
+            this.label1.Size = new System.Drawing.Size(143, 27);
             this.label1.TabIndex = 3;
             this.label1.Text = "Ruta imagen";
             // 
             // pictureBoxStory
             // 
-            this.pictureBoxStory.Location = new System.Drawing.Point(13, 50);
+            this.pictureBoxStory.Location = new System.Drawing.Point(26, 96);
+            this.pictureBoxStory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pictureBoxStory.Name = "pictureBoxStory";
-            this.pictureBoxStory.Size = new System.Drawing.Size(440, 166);
+            this.pictureBoxStory.Size = new System.Drawing.Size(880, 319);
             this.pictureBoxStory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxStory.TabIndex = 2;
             this.pictureBoxStory.TabStop = false;
             // 
             // textBoxStoryTitle
             // 
-            this.textBoxStoryTitle.Location = new System.Drawing.Point(52, 23);
+            this.textBoxStoryTitle.Location = new System.Drawing.Point(104, 44);
+            this.textBoxStoryTitle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBoxStoryTitle.Name = "textBoxStoryTitle";
-            this.textBoxStoryTitle.Size = new System.Drawing.Size(401, 21);
+            this.textBoxStoryTitle.Size = new System.Drawing.Size(798, 34);
             this.textBoxStoryTitle.TabIndex = 0;
             // 
             // labelStoryTitle
             // 
             this.labelStoryTitle.AutoSize = true;
-            this.labelStoryTitle.Location = new System.Drawing.Point(10, 26);
+            this.labelStoryTitle.Location = new System.Drawing.Point(20, 50);
+            this.labelStoryTitle.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelStoryTitle.Name = "labelStoryTitle";
-            this.labelStoryTitle.Size = new System.Drawing.Size(37, 15);
+            this.labelStoryTitle.Size = new System.Drawing.Size(74, 27);
             this.labelStoryTitle.TabIndex = 0;
             this.labelStoryTitle.Text = "Titulo";
             // 
@@ -353,9 +383,10 @@
             this.buttonCreateStory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCreateStory.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCreateStory.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonCreateStory.Location = new System.Drawing.Point(430, 556);
+            this.buttonCreateStory.Location = new System.Drawing.Point(860, 1069);
+            this.buttonCreateStory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonCreateStory.Name = "buttonCreateStory";
-            this.buttonCreateStory.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreateStory.Size = new System.Drawing.Size(150, 44);
             this.buttonCreateStory.TabIndex = 3;
             this.buttonCreateStory.Text = "Crear";
             this.buttonCreateStory.UseVisualStyleBackColor = false;
@@ -367,9 +398,10 @@
             this.buttonCancelStory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCancelStory.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelStory.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonCancelStory.Location = new System.Drawing.Point(532, 556);
+            this.buttonCancelStory.Location = new System.Drawing.Point(1064, 1069);
+            this.buttonCancelStory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonCancelStory.Name = "buttonCancelStory";
-            this.buttonCancelStory.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancelStory.Size = new System.Drawing.Size(150, 44);
             this.buttonCancelStory.TabIndex = 4;
             this.buttonCancelStory.Text = "Cancelar";
             this.buttonCancelStory.UseVisualStyleBackColor = false;
@@ -377,16 +409,17 @@
             // 
             // StoryCreationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(964, 611);
+            this.ClientSize = new System.Drawing.Size(1928, 1175);
             this.Controls.Add(this.buttonCancelStory);
             this.Controls.Add(this.buttonCreateStory);
             this.Controls.Add(this.gbStory);
             this.Controls.Add(this.gbGenerateForIA);
             this.Controls.Add(this.comboBoxSelectStory);
             this.Controls.Add(this.labelSelectStory);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "StoryCreationForm";
             this.Text = "Creación de historia";
             this.Load += new System.EventHandler(this.StoryCreationForm_Load);
