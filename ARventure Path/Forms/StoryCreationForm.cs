@@ -464,6 +464,7 @@ namespace ARventure_Path.Forms
         /// </summary>
         private void becomeInModifyForm()
         {
+            gbGenerateForIA.Enabled = false;
             buttonCreateStory.Text = "Guardar";
             buttonCreateStory.Enabled = false;
             bindingSourceStory.DataSource = StoryOrm.Select();
@@ -538,37 +539,60 @@ namespace ARventure_Path.Forms
 
         private void buttonGenerateStory_Click(object sender, EventArgs e)
         {
-            string keywords = textBoxGenerateStoryAI.Text;
-            int fragmentQuantity = int.Parse(textBoxFragmentsIA.Text);
-            
-
-            string response = ChatGPTClient.MakeRequest(keywords);
-
-            string[] splitResponse = response.Split('\n');
-            string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
-            string summary = splitResponse[2];
-            List<string> responseFragments = ChatGPTClient.generateFragments(title,fragmentQuantity);
-            /*int fragmentStartIndex = 7;
-            for (int i = 0; i < fragmentQuantity; i++)
+            if (textBoxGenerateStoryAI.Text != "" &&
+                textBoxFragmentsIA.Text != "" &&
+                int.TryParse(textBoxFragmentsIA.Text.Trim(), out int numAtBox)
+                ) 
             {
-                responseFragments.Add(splitResponse[fragmentStartIndex].Split(':')[1].Trim());
-                fragmentStartIndex += 2;
-            }*/
 
-            textBoxStoryTitle.Text = title;
-            textBoxSummary.Text = summary;
-            
-            foreach (string fragment in responseFragments)
-            {
-               
-                fragments.Add(new fragment()
+                if(numAtBox >= 2)
                 {
-                    story = story,
-                    content = fragment,
-                    ordinal = formType == MyUtils.FormType.Create ?
-                    fragments.Count + 1 : story.fragment.Count + 1,
-                });
+                    string keywords = textBoxGenerateStoryAI.Text;
+                    int fragmentQuantity = int.Parse(textBoxFragmentsIA.Text);
+
+                    string response = ChatGPTClient.MakeRequest(keywords);
+
+                    string[] splitResponse = response.Split('\n');
+                    string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
+                    string summary = splitResponse[2].Split(':')[1].Trim();
+                    List<string> responseFragments = ChatGPTClient.generateFragments(title, fragmentQuantity);
+                    /*int fragmentStartIndex = 7;
+                    for (int i = 0; i < fragmentQuantity; i++)
+                    {
+                        responseFragments.Add(splitResponse[fragmentStartIndex].Split(':')[1].Trim());
+                        fragmentStartIndex += 2;
+                    }*/
+
+                    textBoxStoryTitle.Text = title;
+                    textBoxSummary.Text = summary;
+
+                    foreach (string fragment in responseFragments)
+                    {
+
+                        fragments.Add(new fragment()
+                        {
+                            story = story,
+                            content = fragment,
+                            ordinal = formType == MyUtils.FormType.Create ?
+                            fragments.Count + 1 : story.fragment.Count + 1,
+                        });
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("La cantidad de fragmentos debe ser superior a 2.", "Error!");
+                }
+                
             }
+            else if(textBoxGenerateStoryAI.Text == "")
+            {
+                MessageBox.Show("El campo de palabras clave no puede estar vacío.", "Error!");
+            }
+            else
+            {
+                MessageBox.Show("El campo de cantidad de fragmentos no puede estar vacío.", "Error!");
+            }
+            
         }
 
         private void btnModifyFragment_Click(object sender, EventArgs e)
@@ -582,5 +606,7 @@ namespace ARventure_Path.Forms
                 DoSelectFragmentsDependingOnType();
             }
         }
+
+        
     }
 }
