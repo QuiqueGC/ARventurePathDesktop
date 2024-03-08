@@ -38,7 +38,6 @@
             this.lblName = new System.Windows.Forms.Label();
             this.groupboxIA = new System.Windows.Forms.GroupBox();
             this.buttonGenerateHappening = new System.Windows.Forms.Button();
-            this.textboxIAPrompt = new System.Windows.Forms.TextBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.comboBoxHappenings = new System.Windows.Forms.ComboBox();
             this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
@@ -63,7 +62,7 @@
             this.groupboxImgHappening.Controls.Add(this.textBoxName);
             this.groupboxImgHappening.Controls.Add(this.lblName);
             this.groupboxImgHappening.Font = new System.Drawing.Font("Century", 10F);
-            this.groupboxImgHappening.Location = new System.Drawing.Point(17, 215);
+            this.groupboxImgHappening.Location = new System.Drawing.Point(17, 150);
             this.groupboxImgHappening.Name = "groupboxImgHappening";
             this.groupboxImgHappening.Size = new System.Drawing.Size(511, 163);
             this.groupboxImgHappening.TabIndex = 3;
@@ -130,11 +129,10 @@
             // groupboxIA
             // 
             this.groupboxIA.Controls.Add(this.buttonGenerateHappening);
-            this.groupboxIA.Controls.Add(this.textboxIAPrompt);
             this.groupboxIA.Font = new System.Drawing.Font("Century", 10F);
             this.groupboxIA.Location = new System.Drawing.Point(17, 60);
             this.groupboxIA.Name = "groupboxIA";
-            this.groupboxIA.Size = new System.Drawing.Size(511, 134);
+            this.groupboxIA.Size = new System.Drawing.Size(511, 74);
             this.groupboxIA.TabIndex = 2;
             this.groupboxIA.TabStop = false;
             this.groupboxIA.Text = "Generar por IA";
@@ -144,20 +142,12 @@
             this.buttonGenerateHappening.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonGenerateHappening.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonGenerateHappening.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonGenerateHappening.Location = new System.Drawing.Point(6, 89);
+            this.buttonGenerateHappening.Location = new System.Drawing.Point(192, 23);
             this.buttonGenerateHappening.Name = "buttonGenerateHappening";
             this.buttonGenerateHappening.Size = new System.Drawing.Size(121, 30);
             this.buttonGenerateHappening.TabIndex = 1;
             this.buttonGenerateHappening.Text = "Generar evento";
             this.buttonGenerateHappening.UseVisualStyleBackColor = false;
-            // 
-            // textboxIAPrompt
-            // 
-            this.textboxIAPrompt.Location = new System.Drawing.Point(6, 27);
-            this.textboxIAPrompt.Multiline = true;
-            this.textboxIAPrompt.Name = "textboxIAPrompt";
-            this.textboxIAPrompt.Size = new System.Drawing.Size(499, 53);
-            this.textboxIAPrompt.TabIndex = 0;
             // 
             // buttonCancel
             // 
@@ -165,7 +155,7 @@
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCancel.Font = new System.Drawing.Font("Century", 10F);
             this.buttonCancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonCancel.Location = new System.Drawing.Point(372, 384);
+            this.buttonCancel.Location = new System.Drawing.Point(372, 319);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 5;
@@ -197,7 +187,7 @@
             this.buttonCreate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCreate.Font = new System.Drawing.Font("Century", 10F);
             this.buttonCreate.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonCreate.Location = new System.Drawing.Point(453, 384);
+            this.buttonCreate.Location = new System.Drawing.Point(453, 319);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(75, 23);
             this.buttonCreate.TabIndex = 4;
@@ -246,7 +236,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(544, 422);
+            this.ClientSize = new System.Drawing.Size(544, 352);
             this.Controls.Add(this.comboBoxStories);
             this.Controls.Add(this.groupboxImgHappening);
             this.Controls.Add(this.groupboxIA);
@@ -265,7 +255,6 @@
             this.groupboxImgHappening.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgHappening)).EndInit();
             this.groupboxIA.ResumeLayout(false);
-            this.groupboxIA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.ResumeLayout(false);
@@ -282,7 +271,6 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.GroupBox groupboxIA;
         private System.Windows.Forms.Button buttonGenerateHappening;
-        private System.Windows.Forms.TextBox textboxIAPrompt;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.ComboBox comboBoxHappenings;
         private System.Windows.Forms.Button buttonCreate;
