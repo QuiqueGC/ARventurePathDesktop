@@ -14,6 +14,8 @@ namespace ARventure_Path
         private const string url = "https://api.openai.com/v1/chat/completions";
         private const string apiKey = "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";
 
+       
+
         public static List<string> generateFragments(string titulo, int fragmentCount) 
         {
             List<string> fragments = new List<string>();
@@ -45,7 +47,34 @@ namespace ARventure_Path
 
             return fragments;
 
-        } 
+        }
+
+        public static string makeRequestEventText() 
+        {
+            string messageString = "dame un título de una historia , y un resumen de 200 caracteres";
+
+
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + apiKey);
+
+            var requestData =
+                "{\"model\": \"gpt-3.5-turbo\",\"messages\": [{\"role\": \"user\",\"content\": \"" + messageString + "\"}]}";
+            var response = httpClient.PostAsync(url, new StringContent(requestData, Encoding.UTF8, "application/json")).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string contentString = response.Content.ReadAsStringAsync().Result;
+                var gptResponse = JsonConvert.DeserializeObject<GPTResponse>(contentString);
+
+                return gptResponse?.choices[0].message.content;
+            }
+            else
+            {
+                return response.Content.ReadAsStringAsync().Result;
+            }
+        }
+
         public static string MakeRequest(string keywords)
         {
             string messageString = "dame un título de una historia" + keywords + " , y un resumen de 200 caracteres";
