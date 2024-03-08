@@ -56,45 +56,61 @@ namespace ARventure_Path.Forms
             {
                 if (check())
                 {
-                    // Crear ARventure
-                    string msg = "";
 
-
-                    arventure.name = textBoxTitleArventure.Text;
-                    arventure.story = story;
-                    arventure.route = route;
-
-                    achievement = new achievement();
-                    achievement.name = $"Completa la aventura: {arventure.name}";
-                    achievement.img = story.img;
-
-                    arventure.achievement = achievement;
-                    arventure.happening = happenings;
-                    
-                    msg = ArventureOrm.Insert(arventure);
-                    MyUtils.ShowPosibleError(msg);
-                    if (msg == "")
+                    if (story.fragment.Count == route.stop.Count)
                     {
-                        MessageBox.Show($"La arventure se ha creado con éxito.\nLogro: {achievement.name} creado con éxito ", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Crear ARventure
+                        string msg = "";
+
+                        arventure.name = textBoxTitleArventure.Text;
+                        arventure.story = story;
+                        arventure.route = route;
+
+                        achievement = new achievement();
+                        achievement.name = $"Completa la aventura: {arventure.name}";
+                        achievement.img = story.img;
+
+                        arventure.achievement = achievement;
+                        arventure.happening = happenings;
+
+                        msg = ArventureOrm.Insert(arventure);
+                        MyUtils.ShowPosibleError(msg);
+                        if (msg == "")
+                        {
+                            MessageBox.Show($"La arventure se ha creado con éxito.\nLogro: {achievement.name} creado con éxito ", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        cleanForm();
                     }
-                    cleanForm();
+                    else
+                    {
+                        MessageBox.Show("Debe haber el mismo número de fragmentos que de paradas", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+
                 }
 
             }
             else if (formType == MyUtils.FormType.Modify)
             {
                 // Modificar ARventure
-
-                arventure.name = textBoxTitleArventure.Text;
-                arventure.story = story;
-                arventure.route = route;
-                if (arventure.story!= story)
+                if (story.fragment.Count == route.stop.Count)
                 {
-                    arventure.happening = happenings;
+                    arventure.name = textBoxTitleArventure.Text;
+                    arventure.story = story;
+                    arventure.route = route;
+                    if (arventure.story != story)
+                    {
+                        arventure.happening = happenings;
+                    }
+
+                    string msg = Orm.Update();
+                    MyUtils.ShowPosibleError(msg);
+                }
+                else
+                {
+                    MessageBox.Show("Debe haber el mismo número de fragmentos que de paradas", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                string msg = Orm.Update();
-                MyUtils.ShowPosibleError(msg);
             }
             else
             {
@@ -105,7 +121,7 @@ namespace ARventure_Path.Forms
                 MyUtils.ShowPosibleError(msg);
                 if (msg == "")
                 {
-                    MessageBox.Show("La arventure se ha eliminado con éxito.", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cleanForm();
                 }
             }
         }
@@ -294,6 +310,7 @@ namespace ARventure_Path.Forms
 
         private void cleanForm()
         {
+            bindingSourceArventure.DataSource = ArventureOrm.Select();
             textBoxTitleArventure.Text = "";
             labelStoryTitle.Text = "Titulo de la historia";
             var image = Properties.Resources.Login_Aventuras;
@@ -302,8 +319,8 @@ namespace ARventure_Path.Forms
             bindingSourceHappening.DataSource = null;
             story = null;
             labelRouteName.Text = "Nombre de la ruta";
-            labelDistance.Text = "0";
-            labelTime.Text = "0";
+            labelDistanceRoute.Text = "0";
+            labelTimeRoute.Text = "0";
             listBoxRouteStops.DataSource = null;
             route = null;
             listBoxSelectEvents.DataSource = null;

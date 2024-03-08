@@ -43,9 +43,6 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.Mp3Player = new AxWMPLib.AxWindowsMediaPlayer();
-            this.groupboxIA = new System.Windows.Forms.GroupBox();
-            this.buttonGenerateHappening = new System.Windows.Forms.Button();
-            this.textboxIAPrompt = new System.Windows.Forms.TextBox();
             this.comboBoxHappenings = new System.Windows.Forms.ComboBox();
             this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
             this.labelSelectHappening = new System.Windows.Forms.Label();
@@ -60,7 +57,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnStop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Mp3Player)).BeginInit();
-            this.groupboxIA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.SuspendLayout();
@@ -79,9 +75,9 @@
             this.groupboxAudioHappening.Controls.Add(this.textBoxName);
             this.groupboxAudioHappening.Controls.Add(this.lblName);
             this.groupboxAudioHappening.Font = new System.Drawing.Font("Century", 10F);
-            this.groupboxAudioHappening.Location = new System.Drawing.Point(17, 218);
+            this.groupboxAudioHappening.Location = new System.Drawing.Point(17, 64);
             this.groupboxAudioHappening.Name = "groupboxAudioHappening";
-            this.groupboxAudioHappening.Size = new System.Drawing.Size(511, 163);
+            this.groupboxAudioHappening.Size = new System.Drawing.Size(511, 224);
             this.groupboxAudioHappening.TabIndex = 3;
             this.groupboxAudioHappening.TabStop = false;
             this.groupboxAudioHappening.Text = "Evento de Audio";
@@ -89,7 +85,7 @@
             // labelDuration
             // 
             this.labelDuration.AutoSize = true;
-            this.labelDuration.Location = new System.Drawing.Point(452, 112);
+            this.labelDuration.Location = new System.Drawing.Point(422, 96);
             this.labelDuration.Name = "labelDuration";
             this.labelDuration.Size = new System.Drawing.Size(36, 17);
             this.labelDuration.TabIndex = 22;
@@ -98,9 +94,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ARventure_Path.Properties.Resources.volume;
-            this.pictureBox1.Location = new System.Drawing.Point(200, 69);
+            this.pictureBox1.Location = new System.Drawing.Point(264, 123);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 35);
+            this.pictureBox1.Size = new System.Drawing.Size(80, 72);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
@@ -112,7 +108,7 @@
             this.macTrackBarVolume.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.macTrackBarVolume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(125)))), ((int)(((byte)(123)))));
             this.macTrackBarVolume.IndentHeight = 6;
-            this.macTrackBarVolume.Location = new System.Drawing.Point(244, 76);
+            this.macTrackBarVolume.Location = new System.Drawing.Point(350, 145);
             this.macTrackBarVolume.Maximum = 100;
             this.macTrackBarVolume.Minimum = 0;
             this.macTrackBarVolume.Name = "macTrackBarVolume";
@@ -137,11 +133,11 @@
             this.macTrackBarPlayer.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.macTrackBarPlayer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(125)))), ((int)(((byte)(123)))));
             this.macTrackBarPlayer.IndentHeight = 6;
-            this.macTrackBarPlayer.Location = new System.Drawing.Point(188, 106);
+            this.macTrackBarPlayer.Location = new System.Drawing.Point(38, 89);
             this.macTrackBarPlayer.Maximum = 100;
             this.macTrackBarPlayer.Minimum = 0;
             this.macTrackBarPlayer.Name = "macTrackBarPlayer";
-            this.macTrackBarPlayer.Size = new System.Drawing.Size(268, 28);
+            this.macTrackBarPlayer.Size = new System.Drawing.Size(365, 28);
             this.macTrackBarPlayer.TabIndex = 19;
             this.macTrackBarPlayer.TextTickStyle = System.Windows.Forms.TickStyle.None;
             this.macTrackBarPlayer.TickColor = System.Drawing.Color.DarkSlateBlue;
@@ -159,7 +155,7 @@
             // 
             this.btnStop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStop.Image = global::ARventure_Path.Properties.Resources.stop;
-            this.btnStop.Location = new System.Drawing.Point(19, 76);
+            this.btnStop.Location = new System.Drawing.Point(159, 123);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(80, 72);
             this.btnStop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -171,7 +167,7 @@
             // 
             this.btnPlay.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPlay.Image = global::ARventure_Path.Properties.Resources.play;
-            this.btnPlay.Location = new System.Drawing.Point(105, 76);
+            this.btnPlay.Location = new System.Drawing.Point(58, 123);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(77, 72);
             this.btnPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -195,6 +191,7 @@
             // 
             // textBoxUrl
             // 
+            this.textBoxUrl.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxUrl.Location = new System.Drawing.Point(195, 39);
             this.textBoxUrl.Name = "textBoxUrl";
             this.textBoxUrl.ReadOnly = true;
@@ -229,45 +226,13 @@
             // Mp3Player
             // 
             this.Mp3Player.Enabled = true;
-            this.Mp3Player.Location = new System.Drawing.Point(29, 387);
+            this.Mp3Player.Location = new System.Drawing.Point(29, 303);
             this.Mp3Player.Name = "Mp3Player";
             this.Mp3Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Mp3Player.OcxState")));
             this.Mp3Player.Size = new System.Drawing.Size(39, 35);
             this.Mp3Player.TabIndex = 16;
             this.Mp3Player.Visible = false;
             this.Mp3Player.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.Mp3Player_PlayStateChange);
-            // 
-            // groupboxIA
-            // 
-            this.groupboxIA.Controls.Add(this.buttonGenerateHappening);
-            this.groupboxIA.Controls.Add(this.textboxIAPrompt);
-            this.groupboxIA.Font = new System.Drawing.Font("Century", 10F);
-            this.groupboxIA.Location = new System.Drawing.Point(17, 63);
-            this.groupboxIA.Name = "groupboxIA";
-            this.groupboxIA.Size = new System.Drawing.Size(511, 134);
-            this.groupboxIA.TabIndex = 2;
-            this.groupboxIA.TabStop = false;
-            this.groupboxIA.Text = "Generar por IA";
-            // 
-            // buttonGenerateHappening
-            // 
-            this.buttonGenerateHappening.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonGenerateHappening.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonGenerateHappening.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonGenerateHappening.Location = new System.Drawing.Point(6, 89);
-            this.buttonGenerateHappening.Name = "buttonGenerateHappening";
-            this.buttonGenerateHappening.Size = new System.Drawing.Size(121, 30);
-            this.buttonGenerateHappening.TabIndex = 1;
-            this.buttonGenerateHappening.Text = "Generar evento";
-            this.buttonGenerateHappening.UseVisualStyleBackColor = false;
-            // 
-            // textboxIAPrompt
-            // 
-            this.textboxIAPrompt.Location = new System.Drawing.Point(6, 27);
-            this.textboxIAPrompt.Multiline = true;
-            this.textboxIAPrompt.Name = "textboxIAPrompt";
-            this.textboxIAPrompt.Size = new System.Drawing.Size(499, 53);
-            this.textboxIAPrompt.TabIndex = 0;
             // 
             // comboBoxHappenings
             // 
@@ -303,7 +268,7 @@
             this.buttonCreate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCreate.Font = new System.Drawing.Font("Century", 10F);
             this.buttonCreate.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonCreate.Location = new System.Drawing.Point(453, 387);
+            this.buttonCreate.Location = new System.Drawing.Point(453, 303);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(75, 23);
             this.buttonCreate.TabIndex = 4;
@@ -317,7 +282,7 @@
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCancel.Font = new System.Drawing.Font("Century", 10F);
             this.buttonCancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonCancel.Location = new System.Drawing.Point(372, 387);
+            this.buttonCancel.Location = new System.Drawing.Point(372, 303);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 5;
@@ -362,12 +327,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(544, 422);
+            this.ClientSize = new System.Drawing.Size(544, 338);
             this.Controls.Add(this.comboBoxStories);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Mp3Player);
             this.Controls.Add(this.groupboxAudioHappening);
-            this.Controls.Add(this.groupboxIA);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.comboBoxHappenings);
             this.Controls.Add(this.buttonCreate);
@@ -385,8 +349,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnStop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Mp3Player)).EndInit();
-            this.groupboxIA.ResumeLayout(false);
-            this.groupboxIA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.ResumeLayout(false);
@@ -401,9 +363,6 @@
         private System.Windows.Forms.Label lblUrl;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.GroupBox groupboxIA;
-        private System.Windows.Forms.Button buttonGenerateHappening;
-        private System.Windows.Forms.TextBox textboxIAPrompt;
         private System.Windows.Forms.ComboBox comboBoxHappenings;
         private System.Windows.Forms.Label labelSelectHappening;
         private System.Windows.Forms.Button buttonCreate;
