@@ -88,7 +88,6 @@ namespace ARventure_Path.Forms
             {
                 MessageBox.Show("La historia debe tener un mínimo de dos fragmentos.", "¡Error!");
             }
-            
         }
 
 
@@ -100,17 +99,51 @@ namespace ARventure_Path.Forms
         {
             if (MyUtils.ShowConfirmDialogAndDelete()) 
             {
-                DeleteFragments();
+                if(ArventureOrm.Select(story).Count == 0)
+                {
 
-                string msg = StoryOrm.Delete(story);
-                MyUtils.ShowPosibleError(msg);
-                bindingSourceStory.DataSource = StoryOrm.Select();
-                comboBoxSelectStory.SelectedItem = null;
-                bindingSourceFragments.DataSource = null;
-                buttonCreateStory.Enabled = false;
-                CleanForm();
+                    DeleteFragments();
+                    
+                    DeleteHappenings();
+
+                    string msg = StoryOrm.Delete(story);
+
+                    MyUtils.ShowPosibleError(msg);
+                    bindingSourceStory.DataSource = StoryOrm.Select();
+                    comboBoxSelectStory.SelectedItem = null;
+                    bindingSourceFragments.DataSource = null;
+                    buttonCreateStory.Enabled = false;
+                    CleanForm();
+                }
+                else
+                {
+                    MessageBox.Show("No se puede borrar la historia, ya que pertenece a una aventura.", "¡Error!");
+                }
             }
         }
+
+
+        /// <summary>
+        /// borra los eventos en la BBDD que 
+        /// están relacionados con la historia
+        /// </summary>
+        private void DeleteHappenings()
+        {
+            
+            int i = story.happening.Count;
+            do
+            {
+                if (story.happening.FirstOrDefault() != null)
+                {
+                    string msg = HappeningOrm.Delete(story.happening.FirstOrDefault());
+                    MyUtils.ShowPosibleError(msg);
+                }
+                i--;
+
+            } while (i > 0);
+        }
+
+
 
         /// <summary>
         /// borra los fragmentos de la historia
@@ -242,7 +275,7 @@ namespace ARventure_Path.Forms
             }
             catch (ExternalException ex)
             {
-                MessageBox.Show("Imagen no válida.", "Error!");
+                MessageBox.Show("Ya existe una imagen con ese nombre. Cámbiaselo o escoge otra, que seguro que tienes más.", "Error!");
                 if(formType == MyUtils.FormType.Create)
                 {
                     textBoxImageStory.Text = "";
@@ -535,6 +568,18 @@ namespace ARventure_Path.Forms
                     ordinal = formType == MyUtils.FormType.Create ?
                     fragments.Count + 1 : story.fragment.Count + 1,
                 });
+            }
+        }
+
+        private void btnModifyFragment_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewFragments.SelectedRows.Count > 0)
+            {
+                FragmentCreationForm fragmentCreationForm =
+                    new FragmentCreationForm((fragment)dataGridViewFragments.SelectedRows[0].DataBoundItem);
+                fragmentCreationForm.ShowDialog();
+
+                DoSelectFragmentsDependingOnType();
             }
         }
     }

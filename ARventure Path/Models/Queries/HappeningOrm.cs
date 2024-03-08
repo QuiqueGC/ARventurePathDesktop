@@ -32,6 +32,34 @@ namespace ARventure_Path.Models
             return _happening;
         }
 
+        public static List<happening> Select(arventure arventure)
+        {
+            List<happening> _happenings = Orm.db.arventure
+                .Where(h => h.id == arventure.id)
+                .SelectMany(h => h.happening)
+                .ToList();
+
+            return _happenings;
+        }
+
+
+        public static String InsertForArventure(arventure arventure, happening happening)
+        {
+            try
+            {
+                // Asigna los happenings a la arventure
+                arventure.happening.Add(happening);
+
+                // Guarda los cambios en la base de datos
+                return Orm.MySaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return "Error al agregar happenings a la arventure: " + ex.Message;
+            }
+        }
+
+
         public static String Delete(happening _happening)
         {
             Orm.db.happening.Remove(_happening);

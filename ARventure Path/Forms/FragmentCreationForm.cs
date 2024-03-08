@@ -1,4 +1,5 @@
 ﻿using ARventure_Path.Models;
+using ARventure_Path.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,12 +16,19 @@ namespace ARventure_Path.Forms
     public partial class FragmentCreationForm : Form
     {
         StoryCreationForm storyCreationForm;
+        fragment fragment;
         public FragmentCreationForm(StoryCreationForm storyCreationForm)
         {
             InitializeComponent();
             this.storyCreationForm = storyCreationForm;
 
         }
+        public FragmentCreationForm(fragment fragment)
+        {
+            InitializeComponent();
+            this.fragment = fragment;
+        }
+
 
         private void buttonAcceptFragment_Click(object sender, EventArgs e)
         {
@@ -31,7 +39,18 @@ namespace ARventure_Path.Forms
             }
             else
             {
-                storyCreationForm.contentToFragment = textBoxCreateFragment.Text;
+                if(fragment == null)
+                {
+                    storyCreationForm.contentToFragment = textBoxCreateFragment.Text;
+                }
+                else
+                {
+                    fragment.content = textBoxCreateFragment.Text;
+                    string msg = "";
+                    msg = Orm.Update();
+                    MyUtils.ShowPosibleError(msg);
+                }
+                
                 this.Close();
             }
         }
@@ -39,6 +58,14 @@ namespace ARventure_Path.Forms
         private void buttonCancelFragment_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FragmentCreationForm_Load(object sender, EventArgs e)
+        {
+            if(fragment != null)
+            {
+                textBoxCreateFragment.Text = fragment.content;
+            }
         }
     }
 }

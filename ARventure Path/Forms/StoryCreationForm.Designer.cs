@@ -58,6 +58,7 @@
             this.labelStoryTitle = new System.Windows.Forms.Label();
             this.buttonCreateStory = new System.Windows.Forms.Button();
             this.buttonCancelStory = new System.Windows.Forms.Button();
+            this.btnModifyFragment = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.gbGenerateForIA.SuspendLayout();
             this.gbStory.SuspendLayout();
@@ -190,6 +191,7 @@
             // 
             // gbFragments
             // 
+            this.gbFragments.Controls.Add(this.btnModifyFragment);
             this.gbFragments.Controls.Add(this.dataGridViewFragments);
             this.gbFragments.Controls.Add(this.buttonDelete);
             this.gbFragments.Controls.Add(this.buttonAddNewFragment);
@@ -254,8 +256,7 @@
             this.buttonDelete.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonDelete.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonDelete.Location = new System.Drawing.Point(182, 121);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.buttonDelete.Location = new System.Drawing.Point(27, 63);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(190, 44);
             this.buttonDelete.TabIndex = 3;
@@ -268,8 +269,7 @@
             this.buttonAddNewFragment.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonAddNewFragment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAddNewFragment.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonAddNewFragment.Location = new System.Drawing.Point(432, 121);
-            this.buttonAddNewFragment.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.buttonAddNewFragment.Location = new System.Drawing.Point(147, 63);
             this.buttonAddNewFragment.Name = "buttonAddNewFragment";
             this.buttonAddNewFragment.Size = new System.Drawing.Size(190, 44);
             this.buttonAddNewFragment.TabIndex = 1;
@@ -407,6 +407,19 @@
             this.buttonCancelStory.UseVisualStyleBackColor = false;
             this.buttonCancelStory.Click += new System.EventHandler(this.buttonCancelStory_Click);
             // 
+            // btnModifyFragment
+            // 
+            this.btnModifyFragment.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnModifyFragment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnModifyFragment.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnModifyFragment.Location = new System.Drawing.Point(265, 63);
+            this.btnModifyFragment.Name = "btnModifyFragment";
+            this.btnModifyFragment.Size = new System.Drawing.Size(95, 23);
+            this.btnModifyFragment.TabIndex = 5;
+            this.btnModifyFragment.Text = "Modificar";
+            this.btnModifyFragment.UseVisualStyleBackColor = false;
+            this.btnModifyFragment.Click += new System.EventHandler(this.btnModifyFragment_Click);
+            // 
             // StoryCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -469,5 +482,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label lblFragments;
         private System.Windows.Forms.TextBox textBoxFragmentsIA;
+        private System.Windows.Forms.Button btnModifyFragment;
     }
 }

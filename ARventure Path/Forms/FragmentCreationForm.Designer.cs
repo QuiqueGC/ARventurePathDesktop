@@ -92,6 +92,7 @@
             this.Controls.Add(this.buttonCancelFragment);
             this.Name = "FragmentCreationForm";
             this.Text = "Creación de Fragmento";
+            this.Load += new System.EventHandler(this.FragmentCreationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

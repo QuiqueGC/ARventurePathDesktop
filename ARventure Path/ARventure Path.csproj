@@ -100,6 +100,12 @@
     <Compile Include="Forms\FragmentCreationForm.Designer.cs">
       <DependentUpon>FragmentCreationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FragmentsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FragmentsDialog.Designer.cs">
+      <DependentUpon>FragmentsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HappeningImageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FragmentCreationForm.resx">
       <DependentUpon>FragmentCreationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FragmentsDialog.resx">
+      <DependentUpon>FragmentsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HappeningImageForm.resx">
       <DependentUpon>HappeningImageForm.cs</DependentUpon>
