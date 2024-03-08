@@ -1,6 +1,7 @@
 ﻿using ARventure_Path.Models;
 using ARventure_Path.Utils;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ARventure_Path.Forms
@@ -203,7 +204,25 @@ namespace ARventure_Path.Forms
 
         private void buttonGenerateHappening_Click(object sender, EventArgs e)
         {
+            story story = (story)comboBoxStories.SelectedItem;
+            string nombreEvento = story.name;
+            //int fragmentQuantity = int.Parse(textBoxFragmentsIA.Text);
 
+            string response = ChatGPTClient.MakeRequest(nombreEvento);
+            MessageBox.Show(response);
+            string[] splitResponse = response.Split('\n');
+            string title = splitResponse[0];
+            string summary = splitResponse[1];
+            //List<string> responseFragments = ChatGPTClient.generateFragments(title, fragmentQuantity);
+            /*int fragmentStartIndex = 7;
+            for (int i = 0; i < fragmentQuantity; i++)
+            {
+                responseFragments.Add(splitResponse[fragmentStartIndex].Split(':')[1].Trim());
+                fragmentStartIndex += 2;
+            }*/
+
+            textBoxName.Text = title;
+            textBoxContent.Text = summary;
         }
     }
 }
