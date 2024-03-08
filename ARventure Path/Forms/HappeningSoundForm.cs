@@ -140,7 +140,6 @@ namespace ARventure_Path.Forms
                 if (formType == MyUtils.FormType.Modify)
                 {
                     comboBoxStories.Enabled = true;
-                    groupboxIA.Enabled = true;
                     groupboxAudioHappening.Enabled = true;
                 }else if(formType == MyUtils.FormType.Delete)
                 {
@@ -373,11 +372,10 @@ namespace ARventure_Path.Forms
 
         private void becomeInDeleteForm()
         {
-            buttonCreate.Text = "Borrar";
+            buttonCreate.Text = "Borrar"; 
             bindingSourceHappenings.DataSource = HappeningOrm.Select("audio");
             comboBoxHappenings.SelectedItem = null;
             comboBoxStories.Enabled = false;
-            groupboxIA.Enabled = false;
             groupboxAudioHappening.Enabled = false;
             Text = "Borrar evento de audio";
         }
@@ -388,7 +386,6 @@ namespace ARventure_Path.Forms
             bindingSourceHappenings.DataSource = HappeningOrm.Select("audio");
             comboBoxHappenings.SelectedItem = null;
             comboBoxStories.Enabled = false;
-            groupboxIA.Enabled = false;
             groupboxAudioHappening.Enabled = false;
             Text = "Modificar evento de audio";
 

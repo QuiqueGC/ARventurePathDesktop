@@ -85,7 +85,7 @@ namespace ARventure_Path.Forms
             gMapControl1.Position = new PointLatLng(LatStart, LngStart);
             gMapControl1.MinZoom = 0;
             gMapControl1.MaxZoom = 24;
-            gMapControl1.Zoom = 9;
+            gMapControl1.Zoom = 14;
             gMapControl1.AutoScroll = true;
 
             // Se posicionan en el textbox de la latidud y longitud
@@ -149,7 +149,6 @@ namespace ARventure_Path.Forms
             buttonCreateRoute.Text = "Borrar";
             bindingSourceRoute.DataSource = RouteOrm.Select();
             comboBoxSelectRoute.SelectedItem = null;
-            groupBoxIA.Enabled = false;
             buttonCreateRoute.Enabled = false;
             textBoxNameRoute.Enabled = false;
             textBoxLongitude.Enabled = false;
@@ -170,7 +169,6 @@ namespace ARventure_Path.Forms
             buttonCreateRoute.Text = "Guardar";
             bindingSourceRoute.DataSource = RouteOrm.Select();
             comboBoxSelectRoute.SelectedItem = null;
-            groupBoxIA.Enabled = false;
             groupBoxRoute.Enabled = false;
             buttonCreateRoute.Enabled = false;
         }
@@ -183,6 +181,7 @@ namespace ARventure_Path.Forms
         {
             labelSelectRoute.Visible = false;
             comboBoxSelectRoute.Visible = false;
+            groupBoxIA.Enabled = true;
         }
 
         private void buttonAddNewStop_Click(object sender, EventArgs e)
@@ -317,17 +316,28 @@ namespace ARventure_Path.Forms
         {
             if (MyUtils.ShowConfirmDialogAndDelete())
             {
-                deleteStops();
-                string msg = RouteOrm.Delete(route);
-                MyUtils.ShowPosibleError(msg);
-                bindingSourceRoute.DataSource = RouteOrm.Select();
-                comboBoxSelectRoute.SelectedItem = null;
-                bindingSourceStops.DataSource = null;
-                buttonCreateRoute.Enabled = false;
-                textBoxNameRoute.Text = "";
-                textBoxStopName.Text = "";
-                textBoxLongitude.Text = "";
-                textBoxLatitude.Text = "";
+                if (ArventureOrm.Select(route).Count == 0)
+                {
+                    deleteStops();
+                    string msg = RouteOrm.Delete(route);
+                    MyUtils.ShowPosibleError(msg);
+                    bindingSourceRoute.DataSource = RouteOrm.Select();
+                    comboBoxSelectRoute.SelectedItem = null;
+                    bindingSourceStops.DataSource = null;
+                    buttonCreateRoute.Enabled = false;
+                    textBoxNameRoute.Text = "";
+                    textBoxStopName.Text = "";
+                    textBoxLongitude.Text = "";
+                    textBoxLatitude.Text = "";
+                    gMapControl1.Overlays.Clear();
+                    gMapControl1.Zoom = 9;
+                }
+                else
+                {
+                    MessageBox.Show("No se puede borrar la ruta, ya que pertenece a una aventura.", "¡Error!");
+                }
+
+
             }
         }
 
@@ -404,6 +414,7 @@ namespace ARventure_Path.Forms
                         refreshTable();
                         gMapControl1.Overlays.Clear();
                         refreshOverlaysMap("Barcelona", LatStart, LngStart);
+                        route = new route();
                     }
                 }
                 else
@@ -584,5 +595,17 @@ namespace ARventure_Path.Forms
                 }
             }
         }
+
+        private void textBoxNumberStops_TextChanged(object sender, EventArgs e)
+        {
+            // Verificar si el texto en el TextBox no es un número
+            if (!int.TryParse(textBoxNumberStops.Text, out _) && textBoxNumberStops.Text != "")
+            {
+                // Mostrar mensaje de error y limpiar el TextBox
+                textBoxNumberStops.Text = ""; // Limpiar el contenido del TextBox
+                MessageBox.Show("Por favor, introduce solo números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
