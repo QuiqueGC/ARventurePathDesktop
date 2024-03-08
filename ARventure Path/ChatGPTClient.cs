@@ -18,7 +18,7 @@ namespace ARventure_Path
         {
             List<string> fragments = new List<string>();
 
-            string messageString = "genera un fragmento de menos de 50 caracteres de la historia " + titulo ;
+            string messageString = "genera un fragmento de menos de 100 caracteres de la historia " + titulo ;
 
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + apiKey);
@@ -48,7 +48,7 @@ namespace ARventure_Path
         } 
         public static string MakeRequest(string keywords)
         {
-            string messageString = "dame un título de una historia" + keywords + " , y un resumen corto" ;
+            string messageString = "dame un título de una historia" + keywords + " , y un resumen de 50 caracteres" ;
             
 
             var httpClient = new HttpClient();

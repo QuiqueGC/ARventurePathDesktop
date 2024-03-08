@@ -546,7 +546,7 @@ namespace ARventure_Path.Forms
 
             string[] splitResponse = response.Split('\n');
             string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
-            string summary = splitResponse[2];
+            string summary = splitResponse[2].Split(':')[1].Trim();
             List<string> responseFragments = ChatGPTClient.generateFragments(title,fragmentQuantity);
             /*int fragmentStartIndex = 7;
             for (int i = 0; i < fragmentQuantity; i++)
