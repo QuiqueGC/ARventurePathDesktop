@@ -33,6 +33,9 @@
             this.comboBoxSelectRoute = new System.Windows.Forms.ComboBox();
             this.bindingSourceRoute = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxIA = new System.Windows.Forms.GroupBox();
+            this.textBoxNumberStops = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.buttonGenerateRoute = new System.Windows.Forms.Button();
             this.textBoxGenerateRouteAI = new System.Windows.Forms.TextBox();
             this.groupBoxRoute = new System.Windows.Forms.GroupBox();
@@ -95,8 +98,12 @@
             // 
             // groupBoxIA
             // 
+            this.groupBoxIA.Controls.Add(this.textBoxNumberStops);
+            this.groupBoxIA.Controls.Add(this.label6);
+            this.groupBoxIA.Controls.Add(this.label3);
             this.groupBoxIA.Controls.Add(this.buttonGenerateRoute);
             this.groupBoxIA.Controls.Add(this.textBoxGenerateRouteAI);
+            this.groupBoxIA.Enabled = false;
             this.groupBoxIA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.groupBoxIA.Location = new System.Drawing.Point(26, 52);
             this.groupBoxIA.Name = "groupBoxIA";
@@ -104,6 +111,34 @@
             this.groupBoxIA.TabIndex = 2;
             this.groupBoxIA.TabStop = false;
             this.groupBoxIA.Text = "Generar por IA";
+            // 
+            // textBoxNumberStops
+            // 
+            this.textBoxNumberStops.Location = new System.Drawing.Point(841, 33);
+            this.textBoxNumberStops.Name = "textBoxNumberStops";
+            this.textBoxNumberStops.Size = new System.Drawing.Size(51, 23);
+            this.textBoxNumberStops.TabIndex = 28;
+            this.textBoxNumberStops.TextChanged += new System.EventHandler(this.textBoxNumberStops_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label6.Location = new System.Drawing.Point(686, 33);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(149, 20);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Número de paradas";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label3.Location = new System.Drawing.Point(15, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 20);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Input IA";
             // 
             // buttonGenerateRoute
             // 
@@ -119,9 +154,9 @@
             // 
             // textBoxGenerateRouteAI
             // 
-            this.textBoxGenerateRouteAI.Location = new System.Drawing.Point(18, 33);
+            this.textBoxGenerateRouteAI.Location = new System.Drawing.Point(87, 33);
             this.textBoxGenerateRouteAI.Name = "textBoxGenerateRouteAI";
-            this.textBoxGenerateRouteAI.Size = new System.Drawing.Size(807, 23);
+            this.textBoxGenerateRouteAI.Size = new System.Drawing.Size(593, 23);
             this.textBoxGenerateRouteAI.TabIndex = 0;
             // 
             // groupBoxRoute
@@ -459,5 +494,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn longitudeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn latitudeDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button buttonStopChange;
+        private System.Windows.Forms.TextBox textBoxNumberStops;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
     }
 }
