@@ -78,7 +78,7 @@ namespace ARventure_Path
         public static string MakeRequest(string keywords)
         {
             string messageString = "dame un título de una historia" + keywords + " , y un resumen de 200 caracteres";
-            
+
 
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + apiKey);
@@ -101,6 +101,35 @@ namespace ARventure_Path
             }
 
         }
+
+        public static string MakeRequestRoute(string numStops)
+        {
+            string messageString = $"Generame un ruta con un nombre generado por ti, en Barcelona en un radio de 2km, con {numStops} paradas. En cada parada debes indicarme su nombre, longitud(ejemplo = 2.170164) y latitud(ejemplo = 41.380949)";
+
+
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + apiKey);
+
+            var requestData =
+                "{\"model\": \"gpt-3.5-turbo\",\"messages\": [{\"role\": \"user\",\"content\": \"" + messageString + "\"}]}";
+            var response = httpClient.PostAsync(url, new StringContent(requestData, Encoding.UTF8, "application/json")).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string contentString = response.Content.ReadAsStringAsync().Result;
+                var gptResponse = JsonConvert.DeserializeObject<GPTResponse>(contentString);
+
+                return gptResponse?.choices[0].message.content;
+            }
+            else
+            {
+                return response.Content.ReadAsStringAsync().Result;
+            }
+
+        }
+
+
 
         public class GPTResponse
         {

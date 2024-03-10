@@ -151,6 +151,7 @@
             this.buttonGenerateRoute.TabIndex = 1;
             this.buttonGenerateRoute.Text = "Generar ruta";
             this.buttonGenerateRoute.UseVisualStyleBackColor = false;
+            this.buttonGenerateRoute.Click += new System.EventHandler(this.buttonGenerateRoute_Click);
             // 
             // textBoxGenerateRouteAI
             // 

@@ -607,5 +607,63 @@ namespace ARventure_Path.Forms
             }
         }
 
+        private void buttonGenerateRoute_Click(object sender, EventArgs e)
+        {
+            stopsList.Clear();
+            refreshTable();
+            previewRoute();
+            refreshOverlaysMap("Barcelona", LatStart, LngStart);
+
+            if (textBoxNumberStops.Text.Trim() != ""
+                && int.TryParse(textBoxNumberStops.Text.Trim(), out int numStopsText))
+            {
+                if (numStopsText >= 2)
+                {
+                    string numStops = textBoxNumberStops.Text.Trim();
+                    string response = ChatGPTClient.MakeRequestRoute(numStops);
+
+                    try
+                    {
+                        string[] lines = response.Split('\n');
+
+                        textBoxNameRoute.Text = lines[0];
+
+                        for (int i = 2; i < lines.Length; i += 4)
+                        {
+                            stop newStop = new stop();
+                            // Nombre de la parada
+                            newStop.name = lines[i].Substring(lines[i].IndexOf(":") + 1).Trim();
+
+                            // Longitud
+                            newStop.longitude = Convert.ToDouble((lines[i + 1].Substring(lines[i + 1].IndexOf(":") + 1).Trim()), System.Globalization.CultureInfo.InvariantCulture);
+
+                            // Latitud
+                            newStop.latitude = Convert.ToDouble((lines[i + 2].Substring(lines[i + 2].IndexOf(":") + 1).Trim()), System.Globalization.CultureInfo.InvariantCulture);
+
+                            stopsList.Add(newStop);
+                            refreshTable();
+                            previewRoute();
+                            refreshOverlaysMap(newStop.name, newStop.latitude, newStop.longitude);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al procesar la ruta: {ex.Message}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("La cantidad de paradas debe ser superior a 2.", "Error!");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debes introducir un numero de paradas.", "Error!");
+            }
+        }
+
+
     }
+
 }
