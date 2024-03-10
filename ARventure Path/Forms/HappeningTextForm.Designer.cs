@@ -39,7 +39,6 @@
             this.labelSelectHappening = new System.Windows.Forms.Label();
             this.comboBoxHappenings = new System.Windows.Forms.ComboBox();
             this.bindingSourceHappenings = new System.Windows.Forms.BindingSource(this.components);
-            this.textboxIAPrompt = new System.Windows.Forms.TextBox();
             this.buttonGenerateHappening = new System.Windows.Forms.Button();
             this.groupboxIA = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,16 +57,16 @@
             this.groupboxTxtHappening.Controls.Add(this.textBoxName);
             this.groupboxTxtHappening.Controls.Add(this.lblName);
             this.groupboxTxtHappening.Font = new System.Drawing.Font("Century", 10F);
-            this.groupboxTxtHappening.Location = new System.Drawing.Point(12, 224);
+            this.groupboxTxtHappening.Location = new System.Drawing.Point(12, 183);
             this.groupboxTxtHappening.Name = "groupboxTxtHappening";
-            this.groupboxTxtHappening.Size = new System.Drawing.Size(511, 158);
+            this.groupboxTxtHappening.Size = new System.Drawing.Size(511, 199);
             this.groupboxTxtHappening.TabIndex = 4;
             this.groupboxTxtHappening.TabStop = false;
             this.groupboxTxtHappening.Text = "Evento de texto";
             // 
             // textBoxContent
             // 
-            this.textBoxContent.Location = new System.Drawing.Point(202, 34);
+            this.textBoxContent.Location = new System.Drawing.Point(127, 66);
             this.textBoxContent.Multiline = true;
             this.textBoxContent.Name = "textBoxContent";
             this.textBoxContent.Size = new System.Drawing.Size(303, 111);
@@ -76,7 +75,7 @@
             // labelContent
             // 
             this.labelContent.AutoSize = true;
-            this.labelContent.Location = new System.Drawing.Point(204, 18);
+            this.labelContent.Location = new System.Drawing.Point(32, 69);
             this.labelContent.Name = "labelContent";
             this.labelContent.Size = new System.Drawing.Size(74, 17);
             this.labelContent.TabIndex = 2;
@@ -84,15 +83,15 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(13, 36);
+            this.textBoxName.Location = new System.Drawing.Point(127, 36);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(151, 24);
+            this.textBoxName.Size = new System.Drawing.Size(303, 24);
             this.textBoxName.TabIndex = 1;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(17, 20);
+            this.lblName.Location = new System.Drawing.Point(32, 36);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(59, 17);
             this.lblName.TabIndex = 0;
@@ -154,20 +153,12 @@
             // 
             this.bindingSourceHappenings.DataSource = typeof(ARventure_Path.Models.happening);
             // 
-            // textboxIAPrompt
-            // 
-            this.textboxIAPrompt.Location = new System.Drawing.Point(6, 27);
-            this.textboxIAPrompt.Multiline = true;
-            this.textboxIAPrompt.Name = "textboxIAPrompt";
-            this.textboxIAPrompt.Size = new System.Drawing.Size(499, 53);
-            this.textboxIAPrompt.TabIndex = 0;
-            // 
             // buttonGenerateHappening
             // 
             this.buttonGenerateHappening.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonGenerateHappening.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonGenerateHappening.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonGenerateHappening.Location = new System.Drawing.Point(6, 89);
+            this.buttonGenerateHappening.Location = new System.Drawing.Point(207, 23);
             this.buttonGenerateHappening.Name = "buttonGenerateHappening";
             this.buttonGenerateHappening.Size = new System.Drawing.Size(121, 30);
             this.buttonGenerateHappening.TabIndex = 1;
@@ -178,11 +169,10 @@
             // groupboxIA
             // 
             this.groupboxIA.Controls.Add(this.buttonGenerateHappening);
-            this.groupboxIA.Controls.Add(this.textboxIAPrompt);
             this.groupboxIA.Font = new System.Drawing.Font("Century", 10F);
-            this.groupboxIA.Location = new System.Drawing.Point(12, 69);
+            this.groupboxIA.Location = new System.Drawing.Point(12, 91);
             this.groupboxIA.Name = "groupboxIA";
-            this.groupboxIA.Size = new System.Drawing.Size(511, 134);
+            this.groupboxIA.Size = new System.Drawing.Size(511, 75);
             this.groupboxIA.TabIndex = 3;
             this.groupboxIA.TabStop = false;
             this.groupboxIA.Text = "Generar por IA";
@@ -191,7 +181,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 40);
+            this.label1.Location = new System.Drawing.Point(18, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(174, 20);
             this.label1.TabIndex = 6;
@@ -203,7 +193,7 @@
             this.comboBoxStories.DisplayMember = "name";
             this.comboBoxStories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxStories.FormattingEnabled = true;
-            this.comboBoxStories.Location = new System.Drawing.Point(207, 40);
+            this.comboBoxStories.Location = new System.Drawing.Point(207, 53);
             this.comboBoxStories.Name = "comboBoxStories";
             this.comboBoxStories.Size = new System.Drawing.Size(235, 21);
             this.comboBoxStories.TabIndex = 2;
@@ -237,7 +227,6 @@
             this.groupboxTxtHappening.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceHappenings)).EndInit();
             this.groupboxIA.ResumeLayout(false);
-            this.groupboxIA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -254,7 +243,6 @@
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Label labelSelectHappening;
         private System.Windows.Forms.ComboBox comboBoxHappenings;
-        private System.Windows.Forms.TextBox textboxIAPrompt;
         private System.Windows.Forms.Button buttonGenerateHappening;
         private System.Windows.Forms.GroupBox groupboxIA;
         private System.Windows.Forms.Label label1;
