@@ -15,6 +15,7 @@ namespace ARventure_Path.Forms
         private string fileName;
         private string filePath;
         private MyUtils.FormType formType;
+        Bitmap response;
 
         public HappeningImageForm(MyUtils.FormType formType)
         {
@@ -133,7 +134,10 @@ namespace ARventure_Path.Forms
             try
             {
                 // Guardar la nueva imagen
-                image.Save(destinationPath);
+                if (response != null)
+                {
+                    response.Save(destinationPath, ImageFormat.Png);
+                }
             }
             catch (Exception ex)
             {
@@ -333,13 +337,20 @@ namespace ARventure_Path.Forms
 
         private void buttonGenerateHappening_Click(object sender, EventArgs e)
         {
-            story story = (story)comboBoxStories.SelectedItem;
-            string nombreEvento = story.name;
+            if(textBoxName.Text != "")
+            {
+                story story = (story)comboBoxStories.SelectedItem;
+                string nombreEvento = story.name;
 
-            Bitmap response = ChatGPTImage.MakeResponseEventImage(nombreEvento);
-
-            imgHappening.Image = response;
-
+                response = ChatGPTImage.MakeResponseEventImage(nombreEvento);
+                imgHappening.Image = response;
+                fileName = textBoxName.Text + ".png";
+            }
+            else
+            {
+                MessageBox.Show("Debes poner un nombre al evento antes de generarlo.", "Error");
+            }
+            
         }
     }
 }
