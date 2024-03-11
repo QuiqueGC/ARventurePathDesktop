@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChatGPTClient.cs" />
+    <Compile Include="ChatGPTImage.cs" />
     <Compile Include="Forms\AchievementForm.cs">
       <SubType>Form</SubType>
     </Compile>

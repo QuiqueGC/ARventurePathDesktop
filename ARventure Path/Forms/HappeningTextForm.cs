@@ -213,16 +213,7 @@ namespace ARventure_Path.Forms
             MessageBox.Show(response);
             string[] splitResponse = response.Split('\n');
             string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
-            string summary;
-            if (splitResponse.Count() == 3)
-            {
-                summary = splitResponse[2].Split(':')[1].Trim();
-            }
-            else
-            {
-                summary = splitResponse[1].Split(':')[1].Trim();
-
-            }
+            string summary = splitResponse[splitResponse.Count() - 1].Split(':')[1].Trim();
             //List<string> responseFragments = ChatGPTClient.generateFragments(title, fragmentQuantity);
             /*int fragmentStartIndex = 7;
             for (int i = 0; i < fragmentQuantity; i++)
