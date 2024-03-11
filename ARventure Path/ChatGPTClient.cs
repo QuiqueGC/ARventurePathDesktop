@@ -51,7 +51,7 @@ namespace ARventure_Path
 
         public static string makeRequestEventText(string nombreEvento) 
         {
-            string messageString = "dame un titulo para esta historia " + nombreEvento + " , y un resumen de 100 caracteres";
+            string messageString = "dame un titulo para esta historia " + nombreEvento + " , y un resumen de 200 caracteres";
 
 
             var httpClient = new HttpClient();
