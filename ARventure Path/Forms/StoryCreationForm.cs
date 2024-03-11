@@ -614,11 +614,20 @@ namespace ARventure_Path.Forms
 
         private void buttonGenerateImage_Click(object sender, EventArgs e)
         {
-            string keywords = textBoxGenerateStoryAI.Text;
+            if(textBoxStoryTitle.Text != "" && textBoxSummary.Text != "")
+            {
+                string keywords = textBoxGenerateStoryAI.Text;
 
-            Bitmap response = ChatGPTImage.MakeRequestStoryImage(keywords);
+                Bitmap response = ChatGPTImage.MakeRequestStoryImage(keywords);
 
-            pictureBoxStory.Image = response;
+                pictureBoxStory.Image = response;
+
+            }
+            else
+            {
+                MessageBox.Show("La historia debe tener título y resumen para poder crearle una imagen.", "Error!");
+            }
+            
 
         }
     }

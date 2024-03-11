@@ -60,6 +60,10 @@
             this.labelStoryTitle = new System.Windows.Forms.Label();
             this.buttonCreateStory = new System.Windows.Forms.Button();
             this.buttonCancelStory = new System.Windows.Forms.Button();
+            this.labelStyle = new System.Windows.Forms.Label();
+            this.textBoxStyle = new System.Windows.Forms.TextBox();
+            this.groupBoxIAStory = new System.Windows.Forms.GroupBox();
+            this.groupBoxIAImage = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.gbGenerateForIA.SuspendLayout();
             this.gbStory.SuspendLayout();
@@ -67,6 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFragments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFragments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).BeginInit();
+            this.groupBoxIAStory.SuspendLayout();
+            this.groupBoxIAImage.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelSelectStory
@@ -98,12 +104,8 @@
             // 
             // gbGenerateForIA
             // 
-            this.gbGenerateForIA.Controls.Add(this.labelKeyWord);
-            this.gbGenerateForIA.Controls.Add(this.lblFragments);
-            this.gbGenerateForIA.Controls.Add(this.textBoxFragmentsIA);
-            this.gbGenerateForIA.Controls.Add(this.buttonGenerateStory);
-            this.gbGenerateForIA.Controls.Add(this.buttonGenerateImage);
-            this.gbGenerateForIA.Controls.Add(this.textBoxGenerateStoryAI);
+            this.gbGenerateForIA.Controls.Add(this.groupBoxIAImage);
+            this.gbGenerateForIA.Controls.Add(this.groupBoxIAStory);
             this.gbGenerateForIA.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbGenerateForIA.Location = new System.Drawing.Point(31, 47);
             this.gbGenerateForIA.Name = "gbGenerateForIA";
@@ -115,7 +117,7 @@
             // labelKeyWord
             // 
             this.labelKeyWord.AutoSize = true;
-            this.labelKeyWord.Location = new System.Drawing.Point(21, 29);
+            this.labelKeyWord.Location = new System.Drawing.Point(100, 19);
             this.labelKeyWord.Name = "labelKeyWord";
             this.labelKeyWord.Size = new System.Drawing.Size(83, 15);
             this.labelKeyWord.TabIndex = 5;
@@ -124,7 +126,7 @@
             // lblFragments
             // 
             this.lblFragments.AutoSize = true;
-            this.lblFragments.Location = new System.Drawing.Point(532, 29);
+            this.lblFragments.Location = new System.Drawing.Point(100, 47);
             this.lblFragments.Name = "lblFragments";
             this.lblFragments.Size = new System.Drawing.Size(130, 15);
             this.lblFragments.TabIndex = 4;
@@ -132,9 +134,9 @@
             // 
             // textBoxFragmentsIA
             // 
-            this.textBoxFragmentsIA.Location = new System.Drawing.Point(668, 26);
+            this.textBoxFragmentsIA.Location = new System.Drawing.Point(236, 41);
             this.textBoxFragmentsIA.Name = "textBoxFragmentsIA";
-            this.textBoxFragmentsIA.Size = new System.Drawing.Size(63, 21);
+            this.textBoxFragmentsIA.Size = new System.Drawing.Size(90, 21);
             this.textBoxFragmentsIA.TabIndex = 3;
             this.textBoxFragmentsIA.TextChanged += new System.EventHandler(this.textBoxFragmentsIA_TextChanged);
             // 
@@ -143,7 +145,7 @@
             this.buttonGenerateStory.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonGenerateStory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonGenerateStory.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonGenerateStory.Location = new System.Drawing.Point(145, 59);
+            this.buttonGenerateStory.Location = new System.Drawing.Point(359, 26);
             this.buttonGenerateStory.Name = "buttonGenerateStory";
             this.buttonGenerateStory.Size = new System.Drawing.Size(102, 23);
             this.buttonGenerateStory.TabIndex = 2;
@@ -156,7 +158,7 @@
             this.buttonGenerateImage.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonGenerateImage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonGenerateImage.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonGenerateImage.Location = new System.Drawing.Point(18, 59);
+            this.buttonGenerateImage.Location = new System.Drawing.Point(251, 26);
             this.buttonGenerateImage.Name = "buttonGenerateImage";
             this.buttonGenerateImage.Size = new System.Drawing.Size(103, 23);
             this.buttonGenerateImage.TabIndex = 1;
@@ -166,9 +168,9 @@
             // 
             // textBoxGenerateStoryAI
             // 
-            this.textBoxGenerateStoryAI.Location = new System.Drawing.Point(110, 26);
+            this.textBoxGenerateStoryAI.Location = new System.Drawing.Point(189, 16);
             this.textBoxGenerateStoryAI.Name = "textBoxGenerateStoryAI";
-            this.textBoxGenerateStoryAI.Size = new System.Drawing.Size(399, 21);
+            this.textBoxGenerateStoryAI.Size = new System.Drawing.Size(137, 21);
             this.textBoxGenerateStoryAI.TabIndex = 0;
             // 
             // gbStory
@@ -409,6 +411,48 @@
             this.buttonCancelStory.UseVisualStyleBackColor = false;
             this.buttonCancelStory.Click += new System.EventHandler(this.buttonCancelStory_Click);
             // 
+            // labelStyle
+            // 
+            this.labelStyle.AutoSize = true;
+            this.labelStyle.Location = new System.Drawing.Point(34, 31);
+            this.labelStyle.Name = "labelStyle";
+            this.labelStyle.Size = new System.Drawing.Size(44, 15);
+            this.labelStyle.TabIndex = 6;
+            this.labelStyle.Text = "Estilo/s";
+            // 
+            // textBoxStyle
+            // 
+            this.textBoxStyle.Location = new System.Drawing.Point(91, 28);
+            this.textBoxStyle.Name = "textBoxStyle";
+            this.textBoxStyle.Size = new System.Drawing.Size(137, 21);
+            this.textBoxStyle.TabIndex = 7;
+            // 
+            // groupBoxIAStory
+            // 
+            this.groupBoxIAStory.Controls.Add(this.lblFragments);
+            this.groupBoxIAStory.Controls.Add(this.textBoxFragmentsIA);
+            this.groupBoxIAStory.Controls.Add(this.textBoxGenerateStoryAI);
+            this.groupBoxIAStory.Controls.Add(this.buttonGenerateStory);
+            this.groupBoxIAStory.Controls.Add(this.labelKeyWord);
+            this.groupBoxIAStory.Location = new System.Drawing.Point(6, 17);
+            this.groupBoxIAStory.Name = "groupBoxIAStory";
+            this.groupBoxIAStory.Size = new System.Drawing.Size(481, 68);
+            this.groupBoxIAStory.TabIndex = 8;
+            this.groupBoxIAStory.TabStop = false;
+            this.groupBoxIAStory.Text = "Generar historia";
+            // 
+            // groupBoxIAImage
+            // 
+            this.groupBoxIAImage.Controls.Add(this.buttonGenerateImage);
+            this.groupBoxIAImage.Controls.Add(this.textBoxStyle);
+            this.groupBoxIAImage.Controls.Add(this.labelStyle);
+            this.groupBoxIAImage.Location = new System.Drawing.Point(501, 17);
+            this.groupBoxIAImage.Name = "groupBoxIAImage";
+            this.groupBoxIAImage.Size = new System.Drawing.Size(391, 68);
+            this.groupBoxIAImage.TabIndex = 9;
+            this.groupBoxIAImage.TabStop = false;
+            this.groupBoxIAImage.Text = "Generar imagen";
+            // 
             // StoryCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,7 +470,6 @@
             this.Load += new System.EventHandler(this.StoryCreationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).EndInit();
             this.gbGenerateForIA.ResumeLayout(false);
-            this.gbGenerateForIA.PerformLayout();
             this.gbStory.ResumeLayout(false);
             this.gbStory.PerformLayout();
             this.gbFragments.ResumeLayout(false);
@@ -434,6 +477,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFragments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFragments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStory)).EndInit();
+            this.groupBoxIAStory.ResumeLayout(false);
+            this.groupBoxIAStory.PerformLayout();
+            this.groupBoxIAImage.ResumeLayout(false);
+            this.groupBoxIAImage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,5 +519,9 @@
         private System.Windows.Forms.TextBox textBoxFragmentsIA;
         private System.Windows.Forms.Button btnModifyFragment;
         private System.Windows.Forms.Label labelKeyWord;
+        private System.Windows.Forms.Label labelStyle;
+        private System.Windows.Forms.GroupBox groupBoxIAImage;
+        private System.Windows.Forms.TextBox textBoxStyle;
+        private System.Windows.Forms.GroupBox groupBoxIAStory;
     }
 }
