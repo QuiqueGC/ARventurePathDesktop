@@ -35,10 +35,9 @@
             this.groupBoxIA = new System.Windows.Forms.GroupBox();
             this.textBoxNumberStops = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.buttonGenerateRoute = new System.Windows.Forms.Button();
-            this.textBoxGenerateRouteAI = new System.Windows.Forms.TextBox();
             this.groupBoxRoute = new System.Windows.Forms.GroupBox();
+            this.labelLoading = new System.Windows.Forms.Label();
             this.buttonStopChange = new System.Windows.Forms.Button();
             this.labelRuta = new System.Windows.Forms.Label();
             this.textBoxNameRoute = new System.Windows.Forms.TextBox();
@@ -100,23 +99,21 @@
             // 
             this.groupBoxIA.Controls.Add(this.textBoxNumberStops);
             this.groupBoxIA.Controls.Add(this.label6);
-            this.groupBoxIA.Controls.Add(this.label3);
             this.groupBoxIA.Controls.Add(this.buttonGenerateRoute);
-            this.groupBoxIA.Controls.Add(this.textBoxGenerateRouteAI);
             this.groupBoxIA.Enabled = false;
             this.groupBoxIA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.groupBoxIA.Location = new System.Drawing.Point(26, 52);
+            this.groupBoxIA.Location = new System.Drawing.Point(374, 48);
             this.groupBoxIA.Name = "groupBoxIA";
-            this.groupBoxIA.Size = new System.Drawing.Size(898, 91);
+            this.groupBoxIA.Size = new System.Drawing.Size(229, 106);
             this.groupBoxIA.TabIndex = 2;
             this.groupBoxIA.TabStop = false;
             this.groupBoxIA.Text = "Generar por IA";
             // 
             // textBoxNumberStops
             // 
-            this.textBoxNumberStops.Location = new System.Drawing.Point(841, 33);
+            this.textBoxNumberStops.Location = new System.Drawing.Point(175, 22);
             this.textBoxNumberStops.Name = "textBoxNumberStops";
-            this.textBoxNumberStops.Size = new System.Drawing.Size(51, 23);
+            this.textBoxNumberStops.Size = new System.Drawing.Size(27, 23);
             this.textBoxNumberStops.TabIndex = 28;
             this.textBoxNumberStops.TextChanged += new System.EventHandler(this.textBoxNumberStops_TextChanged);
             // 
@@ -124,44 +121,29 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label6.Location = new System.Drawing.Point(686, 33);
+            this.label6.Location = new System.Drawing.Point(20, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(149, 20);
             this.label6.TabIndex = 27;
             this.label6.Text = "Número de paradas";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(15, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 20);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Input IA";
-            // 
             // buttonGenerateRoute
             // 
             this.buttonGenerateRoute.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonGenerateRoute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonGenerateRoute.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonGenerateRoute.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonGenerateRoute.Location = new System.Drawing.Point(18, 59);
+            this.buttonGenerateRoute.Location = new System.Drawing.Point(42, 53);
             this.buttonGenerateRoute.Name = "buttonGenerateRoute";
-            this.buttonGenerateRoute.Size = new System.Drawing.Size(103, 23);
+            this.buttonGenerateRoute.Size = new System.Drawing.Size(139, 30);
             this.buttonGenerateRoute.TabIndex = 1;
             this.buttonGenerateRoute.Text = "Generar ruta";
             this.buttonGenerateRoute.UseVisualStyleBackColor = false;
             this.buttonGenerateRoute.Click += new System.EventHandler(this.buttonGenerateRoute_Click);
             // 
-            // textBoxGenerateRouteAI
-            // 
-            this.textBoxGenerateRouteAI.Location = new System.Drawing.Point(87, 33);
-            this.textBoxGenerateRouteAI.Name = "textBoxGenerateRouteAI";
-            this.textBoxGenerateRouteAI.Size = new System.Drawing.Size(593, 23);
-            this.textBoxGenerateRouteAI.TabIndex = 0;
-            // 
             // groupBoxRoute
             // 
+            this.groupBoxRoute.Controls.Add(this.labelLoading);
             this.groupBoxRoute.Controls.Add(this.buttonStopChange);
             this.groupBoxRoute.Controls.Add(this.labelRuta);
             this.groupBoxRoute.Controls.Add(this.textBoxNameRoute);
@@ -186,6 +168,19 @@
             this.groupBoxRoute.TabIndex = 9;
             this.groupBoxRoute.TabStop = false;
             this.groupBoxRoute.Text = "Ruta";
+            // 
+            // labelLoading
+            // 
+            this.labelLoading.AutoSize = true;
+            this.labelLoading.BackColor = System.Drawing.Color.Transparent;
+            this.labelLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.labelLoading.Location = new System.Drawing.Point(387, 137);
+            this.labelLoading.Name = "labelLoading";
+            this.labelLoading.Size = new System.Drawing.Size(137, 29);
+            this.labelLoading.TabIndex = 26;
+            this.labelLoading.Text = "Cargando...";
+            this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLoading.Visible = false;
             // 
             // buttonStopChange
             // 
@@ -219,15 +214,19 @@
             // 
             // textBoxLongitude
             // 
+            this.textBoxLongitude.Enabled = false;
             this.textBoxLongitude.Location = new System.Drawing.Point(13, 192);
             this.textBoxLongitude.Name = "textBoxLongitude";
+            this.textBoxLongitude.ReadOnly = true;
             this.textBoxLongitude.Size = new System.Drawing.Size(151, 23);
             this.textBoxLongitude.TabIndex = 22;
             // 
             // textBoxLatitude
             // 
+            this.textBoxLatitude.Enabled = false;
             this.textBoxLatitude.Location = new System.Drawing.Point(13, 267);
             this.textBoxLatitude.Name = "textBoxLatitude";
+            this.textBoxLatitude.ReadOnly = true;
             this.textBoxLatitude.Size = new System.Drawing.Size(151, 23);
             this.textBoxLatitude.TabIndex = 21;
             // 
@@ -362,7 +361,7 @@
             // labelRouteDistance
             // 
             this.labelRouteDistance.AutoSize = true;
-            this.labelRouteDistance.Location = new System.Drawing.Point(790, 350);
+            this.labelRouteDistance.Location = new System.Drawing.Point(784, 339);
             this.labelRouteDistance.Name = "labelRouteDistance";
             this.labelRouteDistance.Size = new System.Drawing.Size(16, 17);
             this.labelRouteDistance.TabIndex = 10;
@@ -371,7 +370,7 @@
             // labelRouteTime
             // 
             this.labelRouteTime.AutoSize = true;
-            this.labelRouteTime.Location = new System.Drawing.Point(484, 350);
+            this.labelRouteTime.Location = new System.Drawing.Point(482, 339);
             this.labelRouteTime.Name = "labelRouteTime";
             this.labelRouteTime.Size = new System.Drawing.Size(16, 17);
             this.labelRouteTime.TabIndex = 8;
@@ -380,7 +379,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(763, 333);
+            this.label2.Location = new System.Drawing.Point(759, 324);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 17);
             this.label2.TabIndex = 13;
@@ -389,7 +388,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(443, 333);
+            this.label1.Location = new System.Drawing.Point(436, 324);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 17);
             this.label1.TabIndex = 7;
@@ -469,7 +468,6 @@
         private System.Windows.Forms.ComboBox comboBoxSelectRoute;
         private System.Windows.Forms.GroupBox groupBoxIA;
         private System.Windows.Forms.Button buttonGenerateRoute;
-        private System.Windows.Forms.TextBox textBoxGenerateRouteAI;
         private System.Windows.Forms.GroupBox groupBoxRoute;
         private System.Windows.Forms.Button buttonAddNewStop;
         private System.Windows.Forms.Label label2;
@@ -497,6 +495,6 @@
         private System.Windows.Forms.Button buttonStopChange;
         private System.Windows.Forms.TextBox textBoxNumberStops;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelLoading;
     }
 }

@@ -32,6 +32,9 @@ namespace ARventure_Path.Forms
 
         private MyUtils.FormType formType;
 
+        private int currentIndex = 0;
+        private List<string> changingTexts = new List<string>{"Cargando.","Cargando..","Cargando...",};
+
         public RouteCreationForm(MyUtils.FormType formType)
         {
             InitializeComponent();
@@ -619,9 +622,9 @@ namespace ARventure_Path.Forms
             {
                 if (numStopsText >= 2)
                 {
+                    labelLoading.Visible = true;
                     string numStops = textBoxNumberStops.Text.Trim();
                     string response = ChatGPTClient.MakeRequestRoute(numStops);
-
                     try
                     {
                         string[] lines = response.Split('\n');
@@ -632,7 +635,7 @@ namespace ARventure_Path.Forms
                         {
                             stop newStop = new stop();
                             // Nombre de la parada
-                            newStop.name = lines[i].Substring(lines[i].IndexOf(":") + 1).Trim();
+                            newStop.name = lines[i].Substring(lines[i].IndexOfAny(new char[] { ':', '-' }) + 1).Trim();
 
                             // Longitud
                             newStop.longitude = Convert.ToDouble((lines[i + 1].Substring(lines[i + 1].IndexOf(":") + 1).Trim()), System.Globalization.CultureInfo.InvariantCulture);
@@ -645,14 +648,18 @@ namespace ARventure_Path.Forms
                             previewRoute();
                             refreshOverlaysMap(newStop.name, newStop.latitude, newStop.longitude);
                         }
+                        labelLoading.Visible = false;
                     }
                     catch (Exception ex)
                     {
+                        labelLoading.Visible = false;
                         MessageBox.Show($"Error al procesar la ruta: {ex.Message}");
+
                     }
                 }
                 else
                 {
+                    labelLoading.Visible = false;
                     MessageBox.Show("La cantidad de paradas debe ser superior a 2.", "Error!");
                 }
 
@@ -662,8 +669,6 @@ namespace ARventure_Path.Forms
                 MessageBox.Show("Debes introducir un numero de paradas.", "Error!");
             }
         }
-
-
     }
 
 }
