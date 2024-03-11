@@ -547,6 +547,7 @@ namespace ARventure_Path.Forms
 
                 if(numAtBox >= 2)
                 {
+                    fragments.Clear();
                     string keywords = textBoxGenerateStoryAI.Text;
                     int fragmentQuantity = int.Parse(textBoxFragmentsIA.Text);
 
@@ -618,11 +619,15 @@ namespace ARventure_Path.Forms
             {
                 string keywords = textBoxStyle.Text;
                 string summary = textBoxSummary.Text;
-
                 Bitmap response = ChatGPTImage.MakeRequestStoryImage(keywords, summary);
-
-                pictureBoxStory.Image = response;
-
+                
+                if(response != null)
+                {
+                    pictureBoxStory.Image = response;
+                    fileName = textBoxStoryTitle.Text + ".png";
+                    string destinationPath = Path.Combine(storyImagePath, fileName);
+                    response.Save(destinationPath, ImageFormat.Png);
+                }
             }
             else
             {

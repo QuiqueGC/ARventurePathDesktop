@@ -53,7 +53,7 @@ namespace ARventure_Path
             }
             else
             {
-                MessageBox.Show("No se puede generar la foto");
+                MessageBox.Show("No se puede generar la foto. Inténtalo otra vez cambiando alguno de los textos.");
                 return null;
             }
 
