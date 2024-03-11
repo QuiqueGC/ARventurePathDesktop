@@ -15,9 +15,17 @@ namespace ARventure_Path
     public static class ChatGPTImage
     {
 
-        public static Bitmap MakeRequestStoryImage(string keyword)
+        public static Bitmap MakeRequestStoryImage(string keyword, string summary)
         {
-            string message = "un paisaje que representa este texto " + keyword;
+            string message;
+            if (keyword != "")
+            {
+                message = "Una imagen que refleje el siguiente texto:" + summary + "Con el siguiente estilo: " + keyword;
+            }
+            else
+            {
+                message = "Una imagen que represente el siguiente texto:" + summary;
+            }
             const string url = "https://api.openai.com/v1/images/generations";
             const string apiKey = "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";
 
@@ -45,7 +53,7 @@ namespace ARventure_Path
             }
             else
             {
-                MessageBox.Show("No se puede generar la foto");
+                MessageBox.Show("No se puede generar la foto. Inténtalo otra vez cambiando alguno de los textos.");
                 return null;
             }
 

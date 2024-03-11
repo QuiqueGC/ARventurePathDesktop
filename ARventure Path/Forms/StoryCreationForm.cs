@@ -547,36 +547,43 @@ namespace ARventure_Path.Forms
 
                 if(numAtBox >= 2)
                 {
+                    fragments.Clear();
                     string keywords = textBoxGenerateStoryAI.Text;
                     int fragmentQuantity = int.Parse(textBoxFragmentsIA.Text);
 
                     string response = ChatGPTClient.MakeRequest(keywords);
-
-                    string[] splitResponse = response.Split('\n');
-                    string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
-                    string summary = splitResponse[2].Split(':')[1].Trim();
-                    List<string> responseFragments = ChatGPTClient.generateFragments(title, fragmentQuantity);
-                    /*int fragmentStartIndex = 7;
-                    for (int i = 0; i < fragmentQuantity; i++)
+                    try
                     {
-                        responseFragments.Add(splitResponse[fragmentStartIndex].Split(':')[1].Trim());
-                        fragmentStartIndex += 2;
-                    }*/
-
-                    textBoxStoryTitle.Text = title;
-                    textBoxSummary.Text = summary;
-
-                    foreach (string fragment in responseFragments)
-                    {
-
-                        fragments.Add(new fragment()
+                        string[] splitResponse = response.Split('\n');
+                        string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
+                        string summary = splitResponse[splitResponse.Count() - 1].Split(':')[1].Trim();
+                        List<string> responseFragments = ChatGPTClient.generateFragments(title, fragmentQuantity);
+                        /*int fragmentStartIndex = 7;
+                        for (int i = 0; i < fragmentQuantity; i++)
                         {
-                            story = story,
-                            content = fragment,
-                            ordinal = formType == MyUtils.FormType.Create ?
-                            fragments.Count + 1 : story.fragment.Count + 1,
-                        });
+                            responseFragments.Add(splitResponse[fragmentStartIndex].Split(':')[1].Trim());
+                            fragmentStartIndex += 2;
+                        }*/
+
+                        textBoxStoryTitle.Text = title;
+                        textBoxSummary.Text = summary;
+                        textBoxFragmentQuantity.Text = responseFragments.Count().ToString();
+
+                        foreach (string fragment in responseFragments)
+                        {
+                            fragments.Add(new fragment()
+                            {
+                                story = story,
+                                content = fragment,
+                                ordinal = formType == MyUtils.FormType.Create ?
+                                fragments.Count + 1 : story.fragment.Count + 1,
+                            });
+                        }
+                    }catch(Exception ex)
+                    {
+                        MessageBox.Show("La respuesta no ha sido válida. Inténtalo otra vez.", "Error!");
                     }
+                    
                 }
                 else
                 {
@@ -609,11 +616,25 @@ namespace ARventure_Path.Forms
 
         private void buttonGenerateImage_Click(object sender, EventArgs e)
         {
-            string keywords = textBoxGenerateStoryAI.Text;
-
-            Bitmap response = ChatGPTImage.MakeRequestStoryImage(keywords);
-
-            pictureBoxStory.Image = response;
+            if(textBoxStoryTitle.Text != "" && textBoxSummary.Text != "")
+            {
+                string keywords = textBoxStyle.Text;
+                string summary = textBoxSummary.Text;
+                Bitmap response = ChatGPTImage.MakeRequestStoryImage(keywords, summary);
+                
+                if(response != null)
+                {
+                    pictureBoxStory.Image = response;
+                    fileName = textBoxStoryTitle.Text + ".png";
+                    string destinationPath = Path.Combine(storyImagePath, fileName);
+                    response.Save(destinationPath, ImageFormat.Png);
+                }
+            }
+            else
+            {
+                MessageBox.Show("La historia debe tener título y resumen para poder crearle una imagen.", "Error!");
+            }
+            
 
         }
     }
