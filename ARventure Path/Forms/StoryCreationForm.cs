@@ -567,6 +567,7 @@ namespace ARventure_Path.Forms
 
                         textBoxStoryTitle.Text = title;
                         textBoxSummary.Text = summary;
+                        textBoxFragmentQuantity.Text = responseFragments.Count().ToString();
 
                         foreach (string fragment in responseFragments)
                         {

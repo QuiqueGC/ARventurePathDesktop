@@ -257,9 +257,9 @@
             this.btnModifyFragment.Location = new System.Drawing.Point(223, 33);
             this.btnModifyFragment.Margin = new System.Windows.Forms.Padding(2);
             this.btnModifyFragment.Name = "btnModifyFragment";
-            this.btnModifyFragment.Size = new System.Drawing.Size(72, 23);
+            this.btnModifyFragment.Size = new System.Drawing.Size(100, 23);
             this.btnModifyFragment.TabIndex = 5;
-            this.btnModifyFragment.Text = "Modificar";
+            this.btnModifyFragment.Text = "Modificar/ver";
             this.btnModifyFragment.UseVisualStyleBackColor = false;
             this.btnModifyFragment.Click += new System.EventHandler(this.btnModifyFragment_Click);
             // 
@@ -339,7 +339,7 @@
             // textBoxFragmentQuantity
             // 
             this.textBoxFragmentQuantity.Enabled = false;
-            this.textBoxFragmentQuantity.Location = new System.Drawing.Point(328, 35);
+            this.textBoxFragmentQuantity.Location = new System.Drawing.Point(336, 35);
             this.textBoxFragmentQuantity.Name = "textBoxFragmentQuantity";
             this.textBoxFragmentQuantity.Size = new System.Drawing.Size(35, 21);
             this.textBoxFragmentQuantity.TabIndex = 0;
@@ -347,11 +347,11 @@
             // labelQuantityFrag
             // 
             this.labelQuantityFrag.AutoSize = true;
-            this.labelQuantityFrag.Location = new System.Drawing.Point(248, 16);
+            this.labelQuantityFrag.Location = new System.Drawing.Point(330, 15);
             this.labelQuantityFrag.Name = "labelQuantityFrag";
-            this.labelQuantityFrag.Size = new System.Drawing.Size(130, 15);
+            this.labelQuantityFrag.Size = new System.Drawing.Size(49, 15);
             this.labelQuantityFrag.TabIndex = 0;
-            this.labelQuantityFrag.Text = "Cantidad de fragmentos";
+            this.labelQuantityFrag.Text = "Nº Frag.";
             // 
             // buttonSearchImage
             // 
