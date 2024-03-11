@@ -205,6 +205,7 @@ namespace ARventure_Path.Forms
 
         private void buttonGenerateHappening_Click(object sender, EventArgs e)
         {
+            labelLoading.Visible = true;
             story story = (story)comboBoxStories.SelectedItem;
             string nombreEvento = story.name;
             //int fragmentQuantity = int.Parse(textBoxFragmentsIA.Text);
@@ -224,6 +225,7 @@ namespace ARventure_Path.Forms
 
             textBoxName.Text = title;
             textBoxContent.Text = summary;
+            labelLoading.Visible = false;
         }
     }
 }

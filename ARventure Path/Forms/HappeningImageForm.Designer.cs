@@ -46,6 +46,7 @@
             this.comboBoxStories = new System.Windows.Forms.ComboBox();
             this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.labelLoading = new System.Windows.Forms.Label();
             this.groupboxImgHappening.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgHappening)).BeginInit();
             this.groupboxIA.SuspendLayout();
@@ -232,12 +233,26 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Seleccionar historia";
             // 
+            // labelLoading
+            // 
+            this.labelLoading.AutoSize = true;
+            this.labelLoading.BackColor = System.Drawing.Color.Transparent;
+            this.labelLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.labelLoading.Location = new System.Drawing.Point(204, 162);
+            this.labelLoading.Name = "labelLoading";
+            this.labelLoading.Size = new System.Drawing.Size(137, 29);
+            this.labelLoading.TabIndex = 28;
+            this.labelLoading.Text = "Cargando...";
+            this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLoading.Visible = false;
+            // 
             // HappeningImageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(544, 352);
+            this.Controls.Add(this.labelLoading);
             this.Controls.Add(this.comboBoxStories);
             this.Controls.Add(this.groupboxImgHappening);
             this.Controls.Add(this.groupboxIA);
@@ -282,5 +297,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource bindingSourceStory;
         private System.Windows.Forms.BindingSource bindingSourceHappenings;
+        private System.Windows.Forms.Label labelLoading;
     }
 }
