@@ -33,6 +33,7 @@
             this.comboBoxSelectStory = new System.Windows.Forms.ComboBox();
             this.bindingSourceStory = new System.Windows.Forms.BindingSource(this.components);
             this.gbGenerateForIA = new System.Windows.Forms.GroupBox();
+            this.labelKeyWord = new System.Windows.Forms.Label();
             this.lblFragments = new System.Windows.Forms.Label();
             this.textBoxFragmentsIA = new System.Windows.Forms.TextBox();
             this.buttonGenerateStory = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@
             this.labelStoryTitle = new System.Windows.Forms.Label();
             this.buttonCreateStory = new System.Windows.Forms.Button();
             this.buttonCancelStory = new System.Windows.Forms.Button();
-            this.labelKeyWord = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.gbGenerateForIA.SuspendLayout();
             this.gbStory.SuspendLayout();
@@ -112,6 +112,15 @@
             this.gbGenerateForIA.TabStop = false;
             this.gbGenerateForIA.Text = "Generar por IA";
             // 
+            // labelKeyWord
+            // 
+            this.labelKeyWord.AutoSize = true;
+            this.labelKeyWord.Location = new System.Drawing.Point(21, 29);
+            this.labelKeyWord.Name = "labelKeyWord";
+            this.labelKeyWord.Size = new System.Drawing.Size(83, 15);
+            this.labelKeyWord.TabIndex = 5;
+            this.labelKeyWord.Text = "Palabra/s clave";
+            // 
             // lblFragments
             // 
             this.lblFragments.AutoSize = true;
@@ -153,6 +162,7 @@
             this.buttonGenerateImage.TabIndex = 1;
             this.buttonGenerateImage.Text = "Generar imagen";
             this.buttonGenerateImage.UseVisualStyleBackColor = false;
+            this.buttonGenerateImage.Click += new System.EventHandler(this.buttonGenerateImage_Click);
             // 
             // textBoxGenerateStoryAI
             // 
@@ -398,15 +408,6 @@
             this.buttonCancelStory.Text = "Cancelar";
             this.buttonCancelStory.UseVisualStyleBackColor = false;
             this.buttonCancelStory.Click += new System.EventHandler(this.buttonCancelStory_Click);
-            // 
-            // labelKeyWord
-            // 
-            this.labelKeyWord.AutoSize = true;
-            this.labelKeyWord.Location = new System.Drawing.Point(21, 29);
-            this.labelKeyWord.Name = "labelKeyWord";
-            this.labelKeyWord.Size = new System.Drawing.Size(83, 15);
-            this.labelKeyWord.TabIndex = 5;
-            this.labelKeyWord.Text = "Palabra/s clave";
             // 
             // StoryCreationForm
             // 

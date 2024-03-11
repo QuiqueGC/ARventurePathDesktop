@@ -607,6 +607,14 @@ namespace ARventure_Path.Forms
             }
         }
 
-        
+        private void buttonGenerateImage_Click(object sender, EventArgs e)
+        {
+            string keywords = textBoxGenerateStoryAI.Text;
+
+            Bitmap response = ChatGPTImage.MakeRequestStoryImage(keywords);
+
+            pictureBoxStory.Image = response;
+
+        }
     }
 }

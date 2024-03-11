@@ -148,6 +148,7 @@
             this.buttonGenerateHappening.TabIndex = 1;
             this.buttonGenerateHappening.Text = "Generar evento";
             this.buttonGenerateHappening.UseVisualStyleBackColor = false;
+            this.buttonGenerateHappening.Click += new System.EventHandler(this.buttonGenerateHappening_Click);
             // 
             // buttonCancel
             // 

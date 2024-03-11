@@ -331,5 +331,15 @@ namespace ARventure_Path.Forms
             buttonCreate.Enabled = true;
         }
 
+        private void buttonGenerateHappening_Click(object sender, EventArgs e)
+        {
+            story story = (story)comboBoxStories.SelectedItem;
+            string nombreEvento = story.name;
+
+            Bitmap response = ChatGPTImage.MakeResponseEventImage(nombreEvento);
+
+            imgHappening.Image = response;
+
+        }
     }
 }
