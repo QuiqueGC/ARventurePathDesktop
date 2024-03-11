@@ -616,9 +616,10 @@ namespace ARventure_Path.Forms
         {
             if(textBoxStoryTitle.Text != "" && textBoxSummary.Text != "")
             {
-                string keywords = textBoxGenerateStoryAI.Text;
+                string keywords = textBoxStyle.Text;
+                string summary = textBoxSummary.Text;
 
-                Bitmap response = ChatGPTImage.MakeRequestStoryImage(keywords);
+                Bitmap response = ChatGPTImage.MakeRequestStoryImage(keywords, summary);
 
                 pictureBoxStory.Image = response;
 

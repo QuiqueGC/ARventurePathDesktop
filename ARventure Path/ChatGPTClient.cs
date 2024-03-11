@@ -77,7 +77,7 @@ namespace ARventure_Path
 
         public static string MakeRequest(string keywords)
         {
-            string messageString = "dame un título de una historia" + keywords + " , y un resumen de 200 caracteres";
+            string messageString = "dame un título (con menos de 50 caracteres) de una historia que hable de" + keywords + ", y un resumen de 200 caracteres";
 
 
             var httpClient = new HttpClient();
