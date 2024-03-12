@@ -205,25 +205,39 @@ namespace ARventure_Path.Forms
 
         private void buttonGenerateHappening_Click(object sender, EventArgs e)
         {
-            story story = (story)comboBoxStories.SelectedItem;
-            string nombreEvento = story.name;
-            //int fragmentQuantity = int.Parse(textBoxFragmentsIA.Text);
-
-            string response = ChatGPTClient.makeRequestEventText(nombreEvento);
-            MessageBox.Show(response);
-            string[] splitResponse = response.Split('\n');
-            string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
-            string summary = splitResponse[splitResponse.Count() - 1].Split(':')[1].Trim();
-            //List<string> responseFragments = ChatGPTClient.generateFragments(title, fragmentQuantity);
-            /*int fragmentStartIndex = 7;
-            for (int i = 0; i < fragmentQuantity; i++)
+            if(comboBoxStories.SelectedItem != null)
             {
-                responseFragments.Add(splitResponse[fragmentStartIndex].Split(':')[1].Trim());
-                fragmentStartIndex += 2;
-            }*/
+                story story = (story)comboBoxStories.SelectedItem;
+                string nombreEvento = story.name;
+                //int fragmentQuantity = int.Parse(textBoxFragmentsIA.Text);
+                try
+                {
+                    string response = ChatGPTClient.makeRequestEventText(nombreEvento);
+                    MessageBox.Show(response);
+                    string[] splitResponse = response.Split('\n');
+                    string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
+                    string summary = splitResponse[splitResponse.Count() - 1].Split(':')[1].Trim();
+                    //List<string> responseFragments = ChatGPTClient.generateFragments(title, fragmentQuantity);
+                    /*int fragmentStartIndex = 7;
+                    for (int i = 0; i < fragmentQuantity; i++)
+                    {
+                        responseFragments.Add(splitResponse[fragmentStartIndex].Split(':')[1].Trim());
+                        fragmentStartIndex += 2;
+                    }*/
 
-            textBoxName.Text = title;
-            textBoxContent.Text = summary;
+                    textBoxName.Text = title;
+                    textBoxContent.Text = summary;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("La IA ha generado una respuesta no válida.", "Error!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar primero la historia a la que pertenece.", "Error!");
+            }
+            
         }
     }
 }
