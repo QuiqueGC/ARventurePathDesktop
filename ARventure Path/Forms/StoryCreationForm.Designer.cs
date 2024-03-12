@@ -64,6 +64,7 @@
             this.labelStoryTitle = new System.Windows.Forms.Label();
             this.buttonCreateStory = new System.Windows.Forms.Button();
             this.buttonCancelStory = new System.Windows.Forms.Button();
+            this.labelLoading = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStory)).BeginInit();
             this.gbGenerateForIA.SuspendLayout();
             this.groupBoxIAImage.SuspendLayout();
@@ -454,12 +455,26 @@
             this.buttonCancelStory.UseVisualStyleBackColor = false;
             this.buttonCancelStory.Click += new System.EventHandler(this.buttonCancelStory_Click);
             // 
+            // labelLoading
+            // 
+            this.labelLoading.AutoSize = true;
+            this.labelLoading.BackColor = System.Drawing.Color.Transparent;
+            this.labelLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.labelLoading.Location = new System.Drawing.Point(411, 292);
+            this.labelLoading.Name = "labelLoading";
+            this.labelLoading.Size = new System.Drawing.Size(137, 29);
+            this.labelLoading.TabIndex = 28;
+            this.labelLoading.Text = "Cargando...";
+            this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLoading.Visible = false;
+            // 
             // StoryCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(959, 612);
+            this.Controls.Add(this.labelLoading);
             this.Controls.Add(this.buttonCancelStory);
             this.Controls.Add(this.buttonCreateStory);
             this.Controls.Add(this.gbStory);
@@ -524,5 +539,6 @@
         private System.Windows.Forms.GroupBox groupBoxIAImage;
         private System.Windows.Forms.TextBox textBoxStyle;
         private System.Windows.Forms.GroupBox groupBoxIAStory;
+        private System.Windows.Forms.Label labelLoading;
     }
 }

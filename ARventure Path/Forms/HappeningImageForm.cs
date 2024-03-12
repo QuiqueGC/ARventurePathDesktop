@@ -339,15 +339,18 @@ namespace ARventure_Path.Forms
         {
             if(textBoxName.Text != "")
             {
+                labelLoading.Visible = true;
                 story story = (story)comboBoxStories.SelectedItem;
                 string nombreEvento = story.name;
 
                 response = ChatGPTImage.MakeResponseEventImage(nombreEvento);
                 imgHappening.Image = response;
                 fileName = textBoxName.Text + ".png";
+                labelLoading.Visible = false;
             }
             else
             {
+                labelLoading.Visible = false;
                 MessageBox.Show("Debes poner un nombre al evento antes de generarlo.", "Error");
             }
             

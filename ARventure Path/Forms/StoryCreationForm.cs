@@ -550,6 +550,7 @@ namespace ARventure_Path.Forms
 
                 if(numAtBox >= 2)
                 {
+                    labelLoading.Visible = true;
                     fragments.Clear();
                     string keywords = textBoxGenerateStoryAI.Text;
                     int fragmentQuantity = int.Parse(textBoxFragmentsIA.Text);
@@ -582,14 +583,18 @@ namespace ARventure_Path.Forms
                                 fragments.Count + 1 : story.fragment.Count + 1,
                             });
                         }
-                    }catch(Exception ex)
+                        labelLoading.Visible = false;
+                    }
+                    catch(Exception ex)
                     {
+                        labelLoading.Visible = false;
                         MessageBox.Show("La respuesta no ha sido válida. Inténtalo otra vez.", "Error!");
                     }
                     
                 }
                 else
                 {
+                    labelLoading.Visible = false;
                     MessageBox.Show("La cantidad de fragmentos debe ser superior a 2.", "Error!");
                 }
                 
