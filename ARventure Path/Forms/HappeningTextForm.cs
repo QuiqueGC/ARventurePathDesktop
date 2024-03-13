@@ -205,28 +205,34 @@ namespace ARventure_Path.Forms
 
         private void buttonGenerateHappening_Click(object sender, EventArgs e)
         {
-            labelLoading.Visible = true;
-            story story = (story)comboBoxStories.SelectedItem;
-            string nombreEvento = story.name;
-
-            string response = ChatGPTClient.makeRequestEventText(nombreEvento);
-            try
+            if (comboBoxStories.SelectedItem != null)
             {
-                string[] splitResponse = response.Split('\n');
-                string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
-                string summary = splitResponse[splitResponse.Count() - 1].Split(':')[1].Trim();
+                story story = (story)comboBoxStories.SelectedItem;
+                string nombreEvento = story.name;
+                try
+                {
+                    labelLoading.Visible = true;
+                    string response = ChatGPTClient.makeRequestEventText(nombreEvento);
+                    string[] splitResponse = response.Split('\n');
+                    string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
+                    string summary = splitResponse[splitResponse.Count() - 1].Split(':')[1].Trim();
+                    textBoxName.Text = title;
+                    textBoxContent.Text = summary;
+                    labelLoading.Visible = false;
 
-                textBoxName.Text = title;
-                textBoxContent.Text = summary;
-                labelLoading.Visible = false;
-            }catch(Exception ex)
-            {
-                MessageBox.Show("Ha habido un problema con la respuesta.", "Error!");
+                }
+                catch (Exception ex)
+                {
+                    labelLoading.Visible = false;
+                    MessageBox.Show("La IA ha generado una respuesta no válida.", "Error!");
+                }
             }
-            
+            else
+            {
+                labelLoading.Visible = false;
+                MessageBox.Show("Debes seleccionar primero la historia a la que pertenece.", "Error!");
+            }
 
-
-            
         }
     }
 }
