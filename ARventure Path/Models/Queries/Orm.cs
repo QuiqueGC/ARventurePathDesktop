@@ -59,11 +59,15 @@ namespace ARventure_Path.Models
             {
                 Orm.db.SaveChanges();
 
-            }catch (DbUpdateException ex) 
+            } catch (DbUpdateException ex)
             {
                 SqlException sqlException = (SqlException)ex.InnerException.InnerException;
                 msg = Orm.ErrorMessage(sqlException);
                 RejectChanges();
+            }
+            catch (Exception ex) 
+            {
+                msg = ex.ToString();
             }
             return msg;
         }
