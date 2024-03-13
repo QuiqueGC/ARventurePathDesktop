@@ -205,39 +205,34 @@ namespace ARventure_Path.Forms
 
         private void buttonGenerateHappening_Click(object sender, EventArgs e)
         {
-            if(comboBoxStories.SelectedItem != null)
+            if (comboBoxStories.SelectedItem != null)
             {
                 story story = (story)comboBoxStories.SelectedItem;
                 string nombreEvento = story.name;
-                //int fragmentQuantity = int.Parse(textBoxFragmentsIA.Text);
                 try
                 {
+                    labelLoading.Visible = true;
                     string response = ChatGPTClient.makeRequestEventText(nombreEvento);
-                    MessageBox.Show(response);
                     string[] splitResponse = response.Split('\n');
                     string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
                     string summary = splitResponse[splitResponse.Count() - 1].Split(':')[1].Trim();
-                    //List<string> responseFragments = ChatGPTClient.generateFragments(title, fragmentQuantity);
-                    /*int fragmentStartIndex = 7;
-                    for (int i = 0; i < fragmentQuantity; i++)
-                    {
-                        responseFragments.Add(splitResponse[fragmentStartIndex].Split(':')[1].Trim());
-                        fragmentStartIndex += 2;
-                    }*/
-
                     textBoxName.Text = title;
                     textBoxContent.Text = summary;
+                    labelLoading.Visible = false;
+
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
+                    labelLoading.Visible = false;
                     MessageBox.Show("La IA ha generado una respuesta no válida.", "Error!");
                 }
             }
             else
             {
+                labelLoading.Visible = false;
                 MessageBox.Show("Debes seleccionar primero la historia a la que pertenece.", "Error!");
             }
-            
+
         }
     }
 }

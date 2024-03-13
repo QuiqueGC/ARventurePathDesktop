@@ -626,12 +626,14 @@ namespace ARventure_Path.Forms
         {
             if(textBoxStoryTitle.Text != "" && textBoxSummary.Text != "")
             {
+                labelLoading.Visible = true;
                 string keywords = textBoxStyle.Text;
                 string summary = textBoxSummary.Text;
                 Bitmap response = ChatGPTImage.MakeRequestStoryImage(keywords, summary);
                 
                 if(response != null)
                 {
+                    labelLoading.Visible = false;
                     pictureBoxStory.Image = response;
                     fileName = textBoxStoryTitle.Text + ".png";
                     string destinationPath = Path.Combine(storyImagePath, fileName);
@@ -651,6 +653,7 @@ namespace ARventure_Path.Forms
             }
             else
             {
+                labelLoading.Visible = false;
                 MessageBox.Show("La historia debe tener título y resumen para poder crearle una imagen.", "Error!");
             }
             
