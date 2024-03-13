@@ -117,7 +117,10 @@ namespace ARventure_Path.Forms
                 // Borrar ARventure
                 string msg = "";
                 arventure.happening.Clear();
+                achievement = arventure.achievement;
                 msg = ArventureOrm.Delete(arventure);
+                MyUtils.ShowPosibleError(msg);
+                msg = AchievementOrm.Delete(achievement);
                 MyUtils.ShowPosibleError(msg);
                 if (msg == "")
                 {

@@ -208,24 +208,25 @@ namespace ARventure_Path.Forms
             labelLoading.Visible = true;
             story story = (story)comboBoxStories.SelectedItem;
             string nombreEvento = story.name;
-            //int fragmentQuantity = int.Parse(textBoxFragmentsIA.Text);
 
             string response = ChatGPTClient.makeRequestEventText(nombreEvento);
-            MessageBox.Show(response);
-            string[] splitResponse = response.Split('\n');
-            string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
-            string summary = splitResponse[splitResponse.Count() - 1].Split(':')[1].Trim();
-            //List<string> responseFragments = ChatGPTClient.generateFragments(title, fragmentQuantity);
-            /*int fragmentStartIndex = 7;
-            for (int i = 0; i < fragmentQuantity; i++)
+            try
             {
-                responseFragments.Add(splitResponse[fragmentStartIndex].Split(':')[1].Trim());
-                fragmentStartIndex += 2;
-            }*/
+                string[] splitResponse = response.Split('\n');
+                string title = splitResponse[0].Split(':')[1].Replace('"', ' ').Trim();
+                string summary = splitResponse[splitResponse.Count() - 1].Split(':')[1].Trim();
 
-            textBoxName.Text = title;
-            textBoxContent.Text = summary;
-            labelLoading.Visible = false;
+                textBoxName.Text = title;
+                textBoxContent.Text = summary;
+                labelLoading.Visible = false;
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Ha habido un problema con la respuesta.", "Error!");
+            }
+            
+
+
+            
         }
     }
 }
