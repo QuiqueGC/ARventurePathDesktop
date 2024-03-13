@@ -23,6 +23,8 @@ namespace ARventure_Path.Forms
         private BindingList<fragment> fragments = new BindingList<fragment>();
 
         private string storyImagePath = Path.Combine(Application.StartupPath, "..","..","filesToServer","imgStory");
+        private string achievementImagePath = Path.Combine(Application.StartupPath, "..", "..", "filesToServer", "imgAchievement");
+
         public string contentToFragment = "";
 
         public StoryCreationForm(MyUtils.FormType formType)
@@ -268,10 +270,11 @@ namespace ARventure_Path.Forms
                 Directory.CreateDirectory(storyImagePath);
             }
             string destinationPath = Path.Combine(storyImagePath, fileName);
+            string achievementFullImagePath = Path.Combine(achievementImagePath, fileName);
             try
             {
                 image.Save(destinationPath, ImageFormat.Png);
-              
+                image.Save(achievementFullImagePath, ImageFormat.Png);
             }
             catch (ExternalException ex)
             {
@@ -634,7 +637,18 @@ namespace ARventure_Path.Forms
                     pictureBoxStory.Image = response;
                     fileName = textBoxStoryTitle.Text + ".png";
                     string destinationPath = Path.Combine(storyImagePath, fileName);
+
+                    string achievementFullImagePath = Path.Combine(achievementImagePath, fileName);
+                    if (!Directory.Exists(storyImagePath))
+                    {
+                        Directory.CreateDirectory(storyImagePath);
+                    }
+                    if (!Directory.Exists(achievementImagePath))
+                    {
+                        Directory.CreateDirectory(achievementImagePath);
+                    }
                     response.Save(destinationPath, ImageFormat.Png);
+                    response.Save(achievementFullImagePath, ImageFormat.Png);
                 }
             }
             else

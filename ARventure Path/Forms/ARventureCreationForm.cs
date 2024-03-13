@@ -77,13 +77,13 @@ namespace ARventure_Path.Forms
                         MyUtils.ShowPosibleError(msg);
                         if (msg == "")
                         {
-                            MessageBox.Show($"La arventure se ha creado con éxito.\nLogro: {achievement.name} creado con éxito ", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show($"La arventure se ha creado con éxito.\nLogro '{achievement.name} creado con éxito'", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         cleanForm();
                     }
                     else
                     {
-                        MessageBox.Show("Debe haber el mismo número de fragmentos que de paradas", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Debe haber el mismo número de fragmentos que de paradas", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
 
@@ -108,7 +108,7 @@ namespace ARventure_Path.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Debe haber el mismo número de fragmentos que de paradas", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Debe haber el mismo número de fragmentos que de paradas", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
@@ -143,25 +143,25 @@ namespace ARventure_Path.Forms
                         }
                         else
                         {
-                            MessageBox.Show("Introduce el titulo de la arventure", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Introduce el titulo de la arventure", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return false;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Añade eventos", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Añade eventos", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Selecciona una ruta", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Selecciona una ruta", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }
             else
             {
-                MessageBox.Show("Selecciona una historia", "Que lo sepas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selecciona una historia", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
