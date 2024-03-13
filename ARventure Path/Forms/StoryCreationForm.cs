@@ -635,7 +635,16 @@ namespace ARventure_Path.Forms
                     pictureBoxStory.Image = response;
                     fileName = textBoxStoryTitle.Text + ".png";
                     string destinationPath = Path.Combine(storyImagePath, fileName);
+
                     string achievementFullImagePath = Path.Combine(achievementImagePath, fileName);
+                    if (!Directory.Exists(storyImagePath))
+                    {
+                        Directory.CreateDirectory(storyImagePath);
+                    }
+                    if (!Directory.Exists(achievementImagePath))
+                    {
+                        Directory.CreateDirectory(achievementImagePath);
+                    }
                     response.Save(destinationPath, ImageFormat.Png);
                     response.Save(achievementFullImagePath, ImageFormat.Png);
                 }
