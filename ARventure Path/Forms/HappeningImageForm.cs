@@ -138,6 +138,11 @@ namespace ARventure_Path.Forms
                 {
                     response.Save(destinationPath, ImageFormat.Png);
                 }
+                else
+                {
+                    image.Save(destinationPath, ImageFormat.Png);
+                }
+
             }
             catch (Exception ex)
             {
