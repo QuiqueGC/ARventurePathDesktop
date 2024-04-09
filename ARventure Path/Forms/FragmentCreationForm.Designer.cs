@@ -40,9 +40,10 @@
             this.buttonCancelFragment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCancelFragment.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelFragment.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonCancelFragment.Location = new System.Drawing.Point(206, 175);
+            this.buttonCancelFragment.Location = new System.Drawing.Point(412, 337);
+            this.buttonCancelFragment.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonCancelFragment.Name = "buttonCancelFragment";
-            this.buttonCancelFragment.Size = new System.Drawing.Size(88, 36);
+            this.buttonCancelFragment.Size = new System.Drawing.Size(176, 69);
             this.buttonCancelFragment.TabIndex = 8;
             this.buttonCancelFragment.Text = "Cancelar";
             this.buttonCancelFragment.UseVisualStyleBackColor = false;
@@ -54,9 +55,10 @@
             this.buttonAcceptFragment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAcceptFragment.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAcceptFragment.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonAcceptFragment.Location = new System.Drawing.Point(342, 175);
+            this.buttonAcceptFragment.Location = new System.Drawing.Point(684, 337);
+            this.buttonAcceptFragment.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonAcceptFragment.Name = "buttonAcceptFragment";
-            this.buttonAcceptFragment.Size = new System.Drawing.Size(88, 36);
+            this.buttonAcceptFragment.Size = new System.Drawing.Size(176, 69);
             this.buttonAcceptFragment.TabIndex = 9;
             this.buttonAcceptFragment.Text = "Aceptar";
             this.buttonAcceptFragment.UseVisualStyleBackColor = false;
@@ -66,31 +68,35 @@
             // 
             this.labelFragmento.AutoSize = true;
             this.labelFragmento.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFragmento.Location = new System.Drawing.Point(54, 75);
+            this.labelFragmento.Location = new System.Drawing.Point(108, 144);
+            this.labelFragmento.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelFragmento.Name = "labelFragmento";
-            this.labelFragmento.Size = new System.Drawing.Size(91, 20);
+            this.labelFragmento.Size = new System.Drawing.Size(179, 38);
             this.labelFragmento.TabIndex = 10;
             this.labelFragmento.Text = "Fragmento";
             // 
             // textBoxCreateFragment
             // 
-            this.textBoxCreateFragment.Location = new System.Drawing.Point(151, 42);
+            this.textBoxCreateFragment.Location = new System.Drawing.Point(302, 81);
+            this.textBoxCreateFragment.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBoxCreateFragment.Multiline = true;
             this.textBoxCreateFragment.Name = "textBoxCreateFragment";
-            this.textBoxCreateFragment.Size = new System.Drawing.Size(402, 86);
+            this.textBoxCreateFragment.Size = new System.Drawing.Size(800, 162);
             this.textBoxCreateFragment.TabIndex = 11;
             // 
             // FragmentCreationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(602, 240);
+            this.ClientSize = new System.Drawing.Size(1204, 462);
             this.Controls.Add(this.textBoxCreateFragment);
             this.Controls.Add(this.labelFragmento);
             this.Controls.Add(this.buttonAcceptFragment);
             this.Controls.Add(this.buttonCancelFragment);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FragmentCreationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Creación de Fragmento";
             this.Load += new System.EventHandler(this.FragmentCreationForm_Load);
             this.ResumeLayout(false);
