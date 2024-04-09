@@ -12,8 +12,8 @@ namespace ARventure_Path.Forms
 {
     public partial class LoginForm : Form
     {
-        private String userName = "ll";
-        private String passwd = "ll";
+        private String userName = "arventure";
+        private String passwd = "arventure";
         private MainForm mainForm;
 
         public LoginForm(MainForm mainForm)
